@@ -8,7 +8,7 @@ export async function POST(request: Request) {
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,
-    secure: false, // Use TLS
+    secure: false,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     // Envía el correo
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: "tu_correo@example.com", // Reemplaza con tu correo
+      to: process.env.EMAIL_USER, // Te llegará a ti mismo
       subject: "Nueva suscripción a la lista de espera de SkillVoo",
       text: `Nuevo suscriptor: ${email}`,
       html: `<p>Nuevo suscriptor a la lista de espera de SkillVoo: <strong>${email}</strong></p>`,
@@ -31,3 +31,4 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Error al procesar la solicitud" }, { status: 500 })
   }
 }
+

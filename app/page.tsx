@@ -16,10 +16,12 @@ const scrollToWaitlist = (e: React.MouseEvent<HTMLAnchorElement>) => {
 export default function LandingPage() {
   const [email, setEmail] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [message, setMessage] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
+    setMessage('')
     try {
       const response = await fetch('/api/waitlist', {
         method: 'POST',
@@ -28,16 +30,16 @@ export default function LandingPage() {
         },
         body: JSON.stringify({ email }),
       })
+      const data = await response.json()
       if (response.ok) {
-        alert('¡Gracias por unirte a nuestra lista de espera!')
+        setMessage('¡Gracias por unirte a nuestra lista de espera!')
         setEmail('')
       } else {
-        const errorData = await response.json()
-        alert(`Error: ${errorData.message || 'Hubo un problema al procesar tu solicitud.'}`)
+        setMessage(`Error: ${data.message || 'Hubo un problema al procesar tu solicitud.'}`)
       }
     } catch (error) {
       console.error('Error:', error)
-      alert('Hubo un error al conectar con el servidor. Por favor, intenta de nuevo más tarde.')
+      setMessage('Hubo un error al conectar con el servidor. Por favor, intenta de nuevo más tarde.')
     } finally {
       setIsLoading(false)
     }
