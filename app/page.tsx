@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Mail, Clock, Brain, Zap, Calendar, BookOpen, UserPlus } from 'lucide-react'
+import { Mail, Clock, Brain, Zap, Calendar, BookOpen, UserPlus, CheckCircle } from 'lucide-react'
 import Image from "next/image"
 import { useState } from 'react'
 import { motion } from 'framer-motion'
@@ -66,38 +66,42 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white font-sans">
       {/* Navigation bar */}
-      <motion.nav 
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ type: "spring", stiffness: 50 }}
-        className="bg-white shadow-sm sticky top-0 z-10"
+<motion.nav 
+  initial={{ y: -100 }}
+  animate={{ y: 0 }}
+  transition={{ type: "spring", stiffness: 50 }}
+  className="bg-white shadow-sm sticky top-0 z-10"
+>
+  <div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col md:flex-row justify-between items-center max-w-6xl mx-auto">
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        transition={{ type: "spring", stiffness: 300 }}
       >
-        <div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center max-w-4xl mx-auto">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Skill%20(1)-cyWzceXVJrqFvvlloOAwSmMJbWSIAK.png"
-                alt="SkillVoo Logo"
-                width={150}
-                height={50}
-                className="object-contain"
-              />
-            </motion.div>
-            <motion.a 
-              href="#waitlist" 
-              onClick={scrollToWaitlist}
-              className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-full transition duration-300 text-sm"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Únete a la lista de espera
-            </motion.a>
-          </div>
-        </div>
-      </motion.nav>
+        <Image
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Skill%20(1)-cyWzceXVJrqFvvlloOAwSmMJbWSIAK.png"
+          alt="SkillVoo Logo"
+          width={150}
+          height={50}
+          className="object-contain"
+        />
+      </motion.div>
+      <div className="mt-4 md:mt-0 text-center md:text-left">
+        <p className="text-purple-600 font-semibold mb-2">¡Página en desarrollo! 🚀</p>
+        <motion.a 
+          href="#waitlist" 
+          onClick={scrollToWaitlist}
+          className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-sm inline-flex items-center"
+          whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(107,70,193)" }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Mail className="w-4 h-4 mr-2" />
+          Únete a nuestra lista de espera
+        </motion.a>
+      </div>
+    </div>
+  </div>
+</motion.nav>
 
       {/* Hero Section */}
       <motion.section 
@@ -324,10 +328,23 @@ export default function LandingPage() {
               <Button 
                 type="submit" 
                 size="lg" 
-                className="w-full bg-yellow-400 hover:bg-yellow-500 text-purple-800 font-bold" 
+                className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-purple-800 font-bold shadow-lg" 
                 disabled={isLoading}
               >
-                {isLoading ? 'Procesando...' : 'Asegura tu lugar ahora'}
+                {isLoading ? (
+                  <span className="flex items-center">
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-purple-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Procesando...
+                  </span>
+                ) : (
+                  <span className="flex items-center">
+                    <CheckCircle className="w-5 h-5 mr-2" />
+                    Asegura tu lugar ahora
+                  </span>
+                )}
               </Button>
             </motion.div>
           </motion.form>
