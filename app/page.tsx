@@ -2,8 +2,8 @@
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card, CardContent } from "@/components/ui/card"
-import { Mail, Clock, Brain, Zap, Calendar, BookOpen, UserPlus, CheckCircle, Sparkles, Target, Puzzle, Lightbulb } from 'lucide-react'
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Mail, Clock, Brain, Zap, Calendar, BookOpen, UserPlus, CheckCircle } from 'lucide-react'
 import Image from "next/image"
 import { useState } from 'react'
 import { motion } from 'framer-motion'
@@ -64,16 +64,16 @@ export default function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background font-sans">
+    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white font-sans">
       {/* Navigation bar */}
       <motion.nav 
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 50 }}
-        className="bg-card shadow-md sticky top-0 z-10"
+        className="bg-white shadow-sm sticky top-0 z-10"
       >
         <div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-between items-center max-w-6xl mx-auto">
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -86,17 +86,17 @@ export default function LandingPage() {
                 className="object-contain"
               />
             </motion.div>
-            <div className="flex items-center space-x-4">
-              <p className="text-primary font-semibold hidden sm:block">¡Página en desarrollo! 🚀</p>
+            <div className="mt-4 md:mt-0 text-center md:text-left">
+              <p className="text-purple-600 font-semibold mb-2">¡Página en desarrollo! 🚀</p>
               <motion.a 
                 href="#waitlist" 
                 onClick={scrollToWaitlist}
-                className="gradient-bg text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-sm inline-flex items-center"
-                whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(255,92,0)" }}
+                className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-sm inline-flex items-center"
+                whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(107,70,193)" }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Mail className="w-4 h-4 mr-2" />
-                Únete a la lista
+                Únete a nuestra lista de espera
               </motion.a>
             </div>
           </div>
@@ -113,20 +113,20 @@ export default function LandingPage() {
       >
         <motion.h1 
           variants={fadeInUp}
-          className="text-5xl sm:text-6xl font-bold mb-6 font-heading leading-tight gradient-text"
+          className="text-5xl sm:text-6xl font-bold text-purple-900 mb-6 font-heading leading-tight"
         >
           Domina habilidades únicas<br />en solo 30 días
         </motion.h1>
         <motion.p 
           variants={fadeInUp}
-          className="text-xl text-secondary mb-8 max-w-2xl mx-auto"
+          className="text-xl text-purple-700 mb-8 max-w-2xl mx-auto"
         >
           La primera plataforma centrada en el desarrollo de habilidades personales únicas. Transforma tu vida, un mes a la vez.
         </motion.p>
         <motion.div variants={fadeInUp}>
           <Button 
             size="lg" 
-            className="gradient-bg hover:opacity-90 text-white text-lg px-8 py-3 rounded-full"
+            className="bg-purple-600 hover:bg-purple-700 text-white text-lg px-8 py-3 rounded-full"
           >
             Comienza Tu Transformación
           </Button>
@@ -144,92 +144,35 @@ export default function LandingPage() {
       >
         <motion.h2 
           variants={fadeInUp}
-          className="text-4xl font-bold text-center text-purple-800 mb-6 font-heading"
+          className="text-4xl font-bold text-center text-purple-800 mb-12 font-heading"
         >
           Descubre Nuestros Cursos de 30 Días
         </motion.h2>
-        <motion.p
-          variants={fadeInUp}
-          className="text-xl text-purple-600 text-center mb-12 max-w-3xl mx-auto"
-        >
-          Transforma tu vida, un mes a la vez, con nuestros cursos intensivos diseñados para potenciar tus habilidades personales.
-        </motion.p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
-            { 
-              title: "Maestría en Organización", 
-              icon: Calendar,
-              description: "Optimiza tu tiempo y aumenta tu productividad con técnicas probadas de gestión del tiempo y organización.",
-              difficulty: "Intermedio"
-            },
-            { 
-              title: "Forja de la Disciplina", 
-              icon: Zap,
-              description: "Desarrolla una voluntad de hierro y hábitos poderosos que te llevarán al éxito en todas las áreas de tu vida.",
-              difficulty: "Avanzado"
-            },
-            { 
-              title: "Psicología Práctica", 
-              icon: Brain,
-              description: "Aprende a comprender y manejar las emociones, mejorando tus relaciones y tu bienestar personal.",
-              difficulty: "Intermedio"
-            },
-            { 
-              title: "Vence la Procrastinación", 
-              icon: Clock,
-              description: "Supera el hábito de postergar y aprende a actuar de manera decisiva para alcanzar tus metas.",
-              difficulty: "Principiante"
-            },
-            { 
-              title: "Aprendizaje Acelerado", 
-              icon: BookOpen,
-              description: "Domina técnicas de estudio avanzadas y aprende a aprender de manera más eficiente y efectiva.",
-              difficulty: "Intermedio"
-            },
-            { 
-              title: "Maestro de la Comunicación", 
-              icon: UserPlus,
-              description: "Desarrolla habilidades de comunicación excepcionales y aumenta tu carisma e influencia social.",
-              difficulty: "Avanzado"
-            },
+            { title: "Empieza a organizarte", icon: Calendar },
+            { title: "Disciplina Personal", icon: Zap },
+            { title: "Psicología Inversa", icon: Brain },
+            { title: "Deja de Procrastinar", icon: Clock },
+            { title: "Técnicas de Estudio", icon: BookOpen },
+            { title: "Vence la Ansiedad Social", icon: UserPlus },
           ].map((course, index) => (
             <motion.div
               key={index}
               variants={fadeInUp}
-              whileHover={{ scale: 1.03, translateY: -5 }}
+              whileHover={{ scale: 1.05, translateY: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <Card className="overflow-hidden h-full border-none shadow-lg bg-white hover:shadow-xl transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="rounded-full p-3 bg-purple-100 mr-4">
-                      <course.icon className="w-8 h-8 text-purple-600" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-purple-800 font-heading">{course.title}</h3>
-                  </div>
-                  <p className="text-purple-600 mb-4">{course.description}</p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium text-purple-500">Dificultad: {course.difficulty}</span>
-                    <Button variant="outline" className="text-purple-600 border-purple-600 hover:bg-purple-50">
-                      Más información
-                    </Button>
-                  </div>
+              <Card className="hover:shadow-lg transition-shadow border-none bg-white h-full">
+                <CardContent className="p-6 flex flex-col items-center">
+                  <course.icon className="w-16 h-16 text-purple-600 mb-4" />
+                  <h3 className="text-xl font-semibold text-purple-800 mb-2 font-heading">{course.title}</h3>
+                  <p className="text-purple-600 text-center">Domina esta habilidad en solo 30 días y transforma tu vida.</p>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
         </div>
-        <motion.div
-          variants={fadeInUp}
-          className="text-center mt-12"
-        >
-          <Button 
-            size="lg" 
-            className="bg-purple-600 hover:bg-purple-700 text-white text-lg px-8 py-3 rounded-full"
-          >
-            Explora Todos los Cursos
-          </Button>
-        </motion.div>
       </motion.section>
 
       {/* Method Section */}
@@ -239,12 +182,12 @@ export default function LandingPage() {
         viewport={{ once: true }}
         variants={staggerChildren}
         id="metodo" 
-        className="bg-muted py-20"
+        className="bg-purple-50 py-20"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2 
             variants={fadeInUp}
-            className="text-4xl font-bold text-center mb-12 font-heading gradient-text"
+            className="text-4xl font-bold text-center text-purple-800 mb-12 font-heading"
           >
             El Método SkillVoo: Tu Camino al Éxito
           </motion.h2>
@@ -277,15 +220,15 @@ export default function LandingPage() {
                 whileHover={{ scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <Card className="border-none bg-card h-full shadow-lg">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <div className="rounded-full p-2 mr-4 gradient-bg">
-                        <method.icon className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="text-xl font-semibold font-heading">{method.title}</h3>
-                    </div>
-                    <p className="text-muted-foreground">{method.description}</p>
+                <Card className="border-none bg-white h-full">
+                  <CardHeader>
+                    <CardTitle className="flex items-center text-xl font-semibold text-purple-800 font-heading">
+                      <method.icon className="w-8 h-8 text-purple-600 mr-4" />
+                      {method.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-purple-600">{method.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -304,7 +247,7 @@ export default function LandingPage() {
       >
         <motion.h2 
           variants={fadeInUp}
-          className="text-4xl font-bold text-center mb-12 font-heading gradient-text"
+          className="text-4xl font-bold text-center text-purple-800 mb-12 font-heading"
         >
           Tu Año de Transformación con SkillVoo
         </motion.h2>
@@ -320,19 +263,86 @@ export default function LandingPage() {
               whileHover={{ scale: 1.1 }}
               className="text-center"
             >
-              <div className="text-6xl font-bold mb-2 font-heading gradient-text">{stat.number}</div>
-              <p className="text-xl text-secondary">{stat.text}</p>
+              <div className="text-6xl font-bold text-purple-600 mb-2 font-heading">{stat.number}</div>
+              <p className="text-xl text-purple-800">{stat.text}</p>
             </motion.div>
           ))}
         </div>
         <motion.p 
           variants={fadeInUp}
-          className="text-center text-lg text-muted-foreground mt-12 max-w-2xl mx-auto"
+          className="text-center text-lg text-purple-700 mt-12 max-w-2xl mx-auto"
         >
           Imagina cómo será tu vida después de dominar 12 habilidades únicas en un año. 
           Con SkillVoo, no solo aprendes, te transformas.
         </motion.p>
       </motion.section>
+
+          <section className="bg-purple-50 py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-center text-purple-800 mb-6 font-heading">Planes Disponibles</h2>
+          <p className="text-xl text-purple-700 text-center mb-12">Conoce nuestras opciones de suscripción</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Free Trial Plan */}
+            <Card className="border-none bg-white">
+              <CardHeader>
+                <CardTitle className="text-2xl font-bold text-purple-800 font-heading">Plan de Prueba</CardTitle>
+                <p className="text-purple-600">14 días de acceso premium</p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="text-3xl font-bold text-purple-800 font-heading">
+                  Gratis
+                </div>
+                <ul className="space-y-3">
+                  {["Acceso completo por 14 días", "Todos los cursos disponibles", "Sin compromiso"].map((feature, index) => (
+                    <li key={index} className="flex items-center">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* Premium Plan */}
+            <Card className="border-2 border-purple-400 bg-white relative">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <span className="bg-gradient-to-r from-purple-600 to-purple-800 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                  Plan Recomendado
+                </span>
+              </div>
+              <CardHeader>
+                <CardTitle className="text-2xl font-bold text-purple-800 font-heading">Plan Premium</CardTitle>
+                <p className="text-purple-600">Acceso completo a todo el contenido</p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <div className="text-3xl font-bold text-purple-800 font-heading">
+                    $10/mes
+                  </div>
+                  <div className="text-sm text-purple-600 font-medium">
+                    ¡30% de descuento para los primeros 100 usuarios!
+                  </div>
+                </div>
+                <ul className="space-y-3">
+                  {[
+                    "Acceso ilimitado a todos los cursos",
+                    "Nuevos cursos cada mes",
+                    "Contenido exclusivo",
+                    "Cancela cuando quieras"
+                  ].map((feature, index) => (
+                    <li key={index} className="flex items-center">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
 
       {/* Waitlist CTA Section */}
       <motion.section 
@@ -345,7 +355,7 @@ export default function LandingPage() {
       >
         <motion.div 
           variants={fadeInUp}
-          className="gradient-bg rounded-2xl shadow-xl py-16 px-4 sm:px-6 lg:px-8"
+          className="bg-gradient-to-r from-purple-500 to-indigo-600 rounded-2xl shadow-xl py-16 px-4 sm:px-6 lg:px-8"
         >
           <motion.h2 
             variants={fadeInUp}
@@ -355,13 +365,13 @@ export default function LandingPage() {
           </motion.h2>
           <motion.p 
             variants={fadeInUp}
-            className="text-xl text-white mb-4"
+            className="text-xl text-purple-100 mb-4"
           >
             Estamos a punto de lanzar algo extraordinario
           </motion.p>
           <motion.p 
             variants={fadeInUp}
-            className="text-lg text-white/80 mb-8"
+            className="text-lg text-purple-200 mb-8"
           >
             Únete a nuestra lista de espera exclusiva y sé el primero en experimentar la transformación SkillVoo
           </motion.p>
@@ -373,7 +383,7 @@ export default function LandingPage() {
             <Input 
               type="email" 
               placeholder="Tu correo electrónico" 
-              className="text-foreground placeholder-muted-foreground bg-background"
+              className="text-purple-800 placeholder-purple-400 bg-white"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -385,19 +395,19 @@ export default function LandingPage() {
               <Button 
                 type="submit" 
                 size="lg" 
-                className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-bold shadow-lg" 
+                className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-purple-800 font-bold shadow-lg" 
                 disabled={isLoading}
               >
                 {isLoading ? (
-                  <span className="flex items-center justify-center">
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-accent-foreground" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <span className="flex items-center">
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-purple-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
                     Procesando...
                   </span>
                 ) : (
-                  <span className="flex items-center justify-center">
+                  <span className="flex items-center">
                     <CheckCircle className="w-5 h-5 mr-2" />
                     Asegura tu lugar ahora
                   </span>
@@ -416,7 +426,7 @@ export default function LandingPage() {
           )}
           <motion.p 
             variants={fadeInUp}
-            className="mt-6 text-sm text-white/80"
+            className="mt-6 text-sm text-purple-200"
           >
             Los primeros 100 en la lista recibirán un 30% de descuento en su año premium y acceso a contenido exclusivo
           </motion.p>
@@ -428,7 +438,7 @@ export default function LandingPage() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="bg-card text-card-foreground py-12"
+        className="bg-purple-800 text-white py-12"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p>&copy; 2025 SkillVoo. Todos los derechos reservados.</p>
@@ -444,7 +454,7 @@ export default function LandingPage() {
                 variants={fadeInUp}
                 whileHover={{ scale: 1.1 }}
                 href="#"
-                className="text-muted-foreground hover:text-primary"
+                className="text-purple-200 hover:text-white"
               >
                 {link}
               </motion.a>
@@ -455,4 +465,3 @@ export default function LandingPage() {
     </div>
   )
 }
-
