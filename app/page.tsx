@@ -47,6 +47,7 @@ export default function LandingPage() {
     }
   }
 
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white font-sans">
       {/* Navigation bar */}
