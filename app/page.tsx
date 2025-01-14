@@ -22,6 +22,7 @@ export default function LandingPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
+    setMessage('')
     try {
       const response = await fetch('/api/waitlist', {
         method: 'POST',
@@ -30,16 +31,16 @@ export default function LandingPage() {
         },
         body: JSON.stringify({ email }),
       })
+      const data = await response.json()
       if (response.ok) {
-        alert('¡Gracias por unirte a nuestra lista de espera!')
+        setMessage('¡Gracias por unirte a nuestra lista de espera!')
         setEmail('')
       } else {
-        const errorData = await response.json()
-        alert(`Error: ${errorData.message || 'Hubo un problema al procesar tu solicitud.'}`)
+        setMessage(`Error: ${data.message || 'Hubo un problema al procesar tu solicitud.'}`)
       }
     } catch (error) {
       console.error('Error:', error)
-      alert('Hubo un error al conectar con el servidor. Por favor, intenta de nuevo más tarde.')
+      setMessage('Hubo un error al conectar con el servidor. Por favor, intenta de nuevo más tarde.')
     } finally {
       setIsLoading(false)
     }
@@ -245,18 +246,19 @@ export default function LandingPage() {
           <p className="text-xl text-purple-100 mb-4">Estamos a punto de lanzar algo extraordinario</p>
           <p className="text-lg text-purple-200 mb-8">Únete a nuestra lista de espera exclusiva y sé el primero en experimentar la transformación SkillVoo</p>
           <form onSubmit={handleSubmit} className="max-w-md mx-auto flex flex-col space-y-4">
-            <Input 
-              type="email" 
-              placeholder="Tu correo electrónico" 
-              className="text-purple-800 placeholder-purple-400 bg-white"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <Button type="submit" size="lg" className="bg-yellow-400 hover:bg-yellow-500 text-purple-800 font-bold" disabled={isLoading}>
-              {isLoading ? 'Procesando...' : 'Asegura tu lugar ahora'}
-            </Button>
-          </form>
+  <Input 
+    type="email" 
+    placeholder="Tu correo electrónico" 
+    className="text-purple-800 placeholder-purple-400 bg-white"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+    required
+  />
+  <Button type="submit" size="lg" className="bg-yellow-400 hover:bg-yellow-500 text-purple-800 font-bold" disabled={isLoading}>
+    {isLoading ? 'Procesando...' : 'Asegura tu lugar ahora'}
+  </Button>
+</form>
+{message && <p className="mt-4 text-white">{message}</p>}
           <p className="mt-6 text-sm text-purple-200">Los primeros 100 en la lista recibirán un 30% de descuento en su año premium y acceso a contenido exclusivo</p>
         </div>
       </section>
