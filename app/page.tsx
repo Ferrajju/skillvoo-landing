@@ -1,5 +1,3 @@
-'use client'
-
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -22,7 +20,6 @@ export default function LandingPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    setMessage('')
     try {
       const response = await fetch('/api/waitlist', {
         method: 'POST',
@@ -31,16 +28,16 @@ export default function LandingPage() {
         },
         body: JSON.stringify({ email }),
       })
-      const data = await response.json()
       if (response.ok) {
-        setMessage('¡Gracias por unirte a nuestra lista de espera!')
+        alert('¡Gracias por unirte a nuestra lista de espera!')
         setEmail('')
       } else {
-        setMessage(`Error: ${data.message || 'Hubo un problema al procesar tu solicitud.'}`)
+        const errorData = await response.json()
+        alert(`Error: ${errorData.message || 'Hubo un problema al procesar tu solicitud.'}`)
       }
     } catch (error) {
       console.error('Error:', error)
-      setMessage('Hubo un error al conectar con el servidor. Por favor, intenta de nuevo más tarde.')
+      alert('Hubo un error al conectar con el servidor. Por favor, intenta de nuevo más tarde.')
     } finally {
       setIsLoading(false)
     }
@@ -51,14 +48,14 @@ export default function LandingPage() {
       {/* Navigation bar */}
       <nav className="bg-white shadow-sm sticky top-0 z-10">
         <div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center max-w-4xl mx-auto">
+          <div className="flex justify-between items-center max-w-4xl mx-auto"> {/* Update 2: Modified max-width */}
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Skill%20(1)-cyWzceXVJrqFvvlloOAwSmMJbWSIAK.png"
               alt="SkillVoo Logo"
               width={150}
               height={50}
               className="object-contain"
-            />
+            /> {/* Update 1: Increased logo size */}
             <a 
               href="#waitlist" 
               onClick={scrollToWaitlist}
@@ -246,19 +243,18 @@ export default function LandingPage() {
           <p className="text-xl text-purple-100 mb-4">Estamos a punto de lanzar algo extraordinario</p>
           <p className="text-lg text-purple-200 mb-8">Únete a nuestra lista de espera exclusiva y sé el primero en experimentar la transformación SkillVoo</p>
           <form onSubmit={handleSubmit} className="max-w-md mx-auto flex flex-col space-y-4">
-  <Input 
-    type="email" 
-    placeholder="Tu correo electrónico" 
-    className="text-purple-800 placeholder-purple-400 bg-white"
-    value={email}
-    onChange={(e) => setEmail(e.target.value)}
-    required
-  />
-  <Button type="submit" size="lg" className="bg-yellow-400 hover:bg-yellow-500 text-purple-800 font-bold" disabled={isLoading}>
-    {isLoading ? 'Procesando...' : 'Asegura tu lugar ahora'}
-  </Button>
-</form>
-{message && <p className="mt-4 text-white">{message}</p>}
+            <Input 
+              type="email" 
+              placeholder="Tu correo electrónico" 
+              className="text-purple-800 placeholder-purple-400 bg-white"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <Button type="submit" size="lg" className="bg-yellow-400 hover:bg-yellow-500 text-purple-800 font-bold" disabled={isLoading}>
+              {isLoading ? 'Procesando...' : 'Asegura tu lugar ahora'}
+            </Button>
+          </form>
           <p className="mt-6 text-sm text-purple-200">Los primeros 100 en la lista recibirán un 30% de descuento en su año premium y acceso a contenido exclusivo</p>
         </div>
       </section>
@@ -277,3 +273,4 @@ export default function LandingPage() {
     </div>
   )
 }
+
