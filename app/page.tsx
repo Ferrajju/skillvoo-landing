@@ -248,18 +248,21 @@ export default function LandingPage() {
           <p className="text-xl text-purple-100 mb-4">Estamos a punto de lanzar algo extraordinario</p>
           <p className="text-lg text-purple-200 mb-8">Únete a nuestra lista de espera exclusiva y sé el primero en experimentar la transformación SkillVoo</p>
           <form onSubmit={handleSubmit} className="max-w-md mx-auto flex flex-col space-y-4">
-            <Input 
-              type="email" 
-              placeholder="Tu correo electrónico" 
-              className="text-purple-800 placeholder-purple-400 bg-white"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <Button type="submit" size="lg" className="bg-yellow-400 hover:bg-yellow-500 text-purple-800 font-bold" disabled={isLoading}>
-              {isLoading ? 'Procesando...' : 'Asegura tu lugar ahora'}
-            </Button>
-          </form>
+  <Input 
+    type="email" 
+    placeholder="Tu correo electrónico" 
+    className="text-purple-800 placeholder-purple-400 bg-white"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+    required
+  />
+  <Button type="submit" size="lg" className="bg-yellow-400 hover:bg-yellow-500 text-purple-800 font-bold" disabled={isLoading}>
+    {isLoading ? 'Procesando...' : 'Asegura tu lugar ahora'}
+  </Button>
+</form>
+{/* Agregar mensaje aquí */}
+{message && <p className="mt-4 text-sm text-purple-600">{message}</p>}
+
           <p className="mt-6 text-sm text-purple-200">Los primeros 100 en la lista recibirán un 30% de descuento en su año premium y acceso a contenido exclusivo</p>
         </div>
       </section>
