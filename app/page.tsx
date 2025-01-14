@@ -66,42 +66,42 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white font-sans">
       {/* Navigation bar */}
-<motion.nav 
-  initial={{ y: -100 }}
-  animate={{ y: 0 }}
-  transition={{ type: "spring", stiffness: 50 }}
-  className="bg-white shadow-sm sticky top-0 z-10"
->
-  <div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8">
-    <div className="flex flex-col md:flex-row justify-between items-center max-w-6xl mx-auto">
-      <motion.div
-        whileHover={{ scale: 1.05 }}
-        transition={{ type: "spring", stiffness: 300 }}
+      <motion.nav 
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ type: "spring", stiffness: 50 }}
+        className="bg-white shadow-sm sticky top-0 z-10"
       >
-        <Image
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Skill%20(1)-cyWzceXVJrqFvvlloOAwSmMJbWSIAK.png"
-          alt="SkillVoo Logo"
-          width={150}
-          height={50}
-          className="object-contain"
-        />
-      </motion.div>
-      <div className="mt-4 md:mt-0 text-center md:text-left">
-        <p className="text-purple-600 font-semibold mb-2">¡Página en desarrollo! 🚀</p>
-        <motion.a 
-          href="#waitlist" 
-          onClick={scrollToWaitlist}
-          className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-sm inline-flex items-center"
-          whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(107,70,193)" }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <Mail className="w-4 h-4 mr-2" />
-          Únete a nuestra lista de espera
-        </motion.a>
-      </div>
-    </div>
-  </div>
-</motion.nav>
+        <div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-center max-w-6xl mx-auto">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Skill%20(1)-cyWzceXVJrqFvvlloOAwSmMJbWSIAK.png"
+                alt="SkillVoo Logo"
+                width={150}
+                height={50}
+                className="object-contain"
+              />
+            </motion.div>
+            <div className="mt-4 md:mt-0 text-center md:text-left">
+              <p className="text-purple-600 font-semibold mb-2">¡Página en desarrollo! 🚀</p>
+              <motion.a 
+                href="#waitlist" 
+                onClick={scrollToWaitlist}
+                className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-sm inline-flex items-center"
+                whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(107,70,193)" }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Mail className="w-4 h-4 mr-2" />
+                Únete a nuestra lista de espera
+              </motion.a>
+            </div>
+          </div>
+        </div>
+      </motion.nav>
 
       {/* Hero Section */}
       <motion.section 
@@ -398,4 +398,3 @@ export default function LandingPage() {
     </div>
   )
 }
-
