@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Mail, Clock, Brain, Zap, Calendar, BookOpen, UserPlus, CheckCircle, Sparkles, Target, Puzzle, Lightbulb } from 'lucide-react'
 import Image from "next/image"
 import { useState } from 'react'
@@ -64,20 +64,19 @@ export default function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white font-sans">
+    <div className="min-h-screen bg-background font-sans">
       {/* Navigation bar */}
       <motion.nav 
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 50 }}
-        className="bg-white shadow-sm sticky top-0 z-10"
+        className="bg-card shadow-md sticky top-0 z-10"
       >
         <div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center max-w-6xl mx-auto">
+          <div className="flex justify-between items-center">
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="mb-4 md:mb-0"
             >
               <Image
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Skill%20(1)-cyWzceXVJrqFvvlloOAwSmMJbWSIAK.png"
@@ -87,17 +86,17 @@ export default function LandingPage() {
                 className="object-contain"
               />
             </motion.div>
-            <div className="text-center md:text-left">
-              <p className="text-purple-600 font-semibold mb-2">¡Página en desarrollo! 🚀</p>
+            <div className="flex items-center space-x-4">
+              <p className="text-primary font-semibold hidden sm:block">¡Página en desarrollo! 🚀</p>
               <motion.a 
                 href="#waitlist" 
                 onClick={scrollToWaitlist}
-                className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-sm inline-flex items-center"
-                whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(107,70,193)" }}
+                className="gradient-bg text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-sm inline-flex items-center"
+                whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(255,92,0)" }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Mail className="w-4 h-4 mr-2" />
-                Únete a nuestra lista de espera
+                Únete a la lista
               </motion.a>
             </div>
           </div>
@@ -114,20 +113,20 @@ export default function LandingPage() {
       >
         <motion.h1 
           variants={fadeInUp}
-          className="text-5xl sm:text-6xl font-bold text-purple-900 mb-6 font-heading leading-tight"
+          className="text-5xl sm:text-6xl font-bold mb-6 font-heading leading-tight gradient-text"
         >
           Domina habilidades únicas<br />en solo 30 días
         </motion.h1>
         <motion.p 
           variants={fadeInUp}
-          className="text-xl text-purple-700 mb-8 max-w-2xl mx-auto"
+          className="text-xl text-secondary mb-8 max-w-2xl mx-auto"
         >
           La primera plataforma centrada en el desarrollo de habilidades personales únicas. Transforma tu vida, un mes a la vez.
         </motion.p>
         <motion.div variants={fadeInUp}>
           <Button 
             size="lg" 
-            className="bg-purple-600 hover:bg-purple-700 text-white text-lg px-8 py-3 rounded-full"
+            className="gradient-bg hover:opacity-90 text-white text-lg px-8 py-3 rounded-full"
           >
             Comienza Tu Transformación
           </Button>
@@ -145,28 +144,28 @@ export default function LandingPage() {
       >
         <motion.h2 
           variants={fadeInUp}
-          className="text-4xl font-bold text-center text-purple-800 mb-6 font-heading"
+          className="text-4xl font-bold text-center mb-6 font-heading gradient-text"
         >
           Explora Nuestro Universo de Habilidades
         </motion.h2>
         <motion.p
           variants={fadeInUp}
-          className="text-xl text-purple-600 text-center mb-12 max-w-3xl mx-auto"
+          className="text-xl text-secondary text-center mb-12 max-w-3xl mx-auto"
         >
           En SkillVoo, ofrecemos una amplia gama de cursos diseñados para potenciar tus habilidades personales en todas las áreas de tu vida. Desde la productividad hasta el crecimiento personal, tenemos el curso perfecto para ti.
         </motion.p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {[
-            { title: "Organización y Productividad", icon: Calendar, description: "Optimiza tu tiempo y aumenta tu eficiencia" },
-            { title: "Disciplina Personal", icon: Zap, description: "Desarrolla hábitos poderosos y constantes" },
-            { title: "Inteligencia Emocional", icon: Brain, description: "Mejora tus relaciones y autoconocimiento" },
-            { title: "Superación de la Procrastinación", icon: Clock, description: "Vence la postergación y logra tus metas" },
-            { title: "Técnicas de Estudio Avanzadas", icon: BookOpen, description: "Aprende a aprender de manera efectiva" },
-            { title: "Habilidades Sociales", icon: UserPlus, description: "Mejora tu comunicación y carisma" },
-            { title: "Creatividad e Innovación", icon: Lightbulb, description: "Desbloquea tu potencial creativo" },
-            { title: "Resolución de Problemas", icon: Puzzle, description: "Desarrolla un pensamiento crítico y analítico" },
-            { title: "Liderazgo Personal", icon: Target, description: "Inspira y motiva desde tu ejemplo" },
-            { title: "Mindfulness y Meditación", icon: Sparkles, description: "Cultiva la atención plena y reduce el estrés" },
+            { title: "Organización y Productividad", icon: Calendar, description: "Optimiza tu tiempo y aumenta tu eficiencia", color: "from-primary to-accent" },
+            { title: "Disciplina Personal", icon: Zap, description: "Desarrolla hábitos poderosos y constantes", color: "from-accent to-secondary" },
+            { title: "Inteligencia Emocional", icon: Brain, description: "Mejora tus relaciones y autoconocimiento", color: "from-secondary to-primary" },
+            { title: "Superación de la Procrastinación", icon: Clock, description: "Vence la postergación y logra tus metas", color: "from-primary to-secondary" },
+            { title: "Técnicas de Estudio Avanzadas", icon: BookOpen, description: "Aprende a aprender de manera efectiva", color: "from-accent to-primary" },
+            { title: "Habilidades Sociales", icon: UserPlus, description: "Mejora tu comunicación y carisma", color: "from-secondary to-accent" },
+            { title: "Creatividad e Innovación", icon: Lightbulb, description: "Desbloquea tu potencial creativo", color: "from-primary to-accent" },
+            { title: "Resolución de Problemas", icon: Puzzle, description: "Desarrolla un pensamiento crítico y analítico", color: "from-accent to-secondary" },
+            { title: "Liderazgo Personal", icon: Target, description: "Inspira y motiva desde tu ejemplo", color: "from-secondary to-primary" },
+            { title: "Mindfulness y Meditación", icon: Sparkles, description: "Cultiva la atención plena y reduce el estrés", color: "from-primary to-secondary" },
           ].map((course, index) => (
             <motion.div
               key={index}
@@ -174,11 +173,12 @@ export default function LandingPage() {
               whileHover={{ scale: 1.05, translateY: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <Card className="hover:shadow-lg transition-shadow border-none bg-white h-full">
+              <Card className="overflow-hidden h-full border-none shadow-lg">
+                <div className={`h-2 w-full bg-gradient-to-r ${course.color}`} />
                 <CardContent className="p-6 flex flex-col items-center">
-                  <course.icon className="w-12 h-12 text-purple-600 mb-4" />
-                  <h3 className="text-lg font-semibold text-purple-800 mb-2 font-heading text-center">{course.title}</h3>
-                  <p className="text-purple-600 text-center text-sm">{course.description}</p>
+                  <course.icon className={`w-12 h-12 mb-4 text-primary`} />
+                  <h3 className="text-lg font-semibold mb-2 font-heading text-center">{course.title}</h3>
+                  <p className="text-muted-foreground text-center text-sm">{course.description}</p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -188,10 +188,10 @@ export default function LandingPage() {
           variants={fadeInUp}
           className="text-center mt-12"
         >
-          <p className="text-lg text-purple-700 mb-4">Y muchos más cursos por venir...</p>
+          <p className="text-lg text-secondary mb-4">Y muchos más cursos por venir...</p>
           <Button 
             size="lg" 
-            className="bg-purple-600 hover:bg-purple-700 text-white text-lg px-8 py-3 rounded-full"
+            className="gradient-bg hover:opacity-90 text-white text-lg px-8 py-3 rounded-full"
           >
             Explora Todos los Cursos
           </Button>
@@ -205,12 +205,12 @@ export default function LandingPage() {
         viewport={{ once: true }}
         variants={staggerChildren}
         id="metodo" 
-        className="bg-purple-50 py-20"
+        className="bg-muted py-20"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2 
             variants={fadeInUp}
-            className="text-4xl font-bold text-center text-purple-800 mb-12 font-heading"
+            className="text-4xl font-bold text-center mb-12 font-heading gradient-text"
           >
             El Método SkillVoo: Tu Camino al Éxito
           </motion.h2>
@@ -243,15 +243,15 @@ export default function LandingPage() {
                 whileHover={{ scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <Card className="border-none bg-white h-full">
-                  <CardHeader>
-                    <CardTitle className="flex items-center text-xl font-semibold text-purple-800 font-heading">
-                      <method.icon className="w-8 h-8 text-purple-600 mr-4" />
-                      {method.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-purple-600">{method.description}</p>
+                <Card className="border-none bg-card h-full shadow-lg">
+                  <CardContent className="p-6">
+                    <div className="flex items-center mb-4">
+                      <div className="rounded-full p-2 mr-4 gradient-bg">
+                        <method.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <h3 className="text-xl font-semibold font-heading">{method.title}</h3>
+                    </div>
+                    <p className="text-muted-foreground">{method.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -270,7 +270,7 @@ export default function LandingPage() {
       >
         <motion.h2 
           variants={fadeInUp}
-          className="text-4xl font-bold text-center text-purple-800 mb-12 font-heading"
+          className="text-4xl font-bold text-center mb-12 font-heading gradient-text"
         >
           Tu Año de Transformación con SkillVoo
         </motion.h2>
@@ -286,14 +286,14 @@ export default function LandingPage() {
               whileHover={{ scale: 1.1 }}
               className="text-center"
             >
-              <div className="text-6xl font-bold text-purple-600 mb-2 font-heading">{stat.number}</div>
-              <p className="text-xl text-purple-800">{stat.text}</p>
+              <div className="text-6xl font-bold mb-2 font-heading gradient-text">{stat.number}</div>
+              <p className="text-xl text-secondary">{stat.text}</p>
             </motion.div>
           ))}
         </div>
         <motion.p 
           variants={fadeInUp}
-          className="text-center text-lg text-purple-700 mt-12 max-w-2xl mx-auto"
+          className="text-center text-lg text-muted-foreground mt-12 max-w-2xl mx-auto"
         >
           Imagina cómo será tu vida después de dominar 12 habilidades únicas en un año. 
           Con SkillVoo, no solo aprendes, te transformas.
@@ -311,7 +311,7 @@ export default function LandingPage() {
       >
         <motion.div 
           variants={fadeInUp}
-          className="bg-gradient-to-r from-purple-500 to-indigo-600 rounded-2xl shadow-xl py-16 px-4 sm:px-6 lg:px-8"
+          className="gradient-bg rounded-2xl shadow-xl py-16 px-4 sm:px-6 lg:px-8"
         >
           <motion.h2 
             variants={fadeInUp}
@@ -321,13 +321,13 @@ export default function LandingPage() {
           </motion.h2>
           <motion.p 
             variants={fadeInUp}
-            className="text-xl text-purple-100 mb-4"
+            className="text-xl text-white mb-4"
           >
             Estamos a punto de lanzar algo extraordinario
           </motion.p>
           <motion.p 
             variants={fadeInUp}
-            className="text-lg text-purple-200 mb-8"
+            className="text-lg text-white/80 mb-8"
           >
             Únete a nuestra lista de espera exclusiva y sé el primero en experimentar la transformación SkillVoo
           </motion.p>
@@ -339,7 +339,7 @@ export default function LandingPage() {
             <Input 
               type="email" 
               placeholder="Tu correo electrónico" 
-              className="text-purple-800 placeholder-purple-400 bg-white"
+              className="text-foreground placeholder-muted-foreground bg-background"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -351,12 +351,12 @@ export default function LandingPage() {
               <Button 
                 type="submit" 
                 size="lg" 
-                className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-purple-800 font-bold shadow-lg" 
+                className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-bold shadow-lg" 
                 disabled={isLoading}
               >
                 {isLoading ? (
                   <span className="flex items-center justify-center">
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-purple-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-accent-foreground" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
@@ -382,7 +382,7 @@ export default function LandingPage() {
           )}
           <motion.p 
             variants={fadeInUp}
-            className="mt-6 text-sm text-purple-200"
+            className="mt-6 text-sm text-white/80"
           >
             Los primeros 100 en la lista recibirán un 30% de descuento en su año premium y acceso a contenido exclusivo
           </motion.p>
@@ -394,7 +394,7 @@ export default function LandingPage() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="bg-purple-800 text-white py-12"
+        className="bg-card text-card-foreground py-12"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p>&copy; 2025 SkillVoo. Todos los derechos reservados.</p>
@@ -410,7 +410,7 @@ export default function LandingPage() {
                 variants={fadeInUp}
                 whileHover={{ scale: 1.1 }}
                 href="#"
-                className="text-purple-200 hover:text-white"
+                className="text-muted-foreground hover:text-primary"
               >
                 {link}
               </motion.a>
