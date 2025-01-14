@@ -277,6 +277,73 @@ export default function LandingPage() {
         </motion.p>
       </motion.section>
 
+      <section className="bg-purple-50 py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-center text-purple-800 mb-6 font-heading">Planes Disponibles</h2>
+          <p className="text-xl text-purple-700 text-center mb-12">Conoce nuestras opciones de suscripción</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Free Trial Plan */}
+            <Card className="border-none bg-white">
+              <CardHeader>
+                <CardTitle className="text-2xl font-bold text-purple-800 font-heading">Plan de Prueba</CardTitle>
+                <p className="text-purple-600">14 días de acceso premium</p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="text-3xl font-bold text-purple-800 font-heading">
+                  Gratis
+                </div>
+                <ul className="space-y-3">
+                  {["Acceso completo por 14 días", "Todos los cursos disponibles", "Sin compromiso"].map((feature, index) => (
+                    <li key={index} className="flex items-center">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* Premium Plan */}
+            <Card className="border-2 border-purple-400 bg-white relative">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <span className="bg-gradient-to-r from-purple-600 to-purple-800 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                  Plan Recomendado
+                </span>
+              </div>
+              <CardHeader>
+                <CardTitle className="text-2xl font-bold text-purple-800 font-heading">Plan Premium</CardTitle>
+                <p className="text-purple-600">Acceso completo a todo el contenido</p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <div className="text-3xl font-bold text-purple-800 font-heading">
+                    $10/mes
+                  </div>
+                  <div className="text-sm text-purple-600 font-medium">
+                    ¡30% de descuento para los primeros 100 usuarios!
+                  </div>
+                </div>
+                <ul className="space-y-3">
+                  {[
+                    "Acceso ilimitado a todos los cursos",
+                    "Nuevos cursos cada mes",
+                    "Contenido exclusivo",
+                    "Cancela cuando quieras"
+                  ].map((feature, index) => (
+                    <li key={index} className="flex items-center">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+
       {/* Waitlist CTA Section */}
       <motion.section 
         initial="initial"
