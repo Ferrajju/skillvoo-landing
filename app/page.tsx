@@ -3,7 +3,8 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Mail, Clock, Brain, Zap, Calendar, BookOpen, UserPlus, CheckCircle,  } from 'lucide-react'
+import { Badge } from "@/components/ui/badge"
+import { Mail, Clock, Brain, Zap, Calendar, BookOpen, UserPlus, CheckCircle, Sparkles, Target, Puzzle, Lightbulb } from 'lucide-react'
 import Image from "next/image"
 import { useState } from 'react'
 import { motion } from 'framer-motion'
@@ -261,10 +262,16 @@ export default function LandingPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2 
             variants={fadeInUp}
-            className="text-4xl font-bold text-center text-purple-800 mb-12 font-heading"
+            className="text-4xl font-bold text-center text-purple-800 mb-6 font-heading"
           >
             Planes de Suscripción
           </motion.h2>
+          <motion.p
+            variants={fadeInUp}
+            className="text-xl text-center text-purple-600 mb-12"
+          >
+            Elige el plan que mejor se adapte a tus necesidades y comienza tu viaje de transformación
+          </motion.p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {[
               {
@@ -299,34 +306,74 @@ export default function LandingPage() {
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, zIndex: 1 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <Card className={`h-full flex flex-col ${plan.highlighted ? 'border-purple-500 border-2' : ''}`}>
-                  <CardHeader>
-                    <CardTitle className="text-2xl font-bold text-purple-800 text-center">{plan.title}</CardTitle>
+                <Card className={`h-full flex flex-col overflow-hidden ${
+                  plan.highlighted 
+                    ? 'border-purple-500 border-2 shadow-xl' 
+                    : 'border-purple-200 shadow-lg'
+                }`}>
+                  <CardHeader className={`${
+                    plan.highlighted 
+                      ? 'bg-gradient-to-r from-purple-500 to-indigo-600 text-white' 
+                      : 'bg-purple-100'
+                  } text-center py-6`}>
+                    <CardTitle className={`text-2xl font-bold ${
+                      plan.highlighted ? 'text-white' : 'text-purple-800'
+                    }`}>
+                      {plan.title}
+                    </CardTitle>
+                    {plan.highlighted && (
+                      <Badge className="bg-yellow-400 text-purple-800 mt-2">
+                        ¡Más Popular!
+                      </Badge>
+                    )}
                   </CardHeader>
-                  <CardContent className="flex-grow">
-                    <p className="text-4xl font-bold text-center text-purple-600 mb-4">
+                  <CardContent className="flex-grow p-6">
+                    <p className={`text-4xl font-bold text-center mb-4 ${
+                      plan.highlighted ? 'text-purple-600' : 'text-purple-700'
+                    }`}>
                       {plan.price}
                       <span className="text-lg font-normal text-purple-400">{plan.period}</span>
                     </p>
-                    <ul className="space-y-2">
+                    <ul className="space-y-3">
                       {plan.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center">
-                          <CheckCircle className="w-5 h-5 text-purple-500 mr-2" />
-                          <span className="text-purple-700">{feature}</span>
+                          <CheckCircle className={`w-5 h-5 mr-2 ${
+                            plan.highlighted ? 'text-purple-500' : 'text-purple-400'
+                          }`} />
+                          <span className={`${
+                            plan.highlighted ? 'text-purple-800' : 'text-purple-600'
+                          }`}>
+                            {feature}
+                          </span>
                         </li>
                       ))}
                     </ul>
-                  </CardContent>
-                  <CardContent className="pt-0">
-                    <Button 
-                      className={`w-full ${plan.highlighted ? 'bg-purple-600 hover:bg-purple-700 text-white' : 'bg-purple-100 text-purple-600 hover:bg-purple-200'}`}
+                    <motion.div
+                      className="mt-6"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      {plan.cta}
-                    </Button>
+                      <Button 
+                        className={`w-full ${
+                          plan.highlighted 
+                            ? 'bg-gradient-to-r from-purple-500 to-indigo-600 text-white hover:from-purple-600 hover:to-indigo-700' 
+                            : 'bg-purple-100 text-purple-600 hover:bg-purple-200'
+                        } transition-all duration-300 transform hover:shadow-lg`}
+                      >
+                        {plan.cta}
+                      </Button>
+                    </motion.div>
                   </CardContent>
+                  {plan.highlighted && (
+                    <div className="bg-yellow-100 p-4 text-center">
+                      <p className="text-purple-800 font-semibold">
+                        ¡Oferta Especial! Los primeros 100 usuarios premium reciben un 30% de descuento durante un año
+                      </p>
+                    </div>
+                  )}
                 </Card>
               </motion.div>
             ))}
