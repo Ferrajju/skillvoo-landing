@@ -3,8 +3,8 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Mail, Clock, Brain, Zap, Calendar, BookOpen, UserPlus, CheckCircle,  } from 'lucide-react'
+import { Badge } from "../../components/ui/badge"
+import { Mail, Clock, Brain, Zap, Calendar, BookOpen, UserPlus, CheckCircle } from 'lucide-react'
 import Image from "next/image"
 import { useState } from 'react'
 import { motion } from 'framer-motion'
@@ -152,14 +152,33 @@ export default function LandingPage() {
           </motion.h2>
           <motion.div
             variants={fadeInUp}
-            className="bg-white border border-purple-200 rounded-lg p-6 mb-8 max-w-3xl mx-auto shadow-md"
+            className="bg-white border border-purple-200 rounded-lg p-8 mb-12 max-w-4xl mx-auto shadow-lg"
           >
-            <h3 className="text-xl font-semibold text-purple-700 mb-2">¿Qué tipo de cursos puedes encontrar?</h3>
-            <p className="text-purple-700">
+            <h3 className="text-2xl font-semibold text-purple-700 mb-4 font-heading">¿Qué tipo de cursos puedes encontrar?</h3>
+            <p className="text-purple-600 mb-6 text-lg leading-relaxed">
               En SkillVoo, ofrecemos una amplia gama de cursos diseñados para potenciar tus habilidades personales y profesionales. 
-              Desde productividad y organización hasta inteligencia emocional y comunicación efectiva, 
-              nuestros cursos de 30 días te ayudarán a desarrollar competencias clave para el éxito en todas las áreas de tu vida.
+              Nuestros cursos de 30 días te ayudarán a desarrollar competencias clave para el éxito en todas las áreas de tu vida.
             </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                "Productividad y organización",
+                "Inteligencia emocional",
+                "Comunicación efectiva",
+                "Liderazgo y gestión",
+                "Creatividad y resolución de problemas",
+                "Bienestar y manejo del estrés"
+              ].map((skill, index) => (
+                <div key={index} className="flex items-center">
+                  <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
+                  <span className="text-purple-700">{skill}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 text-center">
+              <Badge className="bg-purple-100 text-purple-800 text-sm py-1 px-3">
+                Nuevos cursos cada mes
+              </Badge>
+            </div>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
