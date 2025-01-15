@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
-import { Mail, Clock, Brain, Zap, Calendar, BookOpen, UserPlus, CheckCircle } from 'lucide-react'
+import { Mail, Clock, Brain, Zap, Calendar, BookOpen, UserPlus, CheckCircle, Sparkles, Target, Puzzle, Lightbulb } from 'lucide-react'
 import Image from "next/image"
 import { useState } from 'react'
 import { motion } from 'framer-motion'
@@ -148,17 +148,12 @@ export default function LandingPage() {
         >
           Descubre Nuestros Cursos de 30 Días
         </motion.h2>
-        <motion.div
+        <motion.p
           variants={fadeInUp}
-          className="bg-purple-100 border border-purple-200 rounded-lg p-6 mb-8 max-w-3xl mx-auto"
+          className="text-xl text-purple-600 text-center mb-12 max-w-3xl mx-auto"
         >
-          <h3 className="text-xl font-semibold text-purple-800 mb-2">¿Qué tipo de cursos puedes encontrar?</h3>
-          <p className="text-purple-700">
-            En SkillVoo, ofrecemos una amplia gama de cursos diseñados para potenciar tus habilidades personales y profesionales. 
-            Desde productividad y organización hasta inteligencia emocional y comunicación efectiva, 
-            nuestros cursos de 30 días te ayudarán a desarrollar competencias clave para el éxito en todas las áreas de tu vida.
-          </p>
-        </motion.div>
+          Transforma tu vida, un mes a la vez, con nuestros cursos intensivos diseñados para potenciar tus habilidades personales.
+        </motion.p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
             { 
