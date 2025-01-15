@@ -7,6 +7,8 @@ import { Mail, Clock, Brain, Zap, Calendar, BookOpen, UserPlus, CheckCircle, Spa
 import Image from "next/image"
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import './globals.css';
+
 
 // Animation variants
 const fadeInUp = {
