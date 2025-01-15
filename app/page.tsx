@@ -7,8 +7,6 @@ import { Mail, Clock, Brain, Zap, Calendar, BookOpen, UserPlus, CheckCircle,  } 
 import Image from "next/image"
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import './globals.css';
-
 
 // Animation variants
 const fadeInUp = {
@@ -142,20 +140,25 @@ export default function LandingPage() {
         viewport={{ once: true }}
         variants={staggerChildren}
         id="cursos" 
-        className="container mx-auto py-20 px-4 sm:px-6 lg:px-8"
-      >
+        className="bg-purple-50 py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2 
           variants={fadeInUp}
           className="text-4xl font-bold text-center text-purple-800 mb-6 font-heading"
         >
           Descubre Nuestros Cursos de 30 Días
         </motion.h2>
-        <motion.p
+        <motion.div
           variants={fadeInUp}
-          className="text-xl text-purple-600 text-center mb-12 max-w-3xl mx-auto"
+          className="bg-white border border-purple-200 rounded-lg p-6 mb-8 max-w-3xl mx-auto shadow-md"
         >
-          Transforma tu vida, un mes a la vez, con nuestros cursos intensivos diseñados para potenciar tus habilidades personales.
-        </motion.p>
+          <h3 className="text-xl font-semibold text-purple-700 mb-2">¿Qué tipo de cursos puedes encontrar?</h3>
+          <p className="text-purple-700">
+            En SkillVoo, ofrecemos una amplia gama de cursos diseñados para potenciar tus habilidades personales y profesionales. 
+            Desde productividad y organización hasta inteligencia emocional y comunicación efectiva, 
+            nuestros cursos de 30 días te ayudarán a desarrollar competencias clave para el éxito en todas las áreas de tu vida.
+          </p>
+        </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
             { 
@@ -201,18 +204,18 @@ export default function LandingPage() {
               whileHover={{ scale: 1.03, translateY: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <Card className="overflow-hidden h-full border-none shadow-lg bg-white hover:shadow-xl transition-all duration-300">
+              <Card className="overflow-hidden h-full border-none shadow-lg bg-white hover:shadow-xl transition-all duration-300 hover:bg-purple-100">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
                     <div className="rounded-full p-3 bg-purple-100 mr-4">
-                      <course.icon className="w-8 h-8 text-purple-600" />
+                      <course.icon className="w-8 h-8 text-purple-500" />
                     </div>
-                    <h3 className="text-xl font-semibold text-purple-800 font-heading">{course.title}</h3>
+                    <h3 className="text-xl font-semibold text-purple-700 font-heading">{course.title}</h3>
                   </div>
-                  <p className="text-purple-600 mb-4">{course.description}</p>
+                  <p className="text-purple-500 mb-4">{course.description}</p>
                   <div className="flex justify-between items-center">
                     <span className="text-sm font-medium text-purple-500">Dificultad: {course.difficulty}</span>
-                    <Button variant="outline" className="text-purple-600 border-purple-600 hover:bg-purple-50">
+                    <Button variant="outline" className="text-purple-500 border-purple-500 hover:bg-purple-50">
                       Más información
                     </Button>
                   </div>
@@ -227,11 +230,12 @@ export default function LandingPage() {
         >
           <Button 
             size="lg" 
-            className="bg-purple-600 hover:bg-purple-700 text-white text-lg px-8 py-3 rounded-full"
+            className="gradient-bg hover:opacity-90 text-white text-lg px-8 py-3 rounded-full"
           >
             Explora Todos los Cursos
           </Button>
         </motion.div>
+        </div>
       </motion.section>
 
       {/* Method Section */}
