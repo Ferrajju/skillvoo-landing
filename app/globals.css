@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   --font-sans: var(--font-inter);
   --font-heading: var(--font-poppins);
@@ -27,4 +26,3 @@ body {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600;
   }
 }
-
