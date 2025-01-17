@@ -205,6 +205,12 @@ export default function LandingPage() {
               </motion.div>
             ))}
           </div>
+          <motion.p
+            variants={fadeInUp}
+            className="text-center text-lg text-purple-600 mt-12 max-w-2xl mx-auto"
+          >
+            Estos son solo algunos ejemplos de los cursos que ofrecemos. Nuestra plataforma se actualiza constantemente con nuevos cursos diseñados para ayudarte a desarrollar habilidades únicas y valiosas en solo 30 días. ¡Únete a SkillVoo y descubre todo lo que puedes lograr!
+          </motion.p>
         </div>
       </motion.section>
 
