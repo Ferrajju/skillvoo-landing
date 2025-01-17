@@ -3,8 +3,8 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "../../components/ui/badge"
-import { Mail, Clock, Brain, Zap, Calendar, BookOpen, UserPlus, CheckCircle } from 'lucide-react'
+import { Badge } from "@/components/ui/badge"
+import { Mail, Clock, Brain, Zap, Calendar, BookOpen, UserPlus, CheckCircle, } from 'lucide-react'
 import Image from "next/image"
 import { useState } from 'react'
 import { motion } from 'framer-motion'
