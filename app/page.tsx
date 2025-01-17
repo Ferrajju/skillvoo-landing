@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent,  } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Mail, Clock, Brain, Zap, BookOpen, UserPlus, CheckCircle, Sparkles, Target, Puzzle, Lightbulb, MessageSquare } from 'lucide-react'
+import { Mail, Clock, Brain, Zap, BookOpen,  CheckCircle,  Target, Puzzle, Lightbulb, MessageSquare } from 'lucide-react'
 import Image from "next/image"
 import { useState } from 'react'
 import { motion } from 'framer-motion'
