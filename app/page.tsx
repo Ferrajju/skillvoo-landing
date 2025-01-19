@@ -68,50 +68,40 @@ export default function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white font-sans">
-      {/* Navigation bar */}
-      <motion.nav 
-  initial={{ y: -100 }}
-  animate={{ y: 0 }}
-  transition={{ type: "spring", stiffness: 50 }}
-  className="bg-white shadow-sm sticky top-0 z-10"
->
-  <div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-    {/* Logo y enlace de Precios */}
-    <div className="flex items-center space-x-4">
-      <motion.div
-        whileHover={{ scale: 1.05 }}
-        transition={{ type: "spring", stiffness: 300 }}
-      >
-        <Image
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Skill%20(1)-cyWzceXVJrqFvvlloOAwSmMJbWSIAK.png"
-          alt="SkillVoo Logo"
-          width={150}
-          height={50}
-          className="object-contain"
-        />
-      </motion.div>
-      <Link href="/prices" className="text-purple-600 hover:text-purple-800 transition-colors">
-        Precios
-      </Link>
-    </div>
-
-    {/* Botón centrado */}
-    <div className="flex-1 flex justify-center">
-  <motion.button 
-    onClick={(e) => scrollToSection(e, 'registro')}
-    className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-sm inline-flex items-center ml-[50px]"
-    whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(107,70,193)" }}
-    whileTap={{ scale: 0.95 }}
-  >
-    <Mail className="w-4 h-4 mr-2" />
-    Únete a la lista de espera
-  </motion.button>
-</div>
-
+    
+<div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+  {/* Logo y enlace de Precios */}
+  <div className="flex items-center space-x-4">
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      transition={{ type: "spring", stiffness: 300 }}
+    >
+      <Image
+        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Skill%20(1)-cyWzceXVJrqFvvlloOAwSmMJbWSIAK.png"
+        alt="SkillVoo Logo"
+        width={150}
+        height={50}
+        className="object-contain"
+      />
+    </motion.div>
+    <Link href="/prices" className="text-purple-600 hover:text-purple-800 transition-colors">
+      Precios
+    </Link>
   </div>
-</motion.nav>
 
+  {/* Botón centrado con separación */}
+  <div className="flex-1 flex justify-center">
+    <motion.button 
+      onClick={(e) => scrollToSection(e, 'registro')}
+      className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-sm inline-flex items-center ml-[80px]"
+      whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(107,70,193)" }}
+      whileTap={{ scale: 0.95 }}
+    >
+      <Mail className="w-4 h-4 mr-2" />
+      Únete a la lista de espera
+    </motion.button>
+  </div>
+</div>
 
 
 
