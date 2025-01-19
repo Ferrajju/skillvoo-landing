@@ -70,27 +70,14 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white font-sans">
       {/* Navigation bar */}
-      <motion.nav 
+<motion.nav 
   initial={{ y: -100 }}
   animate={{ y: 0 }}
   transition={{ type: "spring", stiffness: 50 }}
   className="bg-white shadow-sm sticky top-0 z-10"
 >
   <div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-    {/* Botón a la izquierda */}
-    <div className="flex items-center mr-auto">
-      <motion.button 
-        onClick={(e) => scrollToSection(e, 'registro')}
-        className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-sm inline-flex items-center"
-        whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(107,70,193)" }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <Mail className="w-4 h-4 mr-2" />
-        Únete a la lista de espera
-      </motion.button>
-    </div>
-
-    {/* Logo y enlace "Precios" a la derecha */}
+    {/* Logo y enlace "Precios" a la izquierda */}
     <div className="flex items-center space-x-4">
       <motion.div
         whileHover={{ scale: 1.05 }}
@@ -108,9 +95,25 @@ export default function LandingPage() {
         Precios
       </Link>
     </div>
+
+        {/* Botón centrado pero ligeramente desplazado a la izquierda */}
+        <div className="flex items-center justify-center flex-1">
+      <motion.button 
+        onClick={(e) => scrollToSection(e, 'registro')}
+        className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-sm inline-flex items-center"
+        style={{ transform: 'translateX(-10%)' }} 
+        whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(107,70,193)" }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <Mail className="w-4 h-4 mr-2" />
+        Únete a la lista de espera
+      </motion.button>
+    </div>
   </div>
 </motion.nav>
 
+
+   
 
 
 
@@ -454,4 +457,3 @@ export default function LandingPage() {
     </div>
   )
 }
-
