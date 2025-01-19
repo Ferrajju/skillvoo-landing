@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent,  } from "@/components/ui/card"
 
-import { Mail, Clock, Brain, Zap,  BookOpen, UserPlus, CheckCircle,  Target, Puzzle, Lightbulb, MessageSquare, BarChart, Users, Award } from 'lucide-react'
+import { Mail, Clock, Brain, Zap, BookOpen, UserPlus, CheckCircle, Target, Puzzle, Lightbulb, MessageSquare, BarChart, Users, Award } from 'lucide-react'
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from 'react'
@@ -172,9 +172,9 @@ export default function LandingPage() {
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-xl text-center text-purple-600 mb-8 max-w-3xl mx-auto"
+            className="text-2xl text-center text-gradient font-semibold mb-8 max-w-3xl mx-auto p-6 bg-purple-100 rounded-lg shadow-sm"
           >
-            SkillVoo es la primera plataforma en línea que ofrece cursos para desarrollar habilidades personales de manera efectiva y  personalizada.
+            SkillVoo es la primera plataforma en línea que ofrece cursos para desarrollar habilidades personales de manera efectiva y personalizada.
           </motion.p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
             {[
