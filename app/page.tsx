@@ -163,7 +163,7 @@ export default function LandingPage() {
         whileInView="animate"
         viewport={{ once: true }}
         variants={staggerChildren}
-        className="bg-purple-50 py-20 mt-18"
+        className="bg-purple-50 py-20 mt-4"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2 
