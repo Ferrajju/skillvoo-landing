@@ -68,7 +68,14 @@ export default function LandingPage() {
   }
 
   return (
-    
+    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white font-sans">
+      {/* Navigation bar */}
+      <motion.nav 
+  initial={{ y: -100 }}
+  animate={{ y: 0 }}
+  transition={{ type: "spring", stiffness: 50 }}
+  className="bg-white shadow-sm sticky top-0 z-10"
+>
 <div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
   {/* Logo y enlace de Precios */}
   <div className="flex items-center space-x-4">
@@ -101,7 +108,11 @@ export default function LandingPage() {
       Únete a la lista de espera
     </motion.button>
   </div>
+
+
 </div>
+</motion.nav>
+
 
 
 
