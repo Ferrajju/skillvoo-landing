@@ -169,44 +169,40 @@ export default function LandingPage() {
 
       {/* What is SkillVoo Section */}
       <motion.section 
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true }}
-        variants={staggerChildren}
-        className="bg-purple-50 py-20"
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2 
-            variants={fadeInUp}
-            className="text-4xl font-bold text-center text-purple-800 mb-12 font-heading"
-          >
-            ¿Qué es SkillVoo?
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-2xl text-center text-gradient font-semibold mb-8 max-w-3xl mx-auto p-6 bg-purple-100 rounded-lg shadow-sm"
-          >
-            SkillVoo es la plataforma innovadora que ofrece desarrollo personalizado de habilidades personales a través de sesiones diarias por correo electrónico.
-          </motion.p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            {[
-              { title: "Sesiones Diarias por Email", icon: Mail, description: "Recibe contenido personalizado directamente en tu bandeja de entrada" },
-              { title: "Aprendizaje Adaptativo con IA", icon: Brain, description: "Utilizamos inteligencia artificial para adaptar tu experiencia de aprendizaje" },
-              { title: "Variedad de Habilidades", icon: Target, description: "Amplia gama de habilidades personales para desarrollar" },
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                className="bg-white rounded-lg shadow-lg p-6 text-center"
-              >
-                <feature.icon className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-purple-800 mb-2">{feature.title}</h3>
-                <p className="text-purple-600">{feature.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
+  initial="initial"
+  whileInView="animate"
+  viewport={{ once: true }}
+  variants={staggerChildren}
+  className="container mx-auto py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center bg-gradient-to-b from-purple-50 to-white rounded-lg shadow-md"
+>
+  {/* Texto principal */}
+  <motion.h1 
+    variants={fadeInUp}
+    className="text-5xl sm:text-6xl font-bold text-purple-900 mb-6 font-heading leading-tight"
+  >
+    Transforma tu vida con habilidades únicas
+  </motion.h1>
+
+  {/* Descripción */}
+  <motion.p 
+    variants={fadeInUp}
+    className="text-xl text-purple-700 mb-8 max-w-2xl"
+  >
+    Cursos personalizados para ti, sesiones diarias de solo <b>10 minutos</b>, y resultados que transforman. ¡Empieza hoy y desbloquea tu potencial!
+  </motion.p>
+
+  {/* Botón de llamada a la acción */}
+  <motion.div variants={fadeInUp}>
+    <Button 
+      size="lg" 
+      className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-lg px-8 py-3 rounded-full shadow-lg hover:shadow-xl"
+      onClick={(e) => scrollToSection(e, 'cursos')}
+    >
+      Explora los cursos
+    </Button>
+  </motion.div>
+</motion.section>
+
 
       {/* How It Works Section */}
       <motion.section 
