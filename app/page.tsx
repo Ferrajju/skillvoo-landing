@@ -2,9 +2,9 @@
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card, CardContent, } from "@/components/ui/card"
+import { Card, CardContent,  } from "@/components/ui/card"
 
-import { Mail, Clock, Brain, Zap,  BookOpen, UserPlus, CheckCircle, Target, Puzzle, Lightbulb, MessageSquare, BarChart, Users, Award } from 'lucide-react'
+import { Mail, Clock, Brain, Zap,  BookOpen, UserPlus, CheckCircle,  Target, Puzzle, Lightbulb, MessageSquare, BarChart, Users, Award } from 'lucide-react'
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from 'react'
@@ -25,7 +25,7 @@ const staggerChildren = {
   }
 }
 
-const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+const scrollToSection = (e: React.MouseEvent<HTMLElement>, id: string) => {
   e.preventDefault();
   const section = document.getElementById(id);
   if (section) {
@@ -95,7 +95,7 @@ export default function LandingPage() {
                 Precios
               </Link>
               <motion.button 
-                onClick={(e) => scrollToSection(e as any, 'registro')}
+                onClick={(e) => scrollToSection(e, 'registro')}
                 className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-sm inline-flex items-center"
                 whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(107,70,193)" }}
                 whileTap={{ scale: 0.95 }}
@@ -134,7 +134,7 @@ export default function LandingPage() {
               <Button 
                 size="lg" 
                 className="bg-purple-600 hover:bg-purple-700 text-white text-lg px-8 py-3 rounded-full"
-                onClick={(e) => scrollToSection(e as any, 'cursos')}
+                onClick={(e) => scrollToSection(e, 'cursos')}
               >
                 Explora los cursos
               </Button>
