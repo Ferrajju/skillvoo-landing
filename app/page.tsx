@@ -76,10 +76,12 @@ export default function LandingPage() {
   transition={{ type: "spring", stiffness: 50 }}
   className="bg-white shadow-sm sticky top-0 z-10"
 >
-  <div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center space-y-4 md:flex-row md:justify-between md:space-y-0">
+  <div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8 flex flex-col items-center md:flex-row md:justify-center md:space-x-6">
+    {/* Logo */}
     <motion.div
       whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 300 }}
+      className="mb-4 md:mb-0"
     >
       <Image
         src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Skill%20(1)-cyWzceXVJrqFvvlloOAwSmMJbWSIAK.png"
@@ -89,6 +91,8 @@ export default function LandingPage() {
         className="object-contain"
       />
     </motion.div>
+
+    {/* Links */}
     <div className="flex items-center space-x-4">
       <Link href="/prices" className="text-purple-600 hover:text-purple-800 transition-colors">
         Precios
@@ -105,6 +109,7 @@ export default function LandingPage() {
     </div>
   </div>
 </motion.nav>
+
 
 
       {/* Hero Section */}
