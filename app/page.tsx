@@ -128,7 +128,7 @@ export default function LandingPage() {
               variants={fadeInUp}
               className="text-xl text-purple-700 mb-8"
             >
-              Cursos personalizados, sesiones diarias de solo 10 minutos y resultados reales. ¡Comienza hoy a transformarte!
+              <p>Cursos personalizados, sesiones diarias de solo <b>10 minutos</b> y resultados reales. ¡Comienza hoy a transformarte!</p>
             </motion.p>
             <motion.div variants={fadeInUp}>
               <Button 
