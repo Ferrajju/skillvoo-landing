@@ -130,6 +130,7 @@ export default function LandingPage() {
             size="lg" 
             className="bg-purple-600 hover:bg-purple-700 text-white text-lg px-8 py-3 rounded-full"
             onClick={(e) => scrollToSection(e as any, 'cursos')}
+
           >
             Explora los cursos
           </Button>
