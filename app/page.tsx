@@ -157,7 +157,7 @@ export default function LandingPage() {
             className="md:w-1/2"
           >
             <Image
-              src="/hero-icon.png"
+              src="public/images/hero-icon.png"
               alt="Desarrollo de habilidades"
               width={400}
               height={400}
