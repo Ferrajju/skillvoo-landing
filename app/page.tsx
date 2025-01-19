@@ -161,7 +161,7 @@ export default function LandingPage() {
               alt="Desarrollo de habilidades"
               width={200}
               height={200}
-              className="rounded-lg shadow-lg"
+              className="rounded-lg shadow-lg ml-10"
             />
           </motion.div>
         </div>
