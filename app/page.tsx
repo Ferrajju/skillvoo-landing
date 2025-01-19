@@ -97,7 +97,7 @@ export default function LandingPage() {
     </div>
 
     {/* Botón centrado */}
-    <div className="flex-1 flex justify-center ml-10">
+    <div className="flex-1 flex justify-center ml-15">
       <motion.button 
         onClick={(e) => scrollToSection(e, 'registro')}
         className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-sm inline-flex items-center"
