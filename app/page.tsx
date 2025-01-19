@@ -126,7 +126,7 @@ export default function LandingPage() {
   whileInView="animate"
   viewport={{ once: true }}
   variants={staggerChildren}
-  className="container mx-auto py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center bg-gradient-to-b from-purple-50 to-white rounded-lg shadow-md mb-[19rem]"
+  className="container mx-auto py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center bg-gradient-to-b from-purple-50 to-white rounded-lg shadow-md mb-[15rem]"
 >
   {/* Texto principal */}
   <motion.h1 
