@@ -78,7 +78,7 @@ export default function LandingPage() {
 >
   <div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
     {/* Botón a la izquierda */}
-    <div className="flex items-center">
+    <div className="flex items-center mr-auto">
       <motion.button 
         onClick={(e) => scrollToSection(e, 'registro')}
         className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-sm inline-flex items-center"
@@ -90,7 +90,7 @@ export default function LandingPage() {
       </motion.button>
     </div>
 
-    {/* Logo y enlace de Precios a la derecha */}
+    {/* Logo y enlace "Precios" a la derecha */}
     <div className="flex items-center space-x-4">
       <motion.div
         whileHover={{ scale: 1.05 }}
@@ -110,6 +110,7 @@ export default function LandingPage() {
     </div>
   </div>
 </motion.nav>
+
 
 
 
