@@ -159,8 +159,8 @@ export default function LandingPage() {
             <Image
               src="/images/hero-icon.png"
               alt="Desarrollo de habilidades"
-              width={400}
-              height={400}
+              width={200}
+              height={200}
               className="rounded-lg shadow-lg"
             />
           </motion.div>
