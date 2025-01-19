@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent,  } from "@/components/ui/card"
 
-import { Mail, Clock, Brain, Zap, BookOpen, UserPlus, CheckCircle, Target, Puzzle, Lightbulb, MessageSquare, BarChart, Users, Award } from 'lucide-react'
+import { Mail, Clock, Brain, Zap, BookOpen,  CheckCircle, Target, Puzzle, Lightbulb, MessageSquare,} from 'lucide-react'
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from 'react'
@@ -174,13 +174,13 @@ export default function LandingPage() {
             variants={fadeInUp}
             className="text-2xl text-center text-gradient font-semibold mb-8 max-w-3xl mx-auto p-6 bg-purple-100 rounded-lg shadow-sm"
           >
-            SkillVoo es la primera plataforma en línea que ofrece cursos para desarrollar habilidades personales de manera efectiva y personalizada.
+            SkillVoo es la plataforma innovadora que ofrece desarrollo personalizado de habilidades personales a través de sesiones diarias por correo electrónico.
           </motion.p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
             {[
-              { title: "Aprendizaje Personalizado", icon: UserPlus, description: "Cursos adaptados a tu ritmo y estilo de aprendizaje" },
-              { title: "Microaprendizaje Diario", icon: Clock, description: "Lecciones cortas y efectivas que se ajustan a tu agenda" },
-              { title: "Seguimiento de Progreso", icon: Target, description: "Herramientas para medir y visualizar tu avance" },
+              { title: "Sesiones Diarias por Email", icon: Mail, description: "Recibe contenido personalizado directamente en tu bandeja de entrada" },
+              { title: "Aprendizaje Adaptativo con IA", icon: Brain, description: "Utilizamos inteligencia artificial para adaptar tu experiencia de aprendizaje" },
+              { title: "Variedad de Habilidades", icon: Target, description: "Amplia gama de habilidades personales para desarrollar" },
             ].map((feature, index) => (
               <motion.div
                 key={index}
@@ -213,10 +213,10 @@ export default function LandingPage() {
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { title: "Elige tu curso", icon: BookOpen, description: "Selecciona según tu nivel e interés" },
-              { title: "Recibe sesiones diarias", icon: Mail, description: "Teoría, ejercicios y reflexiones" },
-              { title: "Aplica lo aprendido", icon: Target, description: "Practica y sigue tu progreso" },
-              { title: "Mejora tus habilidades", icon: Zap, description: "Alcanza tus metas personales" },
+              { title: "Elige tu habilidad", icon: BookOpen, description: "Selecciona la habilidad personal que deseas desarrollar" },
+              { title: "Recibe sesiones diarias", icon: Mail, description: "Teoría, ejemplos y ejercicios prácticos en tu correo" },
+              { title: "Aprende y practica", icon: Target, description: "Aplica lo aprendido en tu día a día" },
+              { title: "Mejora con IA", icon: Zap, description: "Ejercicios personalizados con inteligencia artificial" },
             ].map((step, index) => (
               <motion.div
                 key={index}
@@ -253,13 +253,13 @@ export default function LandingPage() {
             variants={fadeInUp}
             className="text-4xl font-bold text-center text-purple-800 mb-12 font-heading"
           >
-            Habilidades y Cursos
+            Habilidades Personales
           </motion.h2>
           <motion.p
             variants={fadeInUp}
             className="text-xl text-center text-purple-600 mb-8 max-w-3xl mx-auto"
           >
-            Descubre una amplia gama de cursos diseñados para potenciar tus habilidades personales y profesionales.
+            Descubre nuestra amplia variedad de habilidades personales para desarrollar. Cada día, recibirás teoría, ejemplos y ejercicios prácticos para aplicar en tu vida diaria.
           </motion.p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -306,12 +306,10 @@ export default function LandingPage() {
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
-              { title: "Aprendizaje Adaptativo", description: "Nuestro sistema se ajusta a tu ritmo y estilo de aprendizaje", icon: Brain },
-              { title: "Microlearning", description: "Lecciones cortas y efectivas que puedes completar en minutos", icon: Clock },
-              { title: "Ejercicios Prácticos", description: "Aplica lo aprendido con actividades interactivas", icon: Target },
-              { title: "Seguimiento de Progreso", description: "Visualiza tu avance y logros en tiempo real", icon: BarChart },
-              { title: "Comunidad de Aprendizaje", description: "Conecta con otros estudiantes y comparte experiencias", icon: Users },
-              { title: "Certificaciones", description: "Obtén reconocimiento por tus habilidades adquiridas", icon: Award },
+              { title: "Aprendizaje Adaptativo con IA", description: "Nuestro sistema de IA se ajusta a tu ritmo y estilo de aprendizaje", icon: Brain },
+              { title: "Sesiones Diarias por Email", description: "Recibe contenido personalizado directamente en tu bandeja de entrada", icon: Mail },
+              { title: "Ejercicios Prácticos Personalizados", description: "Aplica lo aprendido con actividades interactivas adaptadas por IA", icon: Target },
+              { title: "Variedad de Habilidades", description: "Amplia gama de habilidades personales para desarrollar", icon: BookOpen },
             ].map((feature, index) => (
               <motion.div
                 key={index}
