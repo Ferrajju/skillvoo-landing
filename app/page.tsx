@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent,  } from "@/components/ui/card"
 
-import { Mail, Clock, Brain, Zap, BookOpen,  CheckCircle, Target, Puzzle, Lightbulb, MessageSquare,} from 'lucide-react'
+import { Mail, Clock, Brain, Zap, BookOpen,  CheckCircle, Target, Puzzle, Lightbulb, MessageSquare, } from 'lucide-react'
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from 'react'
@@ -128,7 +128,7 @@ export default function LandingPage() {
               variants={fadeInUp}
               className="text-xl text-purple-700 mb-8"
             >
-              Cursos personalizados, sesiones diarias y resultados reales. ¡Comienza hoy a transformarte!
+              Cursos personalizados, sesiones diarias de solo 10 minutos y resultados reales. ¡Comienza hoy a transformarte!
             </motion.p>
             <motion.div variants={fadeInUp}>
               <Button 
@@ -214,7 +214,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { title: "Elige tu habilidad", icon: BookOpen, description: "Selecciona la habilidad personal que deseas desarrollar" },
-              { title: "Recibe sesiones diarias", icon: Mail, description: "Teoría, ejemplos y ejercicios prácticos en tu correo" },
+              { title: "Recibe sesiones diarias", icon: Mail, description: "Teoría, ejemplos y ejercicios prácticos en tu correo en solo 10 minutos" },
               { title: "Aprende y practica", icon: Target, description: "Aplica lo aprendido en tu día a día" },
               { title: "Mejora con IA", icon: Zap, description: "Ejercicios personalizados con inteligencia artificial" },
             ].map((step, index) => (
@@ -307,7 +307,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               { title: "Aprendizaje Adaptativo con IA", description: "Nuestro sistema de IA se ajusta a tu ritmo y estilo de aprendizaje", icon: Brain },
-              { title: "Sesiones Diarias por Email", description: "Recibe contenido personalizado directamente en tu bandeja de entrada", icon: Mail },
+              { title: "Sesiones Diarias por Email", description: "Recibe contenido personalizado de 10 minutos directamente en tu bandeja de entrada", icon: Mail },
               { title: "Ejercicios Prácticos Personalizados", description: "Aplica lo aprendido con actividades interactivas adaptadas por IA", icon: Target },
               { title: "Variedad de Habilidades", description: "Amplia gama de habilidades personales para desarrollar", icon: BookOpen },
             ].map((feature, index) => (
