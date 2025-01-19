@@ -101,7 +101,7 @@ export default function LandingPage() {
       <motion.button 
         onClick={(e) => scrollToSection(e, 'registro')}
         className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-sm inline-flex items-center"
-        style={{ transform: 'translateX(-40%)' }} 
+        style={{ transform: 'translateX(-44%)' }} 
         whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(107,70,193)" }}
         whileTap={{ scale: 0.95 }}
       >
