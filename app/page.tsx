@@ -76,40 +76,42 @@ export default function LandingPage() {
   transition={{ type: "spring", stiffness: 50 }}
   className="bg-white shadow-sm sticky top-0 z-10"
 >
-<div className="container mx-auto flex items-center justify-between px-4">
-  {/* Logo y enlace */}
-  <div className="flex items-center space-x-4">
-    <motion.div
-      whileHover={{ scale: 1.05 }}
-      transition={{ type: "spring", stiffness: 300 }}
-    >
-      <Image
-        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Skill%20(1)-cyWzceXVJrqFvvlloOAwSmMJbWSIAK.png"
-        alt="SkillVoo Logo"
-        width={150}
-        height={50}
-        className="object-contain"
-      />
-    </motion.div>
-    <Link href="/prices" className="text-purple-600 hover:text-purple-800 transition-colors">
-      Precios
-    </Link>
-  </div>
+  <div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+    {/* Botón a la izquierda */}
+    <div className="flex items-center">
+      <motion.button 
+        onClick={(e) => scrollToSection(e, 'registro')}
+        className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-sm inline-flex items-center"
+        whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(107,70,193)" }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <Mail className="w-4 h-4 mr-2" />
+        Únete a la lista de espera
+      </motion.button>
+    </div>
 
-  {/* Botón */}
-  <div className="ml-auto">
-    <motion.button 
-      onClick={(e) => scrollToSection(e, 'registro')}
-      className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-sm inline-flex items-center"
-      whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(107,70,193)" }}
-      whileTap={{ scale: 0.95 }}
-    >
-      <Mail className="w-4 h-4 mr-2" />
-      Únete a la lista de espera
-    </motion.button>
+    {/* Logo y enlace de Precios a la derecha */}
+    <div className="flex items-center space-x-4">
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        transition={{ type: "spring", stiffness: 300 }}
+      >
+        <Image
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Skill%20(1)-cyWzceXVJrqFvvlloOAwSmMJbWSIAK.png"
+          alt="SkillVoo Logo"
+          width={150}
+          height={50}
+          className="object-contain"
+        />
+      </motion.div>
+      <Link href="/prices" className="text-purple-600 hover:text-purple-800 transition-colors">
+        Precios
+      </Link>
+    </div>
   </div>
-</div>
 </motion.nav>
+
+
 
 
 
