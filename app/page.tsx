@@ -94,7 +94,7 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white font-sans">
-      <GoogleTranslateWidget />
+      
       {/* Navigation bar */}
       <motion.nav
         initial={{ y: -100 }}
@@ -102,7 +102,7 @@ export default function LandingPage() {
         transition={{ type: "spring", stiffness: 50 }}
         className="bg-white shadow-sm sticky top-0 z-10"
       >
-        <div className="container mx-auto max-w-6xl py-4 px-4 sm:px-6 lg:px-8 flex items-center justify-between pl-8">
+        <div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Logo y enlace "Precios" a la izquierda */}
           <div className="flex items-center space-x-4">
             <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
@@ -123,9 +123,9 @@ export default function LandingPage() {
           <div className="relative w-full">
             <motion.button
               onClick={(e) => scrollToSection(e, "registro")}
-              className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition-transform duration-300 text-sm inline-flex items-center absolute top-[-30px] left-1/2 transform -translate-x-1/2"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition-transform duration-300 text-sm inline-flex items-center absolute top-[-30px] left-[30%]"
+              whileHover={{ scale: 1.05 }} // Solo efecto de ampliación
+              whileTap={{ scale: 0.95 }} // Contracción al hacer clic
             >
               <Mail className="w-4 h-4 mr-2" />
               Join the waitlist
@@ -140,7 +140,7 @@ export default function LandingPage() {
         whileInView="animate"
         viewport={{ once: true }}
         variants={staggerChildren}
-        className="container mx-auto max-w-6xl py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center bg-gradient-to-b from-purple-50 to-white rounded-lg shadow-md mb-[13rem] mt-8"
+        className="container mx-auto py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center bg-gradient-to-b from-purple-50 to-white rounded-lg shadow-md mb-[13rem] mt-8"
       >
         {/* Texto principal */}
         <motion.h1
@@ -157,7 +157,7 @@ export default function LandingPage() {
         </motion.p>
 
         {/* Botón de llamada a la acción */}
-        <motion.div variants={fadeInUp} className="flex justify-center">
+        <motion.div variants={fadeInUp}>
           <Button
             size="lg"
             className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-lg px-8 py-3 rounded-full shadow-lg hover:shadow-xl"
