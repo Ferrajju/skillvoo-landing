@@ -13,7 +13,7 @@ import {
   CheckCircle,
   Target,
   Puzzle,
-  Lightbulb,
+  
   MessageSquare,
   Users,
   Dumbbell,
