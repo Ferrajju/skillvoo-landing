@@ -175,7 +175,7 @@ export default function LandingPage() {
             variants={fadeInUp}
             className="text-2xl text-center text-gradient font-semibold mb-8 max-w-3xl mx-auto p-6 bg-purple-100 rounded-lg shadow-sm"
           >
-            SkillVoo es la plataforma innovadora que ofrece desarrollo personalizado de habilidades personales a través de sesiones diarias por correo electrónico.
+            SkillVoo es la primera plataforma innovadora que ofrece cursos  personalizados impulsados por IA para desarrollar  habilidades personales a través de sesiones diarias por correo electrónico.
           </motion.p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
             {[
