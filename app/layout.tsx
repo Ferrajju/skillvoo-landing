@@ -8,7 +8,7 @@ declare global {
     google: {
       translate: {
         TranslateElement: new (options: object, containerId: string) => void;
-        TranslateElementOptions: {
+        TranslateElementOptions?: {
           pageLanguage: string;
           includedLanguages?: string;
           layout?: {
@@ -24,28 +24,34 @@ declare global {
 
 export default function Page() {
   useEffect(() => {
-    // Crear el script para Google Translate
     const script = document.createElement("script");
     script.src =
       "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
     script.async = true;
-    document.body.appendChild(script);
 
-    // Inicializar Google Translate
-    window.googleTranslateElementInit = () => {
-      const translateOptions = {
-        pageLanguage: "en",
-        includedLanguages: "en,es,fr,de,it",
-        layout:
-          window.google?.translate?.TranslateElementOptions?.layout?.SIMPLE ||
-          undefined, // Manejo seguro de undefined
-      };
-
-      new window.google.translate.TranslateElement(
-        translateOptions,
-        "google_translate_element"
-      );
+    // Agrega el script al DOM
+    script.onload = () => {
+      if (typeof window.google !== "undefined" && window.google.translate) {
+        window.googleTranslateElementInit = () => {
+          new window.google.translate.TranslateElement(
+            {
+              pageLanguage: "en",
+              includedLanguages: "en,es,fr,de,it",
+              layout:
+                window.google.translate.TranslateElementOptions?.layout
+                  ?.SIMPLE || 1, // Valor predeterminado
+            },
+            "google_translate_element"
+          );
+        };
+      }
     };
+
+    script.onerror = () => {
+      console.error("Error al cargar el script de Google Translate");
+    };
+
+    document.body.appendChild(script);
   }, []);
 
   return (
@@ -55,8 +61,11 @@ export default function Page() {
         id="google_translate_element"
         style={{ position: "absolute", top: "10px", right: "10px" }}
       ></div>
-      {/* Resto de la página */}
       <h1>Bienvenido a SkillVoo</h1>
+      <p>
+        Estamos implementando la funcionalidad de traducción automática. Gracias
+        por tu paciencia.
+      </p>
     </div>
   );
 }
