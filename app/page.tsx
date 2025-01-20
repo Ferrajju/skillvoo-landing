@@ -1,9 +1,7 @@
 "use client"
 
-
 import Link from "next/link"
 import { useState, useEffect } from "react"
-
 import {
   BookOpen,
   Mail,
@@ -15,9 +13,7 @@ import {
   Target,
   PenTool,
   CheckCircle,
-  
 } from "lucide-react"
-
 
 const features = [
   {
@@ -78,28 +74,6 @@ const skills = [
 const validateEmail = (email: string): boolean => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   return emailRegex.test(email)
-}
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 },
-}
-
-const staggerChildren = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-}
-
-const scrollToSection = (e: React.MouseEvent<HTMLElement>, id: string) => {
-  e.preventDefault()
-  const section = document.getElementById(id)
-  if (section) {
-    section.scrollIntoView({ behavior: "smooth" })
-  }
 }
 
 const Navbar = () => {
@@ -372,8 +346,7 @@ export default function LandingPage() {
               Examples of Personal Skills to Develop
             </h2>
             <p className="text-base sm:text-lg text-[#581c87]/70 px-4">
-              Discover our wide variety of personal skills to develop. Each day, you'll receive theory, examples, and
-              practical exercises to apply in your daily life.
+              Discover our wide variety of personal skills to develop. Each day, you'll receive theory, examples, and practical exercises to apply in your daily life.
             </p>
           </div>
 
@@ -549,7 +522,7 @@ export default function LandingPage() {
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6z" />
                     </svg>
-                    <span className="text-sm font-medium">Secure & Private</span>
+                    <span className="text-sm font-medium">Secure &amp; Private</span>
                   </div>
                   <div className="flex items-center justify-center gap-2 bg-white/5 rounded-lg py-2 px-3">
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
@@ -585,19 +558,7 @@ export default function LandingPage() {
                   Transforming lives through personalized learning. Join us on the journey of continuous growth and
                   development.
                 </p>
-                <div className="flex items-center gap-4">
-                  {["twitter", "facebook", "instagram", "linkedin"].map((social) => (
-                    <Link
-                      key={social}
-                      href={`https://${social}.com/skillvoo`}
-                      className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center
-                               hover:bg-white/10 transition-colors duration-200"
-                    >
-                      <span className="sr-only">{social}</span>
-                      <div className="w-5 h-5 text-white/80" />
-                    </Link>
-                  ))}
-                </div>
+                
               </div>
 
               <div>
