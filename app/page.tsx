@@ -100,7 +100,7 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white font-sans">
-       <GoogleTranslateWidget />
+       
       {/* Navigation bar */}
       <motion.nav
         initial={{ y: -100 }}
@@ -137,6 +137,22 @@ export default function LandingPage() {
               Únete a la lista de espera
             </motion.button>
           </div>
+          <select
+          className="bg-gray-700 text-white p-2 rounded"
+          onChange={(e) => {
+            // Aquí puedes realizar alguna acción si quieres algo específico al cambiar el idioma
+            const language = e.target.value;
+            console.log("Idioma seleccionado:", language);
+            // Aquí puedes manejar la lógica de traducción si no usas Google Translate
+          }}
+        >
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+          {/* Agrega más opciones según los idiomas que quieras */}
+        </select>
+
+        <GoogleTranslateWidget />
         </div>
       </motion.nav>
 

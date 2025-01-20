@@ -1,3 +1,4 @@
+// components/GoogleTranslateWidget.tsx
 "use client";
 
 import { useEffect } from "react";
@@ -24,7 +25,6 @@ export default function GoogleTranslateWidget() {
     document.body.appendChild(script);
 
     window.googleTranslateElementInit = () => {
-      // Verificamos si `window.google` está definido
       if (!window.google) {
         console.error("Google Translate no está disponible.");
         return;
@@ -39,7 +39,7 @@ export default function GoogleTranslateWidget() {
       new window.google.translate.TranslateElement(
         {
           pageLanguage: "en",
-          includedLanguages: "en,es,fr,de,it",
+          includedLanguages: "en,es,fr,de,it", // Agrega los idiomas que quieras
           layout: window.google?.translate?.TranslateElementOptions?.layout?.SIMPLE ?? 1,
         },
         "google_translate_element"
