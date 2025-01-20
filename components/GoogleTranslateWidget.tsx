@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 
-// Extiende el tipo global de `window` para incluir `googleTranslateElementInit` y `google`
 declare global {
   interface Window {
     googleTranslateElementInit?: () => void;
@@ -28,7 +27,6 @@ export default function GoogleTranslateWidget() {
     script.async = true;
     document.body.appendChild(script);
 
-    // Definimos el callback de Google Translate
     window.googleTranslateElementInit = () => {
       const container = document.getElementById("google_translate_element");
       if (!container) {
@@ -36,7 +34,6 @@ export default function GoogleTranslateWidget() {
         return;
       }
 
-      // Asegúrate de que `window.google` esté definido antes de usarlo
       if (window.google && window.google.translate) {
         new window.google.translate.TranslateElement(
           {
@@ -54,16 +51,12 @@ export default function GoogleTranslateWidget() {
 
   return (
     <div>
-      {/* Widget de Google Translate */}
       <div
         id="google_translate_element"
         style={{ position: "absolute", top: "10px", right: "10px" }}
       ></div>
       <h1>Bienvenido a SkillVoo</h1>
-      <p>
-        Estamos implementando la funcionalidad de traducción automática. Gracias
-        por tu paciencia.
-      </p>
+      <p>Estamos implementando la funcionalidad de traducción automática. Gracias por tu paciencia.</p>
     </div>
   );
 }
