@@ -8,14 +8,6 @@ declare global {
     google: {
       translate: {
         TranslateElement: new (options: object, containerId: string) => void;
-        TranslateElementOptions?: {
-          pageLanguage: string;
-          includedLanguages?: string;
-          layout?: {
-            SIMPLE: string;
-            HORIZONTAL: string;
-          };
-        };
       };
     };
     googleTranslateElementInit: () => void;
@@ -29,27 +21,29 @@ export default function Page() {
       "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
     script.async = true;
     document.body.appendChild(script);
-  
+
     window.googleTranslateElementInit = () => {
       const container = document.getElementById("google_translate_element");
       if (!container) {
         console.error("El contenedor para Google Translate no existe.");
         return;
       }
-  
-      new window.google.translate.TranslateElement(
-        {
-          pageLanguage: "en",
-          includedLanguages: "en,es,fr,de,it",
-          layout:
-            window.google?.translate?.TranslateElementOptions?.layout?.SIMPLE ??
-            1,
-        },
-        "google_translate_element"
-      );
+
+      try {
+        new window.google.translate.TranslateElement(
+          {
+            pageLanguage: "en",
+            includedLanguages: "en,es,fr,de,it",
+            layout: 1, // Usar directamente el valor numérico para SIMPLE
+          },
+          "google_translate_element"
+        );
+      } catch (error) {
+        console.error("Error al inicializar Google Translate:", error);
+      }
     };
   }, []);
-  
+
   return (
     <div>
       {/* Widget de Google Translate */}
