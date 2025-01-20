@@ -98,16 +98,17 @@ export default function LandingPage() {
 
         {/* Botón centrado pero ligeramente desplazado a la izquierda */}
         <div className="flex items-center justify-center flex-1">
-      <motion.button 
-        onClick={(e) => scrollToSection(e, 'registro')}
-        className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-sm inline-flex items-center"
-        style={{ transform: 'translateX(-48%)' }} 
-        whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(107,70,193)" }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <Mail className="w-4 h-4 mr-2" />
-        Únete a la lista de espera
-      </motion.button>
+        <motion.button 
+  onClick={(e) => scrollToSection(e, 'registro')}
+  className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-sm inline-flex items-center"
+  style={{ transform: 'translateX(-48%)' }} // Desplazamiento inicial
+  whileHover={{ scale: 1.05 }} // Efecto de ampliación sin deslizamiento
+  whileTap={{ scale: 0.95 }} // Pequeña reducción al hacer clic
+>
+  <Mail className="w-4 h-4 mr-2" />
+  Únete a la lista de espera
+</motion.button>
+
     </div>
   </div>
 </motion.nav>
