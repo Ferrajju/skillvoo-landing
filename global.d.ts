@@ -1,6 +1,6 @@
 declare global {
     interface Window {
-      googleTranslateElementInit: () => void;  // No usar '?' aquí
+      googleTranslateElementInit?: () => void;
       google?: {
         translate: {
           TranslateElement: new (options: object, containerId: string) => void;

@@ -4,45 +4,48 @@ import { useEffect } from "react";
 
 declare global {
   interface Window {
-    google: any;
-    googleTranslateElementInit: () => void;
+    googleTranslateElementInit?: () => void;
+    google?: {
+      translate: {
+        TranslateElement: new (options: object, containerId: string) => void;
+        TranslateElementOptions?: {
+          layout: { SIMPLE: string; HORIZONTAL: string };
+        };
+      };
+    };
   }
 }
 
 export default function GoogleTranslateWidget() {
   useEffect(() => {
     const script = document.createElement("script");
-    script.src =
-      "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
     script.async = true;
     document.body.appendChild(script);
 
     window.googleTranslateElementInit = () => {
+      // Verificamos si `window.google` está definido
+      if (!window.google) {
+        console.error("Google Translate no está disponible.");
+        return;
+      }
+
+      const container = document.getElementById("google_translate_element");
+      if (!container) {
+        console.error("El contenedor para Google Translate no existe.");
+        return;
+      }
+
       new window.google.translate.TranslateElement(
         {
           pageLanguage: "en",
-          includedLanguages: "en,es,fr,de,it", // Cambia los idiomas según tus necesidades
-          layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-          autoDisplay: false, // No mostrará el widget automáticamente
+          includedLanguages: "en,es,fr,de,it",
+          layout: window.google?.translate?.TranslateElementOptions?.layout?.SIMPLE ?? 1,
         },
         "google_translate_element"
       );
     };
   }, []);
 
-  return (
-    <div
-      id="google_translate_element"
-      style={{
-        position: "fixed",
-        top: "10px",
-        right: "10px",
-        zIndex: 9999,
-        borderRadius: "5px",
-        background: "#fff",
-        boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-        padding: "5px",
-      }}
-    ></div>
-  );
+  return <div id="google_translate_element" style={{ position: "absolute", top: "10px", right: "10px" }}></div>;
 }
