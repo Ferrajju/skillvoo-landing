@@ -97,13 +97,12 @@ export default function LandingPage() {
     </div>
 
         {/* Botón centrado pero ligeramente desplazado a la izquierda */}
-        <div className="flex items-center justify-center flex-1">
-        <motion.button 
-  onClick={(e) => scrollToSection(e, 'registro')}
-  className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition-transform duration-300 text-sm inline-flex items-center ml-[-72px]" // Ajusta según lo necesites
-  whileHover={{ scale: 1.05 }}
-  whileTap={{ scale: 0.95 }}
->
+        <div className="flex justify-start items-center">
+  <motion.button 
+    className="ml-[-80px] bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full"
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+  >
   <Mail className="w-4 h-4 mr-2" />
   Únete a la lista de espera
 </motion.button>
