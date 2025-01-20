@@ -77,7 +77,7 @@ export default function LandingPage() {
 
       const data = await response.json()
       if (response.ok) {
-        setMessage("Thank you for registering! You&apos;ll receive your free course soon.")
+        setMessage("Thank you for registering! We will notice you.")
         setName("")
         setEmail("")
       } else {
@@ -233,7 +233,7 @@ export default function LandingPage() {
               {
                 title: "Learn and Practice",
                 icon: Target,
-                description: "Apply what you&apos;ve learned in your daily life with session proposals",
+                description: "Apply what you have learned in your daily life with session proposals",
               },
               {
                 title: "Improve with AI",
@@ -357,7 +357,7 @@ export default function LandingPage() {
               },
               {
                 title: "Personalized Practical Exercises",
-                description: "Apply what you&apos;ve learned with AI-adapted interactive activities",
+                description: "Apply what you have learned with AI-adapted interactive activities",
                 icon: Target,
               },
               {
