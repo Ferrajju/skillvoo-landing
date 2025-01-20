@@ -94,7 +94,7 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white font-sans">
-      <GoogleTranslateWidget />
+      
       {/* Navigation bar */}
       <motion.nav
         initial={{ y: -100 }}
@@ -123,7 +123,7 @@ export default function LandingPage() {
           <div className="relative w-full">
             <motion.button
               onClick={(e) => scrollToSection(e, "registro")}
-              className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition-transform duration-300 text-sm inline-flex items-center absolute top-[-30px] left-[45%]"
+              className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition-transform duration-300 text-sm inline-flex items-center absolute top-[-30px] left-[48%]"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
