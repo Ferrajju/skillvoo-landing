@@ -100,7 +100,7 @@ export default function LandingPage() {
         <div className="relative w-full">
   <motion.button 
     onClick={(e) => scrollToSection(e, 'registro')}
-    className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition-transform duration-300 text-sm inline-flex items-center absolute top-[-30px] left-[28%]"
+    className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition-transform duration-300 text-sm inline-flex items-center absolute top-[-30px] left-[29%]"
     whileHover={{ scale: 1.05 }} // Solo efecto de ampliación
     whileTap={{ scale: 0.95 }} // Contracción al hacer clic
   >
