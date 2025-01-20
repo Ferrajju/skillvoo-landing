@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 
-import { Mail, Clock, Brain, Zap, BookOpen, CheckCircle, Target, Puzzle, Lightbulb, MessageSquare } from "lucide-react"
+import { Mail, Clock, Brain, Zap, BookOpen, CheckCircle, Target, Puzzle, Lightbulb, MessageSquare,Users } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
@@ -276,7 +276,7 @@ export default function LandingPage() {
               },
               {
                 title: "Manipulación mental",
-                icon: Brain,
+                icon: Users,
                 description: "Aprende técnicas de influencia y persuasión psicológica",
               },
               {
