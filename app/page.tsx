@@ -465,7 +465,13 @@ export default function LandingPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="text-lg font-semibold mb-4">SkillVoo</h3>
+            <Image 
+          src="/images/skillvoo-logo.png" 
+          alt="SkillVoo Logo" 
+          width={150} 
+          height={50} 
+          className="mb-4"
+        />
               <p className="text-purple-200">Transformando vidas a través del aprendizaje personalizado.</p>
             </div>
             <div>
