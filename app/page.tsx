@@ -1,9 +1,9 @@
 "use client"
 
-import Image from "next/image"
+
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
+
 import {
   BookOpen,
   Mail,
@@ -15,11 +15,9 @@ import {
   Target,
   PenTool,
   CheckCircle,
-  Users,
+  
 } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent } from "@/components/ui/card"
+
 
 const features = [
   {
