@@ -18,7 +18,7 @@ import {
   Dumbbell,
 } from "lucide-react"
 import Image from "next/image"
-import Link from "next/link"
+
 import { useState } from "react"
 import { motion } from "framer-motion"
 
@@ -156,9 +156,7 @@ export default function LandingPage() {
         </motion.p>
 
         {/* Botón de llamada a la acción */}
-        <motion.div variants={fadeInUp}>
-          
-        </motion.div>
+        
       </motion.section>
 
       {/* What is SkillVoo Section */}
