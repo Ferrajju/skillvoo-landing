@@ -23,6 +23,13 @@ import Link from "next/link"
 import { useState } from "react"
 import { motion } from "framer-motion"
 
+
+
+const validateEmail = (email: string): boolean => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
+
 // Animation variants
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -53,9 +60,15 @@ export default function LandingPage() {
   const [message, setMessage] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setMessage("")
+    e.preventDefault();
+    setMessage("");
+  
+    if (!validateEmail(email)) {
+      setMessage("Por favor, introduce un correo electrónico válido.");
+      return;
+    }
+  
+    setIsLoading(true);
     try {
       const response = await fetch("/api/register", {
         method: "POST",
@@ -63,22 +76,24 @@ export default function LandingPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ name, email }),
-      })
-      const data = await response.json()
+      });
+  
+      const data = await response.json();
       if (response.ok) {
-        setMessage("¡Gracias por registrarte! Recibirás tu curso gratuito pronto.")
-        setName("")
-        setEmail("")
+        setMessage("¡Gracias por registrarte! Recibirás tu curso gratuito pronto.");
+        setName("");
+        setEmail("");
       } else {
-        setMessage(`Error: ${data.message || "Hubo un problema al procesar tu solicitud."}`)
+        setMessage(`Error: ${data.message || "Hubo un problema al procesar tu solicitud."}`);
       }
     } catch (error) {
-      console.error("Error:", error)
-      setMessage("Hubo un error al conectar con el servidor. Por favor, intenta de nuevo más tarde.")
+      console.error("Error:", error);
+      setMessage("Hubo un error al conectar con el servidor. Por favor, intenta de nuevo más tarde.");
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white font-sans">
