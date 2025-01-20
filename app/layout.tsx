@@ -28,32 +28,28 @@ export default function Page() {
     script.src =
       "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
     script.async = true;
-
-    // Agrega el script al DOM
-    script.onload = () => {
-      if (typeof window.google !== "undefined" && window.google.translate) {
-        window.googleTranslateElementInit = () => {
-          new window.google.translate.TranslateElement(
-            {
-              pageLanguage: "en",
-              includedLanguages: "en,es,fr,de,it",
-              layout:
-                window.google.translate.TranslateElementOptions?.layout
-                  ?.SIMPLE || 1, // Valor predeterminado
-            },
-            "google_translate_element"
-          );
-        };
-      }
-    };
-
-    script.onerror = () => {
-      console.error("Error al cargar el script de Google Translate");
-    };
-
     document.body.appendChild(script);
+  
+    window.googleTranslateElementInit = () => {
+      const container = document.getElementById("google_translate_element");
+      if (!container) {
+        console.error("El contenedor para Google Translate no existe.");
+        return;
+      }
+  
+      new window.google.translate.TranslateElement(
+        {
+          pageLanguage: "en",
+          includedLanguages: "en,es,fr,de,it",
+          layout:
+            window.google?.translate?.TranslateElementOptions?.layout?.SIMPLE ??
+            1,
+        },
+        "google_translate_element"
+      );
+    };
   }, []);
-
+  
   return (
     <div>
       {/* Widget de Google Translate */}
