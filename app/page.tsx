@@ -503,11 +503,7 @@ export default function LandingPage() {
                     Courses
                   </a>
                 </li>
-                <li>
-                  <Link href="/prices" className="text-purple-200 hover:text-white transition-colors">
-                    Pricing
-                  </Link>
-                </li>
+                
                 <li>
                   <a href="#registro" className="text-purple-200 hover:text-white transition-colors">
                     Register
@@ -518,7 +514,7 @@ export default function LandingPage() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact</h3>
               <p className="text-purple-200">Email: info@skillvoo.com</p>
-              <p className="text-purple-200">Phone: +1 234 567 890</p>
+              
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-purple-700 text-center">
