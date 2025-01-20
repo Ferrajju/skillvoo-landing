@@ -1,8 +1,6 @@
 "use client"
 import GoogleTranslateWidget from "@/components/GoogleTranslateWidget"
 
-
-
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
@@ -16,7 +14,6 @@ import {
   CheckCircle,
   Target,
   PenTool,
-  
   MessageSquare,
   Users,
   Dumbbell,
@@ -26,12 +23,10 @@ import Link from "next/link"
 import { useState } from "react"
 import { motion } from "framer-motion"
 
-
-
 const validateEmail = (email: string): boolean => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-};
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  return emailRegex.test(email)
+}
 
 // Animation variants
 const fadeInUp = {
@@ -63,15 +58,15 @@ export default function LandingPage() {
   const [message, setMessage] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setMessage("");
-  
+    e.preventDefault()
+    setMessage("")
+
     if (!validateEmail(email)) {
-      setMessage("Por favor, introduce un correo electrónico válido.");
-      return;
+      setMessage("Por favor, introduce un correo electrónico válido.")
+      return
     }
-  
-    setIsLoading(true);
+
+    setIsLoading(true)
     try {
       const response = await fetch("/api/waitlist", {
         method: "POST",
@@ -79,28 +74,27 @@ export default function LandingPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ name, email }),
-      });
-  
-      const data = await response.json();
+      })
+
+      const data = await response.json()
       if (response.ok) {
-        setMessage("¡Gracias por registrarte! Recibirás tu curso gratuito pronto.");
-        setName("");
-        setEmail("");
+        setMessage("Thank you for registering! You'll receive your free course soon.")
+        setName("")
+        setEmail("")
       } else {
-        setMessage(`Error: ${data.message || "Hubo un problema al procesar tu solicitud."}`);
+        setMessage(`Error: ${data.message || "There was a problem processing your request."}`)
       }
     } catch (error) {
-      console.error("Error:", error);
-      setMessage("Hubo un error al conectar con el servidor. Por favor, intenta de nuevo más tarde.");
+      console.error("Error:", error)
+      setMessage("There was an error connecting to the server. Please try again later.")
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
-  
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white font-sans">
-       
+      <GoogleTranslateWidget />
       {/* Navigation bar */}
       <motion.nav
         initial={{ y: -100 }}
@@ -121,7 +115,7 @@ export default function LandingPage() {
               />
             </motion.div>
             <Link href="/prices" className="text-purple-600 hover:text-purple-800 transition-colors">
-              Precios
+              Pricing
             </Link>
           </div>
 
@@ -134,25 +128,9 @@ export default function LandingPage() {
               whileTap={{ scale: 0.95 }} // Contracción al hacer clic
             >
               <Mail className="w-4 h-4 mr-2" />
-              Únete a la lista de espera
+              Join the waitlist
             </motion.button>
           </div>
-          <select
-          className="bg-gray-700 text-white p-2 rounded"
-          onChange={(e) => {
-            // Aquí puedes realizar alguna acción si quieres algo específico al cambiar el idioma
-            const language = e.target.value;
-            console.log("Idioma seleccionado:", language);
-            // Aquí puedes manejar la lógica de traducción si no usas Google Translate
-          }}
-        >
-          <option value="en">English</option>
-          <option value="es">Español</option>
-          <option value="fr">Français</option>
-          {/* Agrega más opciones según los idiomas que quieras */}
-        </select>
-
-        <GoogleTranslateWidget />
         </div>
       </motion.nav>
 
@@ -169,13 +147,13 @@ export default function LandingPage() {
           variants={fadeInUp}
           className="text-5xl sm:text-6xl font-bold text-purple-900 mb-6 font-heading leading-tight"
         >
-          Transforma tu vida con habilidades únicas
+          Transform Your Life with Unique Skills
         </motion.h1>
 
         {/* Descripción */}
         <motion.p variants={fadeInUp} className="text-xl text-purple-700 mb-8 max-w-2xl">
-          Cursos personalizados para ti, sesiones diarias de solo <b>10 minutos</b>, y resultados que transforman.
-          ¡Empieza hoy y desbloquea tu potencial!
+          Personalized courses for you, daily <b>10-minute</b> sessions, and transformative results. Start today and
+          unlock your potential!
         </motion.p>
 
         {/* Botón de llamada a la acción */}
@@ -185,7 +163,7 @@ export default function LandingPage() {
             className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-lg px-8 py-3 rounded-full shadow-lg hover:shadow-xl"
             onClick={(e) => scrollToSection(e, "cursos")}
           >
-            Explora los cursos
+            Explore Courses
           </Button>
         </motion.div>
       </motion.section>
@@ -200,31 +178,31 @@ export default function LandingPage() {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2 variants={fadeInUp} className="text-4xl font-bold text-center text-purple-800 mb-12 font-heading">
-            ¿Qué es SkillVoo?
+            What is SkillVoo?
           </motion.h2>
           <motion.p
             variants={fadeInUp}
             className="text-2xl text-center text-gradient font-semibold mb-8 max-w-3xl mx-auto p-6 bg-purple-100 rounded-lg shadow-sm"
           >
-            SkillVoo es la primera plataforma innovadora que ofrece cursos personalizados impulsados por IA para
-            desarrollar habilidades personales a través de sesiones diarias por correo electrónico.
+            SkillVoo is the first innovative platform offering AI-powered personalized courses to develop personal
+            skills through daily email sessions.
           </motion.p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
             {[
               {
-                title: "Sesiones Diarias por Email",
+                title: "Daily Email Sessions",
                 icon: Mail,
-                description: "Recibe contenido personalizado directamente en tu bandeja de entrada",
+                description: "Receive personalized content directly in your inbox",
               },
               {
-                title: "Aprendizaje Adaptativo con IA",
+                title: "AI-Adaptive Learning",
                 icon: Brain,
-                description: "Utilizamos inteligencia artificial para adaptar tu experiencia de aprendizaje",
+                description: "We use artificial intelligence to adapt your learning experience",
               },
               {
-                title: "Variedad de Habilidades",
+                title: "Variety of Skills",
                 icon: Target,
-                description: "Amplia gama de habilidades personales para desarrollar",
+                description: "Wide range of personal skills to develop",
               },
             ].map((feature, index) => (
               <motion.div key={index} variants={fadeInUp} className="bg-white rounded-lg shadow-lg p-6 text-center">
@@ -247,29 +225,29 @@ export default function LandingPage() {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2 variants={fadeInUp} className="text-4xl font-bold text-center text-purple-800 mb-12 font-heading">
-            ¿Cómo funciona?
+            How It Works
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                title: "Elige una habilidad",
+                title: "Choose a Skill",
                 icon: BookOpen,
-                description: "Selecciona la habilidad personal que deseas desarrollar",
+                description: "Select the personal skill you want to develop",
               },
               {
-                title: "Recibe sesiones diarias",
+                title: "Receive Daily Sessions",
                 icon: Mail,
-                description: "Recibe  en tu correo la sesión diaria con todo lo que necesitas",
+                description: "Get your daily session with everything you need in your email",
               },
               {
-                title: "Aprende y practica",
+                title: "Learn and Practice",
                 icon: Target,
-                description: "Aplica lo aprendido en tu día a día con las propuestas de la sesión ",
+                description: "Apply what you've learned in your daily life with session proposals",
               },
               {
-                title: "Mejora con IA",
+                title: "Improve with AI",
                 icon: Zap,
-                description: "Aprendizaje y ejercicios personalizados con inteligencia artificial",
+                description: "Personalized learning and exercises with artificial intelligence",
               },
             ].map((step, index) => (
               <motion.div
@@ -304,43 +282,43 @@ export default function LandingPage() {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2 variants={fadeInUp} className="text-4xl font-bold text-center text-purple-800 mb-12 font-heading">
-            Ejemplos de Habilidades Personales a Desarrollar
+            Examples of Personal Skills to Develop
           </motion.h2>
           <motion.p variants={fadeInUp} className="text-xl text-center text-purple-600 mb-8 max-w-3xl mx-auto">
-            Descubre nuestra amplia variedad de habilidades personales para desarrollar. Cada día, recibirás teoría,
-            ejemplos y ejercicios prácticos para aplicar en tu vida diaria.
+            Discover our wide variety of personal skills to develop. Each day, you'll receive theory, examples, and
+            practical exercises to apply in your daily life.
           </motion.p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Gestión del tiempo",
+                title: "Time Management",
                 icon: Clock,
-                description: "Optimiza tu productividad y logra más en menos tiempo",
+                description: "Optimize your productivity and achieve more in less time",
               },
               {
-                title: "Comunicación efectiva",
+                title: "Effective Communication",
                 icon: MessageSquare,
-                description: "Mejora tus habilidades de comunicación verbal y no verbal",
+                description: "Improve your verbal and non-verbal communication skills",
               },
               {
-                title: "Manipulación mental",
+                title: "Mental Influence",
                 icon: Users,
-                description: "Aprende técnicas de influencia y persuasión psicológica",
+                description: "Learn techniques of psychological influence and persuasion",
               },
               {
-                title: "Negociación",
+                title: "Negotiation",
                 icon: MessageSquare,
-                description: "Desarrolla habilidades para alcanzar acuerdos beneficiosos en cualquier situación",
+                description: "Develop skills to reach beneficial agreements in any situation",
               },
               {
-                title: "Escritura Creativa",
+                title: "Creative Writing",
                 icon: PenTool,
-                description: "Desbloquea tu potencial narrativo y aprende a crear historias cautivadoras",
+                description: "Unlock your narrative potential and learn to create captivating stories",
               },
               {
-                title: "Desarrollo de Disciplina",
+                title: "Discipline Development",
                 icon: Dumbbell,
-                description: "Fortalece tu voluntad y construye hábitos sólidos para alcanzar tus metas",
+                description: "Strengthen your willpower and build solid habits to achieve your goals",
               },
             ].map((course, index) => (
               <motion.div
@@ -372,28 +350,28 @@ export default function LandingPage() {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2 variants={fadeInUp} className="text-4xl font-bold text-center text-purple-800 mb-12 font-heading">
-            Características Destacadas
+            Featured Characteristics
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: "Aprendizaje Adaptativo con IA",
-                description: "Nuestro sistema de IA se ajusta a tu ritmo y estilo de aprendizaje",
+                title: "AI-Adaptive Learning",
+                description: "Our AI system adjusts to your learning pace and style",
                 icon: Brain,
               },
               {
-                title: "Sesiones Diarias por Email",
-                description: "Recibe contenido personalizado de 10 minutos directamente en tu bandeja de entrada",
+                title: "Daily Email Sessions",
+                description: "Receive 10-minute personalized content directly in your inbox",
                 icon: Mail,
               },
               {
-                title: "Ejercicios Prácticos Personalizados",
-                description: "Aplica lo aprendido con actividades interactivas adaptadas por IA",
+                title: "Personalized Practical Exercises",
+                description: "Apply what you've learned with AI-adapted interactive activities",
                 icon: Target,
               },
               {
-                title: "Variedad de Habilidades",
-                description: "Amplia gama de habilidades personales para desarrollar",
+                title: "Variety of Skills",
+                description: "Wide range of personal skills to develop",
                 icon: BookOpen,
               },
             ].map((feature, index) => (
@@ -410,95 +388,93 @@ export default function LandingPage() {
       </motion.section>
 
       {/* Call to Action Section */}
-      <motion.section 
-  initial="initial"
-  whileInView="animate"
-  viewport={{ once: true }}
-  variants={staggerChildren}
-  id="registro" 
-  className="bg-purple-50 py-20"
->
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    {/* Título de la sección */}
-    <motion.h2 
-      variants={fadeInUp}
-      className="text-4xl font-bold text-purple-800 mb-6 font-heading"
-    >
-      ¡Únete a la lista de espera!
-    </motion.h2>
-
-    {/* Mensaje para indicar que la página está en desarrollo */}
-    <motion.p
-      variants={fadeInUp}
-      className="text-xl text-purple-600 mb-8 max-w-2xl mx-auto"
-    >
-      Estamos trabajando en algo increíble para ti. Sé de los primeros en acceder a nuestra plataforma cuando esté lista. 
-      Regístrate ahora y recibirás actualizaciones exclusivas directamente en tu correo.
-    </motion.p>
-
-    {/* Formulario de registro */}
-    <motion.form 
-      variants={fadeInUp}
-      onSubmit={handleSubmit} 
-      className="max-w-md mx-auto flex flex-col space-y-4"
-    >
-      <Input 
-        type="text" 
-        placeholder="Tu nombre" 
-        className="text-purple-800 placeholder-purple-400 bg-white"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required
-      />
-      <Input 
-        type="email" 
-        placeholder="Tu correo electrónico" 
-        className="text-purple-800 placeholder-purple-400 bg-white"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-      <motion.div
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+      <motion.section
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        variants={staggerChildren}
+        id="registro"
+        className="bg-purple-50 py-20"
       >
-        <Button 
-          type="submit" 
-          size="lg" 
-          className="w-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white hover:from-purple-600 hover:to-indigo-700" 
-          disabled={isLoading}
-        >
-          {isLoading ? (
-            <span className="flex items-center justify-center">
-              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              Procesando...
-            </span>
-          ) : (
-            <span className="flex items-center justify-center">
-              <CheckCircle className="w-5 h-5 mr-2" />
-              ¡Unirse a la lista de espera!
-            </span>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Título de la sección */}
+          <motion.h2 variants={fadeInUp} className="text-4xl font-bold text-purple-800 mb-6 font-heading">
+            Join the Waitlist!
+          </motion.h2>
+
+          {/* Mensaje para indicar que la página está en desarrollo */}
+          <motion.p variants={fadeInUp} className="text-xl text-purple-600 mb-8 max-w-2xl mx-auto">
+            We're working on something incredible for you. Be among the first to access our platform when it's ready.
+            Register now and receive exclusive updates directly in your email.
+          </motion.p>
+
+          {/* Formulario de registro */}
+          <motion.form variants={fadeInUp} onSubmit={handleSubmit} className="max-w-md mx-auto flex flex-col space-y-4">
+            <Input
+              type="text"
+              placeholder="Your name"
+              className="text-purple-800 placeholder-purple-400 bg-white"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+            <Input
+              type="email"
+              placeholder="Your email address"
+              className="text-purple-800 placeholder-purple-400 bg-white"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white hover:from-purple-600 hover:to-indigo-700"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <span className="flex items-center justify-center">
+                    <svg
+                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                    Processing...
+                  </span>
+                ) : (
+                  <span className="flex items-center justify-center">
+                    <CheckCircle className="w-5 h-5 mr-2" />
+                    Join the Waitlist!
+                  </span>
+                )}
+              </Button>
+            </motion.div>
+          </motion.form>
+
+          {/* Mensaje de confirmación */}
+          {message && (
+            <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-4 text-purple-600">
+              {message}
+            </motion.p>
           )}
-        </Button>
-      </motion.div>
-    </motion.form>
-
-    {/* Mensaje de confirmación */}
-    {message && (
-      <motion.p 
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="mt-4 text-purple-600"
-      >
-        {message}
-      </motion.p>
-    )}
-  </div>
-</motion.section>
-
+        </div>
+      </motion.section>
 
       {/* Footer */}
       <motion.footer
@@ -510,48 +486,42 @@ export default function LandingPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-            <Image 
-          src="/images/skillvoo-logo.png" 
-          alt="SkillVoo Logo" 
-          width={150} 
-          height={50} 
-          className="mb-4"
-        />
-              <p className="text-purple-200">Transformando vidas a través del aprendizaje personalizado.</p>
+              <Image src="/images/skillvoo-logo.png" alt="SkillVoo Logo" width={150} height={50} className="mb-4" />
+              <p className="text-purple-200">Transforming lives through personalized learning.</p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Enlaces rápidos</h3>
+              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2">
                 <li>
                   <a href="#" className="text-purple-200 hover:text-white transition-colors">
-                    Inicio
+                    Home
                   </a>
                 </li>
                 <li>
                   <a href="#cursos" className="text-purple-200 hover:text-white transition-colors">
-                    Cursos
+                    Courses
                   </a>
                 </li>
                 <li>
                   <Link href="/prices" className="text-purple-200 hover:text-white transition-colors">
-                    Precios
+                    Pricing
                   </Link>
                 </li>
                 <li>
                   <a href="#registro" className="text-purple-200 hover:text-white transition-colors">
-                    Registro
+                    Register
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Contacto</h3>
+              <h3 className="text-lg font-semibold mb-4">Contact</h3>
               <p className="text-purple-200">Email: info@skillvoo.com</p>
-              <p className="text-purple-200">Teléfono: +1 234 567 890</p>
+              <p className="text-purple-200">Phone: +1 234 567 890</p>
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-purple-700 text-center">
-            <p>&copy; 2025 SkillVoo. Todos los derechos reservados.</p>
+            <p>&copy; 2025 SkillVoo. All rights reserved.</p>
           </div>
         </div>
       </motion.footer>
