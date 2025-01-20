@@ -94,7 +94,7 @@ export default function LandingPage() {
           <div className="flex items-center space-x-4">
             <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Skill%20(1)-cyWzceXVJrqFvvlloOAwSmMJbWSIAK.png"
+                src="/images/skillvoo-logo.png"
                 alt="SkillVoo Logo"
                 width={150}
                 height={50}
