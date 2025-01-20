@@ -12,7 +12,7 @@ import {
   BookOpen,
   CheckCircle,
   Target,
-  Puzzle,
+  PenTool,
   
   MessageSquare,
   Users,
@@ -294,13 +294,13 @@ export default function LandingPage() {
               },
               {
                 title: "Negociación",
-                icon: Users,
+                icon: MessageSquare,
                 description: "Desarrolla habilidades para alcanzar acuerdos beneficiosos en cualquier situación",
               },
               {
-                title: "Resolución de problemas",
-                icon: Puzzle,
-                description: "Aprende estrategias para abordar desafíos de manera efectiva",
+                title: "Escritura Creativa",
+                icon: PenTool,
+                description: "Desbloquea tu potencial narrativo y aprende a crear historias cautivadoras",
               },
               {
                 title: "Desarrollo de Disciplina",
