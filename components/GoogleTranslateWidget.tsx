@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect } from "react";
 
 // Extiende el tipo global de `window` para incluir `googleTranslateElementInit` y `google`
@@ -9,7 +10,7 @@ declare global {
       translate: {
         TranslateElement: new (options: object, containerId: string) => void;
         TranslateElementOptions?: {
-          layout?: {
+          layout: {
             SIMPLE: string;
             HORIZONTAL: string;
           };
