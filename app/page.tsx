@@ -155,7 +155,10 @@ export default function LandingPage() {
           unlock your potential!
         </motion.p>
 
-        
+        {/* Botón de llamada a la acción */}
+        <motion.div variants={fadeInUp}>
+          
+        </motion.div>
       </motion.section>
 
       {/* What is SkillVoo Section */}
