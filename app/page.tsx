@@ -112,9 +112,7 @@ export default function LandingPage() {
                 className="object-contain"
               />
             </motion.div>
-            <Link href="/prices" className="text-purple-600 hover:text-purple-800 transition-colors">
-              Pricing
-            </Link>
+            
           </div>
 
           {/* Espacio central vacío */}
