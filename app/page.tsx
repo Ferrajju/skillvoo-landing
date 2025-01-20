@@ -1,4 +1,7 @@
 "use client"
+import GoogleTranslateWidget from "@/components/GoogleTranslateWidget"
+
+
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -97,6 +100,7 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white font-sans">
+       <GoogleTranslateWidget />
       {/* Navigation bar */}
       <motion.nav
         initial={{ y: -100 }}
