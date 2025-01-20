@@ -4,7 +4,20 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 
-import { Mail, Clock, Brain, Zap, BookOpen, CheckCircle, Target, Puzzle, Lightbulb, MessageSquare,Users } from "lucide-react"
+import {
+  Mail,
+  Clock,
+  Brain,
+  Zap,
+  BookOpen,
+  CheckCircle,
+  Target,
+  Puzzle,
+  Lightbulb,
+  MessageSquare,
+  Users,
+  Dumbbell,
+} from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
@@ -290,9 +303,9 @@ export default function LandingPage() {
                 description: "Aprende estrategias para abordar desafíos de manera efectiva",
               },
               {
-                title: "Creatividad",
-                icon: Lightbulb,
-                description: "Desbloquea tu potencial creativo y genera ideas innovadoras",
+                title: "Desarrollo de Disciplina",
+                icon: Dumbbell,
+                description: "Fortalece tu voluntad y construye hábitos sólidos para alcanzar tus metas",
               },
             ].map((course, index) => (
               <motion.div
