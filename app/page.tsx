@@ -1,6 +1,5 @@
 "use client"
 
-
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
@@ -94,7 +93,6 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white font-sans">
-      
       {/* Navigation bar */}
       <motion.nav
         initial={{ y: -100 }}
@@ -102,9 +100,9 @@ export default function LandingPage() {
         transition={{ type: "spring", stiffness: 50 }}
         className="bg-white shadow-sm sticky top-0 z-10"
       >
-        <div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8 flex items-center justify-between pl-8">
+        <div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Logo y enlace "Precios" a la izquierda */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 w-1/3">
             <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
               <Image
                 src="/images/skillvoo-logo.png"
@@ -119,11 +117,14 @@ export default function LandingPage() {
             </Link>
           </div>
 
-          {/* Botón centrado pero ligeramente desplazado a la izquierda */}
-          <div className="relative w-full">
+          {/* Espacio central vacío */}
+          <div className="w-1/3"></div>
+
+          {/* Botón centrado a la derecha */}
+          <div className="flex justify-end items-center w-1/3">
             <motion.button
               onClick={(e) => scrollToSection(e, "registro")}
-              className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition-transform duration-300 text-sm inline-flex items-center absolute top-[-30px] left-[48%]"
+              className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition-transform duration-300 text-sm inline-flex items-center"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -528,3 +529,4 @@ export default function LandingPage() {
     </div>
   )
 }
+
