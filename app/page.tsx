@@ -108,13 +108,6 @@ export default function LandingPage() {
     Únete a la lista de espera
   </motion.button>
 </div>
-
-
-
-
-
-
-    </div>
   </div>
 </motion.nav>
 
