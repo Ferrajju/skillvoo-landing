@@ -100,13 +100,14 @@ export default function LandingPage() {
         <div className="flex items-center justify-center flex-1">
         <motion.button 
   onClick={(e) => scrollToSection(e, 'registro')}
-  className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition-transform duration-300 text-sm inline-flex items-center ml-[-48px]"
-  whileHover={{ scale: 1.05 }} // Solo efecto de ampliación
+  className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition-transform duration-300 text-sm inline-flex items-center ml-[-64px]" // Más a la izquierda
+  whileHover={{ scale: 1.05 }} // Efecto de ampliación
   whileTap={{ scale: 0.95 }} // Contracción al hacer clic
 >
   <Mail className="w-4 h-4 mr-2" />
   Únete a la lista de espera
 </motion.button>
+
 
 
 
