@@ -293,9 +293,9 @@ export default function LandingPage() {
                 description: "Aprende técnicas de influencia y persuasión psicológica",
               },
               {
-                title: "Técnicas de concentración",
-                icon: Target,
-                description: "Aumenta tu enfoque y reduce las distracciones",
+                title: "Negociación",
+                icon: Users,
+                description: "Desarrolla habilidades para alcanzar acuerdos beneficiosos en cualquier situación",
               },
               {
                 title: "Resolución de problemas",
