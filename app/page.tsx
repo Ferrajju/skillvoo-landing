@@ -254,7 +254,7 @@ export default function LandingPage() {
             variants={fadeInUp}
             className="text-4xl font-bold text-center text-purple-800 mb-12 font-heading"
           >
-            Habilidades Personales
+            Ejemplos de Habilidades Personales a Desarrollar
           </motion.h2>
           <motion.p
             variants={fadeInUp}
@@ -264,7 +264,7 @@ export default function LandingPage() {
           </motion.p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: "Gestión del tiempo", icon: Clock, description: " <b>Habilidad</b> para optimizar tu productividad y logra más en menos tiempo" },
+              { title: "Gestión del tiempo", icon: Clock, description: "Optimiza tu productividad y logra más en menos tiempo" },
               { title: "Comunicación efectiva", icon: MessageSquare, description: "Mejora tus habilidades de comunicación verbal y no verbal" },
               { title: "Pensamiento crítico", icon: Brain, description: "Desarrolla tu capacidad de análisis y toma de decisiones" },
               { title: "Técnicas de concentración", icon: Target, description: "Aumenta tu enfoque y reduce las distracciones" },
