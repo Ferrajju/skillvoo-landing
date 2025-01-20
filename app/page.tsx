@@ -155,16 +155,7 @@ export default function LandingPage() {
           unlock your potential!
         </motion.p>
 
-        {/* Botón de llamada a la acción */}
-        <motion.div variants={fadeInUp}>
-          <Button
-            size="lg"
-            className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-lg px-8 py-3 rounded-full shadow-lg hover:shadow-xl"
-            onClick={(e) => scrollToSection(e, "cursos")}
-          >
-            Explore Courses
-          </Button>
-        </motion.div>
+        
       </motion.section>
 
       {/* What is SkillVoo Section */}
