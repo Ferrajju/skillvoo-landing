@@ -2,6 +2,14 @@ import './globals.css';
 import { Inter, Poppins } from 'next/font/google';
 import { useEffect } from 'react';
 
+// Extender el objeto Window para incluir googleTranslateElementInit
+declare global {
+  interface Window {
+    googleTranslateElementInit: () => void;
+    google: any;
+  }
+}
+
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const poppins = Poppins({ weight: ['400', '600', '700'], subsets: ['latin'], variable: '--font-poppins' });
 
