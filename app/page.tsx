@@ -78,7 +78,7 @@ export default function LandingPage() {
 
       const data = await response.json()
       if (response.ok) {
-        setMessage("Thank you for registering! You'll receive your free course soon.")
+        setMessage("Thank you for registering! You&apos;ll receive your free course soon.")
         setName("")
         setEmail("")
       } else {
@@ -102,7 +102,7 @@ export default function LandingPage() {
         transition={{ type: "spring", stiffness: 50 }}
         className="bg-white shadow-sm sticky top-0 z-10"
       >
-        <div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8 flex items-center justify-between pl-8">
           {/* Logo y enlace "Precios" a la izquierda */}
           <div className="flex items-center space-x-4">
             <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
@@ -123,9 +123,9 @@ export default function LandingPage() {
           <div className="relative w-full">
             <motion.button
               onClick={(e) => scrollToSection(e, "registro")}
-              className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition-transform duration-300 text-sm inline-flex items-center absolute top-[-30px] left-[30%]"
-              whileHover={{ scale: 1.05 }} // Solo efecto de ampliación
-              whileTap={{ scale: 0.95 }} // Contracción al hacer clic
+              className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition-transform duration-300 text-sm inline-flex items-center absolute top-[-30px] left-[45%]"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <Mail className="w-4 h-4 mr-2" />
               Join the waitlist
@@ -242,7 +242,7 @@ export default function LandingPage() {
               {
                 title: "Learn and Practice",
                 icon: Target,
-                description: "Apply what you've learned in your daily life with session proposals",
+                description: "Apply what you&apos;ve learned in your daily life with session proposals",
               },
               {
                 title: "Improve with AI",
@@ -285,7 +285,7 @@ export default function LandingPage() {
             Examples of Personal Skills to Develop
           </motion.h2>
           <motion.p variants={fadeInUp} className="text-xl text-center text-purple-600 mb-8 max-w-3xl mx-auto">
-            Discover our wide variety of personal skills to develop. Each day, you'll receive theory, examples, and
+            Discover our wide variety of personal skills to develop. Each day, you&apos;ll receive theory, examples, and
             practical exercises to apply in your daily life.
           </motion.p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -366,7 +366,7 @@ export default function LandingPage() {
               },
               {
                 title: "Personalized Practical Exercises",
-                description: "Apply what you've learned with AI-adapted interactive activities",
+                description: "Apply what you&apos;ve learned with AI-adapted interactive activities",
                 icon: Target,
               },
               {
@@ -404,8 +404,8 @@ export default function LandingPage() {
 
           {/* Mensaje para indicar que la página está en desarrollo */}
           <motion.p variants={fadeInUp} className="text-xl text-purple-600 mb-8 max-w-2xl mx-auto">
-            We're working on something incredible for you. Be among the first to access our platform when it's ready.
-            Register now and receive exclusive updates directly in your email.
+            We&apos;re working on something incredible for you. Be among the first to access our platform when it&apos;s
+            ready. Register now and receive exclusive updates directly in your email.
           </motion.p>
 
           {/* Formulario de registro */}
@@ -528,4 +528,3 @@ export default function LandingPage() {
     </div>
   )
 }
-
