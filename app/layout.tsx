@@ -1,8 +1,7 @@
-import './globals.css';
-import { Inter, Poppins } from 'next/font/google';
-import { useEffect } from 'react';
+"use client";
 
-// Extender el objeto Window para incluir googleTranslateElementInit
+import { useEffect } from "react";
+
 declare global {
   interface Window {
     googleTranslateElementInit: () => void;
@@ -10,37 +9,30 @@ declare global {
   }
 }
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const poppins = Poppins({ weight: ['400', '600', '700'], subsets: ['latin'], variable: '--font-poppins' });
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function Page() {
   useEffect(() => {
-    // Cargar el script de Google Translate
-    const script = document.createElement('script');
-    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    const script = document.createElement("script");
+    script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
     script.async = true;
     document.body.appendChild(script);
 
-    // Inicializar el widget
     window.googleTranslateElementInit = () => {
       new window.google.translate.TranslateElement(
         {
-          pageLanguage: 'en', // Idioma por defecto
-          includedLanguages: 'en,es,fr,de,it', // Idiomas permitidos
+          pageLanguage: "en",
+          includedLanguages: "en,es,fr,de,it",
           layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
         },
-        'google_translate_element'
+        "google_translate_element"
       );
     };
   }, []);
 
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
-      <body>
-        {/* Widget de Google Translate */}
-        <div id="google_translate_element" style={{ position: 'absolute', top: '10px', right: '10px' }}></div>
-        {children}
-      </body>
-    </html>
+    <div>
+      {/* Widget de Google Translate */}
+      <div id="google_translate_element" style={{ position: "absolute", top: "10px", right: "10px" }}></div>
+      {/* Resto de la página */}
+    </div>
   );
 }
