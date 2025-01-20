@@ -203,7 +203,7 @@ export default function LandingPage() {
                 </span>
               </h1>
 
-              <p className="text-lg sm:text-xl md:text-2xl text-slate-300 mb-8 sm:mb-10 md:mb-12 max-w-[90%] sm:max-w-3xl mx-auto leading-relaxed animate-slide-up-delay-1 px-4">
+              <p className="text-lg sm:text-xl md:text-2xl text-slate-300 mb-8 sm:mb-10 md:mb-12 max-w-[90%] sm:max-w-3xl mx-auto leading-relaxed animate-slide-up px-4">
                 Personalized courses for you, daily 10-minute sessions, and transformative results.
                 <br className="hidden sm:block" />
                 Start today and unlock your potential!
@@ -346,7 +346,7 @@ export default function LandingPage() {
               Examples of Personal Skills to Develop
             </h2>
             <p className="text-base sm:text-lg text-[#581c87]/70 px-4">
-              Discover our wide variety of personal skills to develop. Each day, you'll receive theory, examples, and practical exercises to apply in your daily life.
+              Discover our wide variety of personal skills to develop. Each day, you&apos;ll receive theory, examples, and practical exercises to apply in your daily life.
             </p>
           </div>
 
@@ -419,7 +419,7 @@ export default function LandingPage() {
                 Join the Waitlist!
               </h2>
               <p className="text-lg text-white/80 max-w-2xl mx-auto">
-                Be among the first to access our platform when it's ready.
+                Be among the first to access our platform when it&apos;s ready.
               </p>
             </div>
 
