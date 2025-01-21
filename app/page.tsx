@@ -13,7 +13,11 @@ import {
   Target,
   PenTool,
   CheckCircle,
+  Zap,
+  Users,
+  TrendingUp,
 } from "lucide-react"
+import { motion } from "framer-motion"
 
 const features = [
   {
@@ -225,6 +229,72 @@ export default function LandingPage() {
                 </Link>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-20 bg-gradient-to-b from-slate-900 to-purple-900 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] z-0"></div>
+          <div className="absolute -inset-[10px] bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-cyan-500/20 blur-3xl z-0 animate-aurora"></div>
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">About SkillVoo</h2>
+            <p className="text-xl text-purple-200 max-w-3xl mx-auto">
+              SkillVoo is your personal growth companion, designed to help you develop essential skills through daily
+              micro-learning sessions.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: <Zap className="w-8 h-8 text-purple-300" />,
+                title: "Micro-Learning",
+                description: "Short, focused 10-minute daily sessions designed to fit your busy schedule.",
+              },
+              {
+                icon: <Brain className="w-8 h-8 text-purple-300" />,
+                title: "AI-Powered",
+                description: "Personalized learning experience adapting to your progress and preferences.",
+              },
+              {
+                icon: <TrendingUp className="w-8 h-8 text-purple-300" />,
+                title: "Skill Growth",
+                description: "Develop essential personal and professional skills that matter in today's world.",
+              },
+              {
+                icon: <Users className="w-8 h-8 text-purple-300" />,
+                title: "Community",
+                description: "Join a community of lifelong learners and share your growth journey.",
+              },
+            ].map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10"
+              >
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 mb-4">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
+                <p className="text-purple-200">{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-16 text-center">
+            <Link
+              href="#waitlist"
+              className="inline-block px-8 py-4 bg-gradient-to-r from-purple-500 to-fuchsia-500 rounded-full text-white font-semibold text-lg hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-lg"
+            >
+              Start Your Growth Journey
+            </Link>
           </div>
         </div>
       </section>
@@ -512,7 +582,7 @@ export default function LandingPage() {
                   </div>
                   <div className="flex items-center justify-center gap-2 bg-white/5 rounded-lg py-2 px-3">
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.5 14H8c-1.66 0-3-1.34-3-3s1.34-3 3-3l.14.01C8.58 8.28 10.13 7 12 7c2.21 0 4 1.79 4 4h.5c1.38 0 2.5 1.12 2.5 2.5S17.88 16 16.5 16z" />
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.5 14H8c-1.66 0-3-1.34-3-3s1.34-3 3-3l.14.01C8.58 8.28 10.13 7 12 7c2.21 0 4 1.79 4 4h.5c1.38 0 2.5 1.12 2.5 2.5S17.88 16 16.5 16z" />
                     </svg>
                     <span className="text-sm font-medium">Cancel Anytime</span>
                   </div>
