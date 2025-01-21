@@ -224,21 +224,6 @@ export default function LandingPage() {
                   <span className="relative">Join the Waitlist</span>
                 </Link>
               </div>
-
-              <div className="mt-10 sm:mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8 max-w-xs sm:max-w-2xl md:max-w-3xl mx-auto animate-slide-up-delay-3 px-4">
-                {[
-                  { number: "10K+", label: "Active Users" },
-                  { number: "50+", label: "Unique Skills" },
-                  { number: "95%", label: "Success Rate" },
-                ].map((stat, index) => (
-                  <div key={index} className="text-center">
-                    <div className="text-xl sm:text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-400">
-                      {stat.number}
-                    </div>
-                    <div className="text-xs sm:text-sm text-slate-400">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>
@@ -346,7 +331,8 @@ export default function LandingPage() {
               Examples of Personal Skills to Develop
             </h2>
             <p className="text-base sm:text-lg text-[#581c87]/70 px-4">
-              Discover our wide variety of personal skills to develop. Each day, you&apos;ll receive theory, examples, and practical exercises to apply in your daily life.
+              Discover our wide variety of personal skills to develop. Each day, you&apos;ll receive theory, examples,
+              and practical exercises to apply in your daily life.
             </p>
           </div>
 
@@ -558,7 +544,6 @@ export default function LandingPage() {
                   Transforming lives through personalized learning. Join us on the journey of continuous growth and
                   development.
                 </p>
-                
               </div>
 
               <div>
@@ -664,3 +649,4 @@ export default function LandingPage() {
     </div>
   )
 }
+
