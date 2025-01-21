@@ -13,7 +13,9 @@ import {
   Target,
   PenTool,
   CheckCircle,
+  ChevronRight,
 } from "lucide-react"
+import { motion } from "framer-motion"
 
 const features = [
   {
@@ -132,6 +134,29 @@ const Navbar = () => {
   )
 }
 
+const AboutFeatures = [
+  {
+    title: "AI-Powered Learning",
+    description: "Our advanced AI tailors your learning experience, adapting to your progress and preferences.",
+    icon: <Sparkles className="w-8 h-8" />,
+  },
+  {
+    title: "Daily Micro-Sessions",
+    description: "Bite-sized, 10-minute daily sessions designed to fit seamlessly into your busy schedule.",
+    icon: <Clock className="w-8 h-8" />,
+  },
+  {
+    title: "Practical Application",
+    description: "Real-world exercises and challenges to immediately apply your new skills.",
+    icon: <Target className="w-8 h-8" />,
+  },
+  {
+    title: "Progress Tracking",
+    description: "Visualize your growth with detailed analytics and progress reports.",
+    icon: <ChevronRight className="w-8 h-8" />,
+  },
+]
+
 export default function LandingPage() {
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
@@ -244,110 +269,88 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-16 sm:py-24 md:py-32 bg-gradient-to-b from-slate-900 to-white relative overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02] z-0"></div>
-          <div className="absolute top-0 left-1/4 w-48 sm:w-72 h-48 sm:h-72 bg-[#581c87]/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-          <div className="absolute bottom-0 right-1/4 w-48 sm:w-72 h-48 sm:h-72 bg-[#7e22ce]/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-          <div className="absolute center-0 left-1/3 w-48 sm:w-72 h-48 sm:h-72 bg-[#6b21a8]/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+      {/* New About Section */}
+      <section className="py-20 bg-gradient-to-b from-purple-900 to-indigo-900 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] z-0"></div>
+          <div className="absolute -inset-[10px] bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-cyan-500/20 blur-3xl z-0 animate-aurora"></div>
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 relative">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="relative">
-                <div className="absolute -top-8 -left-8 w-32 h-32 bg-gradient-to-r from-violet-500/30 to-fuchsia-500/30 rounded-full blur-2xl"></div>
-                <div className="relative bg-white/10 backdrop-blur-lg rounded-2xl p-6 sm:p-8 border border-white/20">
-                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-purple-900">
-                    What is SkillVoo?
-                  </h2>
-                  <p className="text-lg sm:text-xl text-slate-700 mb-6 leading-relaxed">
-                    SkillVoo is an innovative learning platform that transforms the way you develop personal skills.
-                    Through our AI-powered system, we create personalized daily sessions that adapt to your learning
-                    style and progress.
-                  </p>
-                  <div className="grid grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2 text-purple-900">
-                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                        <span className="font-medium">Personalized Learning</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-purple-900">
-                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                        <span className="font-medium">Daily Sessions</span>
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2 text-purple-900">
-                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                        <span className="font-medium">AI-Powered</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-purple-900">
-                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                        <span className="font-medium">Progress Tracking</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">Discover SkillVoo</h2>
+            <p className="text-xl text-purple-200 max-w-3xl mx-auto">
+              Revolutionizing personal skill development through AI-powered, bite-sized learning experiences.
+            </p>
+          </div>
 
-              <div className="lg:pl-12">
-                <div className="space-y-8">
-                  <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-purple-100">
-                    <h3 className="text-xl font-semibold text-purple-900 mb-3">10-Minute Daily Sessions</h3>
-                    <p className="text-slate-600">
-                      Each day, you&apos;ll receive a carefully crafted 10-minute session that includes theory,
-                      practical exercises, and real-world applications.
-                    </p>
-                  </div>
-                  <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-purple-100">
-                    <h3 className="text-xl font-semibold text-purple-900 mb-3">AI-Driven Personalization</h3>
-                    <p className="text-slate-600">
-                      Our AI system adapts your learning path based on your progress, preferences, and learning style to
-                      ensure maximum effectiveness.
-                    </p>
-                  </div>
-                  <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-purple-100">
-                    <h3 className="text-xl font-semibold text-purple-900 mb-3">Practical Application</h3>
-                    <p className="text-slate-600">
-                      Every session includes practical exercises and challenges that help you apply your new skills in
-                      real-life situations.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-16 sm:mt-20 text-center">
-              <div className="inline-flex items-center justify-center">
-                <span className="px-4 py-2 rounded-full text-sm font-medium bg-purple-100 text-purple-900">
-                  Ready to start your journey?
-                </span>
-              </div>
-              <h3 className="mt-4 text-2xl sm:text-3xl font-bold text-slate-900">
-                Join thousands of users transforming their lives
-              </h3>
-              <div className="mt-6">
-                <Link
-                  href="#waitlist"
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-[#581c87] to-[#7e22ce] text-white font-medium hover:opacity-90 transition-opacity duration-200"
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              {AboutFeatures.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="flex items-start space-x-4"
                 >
-                  Get Started Now
-                  <svg className="w-5 h-5 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14m-7-7l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </Link>
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-purple-700 flex items-center justify-center">
+                    {feature.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
+                    <p className="text-purple-200">{feature.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-3xl blur-xl opacity-50"></div>
+              <div className="relative bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
+                <h3 className="text-2xl font-bold text-white mb-6">Experience SkillVoo</h3>
+                <div className="space-y-4">
+                  <div className="bg-white/5 rounded-lg p-4">
+                    <p className="text-purple-200">
+                      "SkillVoo has transformed the way I learn. The daily micro-sessions are perfect for my busy
+                      schedule!"
+                    </p>
+                    <p className="text-white font-semibold mt-2">- Sarah K., Marketing Professional</p>
+                  </div>
+                  <div className="bg-white/5 rounded-lg p-4">
+                    <p className="text-purple-200">
+                      "The AI-powered personalization is incredible. It&apos;s like having a personal tutor guiding me
+                      every step of the way."
+                    </p>
+                    <p className="text-white font-semibold mt-2">- Alex M., Software Engineer</p>
+                  </div>
+                </div>
+                <div className="mt-8">
+                  <Link
+                    href="#waitlist"
+                    className="block w-full text-center px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full text-white font-semibold hover:opacity-90 transition-opacity duration-300"
+                  >
+                    Join the SkillVoo Experience
+                  </Link>
+                </div>
               </div>
             </div>
+          </div>
+
+          <div className="mt-20 text-center">
+            <h3 className="text-3xl font-bold text-white mb-6">Ready to Transform Your Skills?</h3>
+            <motion.div
+              initial={{ scale: 1 }}
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+            >
+              <Link
+                href="#waitlist"
+                className="inline-block px-8 py-4 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full text-white font-semibold text-lg hover:opacity-90 transition-opacity duration-300"
+              >
+                Get Started Now
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>
