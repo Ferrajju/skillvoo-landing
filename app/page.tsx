@@ -199,17 +199,17 @@ export default function LandingPage() {
               <div className="absolute -top-12 sm:-top-15 right-1/4 w-24 sm:w-32 h-24 sm:h-32 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full blur-2xl"></div>
 
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 md:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 animate-slide-up px-4">
-                Transform Your Life with{" "}
+                Inteligent Courses{" "}
                 <span className="relative inline-block">
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400">
-                    Unique Skills
+                    Real Results
                   </span>
                   <div className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400"></div>
                 </span>
               </h1>
 
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 mb-8 sm:mb-10 md:mb-12 max-w-[90%] sm:max-w-3xl mx-auto leading-relaxed animate-slide-up px-4">
-                Personalized courses for you, daily 10-minute sessions, and transformative results.
+                Learn any Personal Skill you Want.
                 <br className="hidden sm:block" />
                 Start today and unlock your potential!
               </p>
