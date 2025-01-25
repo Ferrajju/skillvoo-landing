@@ -98,8 +98,8 @@ const Navbar = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-slate-200/10
                   ${isScrolled ? "bg-white/95 dark:bg-[#581c87]/95 backdrop-blur-md" : "bg-transparent backdrop-blur-sm"}`}
     >
-      <div className="container mx-auto">
-        <div className="flex items-center justify-between h-20 px-6">
+      <div className="max-w-full mx-auto px-4">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link
             href="/"
