@@ -12,17 +12,23 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
+
+
+import { ThemeProvider } from "next-themes"
+
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <GoogleTranslateWidget />
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }
+
