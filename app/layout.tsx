@@ -1,20 +1,6 @@
-"use client";
-
-import "./globals.css";
-import { Inter, Poppins } from "next/font/google";
-
-
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const poppins = Poppins({
-  weight: ["400", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-poppins",
-});
-
-
-
 import { ThemeProvider } from "next-themes"
+import ThemeToggle from "../components/ThemeToggle"
+import "./globals.css"
 
 export default function RootLayout({
   children,
@@ -25,10 +11,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
+          <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+            <nav className="p-4 flex justify-end">
+              <ThemeToggle />
+            </nav>
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>
   )
 }
-
