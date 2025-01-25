@@ -17,6 +17,7 @@ const ThemeToggle = () => {
         <input id="theme-toggle" type="checkbox" checked={theme === "dark"} onChange={toggleTheme} />
         <div className="slider round">
           <div className="sun-moon">
+            {/* SVG elements for moon dots */}
             <svg id="moon-dot-1" className="moon-dot" viewBox="0 0 100 100">
               <circle cx={50} cy={50} r={50} />
             </svg>
@@ -26,6 +27,8 @@ const ThemeToggle = () => {
             <svg id="moon-dot-3" className="moon-dot" viewBox="0 0 100 100">
               <circle cx={50} cy={50} r={50} />
             </svg>
+
+            {/* SVG elements for light rays */}
             <svg id="light-ray-1" className="light-ray" viewBox="0 0 100 100">
               <circle cx={50} cy={50} r={50} />
             </svg>
@@ -35,6 +38,8 @@ const ThemeToggle = () => {
             <svg id="light-ray-3" className="light-ray" viewBox="0 0 100 100">
               <circle cx={50} cy={50} r={50} />
             </svg>
+
+            {/* SVG elements for clouds */}
             <svg id="cloud-1" className="cloud-dark" viewBox="0 0 100 100">
               <circle cx={50} cy={50} r={50} />
             </svg>
@@ -54,6 +59,8 @@ const ThemeToggle = () => {
               <circle cx={50} cy={50} r={50} />
             </svg>
           </div>
+
+          {/* Stars */}
           <div className="stars">
             <svg id="star-1" className="star" viewBox="0 0 20 20">
               <path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z" />
@@ -75,10 +82,6 @@ const ThemeToggle = () => {
 }
 
 const StyledWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-
   .switch {
     position: relative;
     display: inline-block;
@@ -270,15 +273,12 @@ const StyledWrapper = styled.div`
     0% {
       transform: translateX(0px);
     }
-
     40% {
       transform: translateX(4px);
     }
-
     80% {
       transform: translateX(-4px);
     }
-
     100% {
       transform: translateX(0px);
     }
@@ -338,15 +338,12 @@ const StyledWrapper = styled.div`
     0% {
       transform: scale(1);
     }
-
     40% {
       transform: scale(1.2);
     }
-
     80% {
       transform: scale(0.8);
     }
-
     100% {
       transform: scale(1);
     }

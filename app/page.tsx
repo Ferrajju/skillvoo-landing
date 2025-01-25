@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import {
   BookOpen,
   Mail,
@@ -84,23 +84,14 @@ const validateEmail = (email: string): boolean => {
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY
-      setIsScrolled(scrollPosition > 50)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-slate-200/10
                   ${isScrolled ? "bg-white/95 dark:bg-[#581c87]/95 backdrop-blur-md" : "bg-transparent backdrop-blur-sm"}`}
     >
-      <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
+      <div className="container mx-auto">
+        <div className="flex items-center justify-between h-20 px-6">
+          {/* Logo */}
           <Link
             href="/"
             className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-pink-400"
@@ -108,6 +99,7 @@ const Navbar = () => {
             SkillVoo
           </Link>
 
+          {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
             <a
               href="#how-it-works"
@@ -129,16 +121,12 @@ const Navbar = () => {
             </a>
           </div>
 
-          <div className="flex items-center space-x-4">
+          {/* Right Section */}
+          <div className="flex items-center gap-4">
             <ThemeToggle />
             <a
               href="#waitlist"
-              className={`px-6 py-2.5 rounded-full text-white transition-all duration-200 
-                       ${
-                         isScrolled
-                           ? "bg-purple-600 hover:bg-purple-700 dark:bg-purple-600 dark:hover:bg-purple-700"
-                           : "bg-purple-600/80 hover:bg-purple-600 dark:bg-purple-600/80 dark:hover:bg-purple-600"
-                       }`}
+              className="px-6 py-2.5 rounded-full text-white bg-purple-600 hover:bg-purple-700 transition-colors"
             >
               Join Waitlist
             </a>
@@ -193,7 +181,6 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
       <Navbar />
-
       {/* Hero Section */}
       <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-white via-purple-50 to-white dark:from-gray-900 dark:via-purple-900 dark:to-gray-900 pt-20">
         <div className="absolute inset-0 overflow-hidden">
@@ -502,7 +489,10 @@ export default function LandingPage() {
             </div>
 
             <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-xl border border-white/20">
-              <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
+  {/* ... contenido del formulario ... */}
+</form>
+
                 <div className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-white/90 mb-2">
@@ -578,15 +568,16 @@ export default function LandingPage() {
                     </span>
                   )}
                 </button>
-              </form>
+                {message && (
+    <div
+        className={`mt-4 p-3 rounded-lg ${
+            message.startsWith("Error") ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"
+        }`}
+    >
+        {message}
+    </div>
+)}
 
-              {message && (
-                <div
-                  className={`mt-4 p-3 rounded-lg ${message.startsWith("Error") ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"}`}
-                >
-                  {message}
-                </div>
-              )}
 
               <div className="mt-8 pt-8 border-t border-white/10">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-white/80">
