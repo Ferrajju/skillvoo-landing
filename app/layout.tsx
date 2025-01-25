@@ -2,7 +2,7 @@
 
 import "./globals.css";
 import { Inter, Poppins } from "next/font/google";
-import GoogleTranslateWidget from "@/components/GoogleTranslateWidget";
+
 
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
