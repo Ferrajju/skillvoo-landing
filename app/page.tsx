@@ -256,7 +256,7 @@ export default function LandingPage() {
                     className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 blur-lg opacity-0 
                                group-hover:opacity-75 transition-opacity duration-300"
                   ></span>
-                  <span className="relative">Join the Waitlist</span>
+                  <span className="relative">{t("nav.join-waitlist")}</span>
                 </Link>
               </div>
             </div>
@@ -272,11 +272,8 @@ export default function LandingPage() {
 
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">About SkillVoo</h2>
-            <p className="text-xl text-gray-700 dark:text-purple-200 max-w-3xl mx-auto">
-              SkillVoo is your personal growth companion, designed to help you develop essential skills through daily
-              micro-learning sessions.
-            </p>
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">{t("about.title")}</h2>
+            <p className="text-xl text-gray-700 dark:text-purple-200 max-w-3xl mx-auto">{t("about.description")}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
