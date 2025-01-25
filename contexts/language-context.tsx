@@ -21,14 +21,16 @@ const translations: Record<Language, TranslationType> = {
     "nav.skills": "Skills",
     "nav.join-us": "Join Us",
     "nav.join-waitlist": "Join Waitlist",
-    // Add more translations as needed
+    "language.english": "English",
+    "language.spanish": "Spanish",
   },
   es: {
     "nav.how-it-works": "Cómo Funciona",
     "nav.skills": "Habilidades",
     "nav.join-us": "Únete",
     "nav.join-waitlist": "Únete a la Lista",
-    // Add more translations as needed
+    "language.english": "Inglés",
+    "language.spanish": "Español",
   },
 }
 
@@ -50,7 +52,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   const t = useCallback(
-    (key: string) => {
+    (key: string): string => {
       return translations[language][key] || key
     },
     [language],
