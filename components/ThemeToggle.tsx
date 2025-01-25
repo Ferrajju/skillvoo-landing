@@ -1,11 +1,26 @@
 "use client"
 
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
 import styled from "styled-components"
 
 const ThemeToggle = () => {
   const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+    const handleChange = () => {
+      setTheme(mediaQuery.matches ? "dark" : "light")
+    }
+    mediaQuery.addListener(handleChange)
+    return () => mediaQuery.removeListener(handleChange)
+  }, [setTheme])
+
+  if (!mounted) {
+    return null
+  }
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark")
