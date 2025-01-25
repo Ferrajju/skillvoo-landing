@@ -19,6 +19,7 @@ import {
 } from "lucide-react"
 import { motion } from "framer-motion"
 import ThemeToggle from "../components/ThemeToggle"
+import  LanguageToggle  from "../components/ui/language-toggle"
 
 const features = [
   {
@@ -110,7 +111,26 @@ const Navbar = () => {
 
           {/* Center section with navigation links and button */}
           <div className="flex items-center space-x-8">
-            
+            <div className="hidden md:flex items-center space-x-8">
+              <a
+                href="#how-it-works"
+                className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
+              >
+                How It Works
+              </a>
+              <a
+                href="#skills"
+                className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
+              >
+                Skills
+              </a>
+              <a
+                href="#waitlist"
+                className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
+              >
+                Join Us
+              </a>
+            </div>
 
             {/* Animated Join Waitlist Button */}
             <motion.a
@@ -142,8 +162,9 @@ const Navbar = () => {
             </motion.a>
           </div>
 
-          {/* Theme Toggle */}
-          <div className="flex items-center">
+          {/* Theme and Language Toggles */}
+          <div className="flex items-center space-x-4">
+            <LanguageToggle />
             <ThemeToggle />
           </div>
         </div>
@@ -247,7 +268,6 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
       {/* About Section */}
       <section className="py-20 bg-gradient-to-b from-white to-purple-50 dark:from-gray-900 dark:to-purple-900 relative overflow-hidden">
         <div className="absolute inset-0">
@@ -313,7 +333,6 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
       {/* How It Works Section */}
       <section
         id="how-it-works"
@@ -402,7 +421,6 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
       {/* Skills Section */}
       <section
         id="skills"
@@ -480,7 +498,6 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
       {/* Waitlist Section */}
       <section
         id="waitlist"
@@ -616,8 +633,7 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
+      ; ;
       <footer className="relative bg-gray-900 dark:bg-black text-white overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02]"></div>
