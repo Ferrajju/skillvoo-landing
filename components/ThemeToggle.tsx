@@ -10,40 +10,41 @@ const ThemeToggle = () => {
 
   useEffect(() => {
     setMounted(true)
-    // Set the initial theme based on the system preference
     const initialTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+    console.log("Initial system theme:", initialTheme)
     setTheme(initialTheme)
   }, [setTheme])
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
-    const handleChange = () => {
-      if (theme === "system") {
-        setTheme(mediaQuery.matches ? "dark" : "light")
-      }
+    const handleChange = (e: MediaQueryListEvent) => {
+      const newTheme = e.matches ? "dark" : "light"
+      console.log("System theme changed to:", newTheme)
+      setTheme(newTheme)
     }
     mediaQuery.addListener(handleChange)
     return () => mediaQuery.removeListener(handleChange)
-  }, [theme, setTheme])
+  }, [setTheme])
+
+  useEffect(() => {
+    console.log("Current theme:", theme)
+    console.log("System theme:", systemTheme)
+  }, [theme, systemTheme])
 
   if (!mounted) {
     return null
   }
 
   const toggleTheme = () => {
-    if (theme === "system") {
-      setTheme(systemTheme === "dark" ? "light" : "dark")
-    } else {
-      setTheme(theme === "dark" ? "light" : "dark")
-    }
+    const newTheme = theme === "light" ? "dark" : "light"
+    console.log("Toggling theme to:", newTheme)
+    setTheme(newTheme)
   }
-
-  const currentTheme = theme === "system" ? systemTheme : theme
 
   return (
     <StyledWrapper>
       <label className="switch">
-        <input id="theme-toggle" type="checkbox" checked={currentTheme === "dark"} onChange={toggleTheme} />
+        <input id="theme-toggle" type="checkbox" checked={theme === "dark"} onChange={toggleTheme} />
         <div className="slider round">
           <div className="sun-moon">
             {/* SVG elements for moon dots */}
