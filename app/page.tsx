@@ -113,26 +113,7 @@ const Navbar = () => {
 
           {/* Center section with navigation links and button */}
           <div className="flex items-center space-x-8">
-            <div className="hidden md:flex items-center space-x-8">
-              <a
-                href="#how-it-works"
-                className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
-              >
-                {t("nav.how-it-works")}
-              </a>
-              <a
-                href="#skills"
-                className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
-              >
-                {t("nav.skills")}
-              </a>
-              <a
-                href="#waitlist"
-                className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
-              >
-                {t("nav.join-us")}
-              </a>
-            </div>
+            
 
             {/* Animated Join Waitlist Button */}
             <motion.a
