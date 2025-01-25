@@ -10,25 +10,26 @@ const ThemeToggle = () => {
 
   useEffect(() => {
     setMounted(true)
-    const initialTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
-    console.log("Initial system theme:", initialTheme)
-    setTheme(initialTheme)
-  }, [setTheme])
+    console.log("ThemeToggle mounted")
+  }, [])
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
     const handleChange = (e: MediaQueryListEvent) => {
       const newTheme = e.matches ? "dark" : "light"
       console.log("System theme changed to:", newTheme)
-      setTheme(newTheme)
+      if (theme === "system") {
+        setTheme(newTheme)
+      }
     }
     mediaQuery.addListener(handleChange)
     return () => mediaQuery.removeListener(handleChange)
-  }, [setTheme])
+  }, [theme, setTheme])
 
   useEffect(() => {
     console.log("Current theme:", theme)
     console.log("System theme:", systemTheme)
+    document.documentElement.classList.toggle("dark", theme === "dark")
   }, [theme, systemTheme])
 
   if (!mounted) {
