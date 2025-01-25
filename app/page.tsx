@@ -108,37 +108,62 @@ const Navbar = () => {
             SkillVoo
           </Link>
 
-          {/* Navigation Links */}
-          <div className="hidden md:flex items-center space-x-8">
-            <a
-              href="#how-it-works"
-              className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
-            >
-              How It Works
-            </a>
-            <a
-              href="#skills"
-              className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
-            >
-              Skills
-            </a>
-            <a
+          {/* Center section with navigation links and button */}
+          <div className="flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-8">
+              <a
+                href="#how-it-works"
+                className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
+              >
+                How It Works
+              </a>
+              <a
+                href="#skills"
+                className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
+              >
+                Skills
+              </a>
+              <a
+                href="#waitlist"
+                className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
+              >
+                Join Us
+              </a>
+            </div>
+
+            {/* Animated Join Waitlist Button */}
+            <motion.a
               href="#waitlist"
-              className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
+              className="relative inline-flex items-center justify-center px-6 py-2.5 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-purple-500 rounded-full shadow-md group"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Join Us
-            </a>
+              <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-purple-500 group-hover:translate-x-0 ease">
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  ></path>
+                </svg>
+              </span>
+              <span className="absolute flex items-center justify-center w-full h-full text-purple-500 transition-all duration-300 transform group-hover:translate-x-full ease">
+                Join Waitlist
+              </span>
+              <span className="relative invisible">Join Waitlist</span>
+            </motion.a>
           </div>
 
-          {/* Right Section */}
-          <div className="flex items-center gap-4">
+          {/* Theme Toggle */}
+          <div className="flex items-center">
             <ThemeToggle />
-            <a
-              href="#waitlist"
-              className="px-6 py-2.5 rounded-full text-white bg-purple-600 hover:bg-purple-700 transition-colors"
-            >
-              Join Waitlist
-            </a>
           </div>
         </div>
       </div>
@@ -539,8 +564,7 @@ export default function LandingPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full px-6 py-4 bg-white rounded-xl font-semibold text-purple-600 
-                           hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl
+                  className="w-full px-6 py-4 bg-white rounded-xl font-semibold text-purple-600                           hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl
                            transform hover:-translate-y-0.5 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? (
