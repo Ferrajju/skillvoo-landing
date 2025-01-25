@@ -10,6 +10,10 @@ import { motion } from "framer-motion"
 export function LanguageToggle() {
   const { language, setLanguage, t } = useLanguage()
 
+  const handleLanguageChange = (newLanguage: "en" | "es") => {
+    setLanguage(newLanguage)
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -31,14 +35,14 @@ export function LanguageToggle() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-32">
         <DropdownMenuItem
-          onClick={() => setLanguage("en")}
+          onClick={() => handleLanguageChange("en")}
           className="flex items-center justify-between cursor-pointer"
         >
           <span>{t("language.english")}</span>
           {language === "en" && <span className="text-purple-500">✓</span>}
         </DropdownMenuItem>
         <DropdownMenuItem
-          onClick={() => setLanguage("es")}
+          onClick={() => handleLanguageChange("es")}
           className="flex items-center justify-between cursor-pointer"
         >
           <span>{t("language.spanish")}</span>

@@ -180,6 +180,7 @@ export default function LandingPage() {
   const [name, setName] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState("")
+  const { t } = useLanguage()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -236,19 +237,11 @@ export default function LandingPage() {
               <div className="absolute -top-12 sm:-top-15 right-1/4 w-24 sm:w-32 h-24 sm:h-32 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full blur-2xl"></div>
 
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 md:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-purple-900 to-indigo-900 dark:from-white dark:via-slate-200 dark:to-slate-300 animate-slide-up px-4">
-                Transform Your Life with{" "}
-                <span className="relative inline-block">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-600 via-fuchsia-600 to-cyan-600 dark:from-violet-400 dark:via-fuchsia-400 dark:to-cyan-400">
-                    Unique Skills
-                  </span>
-                  <div className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-violet-600 via-fuchsia-600 to-cyan-600 dark:from-violet-400 dark:via-fuchsia-400 dark:to-cyan-400"></div>
-                </span>
+                {t("hero.title")}
               </h1>
 
               <p className="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-slate-300 mb-8 sm:mb-10 md:mb-12 max-w-[90%] sm:max-w-3xl mx-auto leading-relaxed animate-slide-up px-4">
-                Personalized courses for you, daily 10-minute sessions, and transformative results.
-                <br className="hidden sm:block" />
-                Start today and unlock your potential!
+                {t("hero.description")}
               </p>
 
               <div className="flex justify-center gap-4 animate-slide-up-delay-2 px-4">
@@ -570,7 +563,7 @@ export default function LandingPage() {
                   {isLoading ? (
                     <span className="flex items-center justify-center">
                       <svg
-                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-purple-600"
+                        className="animate-spin -ml1 mr-3 h-5 w-5 text-purple-600"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
