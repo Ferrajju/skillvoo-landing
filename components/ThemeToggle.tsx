@@ -14,7 +14,7 @@ const ThemeToggle = () => {
   return (
     <StyledWrapper>
       <label className="switch">
-        <input id="input" type="checkbox" checked={theme === "dark"} onChange={toggleTheme} />
+        <input id="theme-toggle" type="checkbox" checked={theme === "dark"} onChange={toggleTheme} />
         <div className="slider round">
           <div className="sun-moon">
             <svg id="moon-dot-1" className="moon-dot" viewBox="0 0 100 100">
@@ -82,7 +82,7 @@ const StyledWrapper = styled.div`
     height: 34px;
   }
 
-  .switch #input {
+  .switch #theme-toggle {
     opacity: 0;
     width: 0;
     height: 0;
@@ -114,15 +114,15 @@ const StyledWrapper = styled.div`
     transition: 0.4s;
   }
 
-  #input:checked + .slider {
+  #theme-toggle:checked + .slider {
     background-color: black;
   }
 
-  #input:focus + .slider {
+  #theme-toggle:focus + .slider {
     box-shadow: 0 0 1px #2196f3;
   }
 
-  #input:checked + .slider .sun-moon {
+  #theme-toggle:checked + .slider .sun-moon {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
@@ -137,7 +137,7 @@ const StyledWrapper = styled.div`
     fill: gray;
   }
 
-  #input:checked + .slider .sun-moon .moon-dot {
+  #theme-toggle:checked + .slider .sun-moon .moon-dot {
     opacity: 1;
   }
 
@@ -296,7 +296,7 @@ const StyledWrapper = styled.div`
     animation-iteration-count: infinite;
   }
 
-  #input:checked + .slider .stars {
+  #theme-toggle:checked + .slider .stars {
     -webkit-transform: translateY(0);
     -ms-transform: translateY(0);
     transform: translateY(0);

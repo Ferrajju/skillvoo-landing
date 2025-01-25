@@ -14,10 +14,12 @@ export default function RootLayout({
         <StyledComponentsRegistry>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-              <nav className="fixed top-0 right-0 z-50 p-6">
-                <ThemeToggle />
-              </nav>
-              {children}
+              <header className="fixed top-0 left-0 right-0 z-50">
+                <nav className="container mx-auto px-4 py-4 flex justify-end">
+                  <ThemeToggle />
+                </nav>
+              </header>
+              <main className="pt-16">{children}</main>
             </div>
           </ThemeProvider>
         </StyledComponentsRegistry>
