@@ -14,7 +14,7 @@ export default function RootLayout({
         <StyledComponentsRegistry>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-              <nav className="p-4 flex justify-end">
+              <nav className="fixed top-0 right-0 z-50 p-6">
                 <ThemeToggle />
               </nav>
               {children}
