@@ -1,5 +1,7 @@
 import { ThemeProvider } from "next-themes"
 import StyledComponentsRegistry from "../lib/registry"
+import { LanguageProvider } from "@/contexts/language-context"
+import { LanguageToggle } from "@/components/ui/language-toggle"
 import "./globals.css"
 
 export default function RootLayout({
@@ -12,7 +14,12 @@ export default function RootLayout({
       <body>
         <StyledComponentsRegistry>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            {children}
+            <LanguageProvider>
+              <div className="fixed top-4 right-4 z-50">
+                <LanguageToggle />
+              </div>
+              {children}
+            </LanguageProvider>
           </ThemeProvider>
         </StyledComponentsRegistry>
       </body>

@@ -19,7 +19,8 @@ import {
 } from "lucide-react"
 import { motion } from "framer-motion"
 import ThemeToggle from "../components/ThemeToggle"
-import  LanguageToggle  from "../components/ui/language-toggle"
+import { LanguageToggle } from "@/components/ui/language-toggle"
+import { useLanguage } from "@/contexts/language-context"
 
 const features = [
   {
@@ -84,6 +85,7 @@ const validateEmail = (email: string): boolean => {
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -116,19 +118,19 @@ const Navbar = () => {
                 href="#how-it-works"
                 className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
               >
-                How It Works
+                {t("nav.how-it-works")}
               </a>
               <a
                 href="#skills"
                 className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
               >
-                Skills
+                {t("nav.skills")}
               </a>
               <a
                 href="#waitlist"
                 className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
               >
-                Join Us
+                {t("nav.join-us")}
               </a>
             </div>
 
@@ -156,9 +158,9 @@ const Navbar = () => {
                 </svg>
               </span>
               <span className="absolute flex items-center justify-center w-full h-full text-purple-500 transition-all duration-300 transform group-hover:translate-x-full ease">
-                Join Waitlist
+                {t("nav.join-waitlist")}
               </span>
-              <span className="relative invisible">Join Waitlist</span>
+              <span className="relative invisible">{t("nav.join-waitlist")}</span>
             </motion.a>
           </div>
 
