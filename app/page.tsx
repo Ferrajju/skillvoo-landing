@@ -489,10 +489,7 @@ export default function LandingPage() {
             </div>
 
             <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-xl border border-white/20">
-            <form onSubmit={handleSubmit} className="space-y-6">
-  {/* ... contenido del formulario ... */}
-</form>
-
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-white/90 mb-2">
@@ -569,15 +566,15 @@ export default function LandingPage() {
                   )}
                 </button>
                 {message && (
-    <div
-        className={`mt-4 p-3 rounded-lg ${
-            message.startsWith("Error") ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"
-        }`}
-    >
-        {message}
-    </div>
-)}
-
+                  <div
+                    className={`mt-4 p-3 rounded-lg ${
+                      message.startsWith("Error") ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"
+                    }`}
+                  >
+                    {message}
+                  </div>
+                )}
+              </form>
 
               <div className="mt-8 pt-8 border-t border-white/10">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-white/80">
@@ -595,7 +592,7 @@ export default function LandingPage() {
                   </div>
                   <div className="flex items-center justify-center gap-2 bg-white/5 rounded-lg py-2 px-3">
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M122C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.5 14H8c-1.66 0-3-1.34-3-3s1.34-3 3-3l.14.01C8.58 8.28 10.13 7 12 7c2.21 0 4 1.79 4 4h.5c1.38 0 2.5 1.12 2.5 2.5S17.88 16 16.5 16z" />
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.5 14H8c-1.66 0-3-1.34-3-3s1.34-3 3-3l.14.01C8.58 8.28 10.13 7 12 7c2.21 0 4 1.79 4 4h.5c1.38 0 2.5 1.12 2.5 2.5S17.88 16 16.5 16z" />
                     </svg>
                     <span className="text-sm font-medium">Cancel Anytime</span>
                   </div>
