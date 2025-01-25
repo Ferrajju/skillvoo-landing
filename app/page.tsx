@@ -103,7 +103,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link
             href="/"
-            className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-pink-400"
+            className="relative text-2xl font-bold tracking-tight px-2 py-1 rounded-lg bg-gradient-to-r from-purple-600 via-fuchsia-600 to-indigo-600 dark:from-purple-400 dark:via-fuchsia-400 dark:to-indigo-400 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 after:absolute after:inset-0 after:bg-gradient-to-r after:from-purple-600/10 after:via-fuchsia-600/10 after:to-indigo-600/10 after:rounded-lg after:-z-10"
           >
             SkillVoo
           </Link>
