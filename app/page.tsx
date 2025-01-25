@@ -18,7 +18,6 @@ import {
   TrendingUp,
 } from "lucide-react"
 import { motion } from "framer-motion"
-// import { ThemeProvider } from "next-themes"
 import ThemeToggle from "../components/ThemeToggle"
 
 const features = [
@@ -97,14 +96,14 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-slate-200/10
-                    ${isScrolled ? "bg-[#581c87]/95 dark:bg-gray-900/95 backdrop-blur-md" : "bg-transparent backdrop-blur-sm"}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-gray-200 dark:border-gray-700
+                  ${isScrolled ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-md" : "bg-transparent backdrop-blur-sm"}`}
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           <Link
             href="/"
-            className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#581c87] to-[#7e22ce] dark:from-purple-400 dark:to-pink-400"
+            className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-indigo-400"
           >
             SkillVoo
           </Link>
@@ -112,19 +111,19 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-8">
             <a
               href="#how-it-works"
-              className="text-gray-800 dark:text-white/80 hover:text-[#581c87] dark:hover:text-white transition-colors"
+              className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
             >
               How It Works
             </a>
             <a
               href="#skills"
-              className="text-gray-800 dark:text-white/80 hover:text-[#581c87] dark:hover:text-white transition-colors"
+              className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
             >
               Skills
             </a>
             <a
               href="#waitlist"
-              className="text-gray-800 dark:text-white/80 hover:text-[#581c87] dark:hover:text-white transition-colors"
+              className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
             >
               Join Us
             </a>
@@ -137,8 +136,8 @@ const Navbar = () => {
               className={`px-6 py-2.5 rounded-full text-white transition-all duration-200 
                        ${
                          isScrolled
-                           ? "bg-[#581c87] hover:bg-[#7e22ce] dark:bg-purple-600 dark:hover:bg-purple-700"
-                           : "bg-[#581c87]/80 hover:bg-[#581c87] dark:bg-purple-600/80 dark:hover:bg-purple-600"
+                           ? "bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600"
+                           : "bg-purple-600/80 hover:bg-purple-600 dark:bg-purple-500/80 dark:hover:bg-purple-500"
                        }`}
             >
               Join Waitlist
@@ -192,7 +191,7 @@ export default function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <Navbar />
 
       {/* Hero Section */}
@@ -200,8 +199,8 @@ export default function LandingPage() {
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02] z-0"></div>
           <div className="absolute -inset-[10px] bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-cyan-500/20 blur-3xl z-0 animate-aurora"></div>
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200/10 to-transparent"></div>
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200/10 to-transparent"></div>
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-700 to-transparent"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-700 to-transparent"></div>
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
@@ -211,17 +210,17 @@ export default function LandingPage() {
               <div className="absolute -top-8 sm:-top-10 left-1/4 w-16 sm:w-20 h-16 sm:h-20 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 rounded-full blur-2xl"></div>
               <div className="absolute -top-12 sm:-top-15 right-1/4 w-24 sm:w-32 h-24 sm:h-32 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full blur-2xl"></div>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 md:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 animate-slide-up px-4">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 md:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-purple-900 to-indigo-900 dark:from-gray-100 dark:via-purple-200 dark:to-indigo-200 animate-slide-up px-4">
                 Transform Your Life with{" "}
                 <span className="relative inline-block">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400">
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-600 via-fuchsia-600 to-cyan-600 dark:from-violet-400 dark:via-fuchsia-400 dark:to-cyan-400">
                     Unique Skills
                   </span>
-                  <div className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400"></div>
+                  <div className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-violet-600 via-fuchsia-600 to-cyan-600 dark:from-violet-400 dark:via-fuchsia-400 dark:to-cyan-400"></div>
                 </span>
               </h1>
 
-              <p className="text-lg sm:text-xl md:text-2xl text-slate-300 mb-8 sm:mb-10 md:mb-12 max-w-[90%] sm:max-w-3xl mx-auto leading-relaxed animate-slide-up px-4">
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 sm:mb-10 md:mb-12 max-w-[90%] sm:max-w-3xl mx-auto leading-relaxed animate-slide-up px-4">
                 Personalized courses for you, daily 10-minute sessions, and transformative results.
                 <br className="hidden sm:block" />
                 Start today and unlock your potential!
@@ -230,13 +229,13 @@ export default function LandingPage() {
               <div className="flex justify-center gap-4 animate-slide-up-delay-2 px-4">
                 <Link
                   href="#waitlist"
-                  className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 rounded-full 
+                  className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-violet-600 via-fuchsia-600 to-cyan-600 rounded-full 
                            text-base sm:text-lg font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300
-                           hover:scale-105 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-slate-900
+                           hover:scale-105 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-gray-100 dark:focus:ring-offset-gray-900
                            w-full sm:w-auto max-w-xs mx-auto"
                 >
                   <span
-                    className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 blur-lg opacity-0 
+                    className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-600 to-cyan-600 blur-lg opacity-0 
                                  group-hover:opacity-75 transition-opacity duration-300"
                   ></span>
                   <span className="relative">Join the Waitlist</span>
@@ -256,8 +255,8 @@ export default function LandingPage() {
 
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">About SkillVoo</h2>
-            <p className="text-xl text-purple-200 max-w-3xl mx-auto">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">About SkillVoo</h2>
+            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
               SkillVoo is your personal growth companion, designed to help you develop essential skills through daily
               micro-learning sessions.
             </p>
@@ -266,22 +265,22 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                icon: <Zap className="w-8 h-8 text-purple-300" />,
+                icon: <Zap className="w-8 h-8 text-purple-600 dark:text-purple-400" />,
                 title: "Micro-Learning",
                 description: "Short, focused 10-minute daily sessions designed to fit your busy schedule.",
               },
               {
-                icon: <Brain className="w-8 h-8 text-purple-300" />,
+                icon: <Brain className="w-8 h-8 text-purple-600 dark:text-purple-400" />,
                 title: "AI-Powered",
                 description: "Personalized learning experience adapting to your progress and preferences.",
               },
               {
-                icon: <TrendingUp className="w-8 h-8 text-purple-300" />,
+                icon: <TrendingUp className="w-8 h-8 text-purple-600 dark:text-purple-400" />,
                 title: "Skill Growth",
                 description: "Develop essential personal and professional skills that matter in today's world.",
               },
               {
-                icon: <Users className="w-8 h-8 text-purple-300" />,
+                icon: <Users className="w-8 h-8 text-purple-600 dark:text-purple-400" />,
                 title: "Community",
                 description: "Join a community of lifelong learners and share your growth journey.",
               },
@@ -291,13 +290,13 @@ export default function LandingPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10"
+                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700"
               >
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 mb-4">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900 mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-purple-200">{feature.description}</p>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{feature.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -305,7 +304,7 @@ export default function LandingPage() {
           <div className="mt-16 text-center">
             <Link
               href="#waitlist"
-              className="inline-block px-8 py-4 bg-gradient-to-r from-purple-500 to-fuchsia-500 rounded-full text-white font-semibold text-lg hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-lg"
+              className="inline-block px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full text-white font-semibold text-lg hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-lg"
             >
               Start Your Growth Journey
             </Link>
@@ -319,17 +318,17 @@ export default function LandingPage() {
         className="py-16 sm:py-24 md:py-32 bg-gradient-to-b from-purple-50 to-white dark:from-purple-900 dark:to-gray-900 relative overflow-hidden"
       >
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 left-1/4 w-48 sm:w-72 h-48 sm:h-72 bg-[#581c87]/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-          <div className="absolute top-0 right-1/4 w-48 sm:w-72 h-48 sm:h-72 bg-[#7e22ce]/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-8 left-1/3 w-48 sm:w-72 h-48 sm:h-72 bg-[#6b21a8]/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+          <div className="absolute top-0 left-1/4 w-48 sm:w-72 h-48 sm:h-72 bg-purple-200/30 dark:bg-purple-700/30 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+          <div className="absolute top-0 right-1/4 w-48 sm:w-72 h-48 sm:h-72 bg-indigo-200/30 dark:bg-indigo-700/30 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-8 left-1/3 w-48 sm:w-72 h-48 sm:h-72 bg-pink-200/30 dark:bg-pink-700/30 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 relative">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#581c87] to-[#7e22ce]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-indigo-400">
               How It Works
             </h2>
-            <p className="text-base sm:text-lg text-[#581c87]/70 px-4">
+            <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 px-4">
               Our simple yet powerful process to help you develop new skills and transform your life
             </p>
           </div>
@@ -338,17 +337,17 @@ export default function LandingPage() {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="group relative bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl
-                         transition-all duration-300 transform hover:-translate-y-2 border border-[#581c87]/10"
+                className="group relative bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl
+                         transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700"
               >
                 <div className="relative w-12 sm:w-16 h-12 sm:h-16 mb-6 sm:mb-8 mx-auto">
                   <div
-                    className="absolute inset-0 bg-gradient-to-r from-[#581c87]/10 to-[#7e22ce]/10 
+                    className="absolute inset-0 bg-gradient-to-r from-purple-200 to-indigo-200 dark:from-purple-700 dark:to-indigo-700
                                 rounded-full group-hover:scale-110 transition-transform duration-300"
                   ></div>
                   <div
-                    className="relative w-full h-full flex items-center justify-center text-[#581c87] 
-                                group-hover:text-[#7e22ce] transition-colors duration-300"
+                    className="relative w-full h-full flex items-center justify-center text-purple-600 dark:text-purple-400
+                                group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300"
                   >
                     {feature.icon}
                   </div>
@@ -356,26 +355,30 @@ export default function LandingPage() {
 
                 <div
                   className="absolute top-4 right-4 w-6 sm:w-8 h-6 sm:h-8 rounded-full bg-gradient-to-r 
-                              from-[#581c87]/10 to-[#7e22ce]/10 flex items-center justify-center"
+                              from-purple-200 to-indigo-200 dark:from-purple-700 dark:to-indigo-700 flex items-center justify-center"
                 >
-                  <span className="text-xs sm:text-sm font-semibold text-[#581c87]">{index + 1}</span>
+                  <span className="text-xs sm:text-sm font-semibold text-purple-600 dark:text-purple-400">
+                    {index + 1}
+                  </span>
                 </div>
 
                 <h3
-                  className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800 text-center group-hover:text-[#581c87] 
+                  className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800 dark:text-gray-200 text-center group-hover:text-purple-600 dark:group-hover:text-purple-400
                              transition-colors duration-300"
                 >
                   {feature.title}
                 </h3>
-                <p className="text-sm sm:text-base text-gray-600 text-center leading-relaxed">{feature.description}</p>
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 text-center leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
             ))}
           </div>
 
           <div className="mt-12 sm:mt-16 md:mt-20 text-center px-4">
             <div
-              className="inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-4 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-[#581c87]/5 to-[#7e22ce]/5 
-                          rounded-full text-[#581c87] hover:text-[#7e22ce] transition-colors duration-300"
+              className="inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-4 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-purple-100 to-indigo-100 dark:from-purple-900 dark:to-indigo-900
+                          rounded-full text-purple-600 dark:text-purple-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300"
             >
               <span className="text-sm font-medium">Ready to start your journey?</span>
               <Link
@@ -477,9 +480,9 @@ export default function LandingPage() {
       {/* Waitlist Section */}
       <section
         id="waitlist"
-        className="py-20 relative overflow-hidden bg-gradient-to-br from-[#581c87] to-[#7e22ce] dark:from-purple-800 dark:to-purple-900"
+        className="py-20 relative overflow-hidden bg-gradient-to-br from-purple-600 to-indigo-600 dark:from-purple-800 dark:to-indigo-800"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-[#581c87] to-[#7e22ce]">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-indigo-600">
           <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02]"></div>
           <div className="absolute top-0 left-1/4 w-56 h-56 bg-white/10 rounded-full mix-blend-overlay filter blur-2xl animate-blob"></div>
           <div className="absolute bottom-0 right-1/4 w-56 h-56 bg-white/10 rounded-full mix-blend-overlay filter blur-2xl animate-blob animation-delay-2000"></div>
@@ -569,7 +572,7 @@ export default function LandingPage() {
                   ) : (
                     <span className="flex items-center justify-center">
                       <CheckCircle className="w-5 h-5 mr-2" />
-                      Join the Waitlist
+                      Join theWaitlist
                     </span>
                   )}
                 </button>
@@ -611,7 +614,7 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="relative bg-[#1a0c2c] dark:bg-gray-900 text-white overflow-hidden">
+      <footer className="relative bg-gray-900 dark:bg-black text-white overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02]"></div>
           <div className="absolute bottom-0 left-1/4 w-56 h-56 bg-[#581c87]/10 rounded-full mix-blend-overlay filter blur-2xl"></div>
