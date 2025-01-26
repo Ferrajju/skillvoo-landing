@@ -24,57 +24,57 @@ import { useLanguage } from "@/contexts/language-context"
 
 const features = [
   {
-    title: "Choose a Skill",
-    description: "Select the personal skill you want to develop",
     icon: <BookOpen className="w-8 h-8" />,
+    titleKey: "features.micro-learning.title",
+    descriptionKey: "features.micro-learning.description",
   },
   {
-    title: "Receive Daily Sessions",
-    description: "Get your daily session with everything you need in your email",
-    icon: <Mail className="w-8 h-8" />,
-  },
-  {
-    title: "Learn and Practice",
-    description: "Apply what you have learned in your daily life with session proposals",
     icon: <Brain className="w-8 h-8" />,
+    titleKey: "features.ai-powered.title",
+    descriptionKey: "features.ai-powered.description",
   },
   {
-    title: "Improve with AI",
-    description: "Personalized learning and exercises with artificial intelligence",
-    icon: <Sparkles className="w-8 h-8" />,
+    icon: <TrendingUp className="w-8 h-8" />,
+    titleKey: "features.skill-growth.title",
+    descriptionKey: "features.skill-growth.description",
+  },
+  {
+    icon: <Users className="w-8 h-8" />,
+    titleKey: "features.community.title",
+    descriptionKey: "features.community.description",
   },
 ]
 
 const skills = [
   {
+    icon: <Clock className="w-8 h-8" />,
     title: "Time Management",
     description: "Optimize your productivity and achieve more in less time",
-    icon: <Clock className="w-8 h-8" />,
   },
   {
+    icon: <MessageSquare className="w-8 h-8" />,
     title: "Effective Communication",
     description: "Improve your verbal and non-verbal communication skills",
-    icon: <MessageSquare className="w-8 h-8" />,
   },
   {
+    icon: <Lightbulb className="w-8 h-8" />,
     title: "Mental Influence",
     description: "Learn techniques of psychological influence and persuasion",
-    icon: <Lightbulb className="w-8 h-8" />,
   },
   {
+    icon: <MessageSquare className="w-8 h-8" />,
     title: "Negotiation",
     description: "Develop skills to reach beneficial agreements in any situation",
-    icon: <MessageSquare className="w-8 h-8" />,
   },
   {
+    icon: <PenTool className="w-8 h-8" />,
     title: "Creative Writing",
     description: "Unlock your narrative potential and learn to create captivating stories",
-    icon: <PenTool className="w-8 h-8" />,
   },
   {
+    icon: <Target className="w-8 h-8" />,
     title: "Discipline Development",
     description: "Strengthen your willpower and build solid habits to achieve your goals",
-    icon: <Target className="w-8 h-8" />,
   },
 ]
 
@@ -99,11 +99,10 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-slate-200/10
-                  ${isScrolled ? "bg-white/95 dark:bg-[#581c87]/95 backdrop-blur-md" : "bg-transparent backdrop-blur-sm"}`}
+                ${isScrolled ? "bg-white/95 dark:bg-[#581c87]/95 backdrop-blur-md" : "bg-transparent backdrop-blur-sm"}`}
     >
       <div className="max-w-full mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
           <Link
             href="/"
             className="relative text-2xl font-bold tracking-tight px-2 py-1 rounded-lg bg-gradient-to-r from-purple-600 via-fuchsia-600 to-indigo-600 dark:from-purple-400 dark:via-fuchsia-400 dark:to-indigo-400 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 after:absolute after:inset-0 after:bg-gradient-to-r after:from-purple-600/10 after:via-fuchsia-600/10 after:to-indigo-600/10 after:rounded-lg after:-z-10"
@@ -111,11 +110,28 @@ const Navbar = () => {
             SkillVoo
           </Link>
 
-          {/* Center section with navigation links and button */}
           <div className="flex items-center space-x-8">
-            
+            <div className="hidden md:flex items-center space-x-8">
+              <a
+                href="#how-it-works"
+                className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
+              >
+                {t("nav.how-it-works")}
+              </a>
+              <a
+                href="#skills"
+                className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
+              >
+                {t("nav.skills")}
+              </a>
+              <a
+                href="#waitlist"
+                className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
+              >
+                {t("nav.join-us")}
+              </a>
+            </div>
 
-            {/* Animated Join Waitlist Button */}
             <motion.a
               href="#waitlist"
               className="relative inline-flex items-center justify-center px-6 py-2.5 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-purple-500 rounded-full shadow-md group"
@@ -145,7 +161,6 @@ const Navbar = () => {
             </motion.a>
           </div>
 
-          {/* Theme and Language Toggles */}
           <div className="flex items-center space-x-4">
             <LanguageToggle />
             <ThemeToggle />
@@ -258,28 +273,7 @@ export default function LandingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: <Zap className="w-8 h-8 text-purple-600 dark:text-purple-300" />,
-                title: "Micro-Learning",
-                description: "Short, focused 10-minute daily sessions designed to fit your busy schedule.",
-              },
-              {
-                icon: <Brain className="w-8 h-8 text-purple-600 dark:text-purple-300" />,
-                title: "AI-Powered",
-                description: "Personalized learning experience adapting to your progress and preferences.",
-              },
-              {
-                icon: <TrendingUp className="w-8 h-8 text-purple-600 dark:text-purple-300" />,
-                title: "Skill Growth",
-                description: "Develop essential personal and professional skills that matter in today's world.",
-              },
-              {
-                icon: <Users className="w-8 h-8 text-purple-600 dark:text-purple-300" />,
-                title: "Community",
-                description: "Join a community of lifelong learners and share your growth journey.",
-              },
-            ].map((feature, index) => (
+            {features.map((feature, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -290,8 +284,8 @@ export default function LandingPage() {
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{feature.title}</h3>
-                <p className="text-gray-600 dark:text-purple-200">{feature.description}</p>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{t(feature.titleKey)}</h3>
+                <p className="text-gray-600 dark:text-purple-200">{t(feature.descriptionKey)}</p>
               </motion.div>
             ))}
           </div>
@@ -301,7 +295,7 @@ export default function LandingPage() {
               href="#waitlist"
               className="inline-block px-8 py-4 bg-gradient-to-r from-purple-500 to-fuchsia-500 rounded-full text-white font-semibold text-lg hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-lg"
             >
-              Start Your Growth Journey
+              {t("cta.start-journey")}
             </Link>
           </div>
         </div>
@@ -320,21 +314,42 @@ export default function LandingPage() {
         <div className="container mx-auto px-4 sm:px-6 relative">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-indigo-400">
-              How It Works
+              {t("how-it-works.title")}
             </h2>
             <p className="text-base sm:text-lg text-gray-700 dark:text-purple-200/70 px-4">
-              Our simple yet powerful process to help you develop new skills and transform your life
+              {t("how-it-works.description")}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {features.map((feature, index) => (
+            {[
+              {
+                icon: <BookOpen className="w-8 h-8 text-purple-600 dark:text-purple-300" />,
+                title: "Choose a Skill",
+                description: "Select the personal skill you want to develop",
+              },
+              {
+                icon: <Mail className="w-8 h-8 text-purple-600 dark:text-purple-300" />,
+                title: "Receive Daily Sessions",
+                description: "Get your daily session with everything you need in your email",
+              },
+              {
+                icon: <Brain className="w-8 h-8 text-purple-600 dark:text-purple-300" />,
+                title: "Learn and Practice",
+                description: "Apply what you have learned in your daily life with session proposals",
+              },
+              {
+                icon: <Sparkles className="w-8 h-8 text-purple-600 dark:text-purple-300" />,
+                title: "Improve with AI",
+                description: "Personalized learning and exercises with artificial intelligence",
+              },
+            ].map((feature, index) => (
               <div
                 key={index}
                 className="group relative bg-white dark:bg-white/5 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl
                          transition-all duration-300 transform hover:-translate-y-2 border border-purple-100 dark:border-white/10"
               >
-                <div className="relative w-12 sm:w-16 h-12 sm:h-16 mb-6 sm:mb-8 mx-auto">
+                <div className="relative w-12 sm:w-16 h-12 sm:h-16 mb-6 sm:mb-8">
                   <div
                     className="absolute inset-0 bg-gradient-to-r from-purple-200 to-indigo-200 dark:from-purple-700 dark:to-indigo-700
                                 rounded-full group-hover:scale-110 transition-transform duration-300"
@@ -408,12 +423,9 @@ export default function LandingPage() {
         <div className="container mx-auto px-4 sm:px-6 relative">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-indigo-400">
-              Examples of Personal Skills to Develop
+              {t("skills.title")}
             </h2>
-            <p className="text-base sm:text-lg text-gray-700 dark:text-purple-200/70 px-4">
-              Discover our wide variety of personal skills to develop. Each day, you&apos;ll receive theory, examples,
-              and practical exercises to apply in your daily life.
-            </p>
+            <p className="text-base sm:text-lg text-gray-700 dark:text-purple-200/70 px-4">{t("skills.description")}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -426,11 +438,11 @@ export default function LandingPage() {
                 <div className="relative w-12 sm:w-16 h-12 sm:h-16 mb-6 sm:mb-8">
                   <div
                     className="absolute inset-0 bg-gradient-to-r from-purple-200 to-indigo-200 dark:from-purple-700 dark:to-indigo-700
-                                rounded-full group-hover:scale-110 transition-transform duration-300"
+                              rounded-full group-hover:scale-110 transition-transform duration-300"
                   ></div>
                   <div
                     className="relative w-full h-full flex items-center justify-center text-purple-600 dark:text-purple-400
-                                group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300"
+                              group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300"
                   >
                     {skill.icon}
                   </div>
@@ -438,7 +450,7 @@ export default function LandingPage() {
 
                 <h3
                   className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400
-                             transition-colors duration-300"
+                           transition-colors duration-300"
                 >
                   {skill.title}
                 </h3>
@@ -464,9 +476,7 @@ export default function LandingPage() {
 
           <div className="mt-12 sm:mt-16 md:mt-20 text-center px-4">
             <div className="inline-flex flex-col items-center">
-              <p className="text-sm sm:text-base text-gray-700 dark:text-purple-200/70 mb-6">
-                Want to explore more skills? Join our waitlist to get access to our full library.
-              </p>
+              <p className="text-sm sm:text-base text-gray-700 dark:text-purple-200/70 mb-6">{t("waitlist.cta")}</p>
             </div>
           </div>
         </div>
@@ -486,11 +496,9 @@ export default function LandingPage() {
           <div className="max-w-xl mx-auto">
             <div className="text-center mb-10">
               <h2 className="text-4xl font-bold text-white mb-4 [text-shadow:_0_1px_20px_rgb(255_255_255_/_20%)]">
-                Join the Waitlist!
+                {t("waitlist.title")}
               </h2>
-              <p className="text-lg text-white/80 max-w-2xl mx-auto">
-                Be among the first to access our platform when it&apos;s ready.
-              </p>
+              <p className="text-lg text-white/80 max-w-2xl mx-auto">{t("waitlist.description")}</p>
             </div>
 
             <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-xl border border-white/20">
@@ -536,7 +544,7 @@ export default function LandingPage() {
                   type="submit"
                   disabled={isLoading}
                   className="w-full px-6 py-4 bg-white rounded-xl font-semibold text-purple-600                           hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl
-                           transform hover:-translate-y-0.5 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                         transform hover:-translate-y-0.5 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? (
                     <span className="flex items-center justify-center">
@@ -606,7 +614,6 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-      ; ;
       <footer className="relative bg-gray-900 dark:bg-black text-white overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02]"></div>
@@ -631,7 +638,7 @@ export default function LandingPage() {
 
               <div>
                 <h4 className="text-lg font-semibold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/90">
-                  Quick Links
+                  {t("footer.quick-links")}
                 </h4>
                 <ul className="space-y-4">
                   {["Home", "Courses", "About Us", "Contact"].map((link) => (
@@ -650,7 +657,7 @@ export default function LandingPage() {
 
               <div>
                 <h4 className="text-lg font-semibold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/90">
-                  Contact
+                  {t("footer.contact")}
                 </h4>
                 <ul className="space-y-4">
                   <li className="flex items-center text-white/60">
@@ -686,9 +693,9 @@ export default function LandingPage() {
 
               <div>
                 <h4 className="text-lg font-semibold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/90">
-                  Newsletter
+                  {t("footer.newsletter")}
                 </h4>
-                <p className="text-white/60 mb-4">Subscribe to our newsletter for the latest updates and insights.</p>
+                <p className="text-white/60 mb-4">{t("footer.newsletter.description")}</p>
                 <form className="space-y-3">
                   <input
                     type="email"
@@ -712,7 +719,9 @@ export default function LandingPage() {
           <div className="border-t border-white/10">
             <div className="container mx-auto px-6 py-6">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                <div className="text-white/40 text-sm">© {new Date().getFullYear()} SkillVoo. All rights reserved.</div>
+                <div className="text-white/40 text-sm">
+                  © {new Date().getFullYear()} SkillVoo. {t("footer.rights")}
+                </div>
                 <div className="flex items-center gap-6 text-sm">
                   <Link href="/privacy" className="text-white/40 hover:text-white transition-colors duration-200">
                     Privacy Policy

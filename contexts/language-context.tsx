@@ -31,6 +31,29 @@ const translations: Record<Language, TranslationType> = {
       "SkillVoo is your personal growth companion, designed to help you develop essential skills through daily micro-learning sessions.",
     "waitlist.title": "Join the Waitlist!",
     "waitlist.description": "Be among the first to access our platform when it's ready.",
+    "features.micro-learning.title": "Micro-Learning",
+    "features.micro-learning.description":
+      "Short, focused 10-minute daily sessions designed to fit your busy schedule.",
+    "features.ai-powered.title": "AI-Powered",
+    "features.ai-powered.description": "Personalized learning experience adapting to your progress and preferences.",
+    "features.skill-growth.title": "Skill Growth",
+    "features.skill-growth.description":
+      "Develop essential personal and professional skills that matter in today's world.",
+    "features.community.title": "Community",
+    "features.community.description": "Join a community of lifelong learners and share your growth journey.",
+    "cta.start-journey": "Start Your Growth Journey",
+    "how-it-works.title": "How It Works",
+    "how-it-works.description":
+      "Our simple yet powerful process to help you develop new skills and transform your life",
+    "skills.title": "Examples of Personal Skills to Develop",
+    "skills.description":
+      "Discover our wide variety of personal skills to develop. Each day, you'll receive theory, examples, and practical exercises to apply in your daily life.",
+    "waitlist.cta": "Want to explore more skills? Join our waitlist to get access to our full library.",
+    "footer.quick-links": "Quick Links",
+    "footer.contact": "Contact",
+    "footer.newsletter": "Newsletter",
+    "footer.newsletter.description": "Subscribe to our newsletter for the latest updates and insights.",
+    "footer.rights": "All rights reserved.",
   },
   es: {
     "nav.how-it-works": "Cómo Funciona",
@@ -47,6 +70,33 @@ const translations: Record<Language, TranslationType> = {
       "SkillVoo es tu compañero de crecimiento personal, diseñado para ayudarte a desarrollar habilidades esenciales a través de sesiones diarias de micro-aprendizaje.",
     "waitlist.title": "¡Únete a la Lista de Espera!",
     "waitlist.description": "Sé de los primeros en acceder a nuestra plataforma cuando esté lista.",
+    "features.micro-learning.title": "Micro-Aprendizaje",
+    "features.micro-learning.description":
+      "Sesiones diarias cortas y enfocadas de 10 minutos diseñadas para adaptarse a tu agenda ocupada.",
+    "features.ai-powered.title": "Impulsado por IA",
+    "features.ai-powered.description":
+      "Experiencia de aprendizaje personalizada que se adapta a tu progreso y preferencias.",
+    "features.skill-growth.title": "Crecimiento de Habilidades",
+    "features.skill-growth.description":
+      "Desarrolla habilidades personales y profesionales esenciales que importan en el mundo actual.",
+    "features.community.title": "Comunidad",
+    "features.community.description":
+      "Únete a una comunidad de aprendices de por vida y comparte tu viaje de crecimiento.",
+    "cta.start-journey": "Comienza Tu Viaje de Crecimiento",
+    "how-it-works.title": "Cómo Funciona",
+    "how-it-works.description":
+      "Nuestro proceso simple pero poderoso para ayudarte a desarrollar nuevas habilidades y transformar tu vida",
+    "skills.title": "Ejemplos de Habilidades Personales para Desarrollar",
+    "skills.description":
+      "Descubre nuestra amplia variedad de habilidades personales para desarrollar. Cada día, recibirás teoría, ejemplos y ejercicios prácticos para aplicar en tu vida diaria.",
+    "waitlist.cta":
+      "¿Quieres explorar más habilidades? Únete a nuestra lista de espera para acceder a nuestra biblioteca completa.",
+    "footer.quick-links": "Enlaces Rápidos",
+    "footer.contact": "Contacto",
+    "footer.newsletter": "Boletín",
+    "footer.newsletter.description":
+      "Suscríbete a nuestro boletín para recibir las últimas actualizaciones y conocimientos.",
+    "footer.rights": "Todos los derechos reservados.",
   },
 }
 
