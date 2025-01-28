@@ -18,12 +18,15 @@ import {
   TrendingUp,
 } from "lucide-react"
 import { motion } from "framer-motion"
+import ThemeToggle from "../components/ThemeToggle"
+import { LanguageToggle } from "@/components/ui/language-toggle"
+import { useLanguage } from "@/contexts/language-context"
 
 const features = [
   {
-    title: "Choose a Skill",
-    description: "Select the personal skill you want to develop",
     icon: <BookOpen className="w-8 h-8" />,
+    titleKey: "features.micro-learning.title",
+    descriptionKey: "features.micro-learning.description",
   },
   {
     title: "Receive Daily Sessions",
@@ -31,47 +34,55 @@ const features = [
     icon: <Mail className="w-8 h-8" />,
   },
   {
-    title: "Learn anssd Practice",
+    title: "Learn and Practice",
     description: "Apply what you have learned in your daily life with session proposals",
     icon: <Brain className="w-8 h-8" />,
+    titleKey: "features.ai-powered.title",
+    descriptionKey: "features.ai-powered.description",
   },
   {
-    title: "Improve with AI",
-    description: "Personalized learning and exercises with artificial intelligence",
-    icon: <Sparkles className="w-8 h-8" />,
+    icon: <TrendingUp className="w-8 h-8" />,
+    titleKey: "features.skill-growth.title",
+    descriptionKey: "features.skill-growth.description",
   },
-]
+  {
+    icon: <Users className="w-8 h-8" />,
+    titleKey: "features.community.title",
+    descriptionKey: "features.community.description",
+  },
+];
+
 
 const skills = [
   {
+    icon: <Clock className="w-8 h-8" />,
     title: "Time Management",
     description: "Optimize your productivity and achieve more in less time",
-    icon: <Clock className="w-8 h-8" />,
   },
   {
+    icon: <MessageSquare className="w-8 h-8" />,
     title: "Effective Communication",
     description: "Improve your verbal and non-verbal communication skills",
-    icon: <MessageSquare className="w-8 h-8" />,
   },
   {
+    icon: <Lightbulb className="w-8 h-8" />,
     title: "Mental Influence",
     description: "Learn techniques of psychological influence and persuasion",
-    icon: <Lightbulb className="w-8 h-8" />,
   },
   {
+    icon: <MessageSquare className="w-8 h-8" />,
     title: "Negotiation",
     description: "Develop skills to reach beneficial agreements in any situation",
-    icon: <MessageSquare className="w-8 h-8" />,
   },
   {
+    icon: <PenTool className="w-8 h-8" />,
     title: "Creative Writing",
     description: "Unlock your narrative potential and learn to create captivating stories",
-    icon: <PenTool className="w-8 h-8" />,
   },
   {
+    icon: <Target className="w-8 h-8" />,
     title: "Discipline Development",
     description: "Strengthen your willpower and build solid habits to achieve your goals",
-    icon: <Target className="w-8 h-8" />,
   },
 ]
 
@@ -82,11 +93,11 @@ const validateEmail = (email: string): boolean => {
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY
-      setIsScrolled(scrollPosition > 50)
+      setIsScrolled(window.scrollY > 50)
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -96,40 +107,72 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-slate-200/10
-                    ${isScrolled ? "bg-[#581c87]/95 backdrop-blur-md" : "bg-transparent backdrop-blur-sm"}`}
+                ${isScrolled ? "bg-white/95 dark:bg-[#581c87]/95 backdrop-blur-md" : "bg-transparent backdrop-blur-sm"}`}
     >
-      <div className="container mx-auto px-6">
+      <div className="max-w-full mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <Link
             href="/"
-            className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-300"
+            className="relative text-2xl font-bold tracking-tight px-2 py-1 rounded-lg bg-gradient-to-r from-purple-600 via-fuchsia-600 to-indigo-600 dark:from-purple-400 dark:via-fuchsia-400 dark:to-indigo-400 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 after:absolute after:inset-0 after:bg-gradient-to-r after:from-purple-600/10 after:via-fuchsia-600/10 after:to-indigo-600/10 after:rounded-lg after:-z-10"
           >
             SkillVoo
           </Link>
 
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#how-it-works" className="text-white/80 hover:text-white transition-colors">
-              How It Works
-            </a>
-            <a href="#skills" className="text-white/80 hover:text-white transition-colors">
-              Skills
-            </a>
-            <a href="#waitlist" className="text-white/80 hover:text-white transition-colors">
-              Join Us
-            </a>
+          <div className="flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-8">
+              <a
+                href="#how-it-works"
+                className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
+              >
+                {t("nav.how-it-works")}
+              </a>
+              <a
+                href="#skills"
+                className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
+              >
+                {t("nav.skills")}
+              </a>
+              <a
+                href="#waitlist"
+                className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
+              >
+                {t("nav.join-us")}
+              </a>
+            </div>
+
+            <motion.a
+              href="#waitlist"
+              className="relative inline-flex items-center justify-center px-6 py-2.5 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-purple-500 rounded-full shadow-md group"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-purple-500 group-hover:translate-x-0 ease">
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  ></path>
+                </svg>
+              </span>
+              <span className="absolute flex items-center justify-center w-full h-full text-purple-500 transition-all duration-300 transform group-hover:translate-x-full ease">
+                {t("nav.join-waitlist")}
+              </span>
+              <span className="relative invisible">{t("nav.join-waitlist")}</span>
+            </motion.a>
           </div>
 
-          <a
-            href="#waitlist"
-            className={`px-6 py-2.5 rounded-full text-white transition-all duration-200 
-                     ${
-                       isScrolled
-                         ? "bg-white/20 hover:bg-white/30"
-                         : "bg-white/10 border border-white/20 hover:bg-white/20"
-                     }`}
-          >
-            Join Waitlist
-          </a>
+          <div className="flex items-center space-x-4">
+            <LanguageToggle />
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </nav>
@@ -141,6 +184,7 @@ export default function LandingPage() {
   const [name, setName] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState("")
+  const { t } = useLanguage()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -178,11 +222,10 @@ export default function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
       <Navbar />
-
       {/* Hero Section */}
-      <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900 pt-20">
+      <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-white via-purple-50 to-white dark:from-gray-900 dark:via-purple-900 dark:to-gray-900 pt-20">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02] z-0"></div>
           <div className="absolute -inset-[10px] bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-cyan-500/20 blur-3xl z-0 animate-aurora"></div>
@@ -197,20 +240,12 @@ export default function LandingPage() {
               <div className="absolute -top-8 sm:-top-10 left-1/4 w-16 sm:w-20 h-16 sm:h-20 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 rounded-full blur-2xl"></div>
               <div className="absolute -top-12 sm:-top-15 right-1/4 w-24 sm:w-32 h-24 sm:h-32 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full blur-2xl"></div>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 md:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 animate-slide-up px-4">
-                Transform Your Life with{" "}
-                <span className="relative inline-block">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400">
-                    Unique Skills
-                  </span>
-                  <div className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400"></div>
-                </span>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 md:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-purple-900 to-indigo-900 dark:from-white dark:via-slate-200 dark:to-slate-300 animate-slide-up px-4">
+                {t("hero.title")}
               </h1>
 
-              <p className="text-lg sm:text-xl md:text-2xl text-slate-300 mb-8 sm:mb-10 md:mb-12 max-w-[90%] sm:max-w-3xl mx-auto leading-relaxed animate-slide-up px-4">
-                Personalized courses for you, daily 10-minute sessions, and transformative results.
-                <br className="hidden sm:block" />
-                Start today and unlock your potential!
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-slate-300 mb-8 sm:mb-10 md:mb-12 max-w-[90%] sm:max-w-3xl mx-auto leading-relaxed animate-slide-up px-4">
+                {t("hero.description")}
               </p>
 
               <div className="flex justify-center gap-4 animate-slide-up-delay-2 px-4">
@@ -223,18 +258,17 @@ export default function LandingPage() {
                 >
                   <span
                     className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 blur-lg opacity-0 
-                                 group-hover:opacity-75 transition-opacity duration-300"
+                               group-hover:opacity-75 transition-opacity duration-300"
                   ></span>
-                  <span className="relative">Join the Waitlist</span>
+                  <span className="relative">{t("nav.join-waitlist")}</span>
                 </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
-
       {/* About Section */}
-      <section className="py-20 bg-gradient-to-b from-slate-900 to-purple-900 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-b from-white to-purple-50 dark:from-gray-900 dark:to-purple-900 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] z-0"></div>
           <div className="absolute -inset-[10px] bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-cyan-500/20 blur-3xl z-0 animate-aurora"></div>
@@ -242,36 +276,12 @@ export default function LandingPage() {
 
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">About SkillVoo</h2>
-            <p className="text-xl text-purple-200 max-w-3xl mx-auto">
-              SkillVoo is your personal growth companion, designed to help you develop essential skills through daily
-              micro-learning sessions.
-            </p>
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">{t("about.title")}</h2>
+            <p className="text-xl text-gray-700 dark:text-purple-200 max-w-3xl mx-auto">{t("about.description")}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: <Zap className="w-8 h-8 text-purple-300" />,
-                title: "Micro-Learning",
-                description: "Short, focused 10-minute daily sessions designed to fit your busy schedule.",
-              },
-              {
-                icon: <Brain className="w-8 h-8 text-purple-300" />,
-                title: "AI-Powered",
-                description: "Personalized learning experience adapting to your progress and preferences.",
-              },
-              {
-                icon: <TrendingUp className="w-8 h-8 text-purple-300" />,
-                title: "Skill Growth",
-                description: "Develop essential personal and professional skills that matter in today's world.",
-              },
-              {
-                icon: <Users className="w-8 h-8 text-purple-300" />,
-                title: "Community",
-                description: "Join a community of lifelong learners and share your growth journey.",
-              },
-            ].map((feature, index) => (
+            {features.map((feature, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -282,8 +292,13 @@ export default function LandingPage() {
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-purple-200">{feature.description}</p>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+  {t(feature.titleKey ?? "default.title")}
+</h3>
+<p className="text-gray-600 dark:text-purple-200">
+  {t(feature.descriptionKey ?? "default.description")}
+</p>
+
               </motion.div>
             ))}
           </div>
@@ -293,16 +308,15 @@ export default function LandingPage() {
               href="#waitlist"
               className="inline-block px-8 py-4 bg-gradient-to-r from-purple-500 to-fuchsia-500 rounded-full text-white font-semibold text-lg hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-lg"
             >
-              Start Your Growth Journey
+              {t("cta.start-journey")}
             </Link>
           </div>
         </div>
       </section>
-
       {/* How It Works Section */}
       <section
         id="how-it-works"
-        className="py-16 sm:py-24 md:py-32 bg-gradient-to-b from-white to-[#faf5ff] relative overflow-hidden"
+        className="py-16 sm:py-24 md:py-32 bg-gradient-to-b from-purple-50 to-white dark:from-purple-900 dark:to-gray-900 relative overflow-hidden"
       >
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-0 left-1/4 w-48 sm:w-72 h-48 sm:h-72 bg-[#581c87]/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
@@ -312,29 +326,50 @@ export default function LandingPage() {
 
         <div className="container mx-auto px-4 sm:px-6 relative">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#581c87] to-[#7e22ce]">
-              How It Works
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-indigo-400">
+              {t("how-it-works.title")}
             </h2>
-            <p className="text-base sm:text-lg text-[#581c87]/70 px-4">
-              Our simple yet powerful process to help you develop new skills and transform your life
+            <p className="text-base sm:text-lg text-gray-700 dark:text-purple-200/70 px-4">
+              {t("how-it-works.description")}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {features.map((feature, index) => (
+            {[
+              {
+                icon: <BookOpen className="w-8 h-8 text-purple-600 dark:text-purple-300" />,
+                title: "Choose a Skill",
+                description: "Select the personal skill you want to develop",
+              },
+              {
+                icon: <Mail className="w-8 h-8 text-purple-600 dark:text-purple-300" />,
+                title: "Receive Daily Sessions",
+                description: "Get your daily session with everything you need in your email",
+              },
+              {
+                icon: <Brain className="w-8 h-8 text-purple-600 dark:text-purple-300" />,
+                title: "Learn and Practice",
+                description: "Apply what you have learned in your daily life with session proposals",
+              },
+              {
+                icon: <Sparkles className="w-8 h-8 text-purple-600 dark:text-purple-300" />,
+                title: "Improve with AI",
+                description: "Personalized learning and exercises with artificial intelligence",
+              },
+            ].map((feature, index) => (
               <div
                 key={index}
-                className="group relative bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl
-                         transition-all duration-300 transform hover:-translate-y-2 border border-[#581c87]/10"
+                className="group relative bg-white dark:bg-white/5 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl
+                         transition-all duration-300 transform hover:-translate-y-2 border border-purple-100 dark:border-white/10"
               >
-                <div className="relative w-12 sm:w-16 h-12 sm:h-16 mb-6 sm:mb-8 mx-auto">
+                <div className="relative w-12 sm:w-16 h-12 sm:h-16 mb-6 sm:mb-8">
                   <div
-                    className="absolute inset-0 bg-gradient-to-r from-[#581c87]/10 to-[#7e22ce]/10 
+                    className="absolute inset-0 bg-gradient-to-r from-purple-200 to-indigo-200 dark:from-purple-700 dark:to-indigo-700
                                 rounded-full group-hover:scale-110 transition-transform duration-300"
                   ></div>
                   <div
-                    className="relative w-full h-full flex items-center justify-center text-[#581c87] 
-                                group-hover:text-[#7e22ce] transition-colors duration-300"
+                    className="relative w-full h-full flex items-center justify-center text-purple-600 dark:text-purple-400
+                                group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300"
                   >
                     {feature.icon}
                   </div>
@@ -342,26 +377,30 @@ export default function LandingPage() {
 
                 <div
                   className="absolute top-4 right-4 w-6 sm:w-8 h-6 sm:h-8 rounded-full bg-gradient-to-r 
-                              from-[#581c87]/10 to-[#7e22ce]/10 flex items-center justify-center"
+                              from-purple-200 to-indigo-200 dark:from-purple-700 dark:to-indigo-700 flex items-center justify-center"
                 >
-                  <span className="text-xs sm:text-sm font-semibold text-[#581c87]">{index + 1}</span>
+                  <span className="text-xs sm:text-sm font-semibold text-purple-600 dark:text-purple-400">
+                    {index + 1}
+                  </span>
                 </div>
 
                 <h3
-                  className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800 text-center group-hover:text-[#581c87] 
+                  className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800 dark:text-white text-center group-hover:text-purple-600 dark:group-hover:text-purple-400
                              transition-colors duration-300"
                 >
                   {feature.title}
                 </h3>
-                <p className="text-sm sm:text-base text-gray-600 text-center leading-relaxed">{feature.description}</p>
+                <p className="text-sm sm:text-base text-gray-600 dark:text-purple-200 text-center leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
             ))}
           </div>
 
           <div className="mt-12 sm:mt-16 md:mt-20 text-center px-4">
             <div
-              className="inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-4 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-[#581c87]/5 to-[#7e22ce]/5 
-                          rounded-full text-[#581c87] hover:text-[#7e22ce] transition-colors duration-300"
+              className="inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-4 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-purple-100 to-indigo-100 dark:from-purple-900 dark:to-indigo-900
+                          rounded-full text-purple-600 dark:text-purple-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300"
             >
               <span className="text-sm font-medium">Ready to start your journey?</span>
               <Link
@@ -383,11 +422,10 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
       {/* Skills Section */}
       <section
         id="skills"
-        className="py-16 sm:py-24 md:py-32 bg-gradient-to-b from-[#faf5ff] to-white relative overflow-hidden"
+        className="py-16 sm:py-24 md:py-32 bg-gradient-to-b from-white to-purple-50 dark:from-gray-900 dark:to-purple-900 relative overflow-hidden"
       >
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute bottom-0 right-1/4 w-48 sm:w-72 h-48 sm:h-72 bg-[#581c87]/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
@@ -397,44 +435,43 @@ export default function LandingPage() {
 
         <div className="container mx-auto px-4 sm:px-6 relative">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#581c87] to-[#7e22ce]">
-              Examples of Personal Skills to Develop
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-indigo-400">
+              {t("skills.title")}
             </h2>
-            <p className="text-base sm:text-lg text-[#581c87]/70 px-4">
-              Discover our wide variety of personal skills to develop. Each day, you&apos;ll receive theory, examples,
-              and practical exercises to apply in your daily life.
-            </p>
+            <p className="text-base sm:text-lg text-gray-700 dark:text-purple-200/70 px-4">{t("skills.description")}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {skills.map((skill, index) => (
               <div
                 key={index}
-                className="group relative bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl
-                         transition-all duration-300 transform hover:-translate-y-2 border border-[#581c87]/10"
+                className="group relative bg-white dark:bg-white/5 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl
+                         transition-all duration-300 transform hover:-translate-y-2 border border-purple-100 dark:border-white/10"
               >
                 <div className="relative w-12 sm:w-16 h-12 sm:h-16 mb-6 sm:mb-8">
                   <div
-                    className="absolute inset-0 bg-gradient-to-r from-[#581c87]/10 to-[#7e22ce]/10 
-                                rounded-full group-hover:scale-110 transition-transform duration-300"
+                    className="absolute inset-0 bg-gradient-to-r from-purple-200 to-indigo-200 dark:from-purple-700 dark:to-indigo-700
+                              rounded-full group-hover:scale-110 transition-transform duration-300"
                   ></div>
                   <div
-                    className="relative w-full h-full flex items-center justify-center text-[#581c87] 
-                                group-hover:text-[#7e22ce] transition-colors duration-300"
+                    className="relative w-full h-full flex items-center justify-center text-purple-600 dark:text-purple-400
+                              group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300"
                   >
                     {skill.icon}
                   </div>
                 </div>
 
                 <h3
-                  className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800 group-hover:text-[#581c87] 
-                             transition-colors duration-300"
+                  className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400
+                           transition-colors duration-300"
                 >
                   {skill.title}
                 </h3>
-                <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 sm:mb-6">{skill.description}</p>
+                <p className="text-sm sm:text-base text-gray-600 dark:text-purple-200 leading-relaxed mb-4 sm:mb-6">
+                  {skill.description}
+                </p>
 
-                <div className="flex items-center text-[#581c87] group-hover:text-[#7e22ce] transition-colors duration-300">
+                <div className="flex items-center text-purple-600 dark:text-purple-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300">
                   <span className="text-sm font-semibold">Learn more</span>
                   <svg
                     className="w-3 sm:w-4 h-3 sm:h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
@@ -452,17 +489,17 @@ export default function LandingPage() {
 
           <div className="mt-12 sm:mt-16 md:mt-20 text-center px-4">
             <div className="inline-flex flex-col items-center">
-              <p className="text-sm sm:text-base text-[#581c87]/70 mb-6">
-                Want to explore more skills? Join our waitlist to get access to our full library.
-              </p>
+              <p className="text-sm sm:text-base text-gray-700 dark:text-purple-200/70 mb-6">{t("waitlist.cta")}</p>
             </div>
           </div>
         </div>
       </section>
-
       {/* Waitlist Section */}
-      <section id="waitlist" className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#581c87] to-[#7e22ce]">
+      <section
+        id="waitlist"
+        className="py-20 relative overflow-hidden bg-gradient-to-br from-purple-600 to-indigo-600 dark:from-purple-800 dark:to-purple-900"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-indigo-600 dark:from-purple-800 dark:to-purple-900">
           <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02]"></div>
           <div className="absolute top-0 left-1/4 w-56 h-56 bg-white/10 rounded-full mix-blend-overlay filter blur-2xl animate-blob"></div>
           <div className="absolute bottom-0 right-1/4 w-56 h-56 bg-white/10 rounded-full mix-blend-overlay filter blur-2xl animate-blob animation-delay-2000"></div>
@@ -472,11 +509,9 @@ export default function LandingPage() {
           <div className="max-w-xl mx-auto">
             <div className="text-center mb-10">
               <h2 className="text-4xl font-bold text-white mb-4 [text-shadow:_0_1px_20px_rgb(255_255_255_/_20%)]">
-                Join the Waitlist!
+                {t("waitlist.title")}
               </h2>
-              <p className="text-lg text-white/80 max-w-2xl mx-auto">
-                Be among the first to access our platform when it&apos;s ready.
-              </p>
+              <p className="text-lg text-white/80 max-w-2xl mx-auto">{t("waitlist.description")}</p>
             </div>
 
             <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-xl border border-white/20">
@@ -521,14 +556,13 @@ export default function LandingPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full px-6 py-4 bg-white rounded-xl font-semibold text-[#581c87] 
-                           hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl
-                           transform hover:-translate-y-0.5 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-6 py-4 bg-white rounded-xl font-semibold text-purple-600                           hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl
+                         transform hover:-translate-y-0.5 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? (
                     <span className="flex items-center justify-center">
                       <svg
-                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-[#581c87]"
+                        className="animate-spin -ml1 mr-3 h-5 w-5 text-purple-600"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
@@ -556,15 +590,16 @@ export default function LandingPage() {
                     </span>
                   )}
                 </button>
+                {message && (
+                  <div
+                    className={`mt-4 p-3 rounded-lg ${
+                      message.startsWith("Error") ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"
+                    }`}
+                  >
+                    {message}
+                  </div>
+                )}
               </form>
-
-              {message && (
-                <div
-                  className={`mt-4 p-3 rounded-lg ${message.startsWith("Error") ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"}`}
-                >
-                  {message}
-                </div>
-              )}
 
               <div className="mt-8 pt-8 border-t border-white/10">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-white/80">
@@ -582,7 +617,7 @@ export default function LandingPage() {
                   </div>
                   <div className="flex items-center justify-center gap-2 bg-white/5 rounded-lg py-2 px-3">
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M122C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.5 14H8c-1.66 0-3-1.34-3-3s1.34-3 3-3l.14.01C8.58 8.28 10.13 7 12 7c2.21 0 4 1.79 4 4h.5c1.38 0 2.5 1.12 2.5 2.5S17.88 16 16.5 16z" />
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.5 14H8c-1.66 0-3-1.34-3-3s1.34-3 3-3l.14.01C8.58 8.28 10.13 7 12 7c2.21 0 4 1.79 4 4h.5c1.38 0 2.5 1.12 2.5 2.5S17.88 16 16.5 16z" />
                     </svg>
                     <span className="text-sm font-medium">Cancel Anytime</span>
                   </div>
@@ -592,13 +627,11 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="relative bg-[#1a0c2c] text-white overflow-hidden">
+      <footer className="relative bg-gray-900 dark:bg-black text-white overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02]"></div>
-          <div className="absolute bottom-0 left-1/4 w-56 h-56 bg-[#581c87]/10 rounded-full mix-blend-overlay filter blur-2xl"></div>
-          <div className="absolute top-0 right-1/4 w-56 h-56 bg-[#7e22ce]/10 rounded-full mix-blend-overlay filter blur-2xl"></div>
+          <div className="absolute bottom-0 left-1/4 w-56 h-56 bg-purple-600/10 rounded-full mix-blend-overlay filter blur-2xl"></div>
+          <div className="absolute top-0 right-1/4 w-56 h-56 bg-indigo-600/10 rounded-full mix-blend-overlay filter blur-2xl"></div>
         </div>
 
         <div className="relative">
@@ -618,7 +651,7 @@ export default function LandingPage() {
 
               <div>
                 <h4 className="text-lg font-semibold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/90">
-                  Quick Links
+                  {t("footer.quick-links")}
                 </h4>
                 <ul className="space-y-4">
                   {["Home", "Courses", "About Us", "Contact"].map((link) => (
@@ -627,7 +660,7 @@ export default function LandingPage() {
                         href={`/${link.toLowerCase().replace(" ", "-")}`}
                         className="text-white/60 hover:text-white transition-colors duration-200 flex items-center group"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#581c87] mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-purple-600 mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                         {link}
                       </Link>
                     </li>
@@ -637,11 +670,11 @@ export default function LandingPage() {
 
               <div>
                 <h4 className="text-lg font-semibold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/90">
-                  Contact
+                  {t("footer.contact")}
                 </h4>
                 <ul className="space-y-4">
                   <li className="flex items-center text-white/60">
-                    <svg className="w-5 h-5 mr-3 text-[#581c87]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-5 h-5 mr-3 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -652,7 +685,7 @@ export default function LandingPage() {
                     info@skillvoo.com
                   </li>
                   <li className="flex items-center text-white/60">
-                    <svg className="w-5 h-5 mr-3 text-[#581c87]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-5 h-5 mr-3 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -673,20 +706,20 @@ export default function LandingPage() {
 
               <div>
                 <h4 className="text-lg font-semibold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/90">
-                  Newsletter
+                  {t("footer.newsletter")}
                 </h4>
-                <p className="text-white/60 mb-4">Subscribe to our newsletter for the latest updates and insights.</p>
+                <p className="text-white/60 mb-4">{t("footer.newsletter.description")}</p>
                 <form className="space-y-3">
                   <input
                     type="email"
                     placeholder="Your email"
                     className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white 
-                             placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#581c87]/50
+                             placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-purple-600/50
                              focus:border-transparent transition-all duration-200"
                   />
                   <button
                     type="submit"
-                    className="w-full px-4 py-2.5 bg-gradient-to-r from-[#581c87] to-[#7e22ce] rounded-lg
+                    className="w-full px-4 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg
                              text-white font-medium hover:opacity-90 transition-opacity duration-200"
                   >
                     Subscribe
@@ -699,7 +732,9 @@ export default function LandingPage() {
           <div className="border-t border-white/10">
             <div className="container mx-auto px-6 py-6">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                <div className="text-white/40 text-sm">© {new Date().getFullYear()} SkillVoo. All rights reserved.</div>
+                <div className="text-white/40 text-sm">
+                  © {new Date().getFullYear()} SkillVoo. {t("footer.rights")}
+                </div>
                 <div className="flex items-center gap-6 text-sm">
                   <Link href="/privacy" className="text-white/40 hover:text-white transition-colors duration-200">
                     Privacy Policy

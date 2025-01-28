@@ -1,28 +1,32 @@
-"use client";
-
-import "./globals.css";
-import { Inter, Poppins } from "next/font/google";
-import GoogleTranslateWidget from "@/components/GoogleTranslateWidget";
-
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const poppins = Poppins({
-  weight: ["400", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-poppins",
-});
+import { ThemeProvider } from "next-themes"
+import StyledComponentsRegistry from "../lib/registry"
+import { LanguageProvider } from "@/contexts/language-context"
+import { LanguageToggle } from "@/components/ui/language-toggle"
+import ThemeToggle from "../components/ThemeToggle"
+import "./globals.css"
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
+  console.log("Rendering RootLayout")
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <GoogleTranslateWidget />
-        {children}
+        <StyledComponentsRegistry>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <LanguageProvider>
+              <div className="fixed top-4 right-4 z-50 flex items-center space-x-2">
+                <LanguageToggle />
+                <ThemeToggle />
+              </div>
+              {children}
+            </LanguageProvider>
+          </ThemeProvider>
+        </StyledComponentsRegistry>
       </body>
     </html>
-  );
+  )
 }
+
