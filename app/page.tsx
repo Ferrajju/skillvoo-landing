@@ -1,183 +1,39 @@
 "use client"
 
-import Link from "next/link"
 import { useState, useEffect } from "react"
-import {
-  BookOpen,
-  Mail,
-  Brain,
-  Sparkles,
-  Clock,
-  MessageSquare,
-  Lightbulb,
-  Target,
-  PenTool,
-  CheckCircle,
-  Zap,
-  Users,
-  TrendingUp,
-} from "lucide-react"
 import { motion } from "framer-motion"
+import Link from "next/link"
+import { useLanguage } from "@/contexts/language-context"
 import ThemeToggle from "../components/ThemeToggle"
 import { LanguageToggle } from "@/components/ui/language-toggle"
-import { useLanguage } from "@/contexts/language-context"
 
 const features = [
   {
-    icon: <BookOpen className="w-8 h-8" />,
     titleKey: "features.micro-learning.title",
     descriptionKey: "features.micro-learning.description",
   },
   {
-    title: "Receive Daily Sessions",
-    description: "Get your daily session with everything you need in your email",
-    icon: <Mail className="w-8 h-8" />,
-  },
-  {
-    title: "Learn and Practice",
-    description: "Apply what you have learned in your daily life with session proposals",
-    icon: <Brain className="w-8 h-8" />,
     titleKey: "features.ai-powered.title",
     descriptionKey: "features.ai-powered.description",
   },
   {
-    icon: <TrendingUp className="w-8 h-8" />,
     titleKey: "features.skill-growth.title",
     descriptionKey: "features.skill-growth.description",
   },
   {
-    icon: <Users className="w-8 h-8" />,
     titleKey: "features.community.title",
     descriptionKey: "features.community.description",
   },
-];
-
-
-const skills = [
-  {
-    icon: <Clock className="w-8 h-8" />,
-    title: "Time Management",
-    description: "Optimize your productivity and achieve more in less time",
-  },
-  {
-    icon: <MessageSquare className="w-8 h-8" />,
-    title: "Effective Communication",
-    description: "Improve your verbal and non-verbal communication skills",
-  },
-  {
-    icon: <Lightbulb className="w-8 h-8" />,
-    title: "Mental Influence",
-    description: "Learn techniques of psychological influence and persuasion",
-  },
-  {
-    icon: <MessageSquare className="w-8 h-8" />,
-    title: "Negotiation",
-    description: "Develop skills to reach beneficial agreements in any situation",
-  },
-  {
-    icon: <PenTool className="w-8 h-8" />,
-    title: "Creative Writing",
-    description: "Unlock your narrative potential and learn to create captivating stories",
-  },
-  {
-    icon: <Target className="w-8 h-8" />,
-    title: "Discipline Development",
-    description: "Strengthen your willpower and build solid habits to achieve your goals",
-  },
 ]
 
-const validateEmail = (email: string): boolean => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  return emailRegex.test(email)
-}
-
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const { t } = useLanguage()
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-slate-200/10
-                ${isScrolled ? "bg-white/95 dark:bg-[#581c87]/95 backdrop-blur-md" : "bg-transparent backdrop-blur-sm"}`}
-    >
-      <div className="max-w-full mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
-          <Link
-            href="/"
-            className="relative text-2xl font-bold tracking-tight px-2 py-1 rounded-lg bg-gradient-to-r from-purple-600 via-fuchsia-600 to-indigo-600 dark:from-purple-400 dark:via-fuchsia-400 dark:to-indigo-400 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 after:absolute after:inset-0 after:bg-gradient-to-r after:from-purple-600/10 after:via-fuchsia-600/10 after:to-indigo-600/10 after:rounded-lg after:-z-10"
-          >
-            SkillVoo
-          </Link>
-
-          <div className="flex items-center space-x-8">
-            <div className="hidden md:flex items-center space-x-8">
-              <a
-                href="#how-it-works"
-                className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
-              >
-                {t("nav.how-it-works")}
-              </a>
-              <a
-                href="#skills"
-                className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
-              >
-                {t("nav.skills")}
-              </a>
-              <a
-                href="#waitlist"
-                className="text-gray-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-white transition-colors"
-              >
-                {t("nav.join-us")}
-              </a>
-            </div>
-
-            <motion.a
-              href="#waitlist"
-              className="relative inline-flex items-center justify-center px-6 py-2.5 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-purple-500 rounded-full shadow-md group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-purple-500 group-hover:translate-x-0 ease">
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  ></path>
-                </svg>
-              </span>
-              <span className="absolute flex items-center justify-center w-full h-full text-purple-500 transition-all duration-300 transform group-hover:translate-x-full ease">
-                {t("nav.join-waitlist")}
-              </span>
-              <span className="relative invisible">{t("nav.join-waitlist")}</span>
-            </motion.a>
-          </div>
-
-          <div className="flex items-center space-x-4">
-            <LanguageToggle />
-            <ThemeToggle />
-          </div>
-        </div>
-      </div>
-    </nav>
-  )
-}
+const skills = [
+  "Time Management",
+  "Effective Communication",
+  "Mental Influence",
+  "Negotiation",
+  "Creative Writing",
+  "Discipline Development",
+]
 
 export default function LandingPage() {
   const [email, setEmail] = useState("")
@@ -189,27 +45,22 @@ export default function LandingPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setMessage("")
-
-    if (!validateEmail(email)) {
-      setMessage("Please enter a valid email address.")
-      return
-    }
-
     setIsLoading(true)
+
     try {
       const response = await fetch("/api/waitlist", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email }),
+        body: JSON.stringify({ email, name }),
       })
 
       const data = await response.json()
       if (response.ok) {
-        setMessage("Thank you for registering! We will notify you soon.")
-        setName("")
+        setMessage("Thank you for joining our waitlist!")
         setEmail("")
+        setName("")
       } else {
         setMessage(`Error: ${data.message || "There was a problem processing your request."}`)
       }
@@ -222,532 +73,157 @@ export default function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
-      <Navbar />
-      {/* Hero Section */}
-      <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-white via-purple-50 to-white dark:from-gray-900 dark:via-purple-900 dark:to-gray-900 pt-20">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02] z-0"></div>
-          <div className="absolute -inset-[10px] bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-cyan-500/20 blur-3xl z-0 animate-aurora"></div>
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200/10 to-transparent"></div>
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200/10 to-transparent"></div>
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="max-w-6xl mx-auto text-center">
-            <div className="relative animate-fade-in">
-              <div className="absolute -top-10 sm:-top-20 left-1/2 -translate-x-1/2 w-32 sm:w-40 h-32 sm:h-40 bg-gradient-to-r from-violet-500/30 to-fuchsia-500/30 rounded-full blur-3xl"></div>
-              <div className="absolute -top-8 sm:-top-10 left-1/4 w-16 sm:w-20 h-16 sm:h-20 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 rounded-full blur-2xl"></div>
-              <div className="absolute -top-12 sm:-top-15 right-1/4 w-24 sm:w-32 h-24 sm:h-32 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full blur-2xl"></div>
-
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 md:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-purple-900 to-indigo-900 dark:from-white dark:via-slate-200 dark:to-slate-300 animate-slide-up px-4">
-                {t("hero.title")}
-              </h1>
-
-              <p className="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-slate-300 mb-8 sm:mb-10 md:mb-12 max-w-[90%] sm:max-w-3xl mx-auto leading-relaxed animate-slide-up px-4">
-                {t("hero.description")}
-              </p>
-
-              <div className="flex justify-center gap-4 animate-slide-up-delay-2 px-4">
-                <Link
-                  href="#waitlist"
-                  className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 rounded-full 
-                           text-base sm:text-lg font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300
-                           hover:scale-105 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-slate-900
-                           w-full sm:w-auto max-w-xs mx-auto"
-                >
-                  <span
-                    className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 blur-lg opacity-0 
-                               group-hover:opacity-75 transition-opacity duration-300"
-                  ></span>
-                  <span className="relative">{t("nav.join-waitlist")}</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* About Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-purple-50 dark:from-gray-900 dark:to-purple-900 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] z-0"></div>
-          <div className="absolute -inset-[10px] bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-cyan-500/20 blur-3xl z-0 animate-aurora"></div>
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">{t("about.title")}</h2>
-            <p className="text-xl text-gray-700 dark:text-purple-200 max-w-3xl mx-auto">{t("about.description")}</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10"
-              >
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 mb-4">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-  {t(feature.titleKey ?? "default.title")}
-</h3>
-<p className="text-gray-600 dark:text-purple-200">
-  {t(feature.descriptionKey ?? "default.description")}
-</p>
-
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="mt-16 text-center">
+    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+      <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md">
+        <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
+          <Link href="/" className="text-2xl font-semibold">
+            SkillVoo
+          </Link>
+          <div className="flex items-center space-x-6">
             <Link
-              href="#waitlist"
-              className="inline-block px-8 py-4 bg-gradient-to-r from-purple-500 to-fuchsia-500 rounded-full text-white font-semibold text-lg hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-lg"
+              href="#how-it-works"
+              className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 apple-transition"
             >
-              {t("cta.start-journey")}
+              {t("nav.how-it-works")}
             </Link>
-          </div>
-        </div>
-      </section>
-      {/* How It Works Section */}
-      <section
-        id="how-it-works"
-        className="py-16 sm:py-24 md:py-32 bg-gradient-to-b from-purple-50 to-white dark:from-purple-900 dark:to-gray-900 relative overflow-hidden"
-      >
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 left-1/4 w-48 sm:w-72 h-48 sm:h-72 bg-[#581c87]/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-          <div className="absolute top-0 right-1/4 w-48 sm:w-72 h-48 sm:h-72 bg-[#7e22ce]/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-8 left-1/3 w-48 sm:w-72 h-48 sm:h-72 bg-[#6b21a8]/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 relative">
-          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-indigo-400">
-              {t("how-it-works.title")}
-            </h2>
-            <p className="text-base sm:text-lg text-gray-700 dark:text-purple-200/70 px-4">
-              {t("how-it-works.description")}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {[
-              {
-                icon: <BookOpen className="w-8 h-8 text-purple-600 dark:text-purple-300" />,
-                title: "Choose a Skill",
-                description: "Select the personal skill you want to develop",
-              },
-              {
-                icon: <Mail className="w-8 h-8 text-purple-600 dark:text-purple-300" />,
-                title: "Receive Daily Sessions",
-                description: "Get your daily session with everything you need in your email",
-              },
-              {
-                icon: <Brain className="w-8 h-8 text-purple-600 dark:text-purple-300" />,
-                title: "Learn and Practice",
-                description: "Apply what you have learned in your daily life with session proposals",
-              },
-              {
-                icon: <Sparkles className="w-8 h-8 text-purple-600 dark:text-purple-300" />,
-                title: "Improve with AI",
-                description: "Personalized learning and exercises with artificial intelligence",
-              },
-            ].map((feature, index) => (
-              <div
-                key={index}
-                className="group relative bg-white dark:bg-white/5 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl
-                         transition-all duration-300 transform hover:-translate-y-2 border border-purple-100 dark:border-white/10"
-              >
-                <div className="relative w-12 sm:w-16 h-12 sm:h-16 mb-6 sm:mb-8">
-                  <div
-                    className="absolute inset-0 bg-gradient-to-r from-purple-200 to-indigo-200 dark:from-purple-700 dark:to-indigo-700
-                                rounded-full group-hover:scale-110 transition-transform duration-300"
-                  ></div>
-                  <div
-                    className="relative w-full h-full flex items-center justify-center text-purple-600 dark:text-purple-400
-                                group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300"
-                  >
-                    {feature.icon}
-                  </div>
-                </div>
-
-                <div
-                  className="absolute top-4 right-4 w-6 sm:w-8 h-6 sm:h-8 rounded-full bg-gradient-to-r 
-                              from-purple-200 to-indigo-200 dark:from-purple-700 dark:to-indigo-700 flex items-center justify-center"
-                >
-                  <span className="text-xs sm:text-sm font-semibold text-purple-600 dark:text-purple-400">
-                    {index + 1}
-                  </span>
-                </div>
-
-                <h3
-                  className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800 dark:text-white text-center group-hover:text-purple-600 dark:group-hover:text-purple-400
-                             transition-colors duration-300"
-                >
-                  {feature.title}
-                </h3>
-                <p className="text-sm sm:text-base text-gray-600 dark:text-purple-200 text-center leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 sm:mt-16 md:mt-20 text-center px-4">
-            <div
-              className="inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-4 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-purple-100 to-indigo-100 dark:from-purple-900 dark:to-indigo-900
-                          rounded-full text-purple-600 dark:text-purple-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300"
+            <Link
+              href="#skills"
+              className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300 apple-transition"
             >
-              <span className="text-sm font-medium">Ready to start your journey?</span>
-              <Link
-                href="#waitlist"
-                className="inline-flex items-center gap-1 sm:gap-2 font-semibold hover:gap-3 transition-all duration-300"
-              >
-                Join Now
-                <svg
-                  className="w-3 sm:w-4 h-3 sm:h-4"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="M5 12h14m-7-7l7 7-7 7" />
-                </svg>
+              {t("nav.skills")}
+            </Link>
+            <Link href="#waitlist" className="apple-button">
+              {t("nav.join-waitlist")}
+            </Link>
+            <LanguageToggle />
+            <ThemeToggle />
+          </div>
+        </nav>
+      </header>
+
+      <main>
+        <section className="apple-section text-center">
+          <div className="container mx-auto px-6">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-5xl md:text-6xl font-semibold mb-6"
+            >
+              {t("hero.title")}
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto"
+            >
+              {t("hero.description")}
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <Link href="#waitlist" className="apple-button text-lg px-8 py-4">
+                {t("cta.start-journey")}
               </Link>
-            </div>
+            </motion.div>
           </div>
-        </div>
-      </section>
-      {/* Skills Section */}
-      <section
-        id="skills"
-        className="py-16 sm:py-24 md:py-32 bg-gradient-to-b from-white to-purple-50 dark:from-gray-900 dark:to-purple-900 relative overflow-hidden"
-      >
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute bottom-0 right-1/4 w-48 sm:w-72 h-48 sm:h-72 bg-[#581c87]/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-          <div className="absolute top-1/3 left-1/4 w-48 sm:w-72 h-48 sm:h-72 bg-[#7e22ce]/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-          <div className="absolute top-0 right-1/3 w-48 sm:w-72 h-48 sm:h-72 bg-[#6b21a8]/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
-        </div>
+        </section>
 
-        <div className="container mx-auto px-4 sm:px-6 relative">
-          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-indigo-400">
-              {t("skills.title")}
-            </h2>
-            <p className="text-base sm:text-lg text-gray-700 dark:text-purple-200/70 px-4">{t("skills.description")}</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {skills.map((skill, index) => (
-              <div
-                key={index}
-                className="group relative bg-white dark:bg-white/5 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl
-                         transition-all duration-300 transform hover:-translate-y-2 border border-purple-100 dark:border-white/10"
-              >
-                <div className="relative w-12 sm:w-16 h-12 sm:h-16 mb-6 sm:mb-8">
-                  <div
-                    className="absolute inset-0 bg-gradient-to-r from-purple-200 to-indigo-200 dark:from-purple-700 dark:to-indigo-700
-                              rounded-full group-hover:scale-110 transition-transform duration-300"
-                  ></div>
-                  <div
-                    className="relative w-full h-full flex items-center justify-center text-purple-600 dark:text-purple-400
-                              group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300"
-                  >
-                    {skill.icon}
-                  </div>
-                </div>
-
-                <h3
-                  className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400
-                           transition-colors duration-300"
+        <section id="how-it-works" className="apple-section bg-gray-100 dark:bg-gray-800">
+          <div className="container mx-auto px-6">
+            <h2 className="text-4xl font-semibold text-center mb-12">{t("how-it-works.title")}</h2>
+            <div className="apple-grid">
+              {features.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="apple-card dark:bg-gray-700"
                 >
-                  {skill.title}
-                </h3>
-                <p className="text-sm sm:text-base text-gray-600 dark:text-purple-200 leading-relaxed mb-4 sm:mb-6">
-                  {skill.description}
-                </p>
-
-                <div className="flex items-center text-purple-600 dark:text-purple-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300">
-                  <span className="text-sm font-semibold">Learn more</span>
-                  <svg
-                    className="w-3 sm:w-4 h-3 sm:h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M5 12h14m-7-7l7 7-7 7" />
-                  </svg>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 sm:mt-16 md:mt-20 text-center px-4">
-            <div className="inline-flex flex-col items-center">
-              <p className="text-sm sm:text-base text-gray-700 dark:text-purple-200/70 mb-6">{t("waitlist.cta")}</p>
+                  <h3 className="text-2xl font-semibold mb-4">{t(feature.titleKey)}</h3>
+                  <p className="text-gray-600 dark:text-gray-300">{t(feature.descriptionKey)}</p>
+                </motion.div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
-      {/* Waitlist Section */}
-      <section
-        id="waitlist"
-        className="py-20 relative overflow-hidden bg-gradient-to-br from-purple-600 to-indigo-600 dark:from-purple-800 dark:to-purple-900"
-      >
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-indigo-600 dark:from-purple-800 dark:to-purple-900">
-          <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02]"></div>
-          <div className="absolute top-0 left-1/4 w-56 h-56 bg-white/10 rounded-full mix-blend-overlay filter blur-2xl animate-blob"></div>
-          <div className="absolute bottom-0 right-1/4 w-56 h-56 bg-white/10 rounded-full mix-blend-overlay filter blur-2xl animate-blob animation-delay-2000"></div>
-        </div>
+        </section>
 
-        <div className="container mx-auto px-6 relative">
-          <div className="max-w-xl mx-auto">
-            <div className="text-center mb-10">
-              <h2 className="text-4xl font-bold text-white mb-4 [text-shadow:_0_1px_20px_rgb(255_255_255_/_20%)]">
-                {t("waitlist.title")}
-              </h2>
-              <p className="text-lg text-white/80 max-w-2xl mx-auto">{t("waitlist.description")}</p>
-            </div>
-
-            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-xl border border-white/20">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-white/90 mb-2">
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      placeholder="John Doe"
-                      required
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      className="w-full px-4 py-3.5 bg-white/10 border border-white/20 rounded-xl text-white 
-                               placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/30
-                               focus:border-transparent transition-all duration-200 hover:bg-white/[0.15]"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-white/90 mb-2">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      placeholder="john@example.com"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-4 py-3.5 bg-white/10 border border-white/20 rounded-xl text-white 
-                               placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/30
-                               focus:border-transparent transition-all duration-200 hover:bg-white/[0.15]"
-                    />
-                  </div>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full px-6 py-4 bg-white rounded-xl font-semibold text-purple-600                           hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl
-                         transform hover:-translate-y-0.5 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+        <section id="skills" className="apple-section">
+          <div className="container mx-auto px-6">
+            <h2 className="text-4xl font-semibold text-center mb-12">{t("skills.title")}</h2>
+            <div className="apple-grid">
+              {skills.map((skill, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="apple-card dark:bg-gray-700 text-center"
                 >
-                  {isLoading ? (
-                    <span className="flex items-center justify-center">
-                      <svg
-                        className="animate-spin -ml1 mr-3 h-5 w-5 text-purple-600"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          className="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                        ></circle>
-                        <path
-                          className="opacity-75"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                        ></path>
-                      </svg>
-                      Processing...
-                    </span>
-                  ) : (
-                    <span className="flex items-center justify-center">
-                      <CheckCircle className="w-5 h-5 mr-2" />
-                      Join the Waitlist
-                    </span>
-                  )}
+                  <h3 className="text-xl font-medium">{skill}</h3>
+                </motion.div>
+              ))}
+            </div>
+            <p className="text-center mt-12 text-gray-600 dark:text-gray-300">{t("skills.description")}</p>
+          </div>
+        </section>
+
+        <section id="waitlist" className="apple-section bg-gray-900 text-white">
+          <div className="container mx-auto px-6">
+            <div className="max-w-2xl mx-auto text-center">
+              <h2 className="text-4xl font-semibold mb-6">{t("waitlist.title")}</h2>
+              <p className="text-xl mb-8">{t("waitlist.description")}</p>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Your Name"
+                  required
+                  className="w-full px-4 py-3 rounded-md bg-white text-gray-900"
+                />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your Email"
+                  required
+                  className="w-full px-4 py-3 rounded-md bg-white text-gray-900"
+                />
+                <button type="submit" className="apple-button w-full py-3" disabled={isLoading}>
+                  {isLoading ? "Joining..." : t("nav.join-waitlist")}
                 </button>
-                {message && (
-                  <div
-                    className={`mt-4 p-3 rounded-lg ${
-                      message.startsWith("Error") ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"
-                    }`}
-                  >
-                    {message}
-                  </div>
-                )}
               </form>
-
-              <div className="mt-8 pt-8 border-t border-white/10">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-white/80">
-                  <div className="flex items-center justify-center gap-2 bg-white/5 rounded-lg py-2 px-3">
-                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                    </svg>
-                    <span className="text-sm font-medium">Free Access</span>
-                  </div>
-                  <div className="flex items-center justify-center gap-2 bg-white/5 rounded-lg py-2 px-3">
-                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6z" />
-                    </svg>
-                    <span className="text-sm font-medium">Secure &amp; Private</span>
-                  </div>
-                  <div className="flex items-center justify-center gap-2 bg-white/5 rounded-lg py-2 px-3">
-                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.5 14H8c-1.66 0-3-1.34-3-3s1.34-3 3-3l.14.01C8.58 8.28 10.13 7 12 7c2.21 0 4 1.79 4 4h.5c1.38 0 2.5 1.12 2.5 2.5S17.88 16 16.5 16z" />
-                    </svg>
-                    <span className="text-sm font-medium">Cancel Anytime</span>
-                  </div>
-                </div>
-              </div>
+              {message && (
+                <p className={`mt-4 ${message.startsWith("Error") ? "text-red-400" : "text-green-400"}`}>{message}</p>
+              )}
             </div>
           </div>
-        </div>
-      </section>
-      <footer className="relative bg-gray-900 dark:bg-black text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02]"></div>
-          <div className="absolute bottom-0 left-1/4 w-56 h-56 bg-purple-600/10 rounded-full mix-blend-overlay filter blur-2xl"></div>
-          <div className="absolute top-0 right-1/4 w-56 h-56 bg-indigo-600/10 rounded-full mix-blend-overlay filter blur-2xl"></div>
-        </div>
+        </section>
+      </main>
 
-        <div className="relative">
-          <div className="container mx-auto px-6 py-16">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-              <div className="space-y-6">
-                <Link href="/" className="flex items-center space-x-2">
-                  <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
-                    SkillVoo
-                  </span>
-                </Link>
-                <p className="text-white/60 leading-relaxed">
-                  Transforming lives through personalized learning. Join us on the journey of continuous growth and
-                  development.
-                </p>
-              </div>
-
-              <div>
-                <h4 className="text-lg font-semibold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/90">
-                  {t("footer.quick-links")}
-                </h4>
-                <ul className="space-y-4">
-                  {["Home", "Courses", "About Us", "Contact"].map((link) => (
-                    <li key={link}>
-                      <Link
-                        href={`/${link.toLowerCase().replace(" ", "-")}`}
-                        className="text-white/60 hover:text-white transition-colors duration-200 flex items-center group"
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-purple-600 mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                        {link}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="text-lg font-semibold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/90">
-                  {t("footer.contact")}
-                </h4>
-                <ul className="space-y-4">
-                  <li className="flex items-center text-white/60">
-                    <svg className="w-5 h-5 mr-3 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
-                    info@skillvoo.com
-                  </li>
-                  <li className="flex items-center text-white/60">
-                    <svg className="w-5 h-5 mr-3 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                    </svg>
-                    San Francisco, CA
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="text-lg font-semibold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/90">
-                  {t("footer.newsletter")}
-                </h4>
-                <p className="text-white/60 mb-4">{t("footer.newsletter.description")}</p>
-                <form className="space-y-3">
-                  <input
-                    type="email"
-                    placeholder="Your email"
-                    className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white 
-                             placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-purple-600/50
-                             focus:border-transparent transition-all duration-200"
-                  />
-                  <button
-                    type="submit"
-                    className="w-full px-4 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg
-                             text-white font-medium hover:opacity-90 transition-opacity duration-200"
-                  >
-                    Subscribe
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-white/10">
-            <div className="container mx-auto px-6 py-6">
-              <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                <div className="text-white/40 text-sm">
-                  © {new Date().getFullYear()} SkillVoo. {t("footer.rights")}
-                </div>
-                <div className="flex items-center gap-6 text-sm">
-                  <Link href="/privacy" className="text-white/40 hover:text-white transition-colors duration-200">
-                    Privacy Policy
-                  </Link>
-                  <Link href="/terms" className="text-white/40 hover:text-white transition-colors duration-200">
-                    Terms of Service
-                  </Link>
-                  <Link href="/cookies" className="text-white/40 hover:text-white transition-colors duration-200">
-                    Cookie Policy
-                  </Link>
-                </div>
-              </div>
-            </div>
+      <footer className="bg-gray-100 dark:bg-gray-800 py-12">
+        <div className="container mx-auto px-6 text-center">
+          <p className="text-gray-600 dark:text-gray-300">
+            © {new Date().getFullYear()} SkillVoo. {t("footer.rights")}
+          </p>
+          <div className="mt-4 space-x-4">
+            <Link
+              href="/privacy"
+              className="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white apple-transition"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms"
+              className="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white apple-transition"
+            >
+              Terms of Service
+            </Link>
           </div>
         </div>
       </footer>
