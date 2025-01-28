@@ -31,7 +31,7 @@ const features = [
     icon: <Mail className="w-8 h-8" />,
   },
   {
-    title: "Learn and Practice",
+    title: "Learn anssd Practice",
     description: "Apply what you have learned in your daily life with session proposals",
     icon: <Brain className="w-8 h-8" />,
   },
