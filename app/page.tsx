@@ -166,7 +166,7 @@ export default function LandingPage() {
         setMessage("Thank you for registering! We will notify you soon.")
         setName("")
         setEmail("")
-      } else {
+      } else {sas
         setMessage(`Error: ${data.message || "There was a problem processing your request."}`)
       }
     } catch (error) {
