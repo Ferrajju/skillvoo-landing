@@ -12,7 +12,7 @@ export function LanguageToggle() {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={() => setLanguage(language === "en" ? "es" : "en")}
-      className="px-3 py-1 rounded-full glass-effect text-sm font-medium transition-colors neon-glow"
+      className="px-3 py-1 rounded-full glass-nav text-sm font-medium transition-all duration-300 hover:bg-white/10"
     >
       {language === "en" ? t("language.spanish") : t("language.english")}
     </motion.button>
