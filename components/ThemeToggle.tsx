@@ -1,24 +1,23 @@
 "use client"
-
-import React from "react"
 import { useTheme } from "next-themes"
 import { Moon, Sun } from "lucide-react"
-import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button"
 
 const ThemeToggle = () => {
   const { theme, setTheme } = useTheme()
 
   return (
-    <motion.button
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+    <Button
+      variant="ghost"
+      size="icon"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="p-2 rounded-full glass-nav transition-all duration-300 hover:bg-white/10"
       aria-label="Toggle theme"
+      className="btn"
     >
-      {theme === "dark" ? <Sun className="w-5 h-5 text-white/90" /> : <Moon className="w-5 h-5 text-white/90" />}
-    </motion.button>
+      {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+    </Button>
   )
 }
 
 export default ThemeToggle
+

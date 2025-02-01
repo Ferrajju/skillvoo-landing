@@ -94,7 +94,7 @@ export default function LandingPage() {
               <Link href="#skills" className="text-sm font-medium hover:text-primary">
                 Skills
               </Link>
-              <Button asChild>
+              <Button asChild variant="outline" className="btn">
                 <Link href="#waitlist">{t("nav.join-waitlist")}</Link>
               </Button>
               <LanguageToggle />
@@ -128,7 +128,7 @@ export default function LandingPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <Button asChild size="lg" className="px-8 py-6 text-lg">
+              <Button asChild size="lg" className="px-8 py-6 text-lg btn">
                 <Link href="#waitlist">
                   {t("cta.start-journey")}
                   <ChevronRight className="ml-2 h-4 w-4" />
@@ -213,7 +213,7 @@ export default function LandingPage() {
                   required
                   className="neo-input"
                 />
-                <Button type="submit" className="w-full py-6 text-lg font-semibold" disabled={isLoading}>
+                <Button type="submit" className="w-full py-6 text-lg font-semibold btn" disabled={isLoading}>
                   {isLoading ? "Joining..." : t("nav.join-waitlist")}
                 </Button>
               </form>

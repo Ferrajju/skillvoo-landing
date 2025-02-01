@@ -81,6 +81,26 @@
   .card {
     @apply bg-card text-card-foreground rounded-2xl shadow-xl p-6 transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1;
   }
+
+  .btn {
+    @apply rounded-full transition-all duration-300 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:border-blue-400;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  .btn-outline {
+    @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-accent hover:text-accent-foreground;
+  }
 }
 
 .bg-blur {
