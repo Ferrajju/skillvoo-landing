@@ -83,7 +83,7 @@ export default function LandingPage() {
         <nav className="glass-nav px-6 py-4">
           <div className="container mx-auto flex justify-between items-center">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
-              <Link href="/" className="text-2xl font-semibold text-gradient" data-text="SkillVoo">
+              <Link href="/" className="text-2xl font-semibold text-gradient">
                 SkillVoo
               </Link>
             </motion.div>
@@ -96,13 +96,13 @@ export default function LandingPage() {
             >
               <Link
                 href="#how-it-works"
-                className="text-sm font-medium text-white/70 hover:text-white transition-colors duration-300"
+                className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors duration-300"
               >
                 {t("nav.how-it-works")}
               </Link>
               <Link
                 href="#skills"
-                className="text-sm font-medium text-white/70 hover:text-white transition-colors duration-300"
+                className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors duration-300"
               >
                 {t("nav.skills")}
               </Link>
@@ -125,17 +125,12 @@ export default function LandingPage() {
               transition={{ duration: 1, ease: "easeOut" }}
               className="text-center max-w-4xl mx-auto"
             >
-              <h1
-                className="text-6xl md:text-7xl font-semibold mb-8 text-gradient leading-tight"
-                data-text={t("hero.title")}
-              >
-                {t("hero.title")}
-              </h1>
+              <h1 className="text-6xl md:text-7xl font-semibold mb-8 text-gradient leading-tight">{t("hero.title")}</h1>
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
-                className="text-xl md:text-2xl text-white/70 mb-12 leading-relaxed"
+                className="text-xl md:text-2xl text-gray-600 mb-12 leading-relaxed"
               >
                 {t("hero.description")}
               </motion.p>
@@ -168,7 +163,6 @@ export default function LandingPage() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
               className="text-4xl md:text-5xl font-semibold text-center mb-16 text-gradient"
-              data-text={t("how-it-works.title")}
             >
               {t("how-it-works.title")}
             </motion.h2>
@@ -183,10 +177,8 @@ export default function LandingPage() {
                   viewport={{ once: true }}
                   className="glass-card premium-card p-8"
                 >
-                  <h3 className="text-2xl font-semibold mb-4 text-gradient" data-text={t(feature.titleKey)}>
-                    {t(feature.titleKey)}
-                  </h3>
-                  <p className="text-white/70 leading-relaxed">{t(feature.descriptionKey)}</p>
+                  <h3 className="text-2xl font-semibold mb-4 text-gradient">{t(feature.titleKey)}</h3>
+                  <p className="text-gray-600 leading-relaxed">{t(feature.descriptionKey)}</p>
                 </motion.div>
               ))}
             </div>
@@ -203,7 +195,6 @@ export default function LandingPage() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
               className="text-4xl md:text-5xl font-semibold text-center mb-16 text-gradient"
-              data-text={t("skills.title")}
             >
               {t("skills.title")}
             </motion.h2>
@@ -218,9 +209,7 @@ export default function LandingPage() {
                   viewport={{ once: true }}
                   className="glass-card premium-card p-6 text-center"
                 >
-                  <h3 className="text-xl font-medium text-gradient" data-text={skill}>
-                    {skill}
-                  </h3>
+                  <h3 className="text-xl font-medium text-gradient">{skill}</h3>
                 </motion.div>
               ))}
             </div>
@@ -230,7 +219,7 @@ export default function LandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
-              className="text-center mt-12 text-white/70 max-w-2xl mx-auto"
+              className="text-center mt-12 text-gray-600 max-w-2xl mx-auto"
             >
               {t("skills.description")}
             </motion.p>
@@ -248,10 +237,8 @@ export default function LandingPage() {
               viewport={{ once: true }}
               className="max-w-2xl mx-auto text-center"
             >
-              <h2 className="text-4xl md:text-5xl font-semibold mb-8 text-gradient" data-text={t("waitlist.title")}>
-                {t("waitlist.title")}
-              </h2>
-              <p className="text-xl mb-12 text-white/70">{t("waitlist.description")}</p>
+              <h2 className="text-4xl md:text-5xl font-semibold mb-8 text-gradient">{t("waitlist.title")}</h2>
+              <p className="text-xl mb-12 text-gray-600">{t("waitlist.description")}</p>
 
               <motion.form
                 initial={{ opacity: 0, y: 20 }}
@@ -294,7 +281,7 @@ export default function LandingPage() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
-                    className={`mt-4 ${message.startsWith("Error") ? "text-red-400" : "text-green-400"}`}
+                    className={`mt-4 ${message.startsWith("Error") ? "text-red-500" : "text-green-500"}`}
                   >
                     {message}
                   </motion.p>
@@ -307,14 +294,14 @@ export default function LandingPage() {
 
       <footer className="py-12">
         <div className="container mx-auto px-6 text-center">
-          <p className="text-white/50">
+          <p className="text-gray-500">
             © {new Date().getFullYear()} SkillVoo. {t("footer.rights")}
           </p>
           <div className="mt-4 space-x-8">
-            <Link href="/privacy" className="text-sm text-white/50 hover:text-white transition-colors duration-300">
+            <Link href="/privacy" className="text-sm text-gray-500 hover:text-gray-700 transition-colors duration-300">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-sm text-white/50 hover:text-white transition-colors duration-300">
+            <Link href="/terms" className="text-sm text-gray-500 hover:text-gray-700 transition-colors duration-300">
               Terms of Service
             </Link>
           </div>

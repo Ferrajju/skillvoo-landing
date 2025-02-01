@@ -1,56 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 15, 15, 15;
-  --accent-glow: 220, 220, 220;
-  --accent-bright: 255, 255, 255;
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 250, 250, 250;
+  --accent-color: 100, 100, 255;
+  --text-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-    to bottom,
-    rgb(var(--background-start-rgb)),
-    rgb(var(--background-end-rgb))
-  );
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(to bottom, rgb(var(--background-start-rgb)), rgb(var(--background-end-rgb)));
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   letter-spacing: -0.025em;
 }
 
 .glass-nav {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 24px;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.9);
   transform: translateY(-5px);
-  box-shadow: 
-    0 0 30px rgba(255, 255, 255, 0.05),
-    0 0 60px rgba(255, 255, 255, 0.01);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .premium-button {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgb(var(--accent-bright));
+  background: var(--text-gradient);
+  color: white;
   padding: 14px 28px;
   border-radius: 30px;
   font-size: 1rem;
@@ -61,28 +53,20 @@ body {
 }
 
 .premium-button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    45deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transform: translateX(-100%);
   transition: transform 0.6s;
 }
 
 .premium-button:hover {
-  background: rgba(255, 255, 255, 0.15);
   transform: scale(1.05);
-  box-shadow: 
-    0 0 20px rgba(255, 255, 255, 0.1),
-    0 0 40px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .premium-button:hover::before {
@@ -90,50 +74,27 @@ body {
 }
 
 .premium-input {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   padding: 16px 20px;
   width: 100%;
   color: rgb(var(--foreground-rgb));
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
 }
 
 .premium-input:focus {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 
-    0 0 0 2px rgba(255, 255, 255, 0.05),
-    0 0 30px rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(var(--accent-color), 0.5);
+  box-shadow: 0 0 0 2px rgba(var(--accent-color), 0.1);
 }
 
 .text-gradient {
-  background: linear-gradient(
-    to right,
-    rgb(var(--accent-bright)),
-    rgba(var(--accent-bright), 0.7)
-  );
+  background: var(--text-gradient);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
-  position: relative;
-}
-
-.text-gradient::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
-  background: linear-gradient(
-    to right,
-    rgb(var(--accent-bright)),
-    rgba(var(--accent-bright), 0.7)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: blur(8px);
-  opacity: 0.5;
+  color: transparent;
 }
 
 .floating {
@@ -141,7 +102,8 @@ body {
 }
 
 @keyframes floating {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -161,12 +123,12 @@ body {
 
 .parallax-bg::before,
 .parallax-bg::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(var(--accent-color), 0.05);
   filter: blur(60px);
 }
 
@@ -183,7 +145,8 @@ body {
 }
 
 @keyframes floatGlow {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0, 0);
   }
   25% {
@@ -203,18 +166,13 @@ body {
 }
 
 .premium-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.05),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
   transition: 0.5s;
 }
 
@@ -236,7 +194,7 @@ body {
 .scroll-indicator-dot {
   width: 2px;
   height: 2px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.3);
   border-radius: 50%;
   animation: scrollDot 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
@@ -250,9 +208,10 @@ body {
 }
 
 @keyframes scrollDot {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
-    opacity: 0.5;
+    opacity: 0.3;
   }
   50% {
     transform: translateY(10px);
@@ -262,11 +221,7 @@ body {
 
 .section-divider {
   height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
+  background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.1), transparent);
   margin: 4rem 0;
 }
+
