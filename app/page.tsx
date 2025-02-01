@@ -1,12 +1,11 @@
 "use client"
 
-import { useState } from "react"
+import React, { useState } from "react"
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { useLanguage } from "@/contexts/language-context"
 import ThemeToggle from "../components/ThemeToggle"
 import { LanguageToggle } from "@/components/ui/language-toggle"
-import type React from "react" // Added import for React
 
 const features = [
   {
@@ -82,14 +81,18 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <div className="parallax-bg" />
+      <div className="immersive-bg" />
 
       <header className="fixed w-full top-0 z-50">
-        <nav className="glass-nav px-6 py-4">
+        <nav className="glass-effect px-6 py-4">
           <div className="container mx-auto flex justify-between items-center">
-            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+            >
               <Link href="/" className="text-2xl font-semibold text-gradient">
-                SkillVoo
+                Skillsletter
               </Link>
             </motion.div>
 
@@ -101,17 +104,17 @@ export default function LandingPage() {
             >
               <Link
                 href="#how-it-works"
-                className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors duration-300"
+                className="text-sm font-medium hover:text-gradient transition-all duration-300"
               >
                 {t("nav.how-it-works")}
               </Link>
               <Link
                 href="#skills"
-                className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors duration-300"
+                className="text-sm font-medium hover:text-gradient transition-all duration-300"
               >
                 {t("nav.skills")}
               </Link>
-              <Link href="#waitlist" className="premium-button">
+              <Link href="#waitlist" className="bg-gradient text-foreground px-4 py-2 rounded-full hover:shadow-lg transition-all duration-300">
                 {t("nav.join-waitlist")}
               </Link>
               <LanguageToggle />
@@ -130,12 +133,14 @@ export default function LandingPage() {
               transition={{ duration: 1, ease: "easeOut" }}
               className="text-center max-w-4xl mx-auto"
             >
-              <h1 className="text-6xl md:text-7xl font-semibold mb-8 text-gradient leading-tight">{t("hero.title")}</h1>
+              <h1 className="text-6xl md:text-7xl font-bold mb-8 text-gradient leading-tight">
+                {t("hero.title")}
+              </h1>
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
-                className="text-xl md:text-2xl text-gray-600 mb-12 leading-relaxed"
+                className="text-xl md:text-2xl mb-12 leading-relaxed text-balance"
               >
                 {t("hero.description")}
               </motion.p>
@@ -144,7 +149,7 @@ export default function LandingPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
               >
-                <Link href="#waitlist" className="premium-button">
+                <Link href="#waitlist" className="bg-gradient text-foreground px-8 py-4 rounded-full text-lg font-semibold hover:shadow-lg transition-all duration-300">
                   {t("cta.start-journey")}
                 </Link>
               </motion.div>
@@ -167,7 +172,7 @@ export default function LandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-semibold text-center mb-16 text-gradient"
+              className="text-4xl md:text-5xl font-bold text-center mb-16 text-gradient"
             >
               {t("how-it-works.title")}
             </motion.h2>
@@ -180,13 +185,15 @@ export default function LandingPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="glass-card premium-card p-8"
+                  className="glass-effect p-8 hover-lift"
                 >
                   <div className="flex items-center mb-4">
                     <span className="text-4xl mr-4">{feature.icon}</span>
-                    <h3 className="text-2xl font-semibold text-gradient">{t(feature.titleKey)}</h3>
+                    <h3 className="text-2xl font-semibold text-gradient">
+                      {t(feature.titleKey)}
+                    </h3>
                   </div>
-                  <p className="text-gray-600 leading-relaxed">{t(feature.descriptionKey)}</p>
+                  <p className="text-balance">{t(feature.descriptionKey)}</p>
                 </motion.div>
               ))}
             </div>
@@ -202,7 +209,7 @@ export default function LandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-semibold text-center mb-16 text-gradient"
+              className="text-4xl md:text-5xl font-bold text-center mb-16 text-gradient"
             >
               {t("skills.title")}
             </motion.h2>
@@ -215,9 +222,11 @@ export default function LandingPage() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="glass-card premium-card p-6 text-center"
+                  className="glass-effect p-6 text-center hover-lift"
                 >
-                  <h3 className="text-xl font-medium text-gradient">{skill}</h3>
+                  <h3 className="text-xl font-medium text-gradient">
+                    {skill}
+                  </h3>
                 </motion.div>
               ))}
             </div>
@@ -227,7 +236,7 @@ export default function LandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
-              className="text-center mt-12 text-gray-600 max-w-2xl mx-auto"
+              className="text-center mt-12 text-lg max-w-2xl mx-auto text-balance"
             >
               {t("skills.description")}
             </motion.p>
@@ -245,8 +254,10 @@ export default function LandingPage() {
               viewport={{ once: true }}
               className="max-w-2xl mx-auto text-center"
             >
-              <h2 className="text-4xl md:text-5xl font-semibold mb-8 text-gradient">{t("waitlist.title")}</h2>
-              <p className="text-xl mb-12 text-gray-600">{t("waitlist.description")}</p>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gradient">
+                {t("waitlist.title")}
+              </h2>
+              <p className="text-xl mb-12 text-balance">{t("waitlist.description")}</p>
 
               <motion.form
                 initial={{ opacity: 0, y: 20 }}
@@ -262,7 +273,7 @@ export default function LandingPage() {
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Your Name"
                   required
-                  className="premium-input"
+                  className="w-full p-3 glass-effect rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 />
                 <input
                   type="email"
@@ -270,11 +281,11 @@ export default function LandingPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your Email"
                   required
-                  className="premium-input"
+                  className="w-full p-3 glass-effect rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 />
                 <motion.button
                   type="submit"
-                  className="premium-button w-full py-4 text-lg"
+                  className="w-full bg-gradient text-foreground py-3 rounded-lg text-lg font-semibold hover:shadow-lg transition-all duration-300"
                   disabled={isLoading}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -300,16 +311,16 @@ export default function LandingPage() {
         </section>
       </main>
 
-      <footer className="py-12">
+      <footer className="py-12 glass-effect mt-12">
         <div className="container mx-auto px-6 text-center">
-          <p className="text-gray-500">
-            © {new Date().getFullYear()} SkillVoo. {t("footer.rights")}
+          <p className="text-sm opacity-70">
+            © {new Date().getFullYear()} Skillsletter. {t("footer.rights")}
           </p>
           <div className="mt-4 space-x-8">
-            <Link href="/privacy" className="text-sm text-gray-500 hover:text-gray-700 transition-colors duration-300">
+            <Link href="/privacy" className="text-sm hover:text-gradient transition-colors duration-300">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-sm text-gray-500 hover:text-gray-700 transition-colors duration-300">
+            <Link href="/terms" className="text-sm hover:text-gradient transition-colors duration-300">
               Terms of Service
             </Link>
           </div>
@@ -318,4 +329,3 @@ export default function LandingPage() {
     </div>
   )
 }
-
