@@ -6,23 +6,28 @@ import Link from "next/link"
 import { useLanguage } from "@/contexts/language-context"
 import ThemeToggle from "../components/ThemeToggle"
 import { LanguageToggle } from "@/components/ui/language-toggle"
+import type React from "react" // Added import for React
 
 const features = [
   {
     titleKey: "features.micro-learning.title",
     descriptionKey: "features.micro-learning.description",
+    icon: "⏱️",
   },
   {
     titleKey: "features.ai-powered.title",
     descriptionKey: "features.ai-powered.description",
+    icon: "🧠",
   },
   {
     titleKey: "features.skill-growth.title",
     descriptionKey: "features.skill-growth.description",
+    icon: "📈",
   },
   {
     titleKey: "features.community.title",
     descriptionKey: "features.community.description",
+    icon: "🤝",
   },
 ]
 
@@ -177,7 +182,10 @@ export default function LandingPage() {
                   viewport={{ once: true }}
                   className="glass-card premium-card p-8"
                 >
-                  <h3 className="text-2xl font-semibold mb-4 text-gradient">{t(feature.titleKey)}</h3>
+                  <div className="flex items-center mb-4">
+                    <span className="text-4xl mr-4">{feature.icon}</span>
+                    <h3 className="text-2xl font-semibold text-gradient">{t(feature.titleKey)}</h3>
+                  </div>
                   <p className="text-gray-600 leading-relaxed">{t(feature.descriptionKey)}</p>
                 </motion.div>
               ))}
