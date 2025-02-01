@@ -14,22 +14,22 @@ const features = [
   {
     titleKey: "features.micro-learning.title",
     descriptionKey: "features.micro-learning.description",
-    icon: <Clock className="w-8 h-8" />,
+    icon: <Clock className="w-12 h-12" />,
   },
   {
     titleKey: "features.ai-powered.title",
     descriptionKey: "features.ai-powered.description",
-    icon: <Brain className="w-8 h-8" />,
+    icon: <Brain className="w-12 h-12" />,
   },
   {
     titleKey: "features.skill-growth.title",
     descriptionKey: "features.skill-growth.description",
-    icon: <TrendingUp className="w-8 h-8" />,
+    icon: <TrendingUp className="w-12 h-12" />,
   },
   {
     titleKey: "features.community.title",
     descriptionKey: "features.community.description",
-    icon: <Users className="w-8 h-8" />,
+    icon: <Users className="w-12 h-12" />,
   },
 ]
 
@@ -138,7 +138,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section id="features" className="py-32">
+        <section id="features" className="py-32 bg-secondary/30">
           <div className="container mx-auto px-6">
             <h2 className="section-title text-center mb-16 gradient-text">{t("how-it-works.title")}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -149,13 +149,11 @@ export default function LandingPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="card flex items-start space-x-4"
+                  className="card flex flex-col items-center text-center p-8 bg-card/80 backdrop-blur-sm"
                 >
-                  <div className="text-primary">{feature.icon}</div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">{t(feature.titleKey)}</h3>
-                    <p className="text-muted-foreground">{t(feature.descriptionKey)}</p>
-                  </div>
+                  <div className="text-primary mb-6">{feature.icon}</div>
+                  <h3 className="text-2xl font-semibold mb-4">{t(feature.titleKey)}</h3>
+                  <p className="text-muted-foreground">{t(feature.descriptionKey)}</p>
                 </motion.div>
               ))}
             </div>
