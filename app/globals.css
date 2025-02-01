@@ -5,49 +5,43 @@
 @tailwind utilities;
 
 :root {
-  --color-bg: 250, 250, 250;
-  --color-text: 33, 33, 33;
-  --color-primary: 0, 122, 255;
-  --color-secondary: 88, 86, 214;
-  --color-accent: 255, 149, 0;
-  --color-muted: 142, 142, 147;
+  --color-bg: 255, 255, 255;
+  --color-text: 0, 0, 0;
+  --color-primary: 0, 0, 0;
+  --color-secondary: 128, 128, 128;
+  --color-accent: 200, 200, 200;
 }
 
 .dark {
   --color-bg: 0, 0, 0;
   --color-text: 255, 255, 255;
-  --color-primary: 10, 132, 255;
-  --color-secondary: 94, 92, 230;
-  --color-accent: 255, 159, 10;
-  --color-muted: 142, 142, 147;
+  --color-primary: 255, 255, 255;
+  --color-secondary: 200, 200, 200;
+  --color-accent: 128, 128, 128;
 }
 
 body {
   color: rgb(var(--color-text));
   background-color: rgb(var(--color-bg));
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600;
-}
-
-.glass-effect {
-  @apply backdrop-blur-lg bg-white bg-opacity-10 border border-white border-opacity-20 shadow-lg;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-300 dark:to-white;
 }
 
 .neo-button {
-  @apply px-6 py-3 rounded-full font-semibold text-white bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1;
+  @apply px-6 py-3 rounded-full font-semibold text-white bg-black dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1;
 }
 
 .neo-input {
-  @apply w-full p-4 rounded-full bg-white bg-opacity-20 border border-white border-opacity-20 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all duration-300;
+  @apply w-full p-4 rounded-full bg-white dark:bg-black border border-gray-300 dark:border-gray-700 focus:border-black dark:focus:border-white focus:ring-2 focus:ring-black dark:focus:ring-white focus:outline-none transition-all duration-300;
 }
 
 .section-title {
-  @apply text-4xl md:text-5xl font-bold mb-8 gradient-text;
+  @apply text-4xl md:text-5xl font-bold mb-8 text-black dark:text-white;
 }
 
 .card {
-  @apply bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1;
+  @apply bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-6 transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1;
 }
