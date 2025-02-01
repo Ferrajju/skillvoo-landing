@@ -1,4 +1,6 @@
 "use client"
+
+import React from "react"
 import { useTheme } from "next-themes"
 import { Moon, Sun } from "lucide-react"
 import { motion } from "framer-motion"
@@ -11,13 +13,12 @@ const ThemeToggle = () => {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 transition-all duration-300"
+      className="p-2 rounded-full glass-nav transition-all duration-300 hover:bg-white/10"
       aria-label="Toggle theme"
     >
-      {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+      {theme === "dark" ? <Sun className="w-5 h-5 text-white/90" /> : <Moon className="w-5 h-5 text-white/90" />}
     </motion.button>
   )
 }
 
 export default ThemeToggle
-
