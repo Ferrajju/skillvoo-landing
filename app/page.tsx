@@ -1,7 +1,8 @@
 "use client"
 
-import React, { useState } from "react"
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
+import type React from "react"
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { useLanguage } from "@/contexts/language-context"
 import ThemeToggle from "../components/ThemeToggle"
@@ -11,22 +12,18 @@ const features = [
   {
     titleKey: "features.micro-learning.title",
     descriptionKey: "features.micro-learning.description",
-    icon: "⏱️",
   },
   {
     titleKey: "features.ai-powered.title",
     descriptionKey: "features.ai-powered.description",
-    icon: "🧠",
   },
   {
     titleKey: "features.skill-growth.title",
     descriptionKey: "features.skill-growth.description",
-    icon: "📈",
   },
   {
     titleKey: "features.community.title",
     descriptionKey: "features.community.description",
-    icon: "🤝",
   },
 ]
 
@@ -45,11 +42,6 @@ export default function LandingPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState("")
   const { t } = useLanguage()
-  const { scrollYProgress } = useScroll()
-
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
-  const y = useTransform(scrollYProgress, [0, 1], [0, 200])
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -81,66 +73,47 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <div className="immersive-bg" />
+      <header className="fixed w-full top-0 z-50 bg-white dark:bg-black">
+        <nav className="container mx-auto px-6 py-4">
+          <div className="flex justify-between items-center">
+            <Link href="/" className="text-2xl font-semibold">
+              Skillsletter
+            </Link>
 
-      <header className="fixed w-full top-0 z-50">
-        <nav className="glass-effect px-6 py-4">
-          <div className="container mx-auto flex justify-between items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <Link href="/" className="text-2xl font-semibold text-gradient">
-                Skillsletter
-              </Link>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="flex items-center space-x-8"
-            >
-              <Link
-                href="#how-it-works"
-                className="text-sm font-medium hover:text-gradient transition-all duration-300"
-              >
+            <div className="flex items-center space-x-8">
+              <Link href="#how-it-works" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300">
                 {t("nav.how-it-works")}
               </Link>
-              <Link
-                href="#skills"
-                className="text-sm font-medium hover:text-gradient transition-all duration-300"
-              >
+              <Link href="#skills" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300">
                 {t("nav.skills")}
               </Link>
-              <Link href="#waitlist" className="bg-gradient text-foreground px-4 py-2 rounded-full hover:shadow-lg transition-all duration-300">
+              <Link href="#waitlist" className="simple-button">
                 {t("nav.join-waitlist")}
               </Link>
               <LanguageToggle />
               <ThemeToggle />
-            </motion.div>
+            </div>
           </div>
         </nav>
       </header>
 
       <main className="pt-24">
         <section className="min-h-screen flex items-center relative">
-          <motion.div style={{ scale, y }} className="container mx-auto px-6">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="text-center max-w-4xl mx-auto"
-            >
-              <h1 className="text-6xl md:text-7xl font-bold mb-8 text-gradient leading-tight">
+          <div className="container mx-auto px-6">
+            <div className="text-center max-w-4xl mx-auto">
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-5xl md:text-6xl font-bold mb-8"
+              >
                 {t("hero.title")}
-              </h1>
+              </motion.h1>
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
-                className="text-xl md:text-2xl mb-12 leading-relaxed text-balance"
+                className="text-xl mb-12 leading-relaxed"
               >
                 {t("hero.description")}
               </motion.p>
@@ -149,51 +122,32 @@ export default function LandingPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
               >
-                <Link href="#waitlist" className="bg-gradient text-foreground px-8 py-4 rounded-full text-lg font-semibold hover:shadow-lg transition-all duration-300">
+                <Link href="#waitlist" className="simple-button">
                   {t("cta.start-journey")}
                 </Link>
               </motion.div>
-            </motion.div>
-          </motion.div>
-
-          <motion.div style={{ opacity }} className="scroll-indicator">
-            <div className="scroll-indicator-dot" />
-            <div className="scroll-indicator-dot" />
-            <div className="scroll-indicator-dot" />
-          </motion.div>
+            </div>
+          </div>
         </section>
 
         <div className="section-divider" />
 
         <section id="how-it-works" className="py-32">
           <div className="container mx-auto px-6">
-            <motion.h2
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold text-center mb-16 text-gradient"
-            >
-              {t("how-it-works.title")}
-            </motion.h2>
+            <h2 className="text-4xl font-bold text-center mb-16">{t("how-it-works.title")}</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {features.map((feature, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 50 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="glass-effect p-8 hover-lift"
+                  className="border border-gray-200 dark:border-gray-800 p-8 rounded-lg"
                 >
-                  <div className="flex items-center mb-4">
-                    <span className="text-4xl mr-4">{feature.icon}</span>
-                    <h3 className="text-2xl font-semibold text-gradient">
-                      {t(feature.titleKey)}
-                    </h3>
-                  </div>
-                  <p className="text-balance">{t(feature.descriptionKey)}</p>
+                  <h3 className="text-2xl font-semibold mb-4">{t(feature.titleKey)}</h3>
+                  <p>{t(feature.descriptionKey)}</p>
                 </motion.div>
               ))}
             </div>
@@ -204,15 +158,7 @@ export default function LandingPage() {
 
         <section id="skills" className="py-32">
           <div className="container mx-auto px-6">
-            <motion.h2
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold text-center mb-16 text-gradient"
-            >
-              {t("skills.title")}
-            </motion.h2>
+            <h2 className="text-4xl font-bold text-center mb-16">{t("skills.title")}</h2>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
               {skills.map((skill, index) => (
@@ -222,11 +168,9 @@ export default function LandingPage() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="glass-effect p-6 text-center hover-lift"
+                  className="border border-gray-200 dark:border-gray-800 p-6 text-center rounded-lg"
                 >
-                  <h3 className="text-xl font-medium text-gradient">
-                    {skill}
-                  </h3>
+                  <h3 className="text-xl font-medium">{skill}</h3>
                 </motion.div>
               ))}
             </div>
@@ -236,7 +180,7 @@ export default function LandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
-              className="text-center mt-12 text-lg max-w-2xl mx-auto text-balance"
+              className="text-center mt-12 text-lg max-w-2xl mx-auto"
             >
               {t("skills.description")}
             </motion.p>
@@ -247,33 +191,18 @@ export default function LandingPage() {
 
         <section id="waitlist" className="py-32">
           <div className="container mx-auto px-6">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="max-w-2xl mx-auto text-center"
-            >
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gradient">
-                {t("waitlist.title")}
-              </h2>
-              <p className="text-xl mb-12 text-balance">{t("waitlist.description")}</p>
+            <div className="max-w-2xl mx-auto text-center">
+              <h2 className="text-4xl font-bold mb-8">{t("waitlist.title")}</h2>
+              <p className="text-xl mb-12">{t("waitlist.description")}</p>
 
-              <motion.form
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-                onSubmit={handleSubmit}
-                className="space-y-4"
-              >
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Your Name"
                   required
-                  className="w-full p-3 glass-effect rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full p-3 simple-input"
                 />
                 <input
                   type="email"
@@ -281,18 +210,12 @@ export default function LandingPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your Email"
                   required
-                  className="w-full p-3 glass-effect rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full p-3 simple-input"
                 />
-                <motion.button
-                  type="submit"
-                  className="w-full bg-gradient text-foreground py-3 rounded-lg text-lg font-semibold hover:shadow-lg transition-all duration-300"
-                  disabled={isLoading}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
+                <button type="submit" className="w-full simple-button py-3 text-lg font-semibold" disabled={isLoading}>
                   {isLoading ? "Joining..." : t("nav.join-waitlist")}
-                </motion.button>
-              </motion.form>
+                </button>
+              </form>
 
               <AnimatePresence>
                 {message && (
@@ -306,21 +229,27 @@ export default function LandingPage() {
                   </motion.p>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </div>
           </div>
         </section>
       </main>
 
-      <footer className="py-12 glass-effect mt-12">
+      <footer className="py-12 bg-gray-100 dark:bg-gray-900">
         <div className="container mx-auto px-6 text-center">
-          <p className="text-sm opacity-70">
+          <p className="text-sm text-gray-600 dark:text-gray-400">
             © {new Date().getFullYear()} Skillsletter. {t("footer.rights")}
           </p>
           <div className="mt-4 space-x-8">
-            <Link href="/privacy" className="text-sm hover:text-gradient transition-colors duration-300">
+            <Link
+              href="/privacy"
+              className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+            >
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-sm hover:text-gradient transition-colors duration-300">
+            <Link
+              href="/terms"
+              className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+            >
               Terms of Service
             </Link>
           </div>
@@ -329,3 +258,4 @@ export default function LandingPage() {
     </div>
   )
 }
+
