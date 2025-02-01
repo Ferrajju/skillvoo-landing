@@ -7,7 +7,8 @@ import Link from "next/link"
 import { useLanguage } from "@/contexts/language-context"
 import ThemeToggle from "../components/ThemeToggle"
 import { LanguageToggle } from "@/components/ui/language-toggle"
-import { Clock, Brain, TrendingUp, Users } from "lucide-react"
+import { Clock, Brain, TrendingUp, Users, ChevronRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 const features = [
   {
@@ -77,8 +78,8 @@ export default function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen relative bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      <div className="absolute inset-0 bg-grid-gray-200/25 bg-[size:40px_40px] dark:bg-grid-gray-950/25" />
+    <div className="min-h-screen relative bg-background text-foreground">
+      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:40px_40px]" />
 
       <header className="fixed w-full top-0 z-50 bg-blur">
         <nav className="container mx-auto px-6 py-4">
@@ -87,15 +88,15 @@ export default function LandingPage() {
               Skillsletter
             </Link>
             <div className="flex items-center space-x-8">
-              <Link href="#features" className="text-sm font-medium hover:text-indigo-600 dark:hover:text-indigo-400">
+              <Link href="#features" className="text-sm font-medium hover:text-primary">
                 Features
               </Link>
-              <Link href="#skills" className="text-sm font-medium hover:text-indigo-600 dark:hover:text-indigo-400">
+              <Link href="#skills" className="text-sm font-medium hover:text-primary">
                 Skills
               </Link>
-              <Link href="#waitlist" className="neo-button text-sm">
-                {t("nav.join-waitlist")}
-              </Link>
+              <Button asChild>
+                <Link href="#waitlist">{t("nav.join-waitlist")}</Link>
+              </Button>
               <LanguageToggle />
               <ThemeToggle />
             </div>
@@ -110,7 +111,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-6xl md:text-8xl font-bold mb-8 gradient-text"
+              className="text-6xl md:text-7xl font-bold mb-8 gradient-text"
             >
               {t("hero.title")}
             </motion.h1>
@@ -118,7 +119,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto"
+              className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto text-muted-foreground"
             >
               {t("hero.description")}
             </motion.p>
@@ -127,9 +128,12 @@ export default function LandingPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <Link href="#waitlist" className="neo-button text-lg">
-                {t("cta.start-journey")}
-              </Link>
+              <Button asChild size="lg" className="px-8 py-6 text-lg">
+                <Link href="#waitlist">
+                  {t("cta.start-journey")}
+                  <ChevronRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
             </motion.div>
           </div>
         </section>
@@ -145,12 +149,12 @@ export default function LandingPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="card flex items-start space-x-4 bg-blur"
+                  className="card flex items-start space-x-4"
                 >
-                  <div className="text-indigo-600 dark:text-indigo-400">{feature.icon}</div>
+                  <div className="text-primary">{feature.icon}</div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2">{t(feature.titleKey)}</h3>
-                    <p className="text-gray-600 dark:text-gray-300">{t(feature.descriptionKey)}</p>
+                    <p className="text-muted-foreground">{t(feature.descriptionKey)}</p>
                   </div>
                 </motion.div>
               ))}
@@ -158,7 +162,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section id="skills" className="py-32 bg-indigo-50 dark:bg-indigo-900">
+        <section id="skills" className="py-32 bg-secondary">
           <div className="container mx-auto px-6">
             <h2 className="section-title text-center mb-16 gradient-text">{t("skills.title")}</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
@@ -169,7 +173,7 @@ export default function LandingPage() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="card text-center bg-blur"
+                  className="card text-center"
                 >
                   <h3 className="text-xl font-medium">{skill}</h3>
                 </motion.div>
@@ -180,7 +184,7 @@ export default function LandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
-              className="text-center mt-12 text-lg max-w-2xl mx-auto text-gray-600 dark:text-gray-300"
+              className="text-center mt-12 text-lg max-w-2xl mx-auto text-muted-foreground"
             >
               {t("skills.description")}
             </motion.p>
@@ -191,7 +195,7 @@ export default function LandingPage() {
           <div className="container mx-auto px-6">
             <div className="max-w-2xl mx-auto text-center">
               <h2 className="section-title mb-8 gradient-text">{t("waitlist.title")}</h2>
-              <p className="text-xl mb-12 text-gray-600 dark:text-gray-300">{t("waitlist.description")}</p>
+              <p className="text-xl mb-12 text-muted-foreground">{t("waitlist.description")}</p>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <input
                   type="text"
@@ -209,21 +213,15 @@ export default function LandingPage() {
                   required
                   className="neo-input"
                 />
-                <motion.button
-                  type="submit"
-                  className="w-full neo-button py-4 text-lg font-semibold"
-                  disabled={isLoading}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
+                <Button type="submit" className="w-full py-6 text-lg font-semibold" disabled={isLoading}>
                   {isLoading ? "Joining..." : t("nav.join-waitlist")}
-                </motion.button>
+                </Button>
               </form>
               {message && (
                 <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className={`mt-4 ${message.startsWith("Error") ? "text-red-500" : "text-green-500"}`}
+                  className={`mt-4 ${message.startsWith("Error") ? "text-destructive" : "text-green-500"}`}
                 >
                   {message}
                 </motion.p>
@@ -233,24 +231,24 @@ export default function LandingPage() {
         </section>
       </main>
 
-      <footer className="py-12 bg-gray-100 dark:bg-gray-800">
+      <footer className="py-12 bg-secondary">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-muted-foreground">
                 © {new Date().getFullYear()} Skillsletter. {t("footer.rights")}
               </p>
             </div>
             <div className="flex space-x-4">
               <Link
                 href="/privacy"
-                className="text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300"
+                className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms"
-                className="text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300"
+                className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
               >
                 Terms of Service
               </Link>

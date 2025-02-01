@@ -1,62 +1,89 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --color-bg: 255, 255, 255;
-  --color-text: 0, 0, 0;
-  --color-primary: 0, 0, 0;
-  --color-secondary: 128, 128, 128;
-  --color-accent: 79, 70, 229;
-}
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+  }
 
-.dark {
-  --color-bg: 0, 0, 0;
-  --color-text: 255, 255, 255;
-  --color-primary: 255, 255, 255;
-  --color-secondary: 200, 200, 200;
-  --color-accent: 129, 140, 248;
-}
-
-body {
-  color: rgb(var(--color-text));
-  background-color: rgb(var(--color-bg));
-  font-family: 'Inter', sans-serif;
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
 }
 
 @layer base {
-  .font-outline-2 {
-    -webkit-text-stroke: 2px rgb(var(--color-accent));
+  * {
+    @apply border-border;
   }
-  .font-outline-4 {
-    -webkit-text-stroke: 4px rgb(var(--color-accent));
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", sans-serif;
   }
 }
 
 @layer components {
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-500 dark:from-indigo-300 dark:to-purple-300;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
   }
 
   .neo-button {
-    @apply px-6 py-3 rounded-full font-semibold text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1;
+    @apply px-6 py-3 rounded-full font-semibold text-primary-foreground bg-primary hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1;
   }
 
   .neo-input {
-    @apply w-full p-4 rounded-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 dark:focus:ring-indigo-800 focus:outline-none transition-all duration-300;
+    @apply w-full p-4 rounded-full bg-background border border-input focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all duration-300;
   }
 
   .section-title {
-    @apply text-4xl md:text-5xl font-bold mb-8 text-black dark:text-white;
+    @apply text-4xl md:text-5xl font-bold mb-8 text-foreground;
   }
 
   .card {
-    @apply bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1;
+    @apply bg-card text-card-foreground rounded-2xl shadow-xl p-6 transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1;
   }
 }
 
 .bg-blur {
-  @apply bg-white bg-opacity-70 dark:bg-gray-900 dark:bg-opacity-70 backdrop-filter backdrop-blur-lg;
+  @apply bg-background/70 backdrop-filter backdrop-blur-lg;
 }
+
