@@ -4,8 +4,8 @@
 
 :root {
   /* Dorado más suave y mate, sin brillos intensos */
-  --gold: #b49b57;
-  --gold-dark: #97824a;
+  --gold: #ffd700;
+  --gold-dark: #daa520;
 }
 
 @layer base {
