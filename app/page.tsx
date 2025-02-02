@@ -96,7 +96,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-5xl md:text-7xl font-bold text-white mb-6 title-shadow"
           >
-            Learn from the Greatest
+            Master Your Passion, One Day at a Time
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -104,7 +104,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl text-white/80 mb-8"
           >
-            Receive daily insights and methods from the world&apos;s most successful entrepreneurs.
+            Get emails with techniques, hacks, and strategies tailored to your goals.
           </motion.p>
           <motion.form
             initial={{ opacity: 0, y: 20 }}
