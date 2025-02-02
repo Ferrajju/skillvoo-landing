@@ -68,35 +68,28 @@ export default function LandingPage() {
       <main className="pt-24">
         <section className="min-h-screen flex items-center justify-center">
           <div className="container mx-auto px-6 text-center">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
-            >
-              Aprende algo nuevo cada día con Skillsletter
-            </motion.h1>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-2xl md:text-3xl font-semibold mb-6 text-gray-700 dark:text-gray-300"
-            >
-              Los mejores métodos, técnicas y trucos directos a tu correo
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
+            <div className="hero-glow max-w-4xl mx-auto">
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+              >
+                Today Is the Day to Start Improving
+              </motion.h1>
+              <motion.h2
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-xl md:text-2xl lg:text-3xl font-medium mb-8 text-gray-700 dark:text-gray-300"
+              >
+                Learn something new every day. From marketing to finance, get inspired and take action in 5 minutes.
+              </motion.h2>
+            </div>
+            <motion.form
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-gray-600 dark:text-gray-400"
-            >
-              Recibe en tu email los mejores hacks, técnicas y métodos para mejorar en lo que te apasiona y destacar en
-              tu trabajo.
-            </motion.p>
-            <motion.form
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
               onSubmit={handleSubmit}
               className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4"
             >
@@ -122,9 +115,9 @@ export default function LandingPage() {
               </motion.p>
             )}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
               className="mt-6 text-gray-600 dark:text-gray-400"
             >
               +10,000 personas ya reciben Skillsletter cada mañana

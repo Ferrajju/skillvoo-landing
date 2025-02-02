@@ -34,6 +34,60 @@ body {
   @apply px-6 py-3 rounded-full font-semibold text-white bg-black dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1;
 }
 
+.hero-glow {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-glow::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 35%,
+    transparent 70%
+  );
+  z-index: -1;
+  border-radius: 30px;
+}
+
+.dark .hero-glow::before {
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 35%,
+    transparent 70%
+  );
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.slide-up-delay-1 {
+  animation-delay: 0.2s;
+}
+
+.slide-up-delay-2 {
+  animation-delay: 0.4s;
+}
+
 .neo-input {
   @apply w-full p-4 rounded-full bg-white dark:bg-black border border-gray-300 dark:border-gray-700 focus:border-black dark:focus:border-white focus:ring-2 focus:ring-black dark:focus:ring-white focus:outline-none transition-all duration-300;
 }
