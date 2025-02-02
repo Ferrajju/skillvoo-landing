@@ -7,29 +7,29 @@ import Link from "next/link"
 import { useLanguage } from "@/contexts/language-context"
 import ThemeToggle from "../components/ThemeToggle"
 import { LanguageToggle } from "@/components/ui/language-toggle"
-import { Clock, Brain, TrendingUp, Users, ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Clock, Brain, TrendingUp, Users } from "lucide-react"
+import IlluminatedLogo from "../components/IluminatedLogo"
 
 const features = [
   {
     titleKey: "features.micro-learning.title",
     descriptionKey: "features.micro-learning.description",
-    icon: <Clock className="w-12 h-12" />,
+    icon: <Clock className="w-8 h-8" />,
   },
   {
     titleKey: "features.ai-powered.title",
     descriptionKey: "features.ai-powered.description",
-    icon: <Brain className="w-12 h-12" />,
+    icon: <Brain className="w-8 h-8" />,
   },
   {
     titleKey: "features.skill-growth.title",
     descriptionKey: "features.skill-growth.description",
-    icon: <TrendingUp className="w-12 h-12" />,
+    icon: <TrendingUp className="w-8 h-8" />,
   },
   {
     titleKey: "features.community.title",
     descriptionKey: "features.community.description",
-    icon: <Users className="w-12 h-12" />,
+    icon: <Users className="w-8 h-8" />,
   },
 ]
 
@@ -78,25 +78,23 @@ export default function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen relative bg-background text-foreground">
-      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:40px_40px]" />
-
-      <header className="fixed w-full top-0 z-50 bg-blur">
+    <div className="min-h-screen relative bg-white dark:bg-black text-black dark:text-white">
+      <header className="fixed w-full top-0 z-50 bg-white dark:bg-black shadow-md">
         <nav className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <Link href="/" className="text-2xl font-bold gradient-text">
-              Skillsletter
+            <Link href="/" className="text-2xl font-semibold">
+              <IlluminatedLogo />
             </Link>
             <div className="flex items-center space-x-8">
-              <Link href="#features" className="text-sm font-medium hover:text-primary">
+              <Link href="#features" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300">
                 Features
               </Link>
-              <Link href="#skills" className="text-sm font-medium hover:text-primary">
+              <Link href="#skills" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300">
                 Skills
               </Link>
-              <Button asChild variant="outline" className="btn">
-                <Link href="#waitlist">{t("nav.join-waitlist")}</Link>
-              </Button>
+              <Link href="#waitlist" className="neo-button text-sm">
+                {t("nav.join-waitlist")}
+              </Link>
               <LanguageToggle />
               <ThemeToggle />
             </div>
@@ -104,14 +102,14 @@ export default function LandingPage() {
         </nav>
       </header>
 
-      <main className="pt-24 relative z-10">
+      <main className="pt-24">
         <section className="min-h-screen flex items-center justify-center">
           <div className="container mx-auto px-6 text-center">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-6xl md:text-7xl font-bold mb-8 gradient-text"
+              className="text-5xl md:text-7xl font-bold mb-8"
             >
               {t("hero.title")}
             </motion.h1>
@@ -119,7 +117,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto text-muted-foreground"
+              className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto"
             >
               {t("hero.description")}
             </motion.p>
@@ -128,19 +126,16 @@ export default function LandingPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <Button asChild size="lg" className="px-8 py-6 text-lg btn">
-                <Link href="#waitlist">
-                  {t("cta.start-journey")}
-                  <ChevronRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+              <Link href="#waitlist" className="neo-button text-lg">
+                {t("cta.start-journey")}
+              </Link>
             </motion.div>
           </div>
         </section>
 
-        <section id="features" className="py-32 bg-secondary/30">
+        <section id="features" className="py-32">
           <div className="container mx-auto px-6">
-            <h2 className="section-title text-center mb-16 gradient-text">{t("how-it-works.title")}</h2>
+            <h2 className="section-title text-center mb-16">{t("how-it-works.title")}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {features.map((feature, index) => (
                 <motion.div
@@ -149,20 +144,22 @@ export default function LandingPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="card flex flex-col items-center text-center p-8 bg-card/80 backdrop-blur-sm"
+                  className="card flex items-start space-x-4"
                 >
-                  <div className="text-primary mb-6">{feature.icon}</div>
-                  <h3 className="text-2xl font-semibold mb-4">{t(feature.titleKey)}</h3>
-                  <p className="text-muted-foreground">{t(feature.descriptionKey)}</p>
+                  <div className="text-black dark:text-white">{feature.icon}</div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2">{t(feature.titleKey)}</h3>
+                    <p className="text-gray-600 dark:text-gray-300">{t(feature.descriptionKey)}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="skills" className="py-32 bg-secondary">
+        <section id="skills" className="py-32 bg-gray-50 dark:bg-gray-900">
           <div className="container mx-auto px-6">
-            <h2 className="section-title text-center mb-16 gradient-text">{t("skills.title")}</h2>
+            <h2 className="section-title text-center mb-16">{t("skills.title")}</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
               {skills.map((skill, index) => (
                 <motion.div
@@ -182,7 +179,7 @@ export default function LandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
-              className="text-center mt-12 text-lg max-w-2xl mx-auto text-muted-foreground"
+              className="text-center mt-12 text-lg max-w-2xl mx-auto text-gray-600 dark:text-gray-300"
             >
               {t("skills.description")}
             </motion.p>
@@ -192,8 +189,8 @@ export default function LandingPage() {
         <section id="waitlist" className="py-32">
           <div className="container mx-auto px-6">
             <div className="max-w-2xl mx-auto text-center">
-              <h2 className="section-title mb-8 gradient-text">{t("waitlist.title")}</h2>
-              <p className="text-xl mb-12 text-muted-foreground">{t("waitlist.description")}</p>
+              <h2 className="section-title mb-8">{t("waitlist.title")}</h2>
+              <p className="text-xl mb-12 text-gray-600 dark:text-gray-300">{t("waitlist.description")}</p>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <input
                   type="text"
@@ -211,15 +208,21 @@ export default function LandingPage() {
                   required
                   className="neo-input"
                 />
-                <Button type="submit" className="w-full py-6 text-lg font-semibold btn" disabled={isLoading}>
+                <motion.button
+                  type="submit"
+                  className="w-full neo-button py-4 text-lg font-semibold"
+                  disabled={isLoading}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   {isLoading ? "Joining..." : t("nav.join-waitlist")}
-                </Button>
+                </motion.button>
               </form>
               {message && (
                 <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className={`mt-4 ${message.startsWith("Error") ? "text-destructive" : "text-green-500"}`}
+                  className={`mt-4 ${message.startsWith("Error") ? "text-red-500" : "text-green-500"}`}
                 >
                   {message}
                 </motion.p>
@@ -229,24 +232,24 @@ export default function LandingPage() {
         </section>
       </main>
 
-      <footer className="py-12 bg-secondary">
+      <footer className="py-12 bg-gray-100 dark:bg-gray-900">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 © {new Date().getFullYear()} Skillsletter. {t("footer.rights")}
               </p>
             </div>
             <div className="flex space-x-4">
               <Link
                 href="/privacy"
-                className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
+                className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms"
-                className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
+                className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300"
               >
                 Terms of Service
               </Link>
