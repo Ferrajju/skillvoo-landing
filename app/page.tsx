@@ -4,6 +4,8 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
+import { Newspaper, Lightbulb, BotIcon } from "lucide-react"
+import React from "react"
 
 export default function Home() {
   const [email, setEmail] = useState("")
@@ -40,22 +42,21 @@ export default function Home() {
     }
   }
 
-  const features = [
+  const dailyMails = [
     {
-      title: "Micro-Learning",
-      description: "Short, focused 10-minute daily sessions designed to fit your busy schedule.",
+      title: "Industry News",
+      description: "Stay updated with the latest news from your favorite sector.",
+      icon: Newspaper,
     },
     {
-      title: "AI-Powered",
-      description: "Personalized learning experience adapting to your progress and preferences.",
+      title: "Tips & Tricks",
+      description: "Receive advice, methods, and tricks to improve in what you love.",
+      icon: Lightbulb,
     },
     {
-      title: "Skill Growth",
-      description: "Develop essential personal and professional skills that matter in today's world.",
-    },
-    {
-      title: "Community",
-      description: "Join a community of lifelong learners and share your growth journey.",
+      title: "AI-Personalized",
+      description: "Get completely personalized emails tailored just for you using AI.",
+      icon: BotIcon,
     },
   ]
 
@@ -75,13 +76,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <Link href="/" className="text-xl md:text-2xl font-bold flex items-center gap-2">
             <div className="relative">
-              <span className="text-[#FFD700] animate-pulse">Skills</span>
+              <span className="text-[#FFD700] animate-pulse-gold">Skills</span>
               <span className="text-white">letter</span>
               <div className="absolute inset-0 bg-gradient-radial from-yellow-400 to-transparent opacity-75 blur-sm animate-pulse"></div>
             </div>
           </Link>
           <div className="hidden md:flex items-center gap-8">
-            <Link href="#how-it-works" className="text-white/80 hover:text-white transition-colors">
+            <Link href="#daily-mails" className="text-white/80 hover:text-white transition-colors">
               What&apos;s Skillsletter
             </Link>
             <button className="golden-button">Join Waitlist</button>
@@ -112,7 +113,7 @@ export default function Home() {
         </div>
         {isMenuOpen && (
           <div className="md:hidden mt-4 py-4 border-t border-white/10">
-            <Link href="#how-it-works" className="block text-white/80 hover:text-white transition-colors py-2">
+            <Link href="#daily-mails" className="block text-white/80 hover:text-white transition-colors py-2">
               What&apos;s Skillsletter
             </Link>
             <button className="golden-button w-full mt-4">Join Waitlist</button>
@@ -173,8 +174,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How It Works Section */}
-      <section id="how-it-works" className="py-20 px-4">
+      {/* Daily Mails Section */}
+      <section id="daily-mails" className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             initial={{ opacity: 0 }}
@@ -182,20 +183,22 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-bold text-white text-center mb-16"
           >
-            How It Works
+            Daily Mails
           </motion.h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {features.map((feature, index) => (
+          <div className="grid md:grid-cols-3 gap-6">
+            {dailyMails.map((mail, index) => (
               <motion.div
-                key={feature.title}
+                key={mail.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 md:p-8 hover:bg-white/10 transition-all"
+                className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 md:p-8 hover:bg-white/10 transition-all border border-[#FFD700]/30 hover:border-[#FFD700]/50"
               >
-                <h3 className="text-xl font-semibold text-white mb-4">{feature.title}</h3>
-                <p className="text-white/70">{feature.description}</p>
+                {mail.icon &&
+                  React.createElement(mail.icon as React.ElementType, { className: "w-12 h-12 text-[#FFD700] mb-4" })}
+                <h3 className="text-xl font-semibold text-white mb-4">{mail.title}</h3>
+                <p className="text-white/70">{mail.description}</p>
               </motion.div>
             ))}
           </div>
