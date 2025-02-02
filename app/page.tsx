@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
@@ -9,6 +9,16 @@ export default function Home() {
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkIsMobile()
+    window.addEventListener("resize", checkIsMobile)
+    return () => window.removeEventListener("resize", checkIsMobile)
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -64,10 +74,10 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-4 bg-black/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <Link href="/" className="text-xl md:text-2xl font-bold flex items-center gap-2">
-            
-            <div>
-              <span className="text-[#FFD700]">Skills</span>
+            <div className="relative">
+              <span className="text-[#FFD700] animate-pulse">Skills</span>
               <span className="text-white">letter</span>
+              <div className="absolute inset-0 bg-gradient-radial from-yellow-400 to-transparent opacity-75 blur-sm animate-pulse"></div>
             </div>
           </Link>
           <div className="hidden md:flex items-center gap-8">
@@ -115,7 +125,7 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/baner_bw.png"
+            src={isMobile ? "/images/mobile_hero.jpg" : "/images/baner_bw.png"}
             alt="Successful entrepreneurs"
             fill
             className="object-cover opacity-40"
