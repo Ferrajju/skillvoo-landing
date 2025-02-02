@@ -2,14 +2,12 @@
 
 import type React from "react"
 import { useState } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { motion } from "framer-motion"
 
 export default function Home() {
   const [email, setEmail] = useState("")
-  const { scrollY } = useScroll()
-  const navBackground = useTransform(scrollY, [0, 100], ["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.8)"])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -20,7 +18,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Floating Nav */}
-      <motion.nav style={{ backgroundColor: navBackground }} className="fixed top-0 left-0 right-0 z-50 px-4 py-4">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm px-4 py-4">
         <div className="container mx-auto flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold">
             Skillsletter
@@ -40,10 +38,10 @@ export default function Home() {
             </Button>
           </div>
         </div>
-      </motion.nav>
+      </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4">
+      <section className="relative min-h-screen flex items-center justify-center px-4 pt-20">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70"></div>
         </div>
