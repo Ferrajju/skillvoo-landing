@@ -16,14 +16,12 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-gray-900 text-white">
       {/* Floating Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A] px-4 py-4">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-800/80 backdrop-blur-sm px-4 py-4">
         <div className="container mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center">
-            <span className="text-2xl font-bold logo-glow">
-              <span className="golden-gradient">Skills</span>letter
-            </span>
+            <span className="text-2xl font-bold neon-text">Skillsletter</span>
           </Link>
           <div className="flex items-center space-x-6">
             <Link href="#about" className="text-white hover:text-gray-300 transition-colors">
@@ -31,7 +29,7 @@ export default function Home() {
             </Link>
             <Button
               variant="outline"
-              className="golden-border golden-hover bg-black text-white hover:text-[#D4AF37] transition-colors rounded-full px-6 py-2"
+              className="neon-border bg-transparent text-white hover:bg-gray-800 transition-colors rounded-full px-6 py-2"
             >
               Join Waitlist
             </Button>
@@ -42,7 +40,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 pt-20">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900 opacity-70"></div>
         </div>
         <div className="container mx-auto z-10">
           <motion.div
@@ -51,7 +49,11 @@ export default function Home() {
             transition={{ duration: 1 }}
             className="text-center"
           >
-            <h1 className="hero-text animate-fadeInUp">Mejora cada día en lo que te importa.</h1>
+            <h1 className="hero-title stagger-animation">
+              <span>Mejora cada día</span>
+              <span>en lo que</span>
+              <span className="highlight">te importa.</span>
+            </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-2xl mx-auto">
               Recibe un email diario con tácticas y métodos que realmente funcionan.
             </p>
@@ -64,13 +66,13 @@ export default function Home() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Tu email"
-                className="w-full px-6 py-3 rounded-full bg-black/50 border border-[#D4AF37]/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/50 transition-all duration-300"
+                className="w-full px-6 py-3 rounded-full bg-gray-800/50 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all duration-300"
                 required
               />
               <Button
                 type="submit"
                 size="lg"
-                className="w-full sm:w-auto rounded-full golden-border golden-hover bg-black text-white hover:text-[#D4AF37] transition-all duration-300"
+                className="w-full sm:w-auto rounded-full neon-border bg-transparent text-white hover:bg-gray-800 transition-all duration-300"
               >
                 Suscríbete Gratis
               </Button>
