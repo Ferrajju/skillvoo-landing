@@ -1,31 +1,23 @@
-import { ThemeProvider } from "next-themes"
-import StyledComponentsRegistry from "../lib/registry"
-import { LanguageProvider } from "@/contexts/language-context"
-import { LanguageToggle } from "@/components/ui/language-toggle"
-import ThemeToggle from "../components/ThemeToggle"
 import "./globals.css"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import type React from "react" // Added import for React
+
+const inter = Inter({ subsets: ["latin"] })
+
+export const metadata: Metadata = {
+  title: "Skillsletter - Mejora cada día",
+  description: "Recibe tácticas y métodos diarios que realmente funcionan para mejorar en lo que te importa.",
+}
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  console.log("Rendering RootLayout")
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
-        <StyledComponentsRegistry>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <LanguageProvider>
-              <div className="fixed top-4 right-4 z-50 flex items-center space-x-2">
-                <LanguageToggle />
-                <ThemeToggle />
-              </div>
-              {children}
-            </LanguageProvider>
-          </ThemeProvider>
-        </StyledComponentsRegistry>
-      </body>
+    <html lang="es">
+      <body className={inter.className}>{children}</body>
     </html>
   )
 }
