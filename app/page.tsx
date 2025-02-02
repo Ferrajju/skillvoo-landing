@@ -108,10 +108,19 @@ export default function LandingPage() {
                 required
                 className="neo-input w-full sm:w-64"
               />
-              <button type="submit" className="neo-button w-full sm:w-auto">
-                Únete Gratis
+              <button type="submit" className="neo-button w-full sm:w-auto" disabled={isLoading}>
+                {isLoading ? "Enviando..." : "Únete Gratis"}
               </button>
             </motion.form>
+            {message && (
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`mt-4 ${message.startsWith("Error") ? "text-red-500" : "text-green-500"}`}
+              >
+                {message}
+              </motion.p>
+            )}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -213,7 +222,8 @@ export default function LandingPage() {
               </div>
             </form>
             <p className="mt-6 text-gray-600 dark:text-gray-400">
-              Suscríbete ahora y recibe nuestra guía gratuita sobre "Cómo multiplicar tu productividad en 7 días"
+              Suscríbete ahora y recibe nuestra guía gratuita sobre &ldquo;Cómo multiplicar tu productividad en 7
+              días&rdquo;
             </p>
           </div>
         </section>
