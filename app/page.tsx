@@ -2,36 +2,35 @@
 
 import type React from "react"
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
 import { motion } from "framer-motion"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 export default function Home() {
   const [email, setEmail] = useState("")
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
     console.log("Submitted email:", email)
   }
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Floating Nav */}
+      {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A] px-4 py-4">
         <div className="container mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center">
-            <span className="text-2xl font-bold logo-glow">
-              <span className="golden-gradient">Skills</span>letter
+            <span className="text-2xl font-bold">
+              <span className="logo-text">Skills</span>letter
             </span>
           </Link>
           <div className="flex items-center space-x-6">
-            <Link href="#about" className="text-white hover:text-gray-300 transition-colors">
+            <Link href="#about" className="text-white hover:text-[#D4AF37] transition-colors">
               What&apos;s Skillsletter
             </Link>
             <Button
               variant="outline"
-              className="golden-border golden-hover bg-black text-white hover:text-[#D4AF37] transition-colors rounded-full px-6 py-2"
+              className="golden-border golden-button text-black hover:text-black transition-colors rounded-full px-6 py-2"
             >
               Join Waitlist
             </Button>
@@ -41,9 +40,6 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 pt-20">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70"></div>
-        </div>
         <div className="container mx-auto z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -51,7 +47,22 @@ export default function Home() {
             transition={{ duration: 1 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">Mejora cada día en lo que te importa.</h1>
+            <h1 className="hero-title text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+                Mejora cada día
+              </motion.span>
+              <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+                en lo que
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="highlight"
+              >
+                te importa.
+              </motion.span>
+            </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-2xl mx-auto">
               Recibe un email diario con tácticas y métodos que realmente funcionan.
             </p>
@@ -69,8 +80,7 @@ export default function Home() {
               />
               <Button
                 type="submit"
-                size="lg"
-                className="w-full sm:w-auto rounded-full golden-border golden-hover bg-black text-white hover:text-[#D4AF37] transition-all duration-300"
+                className="w-full sm:w-auto rounded-full golden-button text-black hover:text-black transition-all duration-300"
               >
                 Suscríbete Gratis
               </Button>
@@ -81,3 +91,4 @@ export default function Home() {
     </div>
   )
 }
+
