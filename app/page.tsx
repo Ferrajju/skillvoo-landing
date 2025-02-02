@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 export default function Home() {
   const [email, setEmail] = useState("")
@@ -18,23 +19,21 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Floating Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm px-4 py-4">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A] px-4 py-4">
         <div className="container mx-auto flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold">
-            Skillsletter
+          <Link href="/" className="flex items-center">
+            <Image src="/skillvoo-logo.svg" alt="Skillvoo Logo" width={32} height={32} />
+            <span className="ml-2 text-2xl font-bold">Skillvoo</span>
           </Link>
-          <div className="space-x-4">
-            <Link href="#about" className="hover:text-gray-300 transition-colors">
-              Sobre nosotros
-            </Link>
-            <Link href="#contact" className="hover:text-gray-300 transition-colors">
-              Contacto
+          <div className="flex items-center space-x-6">
+            <Link href="#about" className="text-white hover:text-gray-300 transition-colors">
+              What's Skillvoo
             </Link>
             <Button
               variant="outline"
-              className="text-white border-white hover:bg-white hover:text-black transition-colors"
+              className="bg-white text-black hover:bg-gray-200 transition-colors rounded-full px-6 py-2"
             >
-              Iniciar sesión
+              Join Waitlist
             </Button>
           </div>
         </div>
