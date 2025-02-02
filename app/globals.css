@@ -27,12 +27,16 @@
 }
 
 .golden-button {
-  background-color: var(--gold);
+  background-color: transparent;
+  border: 2px solid var(--gold);
+  color: var(--gold);
   transition: all 0.3s ease;
 }
 
 .golden-button:hover {
-  background-color: var(--gold-dark);
+  background-color: var(--gold);
+  color: black;
+  box-shadow: 0 0 15px var(--gold);
 }
 
 .golden-border {
