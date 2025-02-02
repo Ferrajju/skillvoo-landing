@@ -3,46 +3,62 @@
 @tailwind utilities;
 
 :root {
-  --gold: #d4af37;
-  --gold-dark: #b4941e;
-  --gold-darker: #8b7516;
+  --gold-gradient: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+  --gold-glow: 0 0 10px rgba(251, 245, 183, 0.3), 0 0 20px rgba(251, 245, 183, 0.2);
 }
 
-@layer base {
-  body {
-    @apply bg-black text-white;
-  }
+.logo-glow {
+  position: relative;
+  color: white;
 }
 
-.logo-text {
-  background: linear-gradient(to right, var(--gold), var(--gold-dark));
+.logo-glow::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 120%;
+  height: 140%;
+  background: radial-gradient(circle at center, rgba(251, 245, 183, 0.15), transparent 70%);
+  z-index: -1;
+  filter: blur(8px);
+}
+
+.golden-gradient {
+  background: var(--gold-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-}
-
-.hero-title span {
-  display: block;
-}
-
-.hero-title .highlight {
-  color: var(--gold);
-}
-
-.golden-button {
-  background: linear-gradient(to right, var(--gold), var(--gold-dark));
-  transition: all 0.3s ease;
-}
-
-.golden-button:hover {
-  background: linear-gradient(to right, var(--gold-dark), var(--gold));
+  animation: shine 8s linear infinite;
 }
 
 .golden-border {
-  border: 1px solid var(--gold);
+  background: linear-gradient(#000, #000) padding-box, var(--gold-gradient) border-box;
+  border: 1px solid transparent;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .golden-glow {
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+  box-shadow: var(--gold-glow);
+}
+
+.golden-hover {
+  transition: all 0.3s ease;
+}
+
+.golden-hover:hover {
+  box-shadow: var(--gold-glow);
+  border-color: rgba(251, 245, 183, 0.5);
 }
 
