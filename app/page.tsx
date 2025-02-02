@@ -1,79 +1,244 @@
 "use client"
 
-import type React from "react"
 import { useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
 
 export default function Home() {
   const [email, setEmail] = useState("")
+  const [name, setName] = useState("")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Submitted email:", email)
+    try {
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, name }),
+      })
+      if (response.ok) {
+        alert("¡Gracias por unirte a la lista de espera!")
+        setEmail("")
+        setName("")
+      }
+    } catch (error) {
+      console.error("Error:", error)
+    }
   }
 
+  const features = [
+    {
+      title: "Micro-Learning",
+      description: "Short, focused 10-minute daily sessions designed to fit your busy schedule.",
+    },
+    {
+      title: "AI-Powered",
+      description: "Personalized learning experience adapting to your progress and preferences.",
+    },
+    {
+      title: "Skill Growth",
+      description: "Develop essential personal and professional skills that matter in today's world.",
+    },
+    {
+      title: "Community",
+      description: "Join a community of lifelong learners and share your growth journey.",
+    },
+  ]
+
+  const skills = [
+    "Time Management",
+    "Effective Communication",
+    "Mental Influence",
+    "Negotiation",
+    "Creative Writing",
+    "Discipline Development",
+  ]
+
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A] px-4 py-4">
-        <div className="container mx-auto flex justify-between items-center">
-          <Link href="/" className="flex items-center">
-            <span className="text-2xl font-bold">
-              <span className="logo-text">Skills</span>letter
-            </span>
+    <div className="min-h-screen bg-black">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-4">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <Link href="/" className="text-2xl font-bold">
+            <span className="text-[#FFD700]">Skills</span>
+            <span className="text-white">letter</span>
           </Link>
-          <div className="flex items-center space-x-6">
-            <Link href="#about" className="text-white hover:text-[#FFD700] transition-colors">
+          <div className="flex items-center gap-8">
+            <Link href="#how-it-works" className="text-white/80 hover:text-white transition-colors">
               What&apos;s Skillsletter
             </Link>
-            <Button
-              variant="outline"
-              className="golden-button text-[#FFD700] hover:text-black transition-colors rounded-full px-6 py-2"
-            >
+            <button className="px-4 py-2 rounded-full border border-[#FFD700] text-[#FFD700] hover:bg-[#FFD700] hover:text-black transition-all">
               Join Waitlist
-            </Button>
+            </button>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 pt-20">
-        <div className="container mx-auto z-10">
-          <motion.div
+      <section className="min-h-screen flex items-center justify-center px-4 pt-20">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-7xl font-bold text-white mb-6"
+          >
+            Mejora cada día en lo que te importa.
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl text-white/80 mb-8"
+          >
+            Recibe un email diario con tácticas y métodos que realmente funcionan.
+          </motion.p>
+          <motion.form
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            onSubmit={handleSubmit}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Tu email"
+              className="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:border-[#FFD700] transition-all w-full sm:w-auto"
+              required
+            />
+            <button
+              type="submit"
+              className="px-8 py-3 rounded-full bg-[#FFD700] text-black font-medium hover:bg-[#FFD700]/90 transition-all"
+            >
+              Suscríbete Gratis
+            </button>
+          </motion.form>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section id="how-it-works" className="py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-4xl font-bold text-white text-center mb-16"
+          >
+            How It Works
+          </motion.h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/10 transition-all"
+              >
+                <h3 className="text-xl font-semibold text-white mb-4">{feature.title}</h3>
+                <p className="text-white/70">{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-4xl font-bold text-white text-center mb-4"
+          >
+            Examples of Personal Skills to Develop
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-white/70 text-center max-w-2xl mx-auto mb-16"
+          >
+            Discover our wide variety of personal skills to develop. Each day, you&apos;ll receive theory, examples, and
+            practical exercises to apply in your daily life.
+          </motion.p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {skills.map((skill, index) => (
+              <motion.div
+                key={skill}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 text-center hover:bg-white/10 transition-all"
+              >
+                <h3 className="text-xl font-medium text-white">{skill}</h3>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Waitlist Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             className="text-center"
           >
-            <h1 className="hero-title text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-                Mejora cada día en lo que te importa.
-              </motion.span>
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-2xl mx-auto">
-              Recibe un email diario con tácticas y métodos que realmente funcionan.
-            </p>
-            <form
-              onSubmit={handleSubmit}
-              className="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-md mx-auto"
-            >
+            <h2 className="text-4xl font-bold text-white mb-4">Join the Waitlist!</h2>
+            <p className="text-white/70 mb-8">Be among the first to access our platform when it&apos;s ready.</p>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Your Name"
+                className="w-full px-6 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:border-[#FFD700] transition-all"
+                required
+              />
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Tu email"
-                className="w-full px-6 py-3 rounded-full bg-black/50 border border-[#FFD700]/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FFD700]/50 transition-all duration-300"
+                placeholder="Your Email"
+                className="w-full px-6 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:border-[#FFD700] transition-all"
                 required
               />
-              <Button type="submit" className="w-full sm:w-auto rounded-full golden-button transition-all duration-300">
-                Suscríbete Gratis
-              </Button>
+              <button
+                type="submit"
+                className="w-full px-8 py-3 rounded-lg bg-[#FFD700] text-black font-medium hover:bg-[#FFD700]/90 transition-all"
+              >
+                Join Waitlist
+              </button>
             </form>
           </motion.div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="py-8 px-4 border-t border-white/10">
+        <div className="max-w-7xl mx-auto text-center">
+          <p className="text-white/50 text-sm">© 2025 SkillVoo. All rights reserved.</p>
+          <div className="flex justify-center gap-4 mt-4">
+            <Link href="/privacy" className="text-white/50 hover:text-white text-sm transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="text-white/50 hover:text-white text-sm transition-colors">
+              Terms of Service
+            </Link>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }

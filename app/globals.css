@@ -3,81 +3,32 @@
 @tailwind utilities;
 
 :root {
-  --gold-gradient: linear-gradient(to right, #d4af37, #c5a028, #d4af37, #c5a028, #d4af37);
-  --gold-glow: 0 0 10px rgba(212, 175, 55, 0.3), 0 0 20px rgba(212, 175, 55, 0.2);
   --gold: #ffd700;
-  --gold-dark: #daa520;
 }
 
-.logo-glow {
-  position: relative;
-  color: white;
+body {
+  @apply bg-black text-white antialiased;
 }
 
-.logo-glow::before {
-  content: "";
-  position: absolute;
-  top: -20%;
-  left: -10%;
-  width: 120%;
-  height: 140%;
-  background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15), transparent 70%);
-  z-index: -1;
-  filter: blur(8px);
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
-.golden-gradient {
-  background: var(--gold-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: shine 8s linear infinite;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-.golden-border {
-  background: linear-gradient(#000, #000) padding-box, var(--gold-gradient) border-box;
-  border: 1px solid transparent;
+::-webkit-scrollbar-track {
+  @apply bg-black;
 }
 
-@keyframes shine {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full;
 }
 
-.golden-glow {
-  box-shadow: var(--gold-glow);
-}
-
-.golden-hover {
-  transition: all 0.3s ease;
-}
-
-.golden-hover:hover {
-  box-shadow: var(--gold-glow);
-  border-color: rgba(212, 175, 55, 0.5);
-}
-
-.golden-button {
-  background-color: transparent;
-  border: 2px solid var(--gold);
-  color: var(--gold);
-  transition: all 0.3s ease;
-}
-
-.golden-button:hover {
-  background-color: var(--gold);
-  color: black;
-  box-shadow: 0 0 15px var(--gold);
-}
-
-.hero-title {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-white/20;
 }
 
