@@ -27,7 +27,7 @@ export default function Home() {
           </Link>
           <div className="flex items-center space-x-6">
             <Link href="#about" className="text-white hover:text-gray-300 transition-colors">
-              What's Skillvoo
+              What&apos;s Skillvoo
             </Link>
             <Button
               variant="outline"
