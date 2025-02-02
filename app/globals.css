@@ -3,25 +3,66 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 0, 0, 0;
+  --gold-gradient: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+  --gold-glow: 0 0 10px rgba(251, 245, 183, 0.3), 0 0 20px rgba(251, 245, 183, 0.2);
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+.logo-glow {
+  position: relative;
+  color: white;
 }
 
-@layer base {
-  body {
-    @apply antialiased;
+.logo-glow::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 120%;
+  height: 140%;
+  background: radial-gradient(
+    circle at center,
+    rgba(251, 245, 183, 0.15),
+    transparent 70%
+  );
+  z-index: -1;
+  filter: blur(8px);
+}
+
+.golden-gradient {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 8s linear infinite;
+}
+
+.golden-border {
+  background: linear-gradient(#000, #000) padding-box,
+              var(--gold-gradient) border-box;
+  border: 1px solid transparent;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.golden-glow {
+  box-shadow: var(--gold-glow);
 }
 
+.golden-hover {
+  transition: all 0.3s ease;
+}
+
+.golden-hover:hover {
+  box-shadow: var(--gold-glow);
+  border-color: rgba(251, 245, 183, 0.5);
+}

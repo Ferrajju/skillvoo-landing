@@ -5,7 +5,6 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import Image from "next/image"
 
 export default function Home() {
   const [email, setEmail] = useState("")
@@ -22,16 +21,17 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A] px-4 py-4">
         <div className="container mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center">
-            <Image src="/skillvoo-logo.svg" alt="Skillvoo Logo" width={32} height={32} />
-            <span className="ml-2 text-2xl font-bold">Skillvoo</span>
+            <span className="text-2xl font-bold logo-glow">
+              <span className="golden-gradient">Skills</span>letter
+            </span>
           </Link>
           <div className="flex items-center space-x-6">
             <Link href="#about" className="text-white hover:text-gray-300 transition-colors">
-              What&apos;s Skillvoo
+              What&apos;s Skillsletter
             </Link>
             <Button
               variant="outline"
-              className="bg-white text-black hover:bg-gray-200 transition-colors rounded-full px-6 py-2"
+              className="golden-border golden-hover bg-black text-white hover:text-[#FBF5B7] transition-colors rounded-full px-6 py-2"
             >
               Join Waitlist
             </Button>
@@ -64,13 +64,13 @@ export default function Home() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Tu email"
-                className="w-full px-6 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-300"
+                className="w-full px-6 py-3 rounded-full bg-black/50 border border-[#BF953F]/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#BF953F]/50 transition-all duration-300"
                 required
               />
               <Button
                 type="submit"
                 size="lg"
-                className="w-full sm:w-auto rounded-full bg-white text-black hover:bg-gray-200 transition-colors duration-300"
+                className="w-full sm:w-auto rounded-full golden-border golden-hover bg-black text-white hover:text-[#FBF5B7] transition-all duration-300"
               >
                 Suscríbete Gratis
               </Button>
