@@ -1,18 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --color-bg: 255, 255, 255;
-  --color-text: 0, 0, 0;
-  --color-primary: 0, 0, 0;
-  --color-secondary: 128, 128, 128;
-  --color-accent: 200, 200, 200;
-}
-
-.dark {
   --color-bg: 0, 0, 0;
   --color-text: 255, 255, 255;
   --color-primary: 255, 255, 255;
@@ -23,168 +15,92 @@
 body {
   color: rgb(var(--color-text));
   background-color: rgb(var(--color-bg));
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
-.gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400;
+.floating-text {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
 }
 
-.neo-button {
-  @apply px-6 py-3 rounded-full font-semibold text-white bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1;
+.hero-container {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,1));
 }
 
 .neo-input {
-  @apply w-full p-4 rounded-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:border-purple-500 dark:focus:border-purple-400 focus:ring-2 focus:ring-purple-200 dark:focus:ring-purple-800 focus:outline-none transition-all duration-300;
+  @apply w-full p-4 rounded-full bg-transparent border-2 border-white/20 focus:border-white/40 focus:ring-2 focus:ring-white/10 focus:outline-none transition-all duration-300 text-white placeholder-white/50 text-center;
 }
 
-.hero-background {
-  background: radial-gradient(circle at center, rgba(var(--color-bg), 0.8) 0%, rgba(var(--color-bg), 1) 100%),
-    url("/placeholder.svg?height=1080&width=1920") center / cover no-repeat;
-  position: relative;
-  overflow: hidden;
+.neo-button {
+  @apply px-8 py-4 rounded-full font-semibold text-black bg-white hover:bg-white/90 transition-all duration-300 relative overflow-hidden;
 }
 
-.hero-background::before {
-  content: "";
+.neo-button::after {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("/placeholder.svg?height=1080&width=1920") center / cover no-repeat;
-  opacity: 0.1;
-  animation: pulse 8s infinite alternate;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.8) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
-@keyframes pulse {
-  0% {
-    opacity: 0.1;
-  }
-  100% {
-    opacity: 0.2;
-  }
+.neo-button:hover::after {
+  opacity: 0.4;
 }
 
-.hero-glow {
+.glow-effect {
   position: relative;
-  z-index: 1;
 }
 
-.hero-glow::before {
-  content: "";
+.glow-effect::before {
+  content: '';
   position: absolute;
-  top: -50px;
-  left: -50px;
-  right: -50px;
-  bottom: -50px;
-  background: radial-gradient(
-    circle at center,
-    rgba(147, 51, 234, 0.2) 0%,
-    rgba(236, 72, 153, 0.2) 35%,
-    transparent 70%
-  );
-  z-index: -1;
-  border-radius: 30px;
-  filter: blur(40px);
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 50%);
+  transform: rotate(0deg);
+  animation: rotate 20s linear infinite;
 }
 
-.dark .hero-glow::before {
-  background: radial-gradient(
-    circle at center,
-    rgba(147, 51, 234, 0.3) 0%,
-    rgba(236, 72, 153, 0.3) 35%,
-    transparent 70%
-  );
-}
-
-.floating {
-  animation: floating 3s ease-in-out infinite;
-}
-
-@keyframes floating {
-  0% {
-    transform: translate(0, 0px);
-  }
-  50% {
-    transform: translate(0, 15px);
-  }
-  100% {
-    transform: translate(0, -0px);
-  }
-}
-
-.slide-up {
-  animation: slideUp 0.8s ease-out forwards;
-}
-
-@keyframes slideUp {
+@keyframes rotate {
   from {
-    opacity: 0;
-    transform: translateY(30px);
+    transform: rotate(0deg);
   }
   to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: rotate(360deg);
   }
 }
 
-.slide-up-delay-1 {
-  animation-delay: 0.2s;
-}
-
-.slide-up-delay-2 {
-  animation-delay: 0.4s;
-}
-
-.slide-up-delay-3 {
-  animation-delay: 0.6s;
+.text-glow {
+  text-shadow: 0 0 10px rgba(255,255,255,0.3),
+               0 0 20px rgba(255,255,255,0.2),
+               0 0 30px rgba(255,255,255,0.1);
 }
 
 .particle {
   position: absolute;
-  border-radius: 50%;
-  background-color: rgba(147, 51, 234, 0.6);
+  background: rgba(255, 255, 255, 0.05);
   pointer-events: none;
+  mix-blend-mode: screen;
 }
 
-@keyframes particleAnimation {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(var(--end-x), var(--end-y));
-  }
-}
-
-.cursor-spotlight {
+.cursor-glow {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  mix-blend-mode: difference;
-  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
-  transition: width 0.2s, height 0.2s;
-}
-
-.cursor-dot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 10000;
-  background-color: white;
-  mix-blend-mode: difference;
-}
-
-body:hover .cursor-spotlight {
   width: 200px;
   height: 200px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  z-index: 100;
 }
