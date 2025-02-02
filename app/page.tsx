@@ -80,7 +80,7 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Baner%20PNG%20BLANCO%20Y%20NEGRO-j7BZhQ4VzVsRR2Q138SlF9lCvvVj3S.png"
+            src="/public/images/Baner Png BLANCO Y NEGRO.png"
             alt="Successful entrepreneurs"
             fill
             className="object-cover opacity-20"
