@@ -64,13 +64,7 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-4 bg-black/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <Link href="/" className="text-xl md:text-2xl font-bold flex items-center gap-2">
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo_Skillsletter-oYOs5Ok6xiVD27SHH5B19BUg68f7Af.png"
-              alt="Skillsletter Logo"
-              width={40}
-              height={40}
-              className="w-10 h-10 md:w-12 md:h-12"
-            />
+            
             <div>
               <span className="text-[#FFD700]">Skills</span>
               <span className="text-white">letter</span>
