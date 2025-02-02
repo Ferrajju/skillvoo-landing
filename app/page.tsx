@@ -62,9 +62,18 @@ export default function Home() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold">
-            <span className="text-[#FFD700]">Skills</span>
-            <span className="text-white">letter</span>
+          <Link href="/" className="text-2xl font-bold flex items-center gap-2">
+            <Image
+              src="/images/Logo_Skillsletter.png"
+              alt="Skillsletter Logo"
+              width={40}
+              height={40}
+              className="w-10 h-10"
+            />
+            <div>
+              <span className="text-[#FFD700]">Skills</span>
+              <span className="text-white">letter</span>
+            </div>
           </Link>
           <div className="flex items-center gap-8">
             <Link href="#how-it-works" className="text-white/80 hover:text-white transition-colors">
