@@ -4,12 +4,13 @@ import type React from "react"
 import { useState, useEffect, useCallback } from "react"
 import { motion, useAnimation } from "framer-motion"
 import Link from "next/link"
+import Image from "next/image"
 import { useLanguage } from "@/contexts/language-context"
 import ThemeToggle from "../components/ThemeToggle"
 import { LanguageToggle } from "@/components/ui/language-toggle"
 import IlluminatedLogo from "../components/IluminatedLogo"
 
-const Particle = ({ index }: { index: number }) => {
+const Particle = () => {
   const size = Math.random() * 5 + 2
   const duration = Math.random() * 2 + 1
   const initialX = Math.random() * window.innerWidth
@@ -143,8 +144,8 @@ export default function LandingPage() {
 
       <main className="pt-24">
         <section className="min-h-screen flex items-center justify-center hero-background">
-          {particles.map((index) => (
-            <Particle key={index} index={index} />
+          {particles.map((_) => (
+            <Particle key={_} />
           ))}
           <div className="container mx-auto px-6 text-center relative z-10">
             <div className="hero-glow max-w-4xl mx-auto">
@@ -206,9 +207,11 @@ export default function LandingPage() {
               transition={{ delay: 0.8 }}
               className="mt-12"
             >
-              <img
+              <Image
                 src="/placeholder.svg?height=300&width=300"
                 alt="Ilustración de aprendizaje"
+                width={300}
+                height={300}
                 className="mx-auto floating"
               />
             </motion.div>
