@@ -1,142 +1,27 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --color-bg: 255, 255, 255;
-  --color-text: 0, 0, 0;
-  --color-primary: 0, 0, 0;
-  --color-secondary: 128, 128, 128;
-  --color-accent: 200, 200, 200;
-}
-
-.dark {
-  --color-bg: 0, 0, 0;
-  --color-text: 255, 255, 255;
-  --color-primary: 255, 255, 255;
-  --color-secondary: 200, 200, 200;
-  --color-accent: 128, 128, 128;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
 }
 
 body {
-  color: rgb(var(--color-text));
-  background-color: rgb(var(--color-bg));
-  font-family: "Inter", sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
-.gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-300 dark:to-white;
-}
-
-.neo-button {
-  @apply px-6 py-3 rounded-full font-semibold text-white bg-black dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1;
-}
-
-.hero-glow {
-  position: relative;
-  z-index: 1;
-}
-
-.hero-glow::before {
-  content: "";
-  position: absolute;
-  top: -20px;
-  left: -20px;
-  right: -20px;
-  bottom: -20px;
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.05) 35%,
-    transparent 70%
-  );
-  z-index: -1;
-  border-radius: 30px;
-}
-
-.dark .hero-glow::before {
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 255, 255, 0.05) 0%,
-    rgba(255, 255, 255, 0.02) 35%,
-    transparent 70%
-  );
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+@layer base {
+  body {
+    @apply antialiased;
   }
 }
 
-.slide-up {
-  animation: slideUp 0.8s ease-out forwards;
-}
-
-.slide-up-delay-1 {
-  animation-delay: 0.2s;
-}
-
-.slide-up-delay-2 {
-  animation-delay: 0.4s;
-}
-
-.neo-input {
-  @apply w-full p-4 rounded-full bg-white dark:bg-black border border-gray-300 dark:border-gray-700 focus:border-black dark:focus:border-white focus:ring-2 focus:ring-black dark:focus:ring-white focus:outline-none transition-all duration-300;
-}
-
-.section-title {
-  @apply text-4xl md:text-5xl font-bold mb-8 text-black dark:text-white;
-}
-
-.card {
-  @apply bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-6 transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1;
-}
-
-.illuminated-logo {
-  background: linear-gradient(90deg, #000 0%, #000 50%, #333 51%, #000 52%, #000 100%);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shine 3s infinite linear;
-}
-
-.illuminated-logo::before {
-  content: "";
-  position: absolute;
-  top: calc(var(--y, 0) * 1px - 50px);
-  left: calc(var(--x, 0) * 1px - 50px);
-  width: 100px;
-  height: 100px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
-}
-
-.illuminated-logo:hover::before {
-  opacity: 1;
-}
-
-@keyframes shine {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 200% 50%;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }
 
-.dark .illuminated-logo {
-  background: linear-gradient(90deg, #fff 0%, #fff 50%, #ccc 51%, #fff 52%, #fff 100%);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
