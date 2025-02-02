@@ -80,7 +80,7 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/public/images/Baner Png BLANCO Y NEGRO.png"
+            src="/images/baner_bw.png"
             alt="Successful entrepreneurs"
             fill
             className="object-cover opacity-20"
