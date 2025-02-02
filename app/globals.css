@@ -3,54 +3,27 @@
 @tailwind utilities;
 
 :root {
-  --gold-gradient: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-  --gold-glow: 0 0 10px rgba(251, 245, 183, 0.3), 0 0 20px rgba(251, 245, 183, 0.2);
+  --gold: #b49b57;
+  --gold-dark: #97824a;
 }
 
-.logo-glow {
-  position: relative;
-  color: white;
-}
-
-.logo-glow::before {
-  content: "";
-  position: absolute;
-  top: -20%;
-  left: -10%;
-  width: 120%;
-  height: 140%;
-  background: radial-gradient(circle at center, rgba(251, 245, 183, 0.15), transparent 70%);
-  z-index: -1;
-  filter: blur(8px);
+.logo-text {
+  color: var(--gold);
 }
 
 .golden-gradient {
-  background: var(--gold-gradient);
+  background: linear-gradient(to right, var(--gold), var(--gold-dark));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: shine 8s linear infinite;
 }
 
 .golden-border {
-  background: linear-gradient(#000, #000) padding-box, var(--gold-gradient) border-box;
-  border: 1px solid transparent;
-}
-
-@keyframes shine {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  border: 1px solid var(--gold);
 }
 
 .golden-glow {
-  box-shadow: var(--gold-glow);
+  box-shadow: 0 0 5px rgba(180, 155, 87, 0.3);
 }
 
 .golden-hover {
@@ -58,7 +31,6 @@
 }
 
 .golden-hover:hover {
-  box-shadow: var(--gold-glow);
-  border-color: rgba(251, 245, 183, 0.5);
+  background-color: var(--gold-dark);
 }
 
