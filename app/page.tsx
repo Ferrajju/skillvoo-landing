@@ -1,302 +1,236 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { motion, useAnimation } from "framer-motion"
+import { useState } from "react"
+import { motion } from "framer-motion"
 import Link from "next/link"
-import Image from "next/image"
-import { useLanguage } from "@/contexts/language-context"
-import ThemeToggle from "../components/ThemeToggle"
-import { LanguageToggle } from "@/components/ui/language-toggle"
-import IlluminatedLogo from "../components/IluminatedLogo"
 
-const Particle = () => {
-  const size = Math.random() * 5 + 2
-  const duration = Math.random() * 2 + 1
-  const initialX = Math.random() * window.innerWidth
-  const initialY = Math.random() * window.innerHeight
-  const endX = (Math.random() - 0.5) * 200
-  const endY = (Math.random() - 0.5) * 200
-
-  return (
-    <motion.div
-      className="particle"
-      style={{
-        width: size,
-        height: size,
-        x: initialX,
-        y: initialY,
-      }}
-      animate={{
-        x: [0, endX, 0],
-        y: [0, endY, 0],
-      }}
-      transition={{
-        duration: duration,
-        repeat: Number.POSITIVE_INFINITY,
-        ease: "linear",
-      }}
-    />
-  )
-}
-
-export default function LandingPage() {
+export default function Home() {
   const [email, setEmail] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
-  const [message, setMessage] = useState("")
-  const { t } = useLanguage()
-  const controls = useAnimation()
-  const [particles, setParticles] = useState<number[]>([])
-
-  useEffect(() => {
-    controls.start({ opacity: 1, y: 0 })
-    setParticles(Array.from({ length: 50 }, (_, i) => i))
-  }, [controls])
+  const [name, setName] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setMessage("")
-    setIsLoading(true)
-
     try {
       const response = await fetch("/api/waitlist", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, name }),
       })
-
-      const data = await response.json()
       if (response.ok) {
-        setMessage("Thank you for joining Skillsletter!")
+        alert("Thanks for joining the waitlist!")
         setEmail("")
-      } else {
-        setMessage(`Error: ${data.message || "There was a problem processing your request."}`)
+        setName("")
       }
     } catch (error) {
       console.error("Error:", error)
-      setMessage("There was an error connecting to the server. Please try again later.")
-    } finally {
-      setIsLoading(false)
     }
   }
 
-  return (
-    <div className="min-h-screen relative bg-white dark:bg-black text-black dark:text-white">
-      <header className="fixed w-full top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md shadow-md">
-        <nav className="container mx-auto px-6 py-4">
-          <div className="flex justify-between items-center">
-            <Link href="/" className="text-2xl font-semibold">
-              <IlluminatedLogo />
-            </Link>
-            <div className="flex items-center space-x-8">
-              <Link
-                href="#how-it-works"
-                className="text-sm font-medium hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
-              >
-                How It Works
-              </Link>
-              <Link
-                href="#benefits"
-                className="text-sm font-medium hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
-              >
-                Benefits
-              </Link>
-              <LanguageToggle />
-              <ThemeToggle />
-            </div>
-          </div>
-        </nav>
-      </header>
+  const features = [
+    {
+      title: "Micro-Learning",
+      description: "Short, focused 10-minute daily sessions designed to fit your busy schedule.",
+    },
+    {
+      title: "AI-Powered",
+      description: "Personalized learning experience adapting to your progress and preferences.",
+    },
+    {
+      title: "Skill Growth",
+      description: "Develop essential personal and professional skills that matter in today's world.",
+    },
+    {
+      title: "Community",
+      description: "Join a community of lifelong learners and share your growth journey.",
+    },
+  ]
 
-      <main className="pt-24">
-        <section className="min-h-screen flex items-center justify-center hero-background">
-          {particles.map((_) => (
-            <Particle key={_} />
-          ))}
-          <div className="container mx-auto px-6 text-center relative z-10">
-            <div className="hero-glow max-w-4xl mx-auto">
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={controls}
-                className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight gradient-text"
+  const skills = [
+    "Time Management",
+    "Effective Communication",
+    "Mental Influence",
+    "Negotiation",
+    "Creative Writing",
+    "Discipline Development",
+  ]
+
+  return (
+    <div className="min-h-screen bg-black">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-4">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <Link href="/" className="text-2xl font-bold">
+            <span className="text-[#FFD700]">Skills</span>
+            <span className="text-white">letter</span>
+          </Link>
+          <div className="flex items-center gap-8">
+            <Link href="#how-it-works" className="text-white/80 hover:text-white transition-colors">
+              What&apos;s Skillsletter
+            </Link>
+            <button className="golden-button">Join Waitlist</button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="min-h-screen flex items-center justify-center px-4 pt-20">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-7xl font-bold text-white mb-6 title-shadow"
+          >
+            Improve every day in what matters to you.
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl text-white/80 mb-8"
+          >
+            Receive daily emails with tactics and methods that really work.
+          </motion.p>
+          <motion.form
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            onSubmit={handleSubmit}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Your email"
+              className="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:border-[#FFD700] transition-all w-full sm:w-auto"
+              required
+            />
+            <button type="submit" className="golden-button">
+              Subscribe Free
+            </button>
+          </motion.form>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section id="how-it-works" className="py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-4xl font-bold text-white text-center mb-16"
+          >
+            How It Works
+          </motion.h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/10 transition-all"
               >
-                Today Is the Day to Start Improving
-              </motion.h1>
-              <motion.h2
-                initial={{ opacity: 0, y: 30 }}
-                animate={controls}
-                transition={{ delay: 0.2 }}
-                className="text-xl md:text-2xl lg:text-3xl font-medium mb-8 text-gray-700 dark:text-gray-300"
+                <h3 className="text-xl font-semibold text-white mb-4">{feature.title}</h3>
+                <p className="text-white/70">{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-4xl font-bold text-white text-center mb-4"
+          >
+            Examples of Personal Skills to Develop
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-white/70 text-center max-w-2xl mx-auto mb-16"
+          >
+            Discover our wide variety of personal skills to develop. Each day, you&apos;ll receive theory, examples, and
+            practical exercises to apply in your daily life.
+          </motion.p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {skills.map((skill, index) => (
+              <motion.div
+                key={skill}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 text-center hover:bg-white/10 transition-all"
               >
-                Learn something new every day. From marketing to finance, get inspired and take action in 5 minutes.
-              </motion.h2>
-            </div>
-            <motion.form
-              initial={{ opacity: 0, y: 30 }}
-              animate={controls}
-              transition={{ delay: 0.4 }}
-              onSubmit={handleSubmit}
-              className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4"
-            >
+                <h3 className="text-xl font-medium text-white">{skill}</h3>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Waitlist Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <h2 className="text-4xl font-bold text-white mb-4">Join the Waitlist!</h2>
+            <p className="text-white/70 mb-8">Be among the first to access our platform when it&apos;s ready.</p>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Your Name"
+                className="w-full px-6 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:border-[#FFD700] transition-all"
+                required
+              />
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Your email"
+                placeholder="Your Email"
+                className="w-full px-6 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:border-[#FFD700] transition-all"
                 required
-                className="neo-input w-full sm:w-64"
               />
-              <button type="submit" className="neo-button w-full sm:w-auto" disabled={isLoading}>
-                {isLoading ? "Sending..." : "Join Free"}
+              <button type="submit" className="golden-button w-full">
+                Join Waitlist
               </button>
-            </motion.form>
-            {message && (
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className={`mt-4 ${message.startsWith("Error") ? "text-red-500" : "text-green-500"}`}
-              >
-                {message}
-              </motion.p>
-            )}
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={controls}
-              transition={{ delay: 0.6 }}
-              className="mt-6 text-gray-600 dark:text-gray-400"
-            >
-              +10,000 people already receive Skillsletter every morning
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={controls}
-              transition={{ delay: 0.8 }}
-              className="mt-12"
-            >
-              <Image
-                src="/placeholder.svg?height=300&width=300"
-                alt="Learning illustration"
-                className="mx-auto floating"
-                width={300}
-                height={300}
-              />
-            </motion.div>
-          </div>
-        </section>
-
-        <section id="how-it-works" className="py-32 bg-gray-50 dark:bg-gray-900">
-          <div className="container mx-auto px-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">How It Works</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-              {[
-                {
-                  title: "Subscribe in 5 seconds",
-                  description: "Enter your email and you're set",
-                },
-                {
-                  title: "Receive a daily email",
-                  description: "With hacks, tricks, and useful data",
-                },
-                {
-                  title: "Learn and improve every day",
-                  description: "With actionable content",
-                },
-              ].map((step, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="relative flex flex-col items-center text-center p-6 rounded-lg overflow-hidden"
-                >
-                  <div className="absolute inset-0 border-2 border-yellow-400 rounded-lg golden-border"></div>
-                  <div className="relative z-10">
-                    <h3 className="text-xl font-semibold mb-4">{step.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-400">{step.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="benefits" className="py-32">
-          <div className="container mx-auto px-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">What Content Will You Receive?</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {[
-                "Proven techniques to improve your productivity",
-                "Scientific methods to learn faster",
-                "Tricks to stand out in your work or projects",
-                "Personal growth hacks that really work",
-                "Curious facts and relevant news in your sector",
-              ].map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="flex items-center space-x-2"
-                >
-                  <span>{benefit}</span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="final-cta" className="py-32 bg-gray-50 dark:bg-gray-900">
-          <div className="container mx-auto px-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">Receive your first email tomorrow</h2>
-            <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-              <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your email"
-                  required
-                  className="neo-input w-full sm:w-64"
-                />
-                <button type="submit" className="neo-button w-full sm:w-auto">
-                  Subscribe now
-                </button>
-              </div>
             </form>
-            <p className="mt-6 text-gray-600 dark:text-gray-400">
-              Subscribe now and receive our free guide on &quot;How to multiply your productivity in 7 days&quot;
-            </p>
-          </div>
-        </section>
-      </main>
+          </motion.div>
+        </div>
+      </section>
 
-      <footer className="py-12 bg-gray-100 dark:bg-gray-900">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                © {new Date().getFullYear()} Skillsletter. {t("footer.rights")}
-              </p>
-            </div>
-            <div className="flex space-x-4">
-              <Link
-                href="/privacy"
-                className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms"
-                className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300"
-              >
-                Terms of Service
-              </Link>
-            </div>
+      {/* Footer */}
+      <footer className="py-8 px-4 border-t border-white/10">
+        <div className="max-w-7xl mx-auto text-center">
+          <p className="text-white/50 text-sm">© 2025 SkillVoo. All rights reserved.</p>
+          <div className="flex justify-center gap-4 mt-4">
+            <Link href="/privacy" className="text-white/50 hover:text-white text-sm transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="text-white/50 hover:text-white text-sm transition-colors">
+              Terms of Service
+            </Link>
           </div>
         </div>
       </footer>
     </div>
   )
 }
-
