@@ -20,17 +20,17 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A] px-4 py-4">
         <div className="container mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center">
-            <span className="text-2xl font-bold logo-text">
-              <span className="text-[#D4AF37]">Skills</span>letter
+            <span className="text-2xl font-bold">
+              <span className="logo-text">Skills</span>letter
             </span>
           </Link>
           <div className="flex items-center space-x-6">
-            <Link href="#about" className="text-white hover:text-[#D4AF37] transition-colors">
+            <Link href="#about" className="text-white hover:text-[#B49B57] transition-colors">
               What&apos;s Skillsletter
             </Link>
             <Button
               variant="outline"
-              className="golden-button text-black hover:text-black transition-colors rounded-full px-6 py-2"
+              className="golden-border golden-button text-black hover:text-black transition-colors rounded-full px-6 py-2"
             >
               Join Waitlist
             </Button>
@@ -58,7 +58,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="golden-gradient"
+                className="highlight"
               >
                 te importa.
               </motion.span>
