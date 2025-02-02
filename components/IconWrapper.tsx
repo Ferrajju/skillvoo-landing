@@ -1,13 +1,14 @@
-import type React from "react"
+import type { ComponentType } from "react"
 import type { LucideProps } from "lucide-react"
 
 interface IconWrapperProps {
-  icon: React.ElementType // ✅ Asegura compatibilidad con los iconos de lucide-react
+  icon: ComponentType<LucideProps>
   className?: string
 }
 
-const IconWrapper: React.FC<IconWrapperProps> = ({ icon: Icon, className }) => {
+const IconWrapper = ({ icon: Icon, className }: IconWrapperProps) => {
   return <Icon className={className} />
 }
 
 export default IconWrapper
+
