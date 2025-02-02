@@ -19,7 +19,7 @@ export default function Home() {
         body: JSON.stringify({ email, name }),
       })
       if (response.ok) {
-        alert("¡Gracias por unirte a la lista de espera!")
+        alert("Thanks for joining the waitlist!")
         setEmail("")
         setName("")
       }
@@ -69,9 +69,7 @@ export default function Home() {
             <Link href="#how-it-works" className="text-white/80 hover:text-white transition-colors">
               What&apos;s Skillsletter
             </Link>
-            <button className="px-4 py-2 rounded-full border border-[#FFD700] text-[#FFD700] hover:bg-[#FFD700] hover:text-black transition-all">
-              Join Waitlist
-            </button>
+            <button className="golden-button">Join Waitlist</button>
           </div>
         </div>
       </nav>
@@ -83,9 +81,9 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-bold text-white mb-6"
+            className="text-5xl md:text-7xl font-bold text-white mb-6 title-shadow"
           >
-            Mejora cada día en lo que te importa.
+            Improve every day in what matters to you.
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -93,7 +91,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl text-white/80 mb-8"
           >
-            Recibe un email diario con tácticas y métodos que realmente funcionan.
+            Receive daily emails with tactics and methods that really work.
           </motion.p>
           <motion.form
             initial={{ opacity: 0, y: 20 }}
@@ -106,15 +104,12 @@ export default function Home() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Tu email"
+              placeholder="Your email"
               className="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:border-[#FFD700] transition-all w-full sm:w-auto"
               required
             />
-            <button
-              type="submit"
-              className="px-8 py-3 rounded-full bg-[#FFD700] text-black font-medium hover:bg-[#FFD700]/90 transition-all"
-            >
-              Suscríbete Gratis
+            <button type="submit" className="golden-button">
+              Subscribe Free
             </button>
           </motion.form>
         </div>
@@ -214,10 +209,7 @@ export default function Home() {
                 className="w-full px-6 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:border-[#FFD700] transition-all"
                 required
               />
-              <button
-                type="submit"
-                className="w-full px-8 py-3 rounded-lg bg-[#FFD700] text-black font-medium hover:bg-[#FFD700]/90 transition-all"
-              >
+              <button type="submit" className="golden-button w-full">
                 Join Waitlist
               </button>
             </form>

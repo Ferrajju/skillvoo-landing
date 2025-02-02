@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --gold: #ffd700;
+  --gold: #FFD700;
 }
 
 body {
-  @apply bg-black text-white antialiased;
+  @apply bg-black text-white antialiased font-inter;
 }
 
 /* Smooth scrolling */
@@ -32,3 +32,14 @@ html {
   @apply bg-white/20;
 }
 
+/* Custom button styles */
+.golden-button {
+  @apply bg-black border border-[#FFD700] text-white rounded-full px-8 py-3 
+         transition-all duration-300 hover:border-opacity-80
+         shadow-[0_0_10px_0_rgba(255,215,0,0.3)]
+         hover:shadow-[0_0_15px_0_rgba(255,215,0,0.5)];
+}
+
+.title-shadow {
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
