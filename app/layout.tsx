@@ -1,13 +1,16 @@
 import "./globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import type React from "react" // Added import for React
+import type React from "react"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+})
 
 export const metadata: Metadata = {
-  title: "Skillsletter - Mejora cada día",
-  description: "Recibe tácticas y métodos diarios que realmente funcionan para mejorar en lo que te importa.",
+  title: "Skillsletter - Improve Every Day",
+  description: "Receive daily tactics and methods that really work to improve what matters to you.",
 }
 
 export default function RootLayout({
@@ -16,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={`${inter.variable}`}>
+      <body className={`${inter.className}`}>{children}</body>
     </html>
   )
 }
