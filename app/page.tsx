@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
-import { Newspaper, Lightbulb, BotIcon } from "lucide-react"
+import { Newspaper, Lightbulb, BotIcon, TrendingUp, Brain, Target } from "lucide-react"
 import React from "react"
 
 export default function Home() {
@@ -57,6 +57,24 @@ export default function Home() {
       title: "AI-Personalized",
       description: "Get completely personalized emails tailored just for you using AI.",
       icon: BotIcon,
+    },
+  ]
+
+  const transformationSteps = [
+    {
+      title: "Consistent Growth",
+      description: "Experience steady improvement in your skills with daily practice and insights.",
+      icon: TrendingUp,
+    },
+    {
+      title: "Expanded Knowledge",
+      description: "Broaden your understanding across various domains and industries.",
+      icon: Brain,
+    },
+    {
+      title: "Achieve Your Goals",
+      description: "Turn your aspirations into reality with targeted skill development.",
+      icon: Target,
     },
   ]
 
@@ -199,6 +217,37 @@ export default function Home() {
                   React.createElement(mail.icon as React.ElementType, { className: "w-12 h-12 text-[#FFD700] mb-4" })}
                 <h3 className="text-xl font-semibold text-white mb-4">{mail.title}</h3>
                 <p className="text-white/70">{mail.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Transform Your Skills Section */}
+      <section className="py-20 px-4 bg-gradient-to-b from-black to-gray-900">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold text-white text-center mb-16"
+          >
+            Transform Your Skills
+          </motion.h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {transformationSteps.map((step, index) => (
+              <motion.div
+                key={step.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 md:p-8 hover:bg-white/10 transition-all border border-[#FFD700]/30 hover:border-[#FFD700]/50"
+              >
+                {step.icon &&
+                  React.createElement(step.icon as React.ElementType, { className: "w-12 h-12 text-[#FFD700] mb-4" })}
+                <h3 className="text-xl font-semibold text-white mb-4">{step.title}</h3>
+                <p className="text-white/70">{step.description}</p>
               </motion.div>
             ))}
           </div>
