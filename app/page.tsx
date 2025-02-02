@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function Home() {
   const [email, setEmail] = useState("")
@@ -75,15 +76,27 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-4 pt-20">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="min-h-screen flex items-center justify-center px-4 pt-20 relative">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Baner%20PNG%20BLANCO%20Y%20NEGRO-j7BZhQ4VzVsRR2Q138SlF9lCvvVj3S.png"
+            alt="Successful entrepreneurs"
+            fill
+            className="object-cover opacity-20"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black"></div>
+        </div>
+
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-5xl md:text-7xl font-bold text-white mb-6 title-shadow"
           >
-            Improve every day in what matters to you.
+            Learn from the Greatest
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -91,7 +104,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl text-white/80 mb-8"
           >
-            Receive daily emails with tactics and methods that really work.
+            Receive daily insights and methods from the world&apos;s most successful entrepreneurs.
           </motion.p>
           <motion.form
             initial={{ opacity: 0, y: 20 }}
@@ -234,3 +247,4 @@ export default function Home() {
     </div>
   )
 }
+
