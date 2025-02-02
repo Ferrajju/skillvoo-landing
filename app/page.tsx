@@ -7,44 +7,11 @@ import Link from "next/link"
 import { useLanguage } from "@/contexts/language-context"
 import ThemeToggle from "../components/ThemeToggle"
 import { LanguageToggle } from "@/components/ui/language-toggle"
-import { Clock, Brain, TrendingUp, Users } from "lucide-react"
+import { Mail, Book, Zap, Star, TrendingUp } from "lucide-react"
 import IlluminatedLogo from "../components/IluminatedLogo"
-
-const features = [
-  {
-    titleKey: "features.micro-learning.title",
-    descriptionKey: "features.micro-learning.description",
-    icon: <Clock className="w-8 h-8" />,
-  },
-  {
-    titleKey: "features.ai-powered.title",
-    descriptionKey: "features.ai-powered.description",
-    icon: <Brain className="w-8 h-8" />,
-  },
-  {
-    titleKey: "features.skill-growth.title",
-    descriptionKey: "features.skill-growth.description",
-    icon: <TrendingUp className="w-8 h-8" />,
-  },
-  {
-    titleKey: "features.community.title",
-    descriptionKey: "features.community.description",
-    icon: <Users className="w-8 h-8" />,
-  },
-]
-
-const skills = [
-  "Time Management",
-  "Effective Communication",
-  "Mental Influence",
-  "Negotiation",
-  "Creative Writing",
-  "Discipline Development",
-]
 
 export default function LandingPage() {
   const [email, setEmail] = useState("")
-  const [name, setName] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState("")
   const { t } = useLanguage()
@@ -58,20 +25,19 @@ export default function LandingPage() {
       const response = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, name }),
+        body: JSON.stringify({ email }),
       })
 
       const data = await response.json()
       if (response.ok) {
-        setMessage("Thank you for joining our waitlist!")
+        setMessage("¡Gracias por unirte a Skillsletter!")
         setEmail("")
-        setName("")
       } else {
-        setMessage(`Error: ${data.message || "There was a problem processing your request."}`)
+        setMessage(`Error: ${data.message || "Hubo un problema al procesar tu solicitud."}`)
       }
     } catch (error) {
       console.error("Error:", error)
-      setMessage("There was an error connecting to the server. Please try again later.")
+      setMessage("Hubo un error al conectar con el servidor. Por favor, inténtalo de nuevo más tarde.")
     } finally {
       setIsLoading(false)
     }
@@ -86,14 +52,11 @@ export default function LandingPage() {
               <IlluminatedLogo />
             </Link>
             <div className="flex items-center space-x-8">
-              <Link href="#features" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300">
-                Features
+              <Link href="#how-it-works" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300">
+                Cómo Funciona
               </Link>
-              <Link href="#skills" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300">
-                Skills
-              </Link>
-              <Link href="#waitlist" className="neo-button text-sm">
-                {t("nav.join-waitlist")}
+              <Link href="#benefits" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300">
+                Beneficios
               </Link>
               <LanguageToggle />
               <ThemeToggle />
@@ -109,125 +72,149 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-5xl md:text-7xl font-bold mb-8"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
             >
-              {t("hero.title")}
+              Aprende algo nuevo cada día con Skillsletter
             </motion.h1>
-            <motion.p
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto"
+              className="text-2xl md:text-3xl font-semibold mb-6 text-gray-700 dark:text-gray-300"
             >
-              {t("hero.description")}
-            </motion.p>
-            <motion.div
+              Los mejores métodos, técnicas y trucos directos a tu correo
+            </motion.h2>
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-gray-600 dark:text-gray-400"
             >
-              <Link href="#waitlist" className="neo-button text-lg">
-                {t("cta.start-journey")}
-              </Link>
-            </motion.div>
+              Recibe en tu email los mejores hacks, técnicas y métodos para mejorar en lo que te apasiona y destacar en
+              tu trabajo.
+            </motion.p>
+            <motion.form
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              onSubmit={handleSubmit}
+              className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4"
+            >
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Tu email"
+                required
+                className="neo-input w-full sm:w-64"
+              />
+              <button type="submit" className="neo-button w-full sm:w-auto">
+                Únete Gratis
+              </button>
+            </motion.form>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="mt-6 text-gray-600 dark:text-gray-400"
+            >
+              +10,000 personas ya reciben Skillsletter cada mañana
+            </motion.p>
           </div>
         </section>
 
-        <section id="features" className="py-32">
+        <section id="how-it-works" className="py-32 bg-gray-50 dark:bg-gray-900">
           <div className="container mx-auto px-6">
-            <h2 className="section-title text-center mb-16">{t("how-it-works.title")}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              {features.map((feature, index) => (
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">¿Cómo Funciona?</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              {[
+                {
+                  icon: <Mail className="w-12 h-12 mb-4" />,
+                  title: "Te suscribes en 5 segundos",
+                  description: "Ingresa tu email y listo",
+                },
+                {
+                  icon: <Book className="w-12 h-12 mb-4" />,
+                  title: "Recibes un email diario",
+                  description: "Con hacks, trucos y datos útiles",
+                },
+                {
+                  icon: <Zap className="w-12 h-12 mb-4" />,
+                  title: "Aprendes y mejoras cada día",
+                  description: "Con contenido accionable",
+                },
+              ].map((step, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="card flex items-start space-x-4"
-                >
-                  <div className="text-black dark:text-white">{feature.icon}</div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">{t(feature.titleKey)}</h3>
-                    <p className="text-gray-600 dark:text-gray-300">{t(feature.descriptionKey)}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="skills" className="py-32 bg-gray-50 dark:bg-gray-900">
-          <div className="container mx-auto px-6">
-            <h2 className="section-title text-center mb-16">{t("skills.title")}</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
-              {skills.map((skill, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="card text-center"
+                  className="text-center"
                 >
-                  <h3 className="text-xl font-medium">{skill}</h3>
+                  {step.icon}
+                  <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-400">{step.description}</p>
                 </motion.div>
               ))}
             </div>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="text-center mt-12 text-lg max-w-2xl mx-auto text-gray-600 dark:text-gray-300"
-            >
-              {t("skills.description")}
-            </motion.p>
           </div>
         </section>
 
-        <section id="waitlist" className="py-32">
+        <section id="benefits" className="py-32">
           <div className="container mx-auto px-6">
-            <div className="max-w-2xl mx-auto text-center">
-              <h2 className="section-title mb-8">{t("waitlist.title")}</h2>
-              <p className="text-xl mb-12 text-gray-600 dark:text-gray-300">{t("waitlist.description")}</p>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Your Name"
-                  required
-                  className="neo-input"
-                />
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">¿Qué Contenido Recibirás?</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {[
+                { icon: <Star className="w-6 h-6 mr-2" />, text: "Técnicas probadas para mejorar tu productividad" },
+                { icon: <Book className="w-6 h-6 mr-2" />, text: "Métodos científicos para aprender más rápido" },
+                {
+                  icon: <TrendingUp className="w-6 h-6 mr-2" />,
+                  text: "Trucos para destacar en tu trabajo o proyectos",
+                },
+                {
+                  icon: <Zap className="w-6 h-6 mr-2" />,
+                  text: "Hacks de crecimiento personal que realmente funcionan",
+                },
+                { icon: <Mail className="w-6 h-6 mr-2" />, text: "Datos curiosos y noticias relevantes en tu sector" },
+              ].map((benefit, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex items-center space-x-2"
+                >
+                  {benefit.icon}
+                  <span>{benefit.text}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="final-cta" className="py-32 bg-gray-50 dark:bg-gray-900">
+          <div className="container mx-auto px-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">Recibe tu primer email mañana</h2>
+            <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+              <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your Email"
+                  placeholder="Tu email"
                   required
-                  className="neo-input"
+                  className="neo-input w-full sm:w-64"
                 />
-                <motion.button
-                  type="submit"
-                  className="w-full neo-button py-4 text-lg font-semibold"
-                  disabled={isLoading}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {isLoading ? "Joining..." : t("nav.join-waitlist")}
-                </motion.button>
-              </form>
-              {message && (
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={`mt-4 ${message.startsWith("Error") ? "text-red-500" : "text-green-500"}`}
-                >
-                  {message}
-                </motion.p>
-              )}
-            </div>
+                <button type="submit" className="neo-button w-full sm:w-auto">
+                  Suscríbete ahora
+                </button>
+              </div>
+            </form>
+            <p className="mt-6 text-gray-600 dark:text-gray-400">
+              Suscríbete ahora y recibe nuestra guía gratuita sobre "Cómo multiplicar tu productividad en 7 días"
+            </p>
           </div>
         </section>
       </main>
@@ -245,13 +232,13 @@ export default function LandingPage() {
                 href="/privacy"
                 className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300"
               >
-                Privacy Policy
+                Política de Privacidad
               </Link>
               <Link
                 href="/terms"
                 className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300"
               >
-                Terms of Service
+                Términos de Servicio
               </Link>
             </div>
           </div>
