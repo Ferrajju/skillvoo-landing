@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --gold: #FFD700;
+  --gold: #ffd700;
 }
 
 body {
-  @apply bg-black text-white antialiased font-inter;
+  @apply bg-black text-white antialiased;
 }
 
 /* Smooth scrolling */
@@ -43,3 +43,4 @@ html {
 .title-shadow {
   text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
 }
+
