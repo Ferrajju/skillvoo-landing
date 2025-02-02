@@ -9,6 +9,32 @@
 
 .logo-text {
   color: var(--gold);
+  position: relative;
+}
+
+.logo-text::after {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  right: -10%;
+  bottom: -10%;
+  background: radial-gradient(ellipse at center, rgba(180, 155, 87, 0.3) 0%, rgba(180, 155, 87, 0) 70%);
+  opacity: 0;
+  z-index: -1;
+  animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .golden-gradient {
