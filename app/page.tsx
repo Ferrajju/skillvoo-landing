@@ -51,7 +51,7 @@ export default function Home() {
             transition={{ duration: 1 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">Mejora cada día en lo que te importa.</h1>
+            <h1 className="hero-text animate-fadeInUp">Mejora cada día en lo que te importa.</h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-2xl mx-auto">
               Recibe un email diario con tácticas y métodos que realmente funcionan.
             </p>
