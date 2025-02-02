@@ -11,7 +11,7 @@ const IlluminatedLogo: React.FC = () => {
     const logo = logoRef.current
     if (!logo) return
 
-    const updateGradient = (e: MouseEvent) => {
+    const updateIllumination = (e: MouseEvent) => {
       const rect = logo.getBoundingClientRect()
       const x = e.clientX - rect.left
       const y = e.clientY - rect.top
@@ -20,10 +20,10 @@ const IlluminatedLogo: React.FC = () => {
       logo.style.setProperty("--y", `${y}px`)
     }
 
-    window.addEventListener("mousemove", updateGradient)
+    window.addEventListener("mousemove", updateIllumination)
 
     return () => {
-      window.removeEventListener("mousemove", updateGradient)
+      window.removeEventListener("mousemove", updateIllumination)
     }
   }, [])
 
