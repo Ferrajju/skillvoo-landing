@@ -5,6 +5,8 @@
 :root {
   --gold-gradient: linear-gradient(to right, #d4af37, #c5a028, #d4af37, #c5a028, #d4af37);
   --gold-glow: 0 0 10px rgba(212, 175, 55, 0.3), 0 0 20px rgba(212, 175, 55, 0.2);
+  --gold: #ffd700;
+  --gold-dark: #daa520;
 }
 
 .logo-glow {
@@ -61,3 +63,21 @@
   box-shadow: var(--gold-glow);
   border-color: rgba(212, 175, 55, 0.5);
 }
+
+.golden-button {
+  background-color: transparent;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  transition: all 0.3s ease;
+}
+
+.golden-button:hover {
+  background-color: var(--gold);
+  color: black;
+  box-shadow: 0 0 15px var(--gold);
+}
+
+.hero-title {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
