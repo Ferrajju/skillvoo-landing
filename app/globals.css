@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --gold: #b49b57;
-  --gold-dark: #97824a;
+  --gold: #d4af37;
+  --gold-dark: #c5a028;
 }
 
 .logo-text {
@@ -19,7 +19,7 @@
   left: -10%;
   right: -10%;
   bottom: -10%;
-  background: radial-gradient(ellipse at center, rgba(180, 155, 87, 0.3) 0%, rgba(180, 155, 87, 0) 70%);
+  background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.3) 0%, rgba(212, 175, 55, 0) 70%);
   opacity: 0;
   z-index: -1;
   animation: breathe 4s ease-in-out infinite;
@@ -57,6 +57,15 @@
 }
 
 .golden-hover:hover {
+  background-color: var(--gold-dark);
+}
+
+.golden-button {
+  background-color: var(--gold);
+  transition: all 0.3s ease;
+}
+
+.golden-button:hover {
   background-color: var(--gold-dark);
 }
 

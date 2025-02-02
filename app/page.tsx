@@ -21,16 +21,16 @@ export default function Home() {
         <div className="container mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center">
             <span className="text-2xl font-bold logo-text">
-              <span className="golden-gradient">Skills</span>letter
+              <span className="text-[#D4AF37]">Skills</span>letter
             </span>
           </Link>
           <div className="flex items-center space-x-6">
-            <Link href="#about" className="text-white hover:text-[#B49B57] transition-colors">
+            <Link href="#about" className="text-white hover:text-[#D4AF37] transition-colors">
               What&apos;s Skillsletter
             </Link>
             <Button
               variant="outline"
-              className="golden-border golden-hover text-[#B49B57] hover:text-black transition-colors rounded-full px-6 py-2"
+              className="golden-button text-black hover:text-black transition-colors rounded-full px-6 py-2"
             >
               Join Waitlist
             </Button>
@@ -80,7 +80,7 @@ export default function Home() {
               />
               <Button
                 type="submit"
-                className="w-full sm:w-auto rounded-full golden-hover bg-[#B49B57] text-black hover:text-black transition-all duration-300"
+                className="w-full sm:w-auto rounded-full golden-button text-black hover:text-black transition-all duration-300"
               >
                 Suscríbete Gratis
               </Button>
