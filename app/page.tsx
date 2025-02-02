@@ -80,13 +80,13 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/baner_bw.png"
+            src="/images/baner_bw.png.png"
             alt="Successful entrepreneurs"
             fill
-            className="object-cover opacity-20"
+            className="object-cover opacity-40"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black/90"></div>
         </div>
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
