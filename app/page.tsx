@@ -31,7 +31,7 @@ export default function Home() {
             </Link>
             <Button
               variant="outline"
-              className="golden-border golden-hover bg-black text-white hover:text-[#FBF5B7] transition-colors rounded-full px-6 py-2"
+              className="golden-border golden-hover bg-black text-white hover:text-[#D4AF37] transition-colors rounded-full px-6 py-2"
             >
               Join Waitlist
             </Button>
@@ -64,13 +64,13 @@ export default function Home() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Tu email"
-                className="w-full px-6 py-3 rounded-full bg-black/50 border border-[#BF953F]/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#BF953F]/50 transition-all duration-300"
+                className="w-full px-6 py-3 rounded-full bg-black/50 border border-[#D4AF37]/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/50 transition-all duration-300"
                 required
               />
               <Button
                 type="submit"
                 size="lg"
-                className="w-full sm:w-auto rounded-full golden-border golden-hover bg-black text-white hover:text-[#FBF5B7] transition-all duration-300"
+                className="w-full sm:w-auto rounded-full golden-border golden-hover bg-black text-white hover:text-[#D4AF37] transition-all duration-300"
               >
                 Suscríbete Gratis
               </Button>

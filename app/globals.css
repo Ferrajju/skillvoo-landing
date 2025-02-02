@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --gold-gradient: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
-  --gold-glow: 0 0 10px rgba(251, 245, 183, 0.3), 0 0 20px rgba(251, 245, 183, 0.2);
+  --gold-gradient: linear-gradient(to right, #d4af37, #c5a028, #d4af37, #c5a028, #d4af37);
+  --gold-glow: 0 0 10px rgba(212, 175, 55, 0.3), 0 0 20px rgba(212, 175, 55, 0.2);
 }
 
 .logo-glow {
@@ -13,17 +13,13 @@
 }
 
 .logo-glow::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -20%;
   left: -10%;
   width: 120%;
   height: 140%;
-  background: radial-gradient(
-    circle at center,
-    rgba(251, 245, 183, 0.15),
-    transparent 70%
-  );
+  background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15), transparent 70%);
   z-index: -1;
   filter: blur(8px);
 }
@@ -37,8 +33,7 @@
 }
 
 .golden-border {
-  background: linear-gradient(#000, #000) padding-box,
-              var(--gold-gradient) border-box;
+  background: linear-gradient(#000, #000) padding-box, var(--gold-gradient) border-box;
   border: 1px solid transparent;
 }
 
@@ -64,5 +59,6 @@
 
 .golden-hover:hover {
   box-shadow: var(--gold-glow);
-  border-color: rgba(251, 245, 183, 0.5);
+  border-color: rgba(212, 175, 55, 0.5);
 }
+
