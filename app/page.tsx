@@ -144,7 +144,7 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src={isMobile ? "/images/mobile_hero.jpg" : "/images/baner_bw.png"}
+            src={isMobile ? "/images/baner_mobile.png" : "/images/baner_bw.png"}
             alt="Successful entrepreneurs"
             fill
             className="object-cover opacity-40"
