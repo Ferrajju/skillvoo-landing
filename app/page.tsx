@@ -1,19 +1,17 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
-import { Newspaper, Lightbulb, BotIcon, Brain, Target, ChevronLeft, ChevronRight } from "lucide-react"
+import { Newspaper, Lightbulb, BotIcon, Brain, Target } from "lucide-react"
 import React from "react"
-
 
 export default function Home() {
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
-  const [currentMailIndex, setCurrentMailIndex] = useState(0)
 
   useEffect(() => {
     const checkIsMobile = () => {
@@ -71,14 +69,6 @@ export default function Home() {
     "Discipline Development",
   ]
 
-  const nextMail = () => {
-    setCurrentMailIndex((prevIndex) => (prevIndex + 1) % dailyMails.length)
-  }
-
-  const prevMail = () => {
-    setCurrentMailIndex((prevIndex) => (prevIndex - 1 + dailyMails.length) % dailyMails.length)
-  }
-
   return (
     <div className="min-h-screen bg-black">
       {/* Navigation */}
@@ -93,7 +83,7 @@ export default function Home() {
           </Link>
           <div className="hidden md:flex items-center gap-8">
             <Link href="#daily-mails" className="text-white/80 hover:text-white transition-colors">
-              {"What's Skillsletter"}
+              What&apos;s Skillsletter
             </Link>
             <button className="golden-button">Join Waitlist</button>
           </div>
@@ -124,7 +114,7 @@ export default function Home() {
         {isMenuOpen && (
           <div className="md:hidden mt-4 py-4 border-t border-white/10">
             <Link href="#daily-mails" className="block text-white/80 hover:text-white transition-colors py-2">
-              {"What's Skillsletter"}
+              What&apos;s Skillsletter
             </Link>
             <button className="golden-button w-full mt-4">Join Waitlist</button>
           </div>
@@ -160,7 +150,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-lg md:text-xl text-white/80 mb-8"
           >
-            {"Receive daily insights and methods from the world's most successful entrepreneurs."}
+            Receive daily insights and methods from the world&apos;s most successful entrepreneurs.
           </motion.p>
           <motion.form
             initial={{ opacity: 0, y: 20 }}
@@ -178,76 +168,57 @@ export default function Home() {
               required
             />
             <button type="submit" className="golden-button w-full sm:w-auto">
-              Join Our Waitlist
+              Join Owr Waitlist
             </button>
           </motion.form>
         </div>
       </section>
 
       {/* Daily Mails Section */}
-      <section id="daily-mails" className="py-20 relative overflow-hidden">
+      <section id="daily-mails" className="py-20 px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-gray-900/90"></div>
-        <div className="absolute inset-0 bg-[url('/images/grid-pattern.png')] opacity-10"></div>
-        <div className="max-w-7xl mx-auto relative z-10 px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-3xl md:text-4xl font-bold text-white text-center mb-6"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-stroke">Daily</span> <span className="gradient-text">Mails</span>
-            </h2>
-            <p className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto">
-              Expertly curated content delivered to your inbox every day
-            </p>
-          </motion.div>
-
-          <div className="perspective-container">
-            <div className="relative">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentMailIndex}
-                  initial={{ opacity: 0, rotateY: -90 }}
-                  animate={{ opacity: 1, rotateY: 0 }}
-                  exit={{ opacity: 0, rotateY: 90 }}
-                  transition={{ duration: 0.5 }}
-                  className="glass-effect rounded-2xl p-8 rotate-on-hover"
-                >
-                  <div className="flex flex-col md:flex-row items-center gap-8">
-                    <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#FFD700] to-[#FFA500] flex items-center justify-center glow-effect">
-                      {dailyMails[currentMailIndex].icon && 
-      React.createElement(dailyMails[currentMailIndex].icon, { className: "w-16 h-16 text-white" })}
-
-                    </div>
-                    <div className="text-center md:text-left">
-                      <h3 className="text-2xl font-bold text-white mb-4">{dailyMails[currentMailIndex].title}</h3>
-                      <p className="text-white/80">{dailyMails[currentMailIndex].description}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-              <div className="absolute top-1/2 -translate-y-1/2 left-0 -ml-4">
-                <button onClick={prevMail} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
-                  <ChevronLeft className="w-6 h-6 text-white" />
-                </button>
-              </div>
-              <div className="absolute top-1/2 -translate-y-1/2 right-0 -mr-4">
-                <button onClick={nextMail} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
-                  <ChevronRight className="w-6 h-6 text-white" />
-                </button>
-              </div>
-            </div>
+            Daily Mails
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-white/70 text-center max-w-2xl mx-auto mb-16"
+          >
+            Expertly curated content delivered to your inbox every day
+          </motion.p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {dailyMails.map((mail, index) => (
+              <motion.div
+                key={mail.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                className="group relative bg-gradient-to-b from-white/5 to-white/[0.02] backdrop-blur-sm rounded-2xl p-8 hover:from-white/10 hover:to-white/[0.05] transition-all duration-500 border border-[#FFD700]/10 hover:border-[#FFD700]/30"
+              >
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#FFD700]/0 via-[#FFD700]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  {mail.icon &&
+                    React.createElement(mail.icon as React.ElementType, {
+                      className:
+                        "w-16 h-16 text-[#FFD700]/80 mb-6 transform group-hover:scale-110 transition-transform duration-500",
+                    })}
+                  <h3 className="text-2xl font-semibold text-white mb-4">{mail.title}</h3>
+                  <p className="text-white/70 group-hover:text-white/90 transition-colors duration-500">
+                    {mail.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-12 text-center"
-          >
-            <button className="golden-button px-8 py-3 text-lg glow-effect">Subscribe Now</button>
-          </motion.div>
         </div>
       </section>
 
@@ -272,19 +243,18 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="glass-effect rounded-2xl p-8 rotate-on-hover"
+              className="bg-gradient-to-br from-white/10 to-white/[0.02] rounded-2xl p-8 border border-[#FFD700]/20"
             >
               <h3 className="text-2xl font-semibold text-white mb-6 flex items-center gap-3">
-                <span className="w-10 h-10 rounded-full bg-gradient-to-br from-[#FFD700] to-[#FFA500] flex items-center justify-center glow-effect">
-                  <Brain className="w-6 h-6 text-white" />
+                <span className="w-8 h-8 rounded-full bg-[#FFD700]/20 flex items-center justify-center">
+                  <Brain className="w-5 h-5 text-[#FFD700]" />
                 </span>
                 Your Personal Growth Hub
               </h3>
               <div className="space-y-6">
                 <p className="text-white/70">
-                  {
-                    "Skillsletter isn't just about receiving daily emails. Our platform provides a comprehensive dashboard where you can:"
-                  }
+                  Skillsletter isn&apos;t just about receiving daily emails. Our platform provides a comprehensive
+                  dashboard where you can:
                 </p>
                 <ul className="space-y-4">
                   {[
@@ -315,11 +285,11 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="relative group"
             >
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 rounded-2xl blur-md group-hover:blur-lg transition-all duration-500"></div>
-              <div className="relative glass-effect rounded-xl p-6 rotate-on-hover">
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#FFD700]/20 to-[#FFD700]/10 rounded-2xl blur-md group-hover:blur-lg transition-all duration-500"></div>
+              <div className="relative bg-gradient-to-br from-white/10 to-transparent backdrop-blur-sm rounded-xl p-6 border border-[#FFD700]/20">
                 <div className="aspect-video bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-lg flex items-center justify-center overflow-hidden group-hover:scale-[1.02] transition-transform duration-500">
                   <div className="text-center p-8">
-                    <Target className="w-16 h-16 text-[#FFD700]/30 mx-auto mb-4 glow-effect" />
+                    <Target className="w-16 h-16 text-[#FFD700]/30 mx-auto mb-4" />
                     <p className="text-white/50 text-lg font-medium">Dashboard Preview Coming Soon</p>
                     <p className="text-white/30 mt-2">Experience the future of personal growth tracking</p>
                   </div>
@@ -347,9 +317,8 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-white/70 text-center max-w-2xl mx-auto mb-16"
           >
-            {
-              "Discover our wide variety of personal skills to develop. Each day, you'll receive theory, examples, and practical exercises to apply in your daily life."
-            }
+            Discover our wide variety of personal skills to develop. Each day, you&apos;ll receive theory, examples, and
+            practical exercises to apply in your daily life.
           </motion.p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
             {skills.map((skill, index) => (
@@ -359,7 +328,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="glass-effect rounded-2xl p-4 md:p-6 text-center hover:bg-white/10 transition-all rotate-on-hover"
+                className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 md:p-6 text-center hover:bg-white/10 transition-all"
               >
                 <h3 className="text-lg md:text-xl font-medium text-white">{skill}</h3>
               </motion.div>
@@ -378,7 +347,7 @@ export default function Home() {
             className="text-center"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Join the Waitlist!</h2>
-            <p className="text-white/70 mb-8">{"Be among the first to access our platform when it's ready."}</p>
+            <p className="text-white/70 mb-8">Be among the first to access our platform when it&apos;s ready.</p>
             <form onSubmit={handleSubmit} className="space-y-4">
               <input
                 type="text"
@@ -396,7 +365,7 @@ export default function Home() {
                 className="w-full px-6 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:border-[#FFD700] transition-all"
                 required
               />
-              <button type="submit" className="golden-button w-full glow-effect">
+              <button type="submit" className="golden-button w-full">
                 Join Waitlist
               </button>
             </form>
