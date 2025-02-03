@@ -142,7 +142,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 title-shadow"
           >
-            Learn from the Greatest
+            A Newsletter Made Just For You
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
