@@ -223,33 +223,48 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Transform Your Skills Section */}
+      {/* More than Just a NewsLetter */}
       <section className="py-20 px-4 bg-gradient-to-b from-black to-gray-900">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-white text-center mb-16"
+            className="text-4xl font-bold text-white text-center mb-8"
           >
-            Transform Your Skills
+            More Than Just Daily Emails
           </motion.h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {transformationSteps.map((step, index) => (
-              <motion.div
-                key={step.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 md:p-8 hover:bg-white/10 transition-all border border-[#FFD700]/30 hover:border-[#FFD700]/50"
-              >
-                {step.icon &&
-                  React.createElement(step.icon as React.ElementType, { className: "w-12 h-12 text-[#FFD700] mb-4" })}
-                <h3 className="text-xl font-semibold text-white mb-4">{step.title}</h3>
-                <p className="text-white/70">{step.description}</p>
-              </motion.div>
-            ))}
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h3 className="text-2xl font-semibold text-white mb-4">Your Personal Growth Hub</h3>
+              <p className="text-white/70 mb-6">
+                Skillsletter isn't just about receiving daily emails. Our platform provides a comprehensive dashboard
+                where you can:
+              </p>
+              <ul className="list-disc list-inside text-white/70 space-y-2">
+                <li>Manage and organize your favorite tactics and methods</li>
+                <li>Track your progress and see your skill growth over time</li>
+                <li>Access a library of past content for review and deeper learning</li>
+                <li>Set personal goals and receive tailored content recommendations</li>
+              </ul>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="bg-white/10 rounded-lg p-4"
+            >
+              {/* Placeholder for dashboard image */}
+              <div className="aspect-video bg-gray-800 rounded-lg flex items-center justify-center">
+                <p className="text-white/50">Dashboard Image Coming Soon</p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
