@@ -186,7 +186,7 @@ export default function Home() {
               required
             />
             <button type="submit" className="golden-button w-full sm:w-auto">
-              Subscribe Free
+              Join Owr Waitlist
             </button>
           </motion.form>
         </div>
