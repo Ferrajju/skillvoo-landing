@@ -217,7 +217,7 @@ export default function Home() {
                   <div className="flex flex-col md:flex-row items-center gap-8">
                     <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#FFD700] to-[#FFA500] flex items-center justify-center glow-effect">
                       {dailyMails[currentMailIndex].icon && 
-  React.createElement(dailyMails[currentMailIndex].icon, { className: "w-16 h-16 text-white" })}
+      React.createElement(dailyMails[currentMailIndex].icon, { className: "w-16 h-16 text-white" })}
 
                     </div>
                     <div className="text-center md:text-left">
