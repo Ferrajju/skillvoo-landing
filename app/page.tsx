@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
-import { Newspaper, Lightbulb, BotIcon, TrendingUp, Brain, Target } from "lucide-react"
+import { Newspaper, Lightbulb, BotIcon } from "lucide-react"
 import React from "react"
 
 export default function Home() {
@@ -57,24 +57,6 @@ export default function Home() {
       title: "AI-Personalized",
       description: "Get completely personalized emails tailored just for you using AI.",
       icon: BotIcon,
-    },
-  ]
-
-  const transformationSteps = [
-    {
-      title: "Consistent Growth",
-      description: "Experience steady improvement in your skills with daily practice and insights.",
-      icon: TrendingUp,
-    },
-    {
-      title: "Expanded Knowledge",
-      description: "Broaden your understanding across various domains and industries.",
-      icon: Brain,
-    },
-    {
-      title: "Achieve Your Goals",
-      description: "Turn your aspirations into reality with targeted skill development.",
-      icon: Target,
     },
   ]
 
@@ -243,8 +225,8 @@ export default function Home() {
             >
               <h3 className="text-2xl font-semibold text-white mb-4">Your Personal Growth Hub</h3>
               <p className="text-white/70 mb-6">
-                Skillsletter isn't just about receiving daily emails. Our platform provides a comprehensive dashboard
-                where you can:
+                Skillsletter isn&apos;t just about receiving daily emails. Our platform provides a comprehensive
+                dashboard where you can:
               </p>
               <ul className="list-disc list-inside text-white/70 space-y-2">
                 <li>Manage and organize your favorite tactics and methods</li>
