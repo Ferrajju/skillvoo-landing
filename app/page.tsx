@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
 import { Newspaper, Lightbulb, BotIcon, Brain, Target, ChevronLeft, ChevronRight } from "lucide-react"
-import type React from "react"
+import React from "react"
+
 
 export default function Home() {
   const [email, setEmail] = useState("")
