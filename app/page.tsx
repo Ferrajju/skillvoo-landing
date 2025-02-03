@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
-import { Newspaper, Lightbulb, BotIcon } from "lucide-react"
+import { Newspaper, Lightbulb, BotIcon, Brain, Target } from "lucide-react"
 import React from "react"
 
 export default function Home() {
@@ -175,17 +175,26 @@ export default function Home() {
       </section>
 
       {/* Daily Mails Section */}
-      <section id="daily-mails" className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
+      <section id="daily-mails" className="py-20 px-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-gray-900/90"></div>
+        <div className="max-w-7xl mx-auto relative z-10">
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-white text-center mb-16"
+            className="text-3xl md:text-4xl font-bold text-white text-center mb-6"
           >
             Daily Mails
           </motion.h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-white/70 text-center max-w-2xl mx-auto mb-16"
+          >
+            Expertly curated content delivered to your inbox every day
+          </motion.p>
+          <div className="grid md:grid-cols-3 gap-8">
             {dailyMails.map((mail, index) => (
               <motion.div
                 key={mail.title}
@@ -193,12 +202,20 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 md:p-8 hover:bg-white/10 transition-all border border-[#FFD700]/30 hover:border-[#FFD700]/50"
+                className="group relative bg-gradient-to-b from-white/5 to-white/[0.02] backdrop-blur-sm rounded-2xl p-8 hover:from-white/10 hover:to-white/[0.05] transition-all duration-500 border border-[#FFD700]/10 hover:border-[#FFD700]/30"
               >
-                {mail.icon &&
-                  React.createElement(mail.icon as React.ElementType, { className: "w-12 h-12 text-[#FFD700] mb-4" })}
-                <h3 className="text-xl font-semibold text-white mb-4">{mail.title}</h3>
-                <p className="text-white/70">{mail.description}</p>
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#FFD700]/0 via-[#FFD700]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  {mail.icon &&
+                    React.createElement(mail.icon as React.ElementType, {
+                      className:
+                        "w-16 h-16 text-[#FFD700]/80 mb-6 transform group-hover:scale-110 transition-transform duration-500",
+                    })}
+                  <h3 className="text-2xl font-semibold text-white mb-4">{mail.title}</h3>
+                  <p className="text-white/70 group-hover:text-white/90 transition-colors duration-500">
+                    {mail.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -206,45 +223,77 @@ export default function Home() {
       </section>
 
       {/* More than Just a NewsLetter */}
-      <section className="py-20 px-4 bg-gradient-to-b from-black to-gray-900">
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
+      <section className="py-20 px-4 bg-gradient-to-b from-gray-900/90 to-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,_rgba(255,215,0,0.05)_0%,_transparent_70%)]"></div>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-4xl font-bold text-white text-center mb-8"
+            className="text-center mb-16"
           >
-            More Than Just Daily Emails
-          </motion.h2>
+            <h2 className="text-4xl font-bold text-white mb-4">More Than Just Daily Emails</h2>
+            <p className="text-white/70 max-w-2xl mx-auto">
+              Transform your learning experience with our comprehensive platform
+            </p>
+          </motion.div>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
+              className="bg-gradient-to-br from-white/10 to-white/[0.02] rounded-2xl p-8 border border-[#FFD700]/20"
             >
-              <h3 className="text-2xl font-semibold text-white mb-4">Your Personal Growth Hub</h3>
-              <p className="text-white/70 mb-6">
-                Skillsletter isn&apos;t just about receiving daily emails. Our platform provides a comprehensive
-                dashboard where you can:
-              </p>
-              <ul className="list-disc list-inside text-white/70 space-y-2">
-                <li>Manage and organize your favorite tactics and methods</li>
-                <li>Track your progress and see your skill growth over time</li>
-                <li>Access a library of past content for review and deeper learning</li>
-                <li>Set personal goals and receive tailored content recommendations</li>
-              </ul>
+              <h3 className="text-2xl font-semibold text-white mb-6 flex items-center gap-3">
+                <span className="w-8 h-8 rounded-full bg-[#FFD700]/20 flex items-center justify-center">
+                  <Brain className="w-5 h-5 text-[#FFD700]" />
+                </span>
+                Your Personal Growth Hub
+              </h3>
+              <div className="space-y-6">
+                <p className="text-white/70">
+                  Skillsletter isn&apos;t just about receiving daily emails. Our platform provides a comprehensive
+                  dashboard where you can:
+                </p>
+                <ul className="space-y-4">
+                  {[
+                    "Manage and organize your favorite tactics and methods",
+                    "Track your progress and see your skill growth over time",
+                    "Access a library of past content for review and deeper learning",
+                    "Set personal goals and receive tailored content recommendations",
+                  ].map((item, index) => (
+                    <motion.li
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      className="flex items-start gap-3 text-white/70"
+                    >
+                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#FFD700]/50 flex-shrink-0"></span>
+                      {item}
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-white/10 rounded-lg p-4"
+              className="relative group"
             >
-              {/* Placeholder for dashboard image */}
-              <div className="aspect-video bg-gray-800 rounded-lg flex items-center justify-center">
-                <p className="text-white/50">Dashboard Image Coming Soon</p>
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#FFD700]/20 to-[#FFD700]/10 rounded-2xl blur-md group-hover:blur-lg transition-all duration-500"></div>
+              <div className="relative bg-gradient-to-br from-white/10 to-transparent backdrop-blur-sm rounded-xl p-6 border border-[#FFD700]/20">
+                <div className="aspect-video bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-lg flex items-center justify-center overflow-hidden group-hover:scale-[1.02] transition-transform duration-500">
+                  <div className="text-center p-8">
+                    <Target className="w-16 h-16 text-[#FFD700]/30 mx-auto mb-4" />
+                    <p className="text-white/50 text-lg font-medium">Dashboard Preview Coming Soon</p>
+                    <p className="text-white/30 mt-2">Experience the future of personal growth tracking</p>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>
