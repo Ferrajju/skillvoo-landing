@@ -292,7 +292,7 @@ export default function Home() {
               <div className="relative bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm rounded-xl p-6 border border-[#FFD700]/20">
                 <div className="aspect-video bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-lg overflow-hidden group-hover:scale-[1.02] transition-transform duration-500">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-pdv2d1gL3wxZf1wURDtLrGj6d5NYGc.png"
+                    src="/images/dashboard.png"
                     alt="Skillsletter Dashboard Preview"
                     width={1200}
                     height={675}
