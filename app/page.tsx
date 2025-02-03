@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
-import { Newspaper, Lightbulb, BotIcon, Brain, Target } from "lucide-react"
+import { Newspaper, Lightbulb, BotIcon, Brain } from "lucide-react"
 import React from "react"
 
 export default function Home() {
@@ -290,12 +290,14 @@ export default function Home() {
             >
               <div className="absolute -inset-1 bg-gradient-to-r from-[#FFD700]/10 to-transparent rounded-2xl blur-md group-hover:blur-lg transition-all duration-500"></div>
               <div className="relative bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm rounded-xl p-6 border border-[#FFD700]/20">
-                <div className="aspect-video bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-lg flex items-center justify-center overflow-hidden group-hover:scale-[1.02] transition-transform duration-500">
-                  <div className="text-center p-8">
-                    <Target className="w-16 h-16 text-[#FFD700]/30 mx-auto mb-4" />
-                    <p className="text-white/50 text-lg font-medium">Dashboard Preview Coming Soon</p>
-                    <p className="text-white/30 mt-2">Experience the future of personal growth tracking</p>
-                  </div>
+                <div className="aspect-video bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-lg overflow-hidden group-hover:scale-[1.02] transition-transform duration-500">
+                  <Image
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-pdv2d1gL3wxZf1wURDtLrGj6d5NYGc.png"
+                    alt="Skillsletter Dashboard Preview"
+                    width={1200}
+                    height={675}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </motion.div>
