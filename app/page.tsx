@@ -175,8 +175,11 @@ export default function Home() {
       </section>
 
       {/* Daily Mails Section */}
-      <section id="daily-mails" className="py-20 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-gray-900/90"></div>
+      <section
+        id="daily-mails"
+        className="py-20 px-4 relative overflow-hidden bg-gradient-to-b from-black/90 via-gray-900/95 to-black"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#FFD700]/10 via-transparent to-transparent opacity-50"></div>
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.h2
             initial={{ opacity: 0 }}
@@ -190,7 +193,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-white/70 text-center max-w-2xl mx-auto mb-16"
+            className="text-white/80 text-center max-w-2xl mx-auto mb-16"
           >
             Expertly curated content delivered to your inbox every day
           </motion.p>
@@ -202,7 +205,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className="group relative bg-gradient-to-b from-white/5 to-white/[0.02] backdrop-blur-sm rounded-2xl p-8 hover:from-white/10 hover:to-white/[0.05] transition-all duration-500 border border-[#FFD700]/10 hover:border-[#FFD700]/30"
+                className="group relative bg-gradient-to-b from-white/5 to-transparent backdrop-blur-sm rounded-2xl p-8 hover:from-white/10 hover:to-white/5 transition-all duration-500 border border-[#FFD700]/10 hover:border-[#FFD700]/30"
               >
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#FFD700]/0 via-[#FFD700]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="relative z-10">
@@ -223,8 +226,8 @@ export default function Home() {
       </section>
 
       {/* More than Just a NewsLetter */}
-      <section className="py-20 px-4 bg-gradient-to-b from-gray-900/90 to-black relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,_rgba(255,215,0,0.05)_0%,_transparent_70%)]"></div>
+      <section className="py-20 px-4 bg-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#FFD700]/5 via-transparent to-transparent opacity-20"></div>
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0 }}
@@ -243,7 +246,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-gradient-to-br from-white/10 to-white/[0.02] rounded-2xl p-8 border border-[#FFD700]/20"
+              className="bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm rounded-2xl p-8 border border-[#FFD700]/20"
             >
               <h3 className="text-2xl font-semibold text-white mb-6 flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-[#FFD700]/20 flex items-center justify-center">
@@ -285,8 +288,8 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="relative group"
             >
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#FFD700]/20 to-[#FFD700]/10 rounded-2xl blur-md group-hover:blur-lg transition-all duration-500"></div>
-              <div className="relative bg-gradient-to-br from-white/10 to-transparent backdrop-blur-sm rounded-xl p-6 border border-[#FFD700]/20">
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#FFD700]/10 to-transparent rounded-2xl blur-md group-hover:blur-lg transition-all duration-500"></div>
+              <div className="relative bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm rounded-xl p-6 border border-[#FFD700]/20">
                 <div className="aspect-video bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-lg flex items-center justify-center overflow-hidden group-hover:scale-[1.02] transition-transform duration-500">
                   <div className="text-center p-8">
                     <Target className="w-16 h-16 text-[#FFD700]/30 mx-auto mb-4" />
