@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
+import { useState, useEffect, useRef } from "react"
+import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
 import {
@@ -26,13 +26,13 @@ import {
   Users,
   Heart,
 } from "lucide-react"
-import React from "react"
 
 export default function Home() {
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [activeCardIndex, setActiveCardIndex] = useState(0)
 
   useEffect(() => {
     const checkIsMobile = () => {
@@ -145,6 +145,77 @@ export default function Home() {
   const [activeArea, setActiveArea] = useState(interestAreas[0])
   const [showAllTopics, setShowAllTopics] = useState(false)
 
+  const platformImages = [
+    "/placeholder.svg?text=Vast+Topic+Selection&height=600&width=600",
+    "/placeholder.svg?text=Content&height=600&width=600",
+    "/placeholder.svg?text=Platform&height=600&width=600",
+    "/placeholder.svg?text=Growth&height=600&width=600",
+  ]
+
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  })
+
+  const currentImageIndex = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [0, 1, 2, 3, 3])
+
+  const cards = [
+    {
+      ref: useRef<HTMLDivElement>(null),
+      title: "Vast Topic Selection",
+      icon: BookOpen,
+      description: "Choose from hundreds of topics or suggest your own. From tech to arts, we've got you covered.",
+    },
+    {
+      ref: useRef<HTMLDivElement>(null),
+      title: "Customizable Content",
+      icon: Zap,
+      description: "Tailor your daily emails with the content you want: videos, news, tips, or in-depth articles.",
+      extras: [
+        { icon: Video, label: "Videos" },
+        { icon: Newspaper, label: "News" },
+        { icon: Lightbulb, label: "Tips" },
+        { icon: TrendingUp, label: "Trends" },
+      ],
+    },
+    {
+      ref: useRef<HTMLDivElement>(null),
+      title: "Smart Management Platform",
+      icon: Layout,
+      description:
+        "Access your personalized dashboard to track progress, save favorite content, and manage your learning journey.",
+    },
+    {
+      ref: useRef<HTMLDivElement>(null),
+      title: "Daily Learning, Lasting Growth",
+      icon: Mail,
+      description:
+        "Receive bite-sized, engaging content every day. Build your knowledge consistently and see your skills improve over time.",
+    },
+  ]
+
+  const [cardStates, setCardStates] = useState(cards.map(() => false))
+
+  useEffect(() => {
+    const handleInView = () => {
+      const newCardStates = cards.map(() => false)
+      let activeIndex = -1
+      for (let i = cards.length - 1; i >= 0; i--) {
+        if (cards[i].ref.current?.getBoundingClientRect().top < window.innerHeight * 0.6) {
+          newCardStates[i] = true
+          activeIndex = i
+          break
+        }
+      }
+      setCardStates(newCardStates)
+      setActiveCardIndex(activeIndex)
+    }
+
+    window.addEventListener("scroll", handleInView)
+    return () => window.removeEventListener("scroll", handleInView)
+  }, [])
+
   return (
     <div className="min-h-screen bg-black">
       {/* Navigation */}
@@ -176,7 +247,6 @@ export default function Home() {
           </button>
         </div>
       </nav>
-
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center px-4 pt-20 relative">
         <div className="absolute inset-0 z-0">
@@ -229,9 +299,8 @@ export default function Home() {
           </motion.form>
         </div>
       </section>
-
       {/* Platform Explanation Section */}
-      <section className="py-20 px-4 bg-black relative overflow-hidden">
+      <section ref={containerRef} className="py-20 px-4 bg-black relative overflow-hidden min-h-[150vh]">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#FFD700]/5 via-transparent to-transparent opacity-20"></div>
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
@@ -246,69 +315,42 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-start relative">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="space-y-8"
+              className="space-y-8 sticky top-20"
             >
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-[#FFD700]/20">
-                <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-                  <BookOpen className="w-6 h-6 text-[#FFD700] mr-2" />
-                  Vast Topic Selection
-                </h3>
-                <p className="text-white/70">
-                  Choose from hundreds of topics or suggest your own. From tech to arts, we&apos;ve got you covered.
-                </p>
-              </div>
-
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-[#FFD700]/20">
-                <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-                  <Zap className="w-6 h-6 text-[#FFD700] mr-2" />
-                  Customizable Content
-                </h3>
-                <p className="text-white/70">
-                  Tailor your daily emails with the content you want: videos, news, tips, or in-depth articles.
-                </p>
-                <div className="mt-4 flex space-x-4">
-                  <span className="text-white/50 flex items-center">
-                    <Video className="w-4 h-4 mr-1" /> Videos
-                  </span>
-                  <span className="text-white/50 flex items-center">
-                    <Newspaper className="w-4 h-4 mr-1" /> News
-                  </span>
-                  <span className="text-white/50 flex items-center">
-                    <Lightbulb className="w-4 h-4 mr-1" /> Tips
-                  </span>
-                  <span className="text-white/50 flex items-center">
-                    <TrendingUp className="w-4 h-4 mr-1" /> Trends
-                  </span>
-                </div>
-              </div>
-
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-[#FFD700]/20">
-                <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-                  <Layout className="w-6 h-6 text-[#FFD700] mr-2" />
-                  Smart Management Platform
-                </h3>
-                <p className="text-white/70">
-                  Access your personalized dashboard to track progress, save favorite content, and manage your learning
-                  journey.
-                </p>
-              </div>
-
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-[#FFD700]/20">
-                <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-                  <Mail className="w-6 h-6 text-[#FFD700] mr-2" />
-                  Daily Learning, Lasting Growth
-                </h3>
-                <p className="text-white/70">
-                  Receive bite-sized, engaging content every day. Build your knowledge consistently and see your skills
-                  improve over time.
-                </p>
-              </div>
+              {cards.map((card, index) => (
+                <motion.div
+                  key={card.title}
+                  ref={card.ref}
+                  className={`bg-white/5 backdrop-blur-sm rounded-xl p-6 border transition-all duration-500 ${
+                    cardStates[index]
+                      ? "border-[#FFD700] shadow-lg shadow-[#FFD700]/20 scale-105"
+                      : "border-[#FFD700]/20 opacity-50"
+                  }`}
+                >
+                  <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
+                    {React.createElement(card.icon, {
+                      className: `w-6 h-6 ${cardStates[index] ? "text-[#FFD700]" : "text-[#FFD700]/50"} mr-2`,
+                    })}
+                    {card.title}
+                  </h3>
+                  <p className="text-white/70">{card.description}</p>
+                  {card.extras && (
+                    <div className="mt-4 flex space-x-4">
+                      {card.extras.map((extra, i) => (
+                        <span key={i} className="text-white/50 flex items-center">
+                          <extra.icon className="w-4 h-4 mr-1" /> {extra.label}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </motion.div>
+              ))}
             </motion.div>
 
             <motion.div
@@ -316,17 +358,30 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="relative group"
+              className="relative group sticky top-20"
             >
               <div className="absolute -inset-1 bg-gradient-to-r from-[#FFD700]/10 to-transparent rounded-2xl blur-md group-hover:blur-lg transition-all duration-500"></div>
               <div className="relative bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm rounded-xl p-6 border border-[#FFD700]/20">
-                <Image
-                  src="/placeholder.svg?height=600&width=600"
-                  alt="Skillsletter Platform Preview"
-                  width={600}
-                  height={600}
-                  className="w-full h-auto rounded-lg shadow-2xl"
-                />
+                {platformImages.map((src, index) => (
+                  <motion.div
+                    key={src}
+                    className="absolute inset-0"
+                    initial={false}
+                    animate={{
+                      opacity: cardStates[index] ? 1 : 0,
+                      scale: cardStates[index] ? 1 : 0.8,
+                    }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <Image
+                      src={index === 0 ? "/placeholder.svg?text=Vast+Topic+Selection&height=600&width=600" : src}
+                      alt={`Platform Preview ${index + 1}`}
+                      width={600}
+                      height={600}
+                      className="w-full h-auto rounded-lg shadow-2xl"
+                    />
+                  </motion.div>
+                ))}
                 <div className="mt-6 text-center">
                   <p className="text-white font-semibold">Your Personalized Learning Dashboard</p>
                   <p className="text-white/50 text-sm mt-2">
@@ -338,7 +393,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* How It Works Section */}
       <section
         id="how-it-works"
@@ -484,7 +538,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
       {/* Topics Section */}
       <section className="py-20 px-4 bg-black relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#FFD700]/5 via-transparent to-transparent opacity-20"></div>
@@ -516,7 +569,7 @@ export default function Home() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <area.icon className="inline-block w-5 h-5 mr-2" />
+                  {React.createElement(area.icon, { className: "inline-block w-5 h-5 mr-2" })}
                   {area.name}
                 </motion.button>
               ))}
@@ -584,7 +637,6 @@ export default function Home() {
           )}
         </div>
       </section>
-
       {/* Content Blocks Section */}
       <section className="py-20 px-4 bg-black relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at-top,_var(--tw-gradient-stops))] from-[#FFD700]/5 via-transparent to-transparent opacity-20"></div>
@@ -625,8 +677,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Platform Features */}
       <section className="py-20 px-4 bg-black relative overflow-hidden">
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
@@ -688,8 +738,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Final CTA Section */}
       <section className="py-20 px-4">
         <div className="max-w-xl mx-auto">
           <motion.div
@@ -726,8 +774,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
-      {/* Footer */}
       <footer className="py-8 px-4 border-t border-white/10">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-white/50 text-sm">© 2025 Skillsletter. All rights reserved.</p>
