@@ -109,17 +109,6 @@ export default function Home() {
     },
   ]
 
-  const sampleTopics = [
-    "Machine Learning",
-    "Web Dev",
-    "Marketing",
-    "Data Science",
-    "UX Design",
-    "AI",
-    "Cybersecurity",
-    "Cloud",
-  ]
-
   const interestAreas = [
     {
       name: "Marketing",
@@ -271,7 +260,7 @@ export default function Home() {
                   Vast Topic Selection
                 </h3>
                 <p className="text-white/70">
-                  Choose from hundreds of topics or suggest your own. From tech to arts, we've got you covered.
+                  Choose from hundreds of topics or suggest your own. From tech to arts, we&apos;ve got you covered.
                 </p>
               </div>
 
@@ -660,7 +649,7 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="space-y-8"
             >
-              {features.map((feature, index) => (
+              {features.map((feature) => (
                 <div key={feature.title} className="flex gap-4">
                   {" "}
                   <div className="w-12 h-12 rounded-xl bg-[#FFD700]/10 flex items-center justify-center flex-shrink-0">
