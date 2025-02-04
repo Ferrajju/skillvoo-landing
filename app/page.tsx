@@ -1,219 +1,66 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
-import Link from "next/link"
+import { motion, useScroll, useTransform, useSpring } from "framer-motion"
 import Image from "next/image"
-import {
-  Newspaper,
-  Lightbulb,
-  Target,
-  BookOpen,
-  Bookmark,
-  Mail,
-  Layout,
-  Star,
-  Plus,
-  Video,
-  TrendingUp,
-  Zap,
-  Search,
-  Sliders,
-  Inbox,
-  Cpu,
-  Globe,
-  User,
-  Users,
-  Heart,
-} from "lucide-react"
+import { BookOpen, Zap, Layout, Mail, Video, Newspaper, Lightbulb, TrendingUp } from "lucide-react"
 
-export default function Home() {
-  const [email, setEmail] = useState("")
-  const [name, setName] = useState("")
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
-  const [activeCardIndex, setActiveCardIndex] = useState(0)
-
-  useEffect(() => {
-    const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-    checkIsMobile()
-    window.addEventListener("resize", checkIsMobile)
-    return () => window.removeEventListener("resize", checkIsMobile)
-  }, [])
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    try {
-      const response = await fetch("/api/waitlist", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, name }),
-      })
-      if (response.ok) {
-        alert("Thanks for joining the waitlist!")
-        setEmail("")
-        setName("")
-      }
-    } catch (error) {
-      console.error("Error:", error)
-    }
-  }
-
-  const contentBlocks = [
-    {
-      title: "Industry News",
-      description: "Latest updates and developments in your field",
-      icon: Newspaper,
-    },
-    {
-      title: "Learning Paths",
-      description: "Structured content to master new skills",
-      icon: BookOpen,
-    },
-    {
-      title: "Tips & Methods",
-      description: "Practical techniques and strategies",
-      icon: Lightbulb,
-    },
-    {
-      title: "Interesting Facts",
-      description: "Fascinating insights and discoveries",
-      icon: Star,
-    },
-  ]
-
-  const features = [
-    {
-      title: "Personalized Content",
-      description: "Choose exactly what you want to learn and how you want to learn it",
-      icon: Target,
-    },
-    {
-      title: "Custom Email Builder",
-      description: "Select which content blocks you want in your daily emails",
-      icon: Mail,
-    },
-    {
-      title: "Save & Organize",
-      description: "Store valuable content and organize it your way",
-      icon: Bookmark,
-    },
-    {
-      title: "Smart Dashboard",
-      description: "Manage your learning journey from one central place",
-      icon: Layout,
-    },
-  ]
-
-  const interestAreas = [
-    {
-      name: "Marketing",
-      icon: TrendingUp,
-      topics: ["Digital Marketing", "Brand Strategy", "Social Media", "Content Marketing", "SEO"],
-    },
-    {
-      name: "Politics",
-      icon: Globe,
-      topics: ["International Relations", "Public Policy", "Political Systems", "Current Affairs", "Civic Engagement"],
-    },
-    {
-      name: "Personal Development",
-      icon: User,
-      topics: ["Self-Improvement", "Productivity", "Mindfulness", "Goal Setting", "Emotional Intelligence"],
-    },
-    {
-      name: "AI & Technology",
-      icon: Cpu,
-      topics: ["Artificial Intelligence", "Machine Learning", "Robotics", "Tech Ethics", "Future of Technology"],
-    },
-    {
-      name: "Parenting",
-      icon: Users,
-      topics: ["Child Development", "Parenting Techniques", "Family Health", "Education", "Work-Life Balance"],
-    },
-    {
-      name: "Health & Wellness",
-      icon: Heart,
-      topics: ["Nutrition", "Fitness", "Mental Health", "Preventive Care", "Holistic Wellness"],
-    },
-  ]
-
-  const [activeArea, setActiveArea] = useState(interestAreas[0])
-  const [showAllTopics, setShowAllTopics] = useState(false)
-
-  const platformImages = [
-    "/placeholder.svg?text=Vast+Topic+Selection&height=600&width=600",
-    "/placeholder.svg?text=Content&height=600&width=600",
-    "/placeholder.svg?text=Platform&height=600&width=600",
-    "/placeholder.svg?text=Growth&height=600&width=600",
-  ]
-
+export default function ScrollCards() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [activeIndex, setActiveIndex] = useState(0)
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   })
 
-  const currentImageIndex = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [0, 1, 2, 3, 3])
+  const smoothScroll = useSpring(scrollYProgress, {
+    stiffness: 50,
+    damping: 20,
+    mass: 1,
+  })
 
   const cards = [
     {
-      ref: useRef<HTMLDivElement>(null),
       title: "Vast Topic Selection",
       icon: BookOpen,
       description: "Choose from hundreds of topics or suggest your own. From tech to arts, we've got you covered.",
+      image: "/images/image1.jpg",
     },
     {
-      ref: useRef<HTMLDivElement>(null),
       title: "Customizable Content",
       icon: Zap,
       description: "Tailor your daily emails with the content you want: videos, news, tips, or in-depth articles.",
-      extras: [
-        { icon: Video, label: "Videos" },
-        { icon: Newspaper, label: "News" },
-        { icon: Lightbulb, label: "Tips" },
-        { icon: TrendingUp, label: "Trends" },
-      ],
+      image: "/images/image2.jpg",
     },
     {
-      ref: useRef<HTMLDivElement>(null),
       title: "Smart Management Platform",
       icon: Layout,
       description:
         "Access your personalized dashboard to track progress, save favorite content, and manage your learning journey.",
+      image: "/images/image3.jpg",
     },
     {
-      ref: useRef<HTMLDivElement>(null),
       title: "Daily Learning, Lasting Growth",
       icon: Mail,
       description:
         "Receive bite-sized, engaging content every day. Build your knowledge consistently and see your skills improve over time.",
+      image: "/images/image4.jpg",
     },
   ]
 
-  const [cardStates, setCardStates] = useState(cards.map(() => false))
-
   useEffect(() => {
-    const handleInView = () => {
-      const newCardStates = cards.map(() => false)
-      let activeIndex = -1
-      for (let i = cards.length - 1; i >= 0; i--) {
-        if (cards[i].ref.current?.getBoundingClientRect().top < window.innerHeight * 0.6) {
-          newCardStates[i] = true
-          activeIndex = i
-          break
-        }
-      }
-      setCardStates(newCardStates)
-      setActiveCardIndex(activeIndex)
+    const handleScroll = () => {
+      const sectionHeight = window.innerHeight * 0.8
+      const newIndex = Math.min(
+        cards.length - 1,
+        Math.max(0, Math.floor((window.scrollY + sectionHeight / 2) / sectionHeight))
+      )
+      setActiveIndex(newIndex)
     }
 
-    window.addEventListener("scroll", handleInView)
-    return () => window.removeEventListener("scroll", handleInView)
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   return (
@@ -300,99 +147,65 @@ export default function Home() {
         </div>
       </section>
       {/* Platform Explanation Section */}
-      <section ref={containerRef} className="py-20 px-4 bg-black relative overflow-hidden min-h-[150vh]">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#FFD700]/5 via-transparent to-transparent opacity-20"></div>
-        <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-white mb-4">Discover Skillsletter</h2>
-            <p className="text-white/70 max-w-2xl mx-auto">
-              Your personalized learning journey, tailored to your interests and delivered daily
-            </p>
-          </motion.div>
+      <section ref={containerRef} className="py-20 px-4 bg-black relative overflow-hidden min-h-screen">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#FFD700]/5 via-transparent to-transparent opacity-20"></div>
+      <div className="max-w-7xl mx-auto relative z-10">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold text-white mb-4">Discover Skillsletter</h2>
+          <p className="text-white/70 max-w-2xl mx-auto">
+            Your personalized learning journey, tailored to your interests and delivered daily
+          </p>
+        </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-start relative">
+        <div className="relative flex flex-col items-center">
+          {cards.map((card, index) => (
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              key={card.title}
+              className={`relative flex items-center w-full max-w-4xl bg-white/5 backdrop-blur-sm rounded-xl p-6 border transition-all duration-500 ${
+                activeIndex === index
+                  ? "border-[#FFD700] shadow-lg shadow-[#FFD700]/20 scale-105"
+                  : "border-[#FFD700]/20 opacity-50"
+              }`}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: activeIndex === index ? 1 : 0.3, y: activeIndex === index ? 0 : 30 }}
               transition={{ duration: 0.8 }}
-              className="space-y-8 sticky top-20"
+              style={{
+                position: "sticky",
+                top: "30vh",
+              }}
             >
-              {cards.map((card, index) => (
-                <motion.div
-                  key={card.title}
-                  ref={card.ref}
-                  className={`bg-white/5 backdrop-blur-sm rounded-xl p-6 border transition-all duration-500 ${
-                    cardStates[index]
-                      ? "border-[#FFD700] shadow-lg shadow-[#FFD700]/20 scale-105"
-                      : "border-[#FFD700]/20 opacity-50"
-                  }`}
-                >
-                  <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-                    {React.createElement(card.icon, {
-                      className: `w-6 h-6 ${cardStates[index] ? "text-[#FFD700]" : "text-[#FFD700]/50"} mr-2`,
-                    })}
-                    {card.title}
-                  </h3>
-                  <p className="text-white/70">{card.description}</p>
-                  {card.extras && (
-                    <div className="mt-4 flex space-x-4">
-                      {card.extras.map((extra, i) => (
-                        <span key={i} className="text-white/50 flex items-center">
-                          <extra.icon className="w-4 h-4 mr-1" /> {extra.label}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </motion.div>
-              ))}
+              <motion.div
+                className="absolute inset-0 z-[-1] flex justify-center items-center"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: activeIndex === index ? 1 : 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Image
+                  src={card.image}
+                  alt={`Platform Preview ${index + 1}`}
+                  width={600}
+                  height={600}
+                  className="w-full h-auto rounded-lg shadow-2xl"
+                />
+              </motion.div>
+              <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
+                {React.createElement(card.icon, {
+                  className: `w-6 h-6 ${activeIndex === index ? "text-[#FFD700]" : "text-[#FFD700]/50"} mr-2`,
+                })}
+                {card.title}
+              </h3>
+              <p className="text-white/70">{card.description}</p>
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative group sticky top-20"
-            >
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#FFD700]/10 to-transparent rounded-2xl blur-md group-hover:blur-lg transition-all duration-500"></div>
-              <div className="relative bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm rounded-xl p-6 border border-[#FFD700]/20">
-                {platformImages.map((src, index) => (
-                  <motion.div
-                    key={src}
-                    className="absolute inset-0"
-                    initial={false}
-                    animate={{
-                      opacity: cardStates[index] ? 1 : 0,
-                      scale: cardStates[index] ? 1 : 0.8,
-                    }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <Image
-                      src={index === 0 ? "/placeholder.svg?text=Vast+Topic+Selection&height=600&width=600" : src}
-                      alt={`Platform Preview ${index + 1}`}
-                      width={600}
-                      height={600}
-                      className="w-full h-auto rounded-lg shadow-2xl"
-                    />
-                  </motion.div>
-                ))}
-                <div className="mt-6 text-center">
-                  <p className="text-white font-semibold">Your Personalized Learning Dashboard</p>
-                  <p className="text-white/50 text-sm mt-2">
-                    Track progress, manage topics, and customize your learning experience
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+          ))}
         </div>
-      </section>
+      </div>
+    </section>
+
       {/* How It Works Section */}
       <section
         id="how-it-works"
