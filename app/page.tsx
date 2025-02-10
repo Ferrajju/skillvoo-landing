@@ -66,29 +66,6 @@ const contentTypes = [
   { title: "Deep Dives", icon: BookOpen, description: "Comprehensive learning materials" },
 ]
 
-const topicAreas = [
-  { name: "Marketing", topics: ["Digital Marketing", "Content Strategy", "SEO", "Social Media", "Brand Management"] },
-  {
-    name: "Artificial Intelligence",
-    topics: ["Machine Learning", "Neural Networks", "Computer Vision", "Natural Language Processing", "Robotics"],
-  },
-  {
-    name: "Politics",
-    topics: [
-      "International Relations",
-      "Public Policy",
-      "Political Theory",
-      "Comparative Politics",
-      "Political Economy",
-    ],
-  },
-  { name: "Technology", topics: ["Web Development", "Mobile Apps", "Cybersecurity", "Cloud Computing", "Blockchain"] },
-  { name: "Science", topics: ["Physics", "Biology", "Chemistry", "Astronomy", "Environmental Science"] },
-  {
-    name: "Arts & Culture",
-    topics: ["Art History", "Music Theory", "Film Studies", "Literature", "Cultural Anthropology"],
-  },
-]
 
 const mainTopics = [
   { name: "Marketing", icon: TrendingUp },
@@ -99,7 +76,6 @@ const mainTopics = [
   { name: "Health & Wellness", icon: Heart },
 ]
 
-const subTopics = ["Self-Improvement", "Productivity", "Mindfulness", "Goal Setting", "Emotional Intelligence"]
 
 export default function LandingPage() {
   const [email, setEmail] = useState("")
