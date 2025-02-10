@@ -26,29 +26,6 @@ import { Input } from "@/components/ui/input"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import React from "react"
 
-const GeometricDecoration = ({ className = "" }: { className?: string }) => {
-  const size = Math.floor(Math.random() * 40) + 20 // Random size between 20 and 60
-  const rotation = Math.floor(Math.random() * 360) // Random rotation
-  const isSquare = Math.random() > 0.5 // Randomly choose between square and circle
-
-  return (
-    <div
-      className={`absolute ${className}`}
-      style={{
-        width: `${size}px`,
-        height: `${size}px`,
-        transform: `rotate(${rotation}deg)`,
-      }}
-    >
-      <div
-        className={`w-full h-full ${
-          isSquare ? "rounded-lg" : "rounded-full"
-        } border border-[#FFD700]/20 bg-[#FFD700]/10`}
-      ></div>
-    </div>
-  )
-}
-
 const topicCategories = {
   Marketing: ["Digital Marketing", "Content Strategy", "Social Media", "Brand Building", "Marketing Analytics"],
   Politics: ["International Relations", "Public Policy", "Political Theory", "Current Affairs", "Government Systems"],
@@ -89,6 +66,30 @@ const contentTypes = [
   { title: "Deep Dives", icon: BookOpen, description: "Comprehensive learning materials" },
 ]
 
+const topicAreas = [
+  { name: "Marketing", topics: ["Digital Marketing", "Content Strategy", "SEO", "Social Media", "Brand Management"] },
+  {
+    name: "Artificial Intelligence",
+    topics: ["Machine Learning", "Neural Networks", "Computer Vision", "Natural Language Processing", "Robotics"],
+  },
+  {
+    name: "Politics",
+    topics: [
+      "International Relations",
+      "Public Policy",
+      "Political Theory",
+      "Comparative Politics",
+      "Political Economy",
+    ],
+  },
+  { name: "Technology", topics: ["Web Development", "Mobile Apps", "Cybersecurity", "Cloud Computing", "Blockchain"] },
+  { name: "Science", topics: ["Physics", "Biology", "Chemistry", "Astronomy", "Environmental Science"] },
+  {
+    name: "Arts & Culture",
+    topics: ["Art History", "Music Theory", "Film Studies", "Literature", "Cultural Anthropology"],
+  },
+]
+
 const mainTopics = [
   { name: "Marketing", icon: TrendingUp },
   { name: "Politics", icon: Globe },
@@ -98,10 +99,13 @@ const mainTopics = [
   { name: "Health & Wellness", icon: Heart },
 ]
 
+const subTopics = ["Self-Improvement", "Productivity", "Mindfulness", "Goal Setting", "Emotional Intelligence"]
+
 export default function LandingPage() {
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
   const [selectedTopic, setSelectedTopic] = useState<string>("Marketing")
+
   const [customTopic, setCustomTopic] = useState("")
   const [showCustomTopicInput, setShowCustomTopicInput] = useState(false)
   const [showAllTopics, setShowAllTopics] = useState(false)
@@ -186,10 +190,6 @@ export default function LandingPage() {
         <div className="absolute bottom-10 right-10 w-32 h-32 border border-[#FFD700]/20 rounded-2xl transform -rotate-12"></div>
         <div className="absolute top-1/4 right-20 w-16 h-16 bg-[#FFD700]/5 rounded-full"></div>
         <div className="absolute bottom-1/4 left-20 w-20 h-20 border border-[#FFD700]/10 rounded-full"></div>
-        <GeometricDecoration className="top-1/3 left-1/4" />
-        <GeometricDecoration className="bottom-1/3 right-1/4" />
-        <GeometricDecoration className="top-2/3 left-1/2" />
-        <GeometricDecoration className="bottom-2/3 right-1/2" />
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black"></div>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#FFD700]/10 via-transparent to-transparent opacity-30"></div>
@@ -254,10 +254,7 @@ export default function LandingPage() {
       {/* Features Section */}
       <section id="features" className="relative py-20">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#FFD700]/5 via-transparent to-transparent opacity-20"></div>
-        <GeometricDecoration className="top-10 left-10" />
-        <GeometricDecoration className="bottom-10 right-10" />
-        <GeometricDecoration className="top-1/2 left-1/4" />
-        <GeometricDecoration className="bottom-1/2 right-1/4" />
+
         <div className="max-w-7xl mx-auto px-4">
           {features.map((feature, index) => (
             <motion.div
@@ -277,7 +274,7 @@ export default function LandingPage() {
                 <div className="absolute -top-4 -left-4 w-24 h-24 border border-[#FFD700]/20 rounded-lg transform -rotate-12"></div>
               </div>
 
-              <div className={`space-y-4 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"}`}>
+              <div className={`space-y-6 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"}`}>
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 rounded-lg bg-[#FFD700]/10 flex items-center justify-center">
                     {React.createElement(feature.icon, {
@@ -296,6 +293,10 @@ export default function LandingPage() {
                 <h2 className="text-3xl font-bold text-white">{feature.title}</h2>
 
                 <p className="text-lg text-white/70">{feature.description}</p>
+
+                <Button className="bg-[#FFD700] hover:bg-[#FFD700]/90 text-black rounded-lg px-8 py-3 text-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#FFD700]/20">
+                  Learn More
+                </Button>
               </div>
             </motion.div>
           ))}
@@ -304,10 +305,6 @@ export default function LandingPage() {
 
       {/* Variety of Topics Section */}
       <section className="relative py-20 bg-black">
-        <GeometricDecoration className="top-10 right-10" />
-        <GeometricDecoration className="bottom-10 left-10" />
-        <GeometricDecoration className="top-1/3 right-1/4" />
-        <GeometricDecoration className="bottom-2/3 left-1/4" />
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -358,65 +355,65 @@ export default function LandingPage() {
             </motion.button>
           </div>
 
-          {/* Topic Categories or Custom Topic Input */}
-          {showCustomTopicInput ? (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="max-w-md mx-auto mb-12"
-            >
-              <form onSubmit={handleCustomTopicSubmit} className="flex flex-col items-center gap-4">
-                <Input
-                  type="text"
-                  value={customTopic}
-                  onChange={(e) => setCustomTopic(e.target.value)}
-                  placeholder="Enter your custom topic"
-                  className="w-full px-6 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:border-[#FFD700] transition-all"
-                  required
-                />
-                <Button
-                  type="submit"
-                  className="px-8 py-3 bg-[#FFD700] text-black font-medium rounded-full hover:bg-[#FFD700]/90 transition-all duration-300"
-                >
-                  Suggest Topic
-                </Button>
-              </form>
-            </motion.div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-12"
-            >
-              {(selectedTopic === "" || showAllTopics
-                ? Object.entries(topicCategories)
-                : [[selectedTopic, topicCategories[selectedTopic as keyof typeof topicCategories]]]
-              ).map(([category, topics]) => (
-                <React.Fragment key={category}>
-                  {(selectedTopic === "" || showAllTopics) && (
-                    <h3 className="col-span-full text-xl font-bold text-white mt-6 mb-2">{category}</h3>
-                  )}
-                  {topics.map((topic, index) => (
-                    <motion.div
-                      key={`${category}-${topic}`}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <motion.button
-                        whileHover={{ scale: 1.05, borderColor: "#FFD700" }}
-                        whileTap={{ scale: 0.98 }}
-                        className="w-full h-16 px-2 py-1 rounded-lg border border-[#FFD700]/30 bg-white/5 text-white hover:bg-white/10 transition-all duration-300 flex items-center justify-center text-center"
-                      >
-                        <span className="text-xs">{topic}</span>
-                      </motion.button>
-                    </motion.div>
-                  ))}
-                </React.Fragment>
-              ))}
-            </motion.div>
-          )}
+{/* Topic Categories or Custom Topic Input */}
+{showCustomTopicInput ? (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    className="max-w-md mx-auto mb-12"
+  >
+    <form onSubmit={handleCustomTopicSubmit} className="flex flex-col items-center gap-4">
+      <Input
+        type="text"
+        value={customTopic}
+        onChange={(e) => setCustomTopic(e.target.value)}
+        placeholder="Enter your custom topic"
+        className="w-full px-6 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:border-[#FFD700] transition-all"
+        required
+      />
+      <Button
+        type="submit"
+        className="px-8 py-3 bg-[#FFD700] text-black font-medium rounded-full hover:bg-[#FFD700]/90 transition-all duration-300"
+      >
+        Suggest Topic
+      </Button>
+    </form>
+  </motion.div>
+) : (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-12"
+  >
+    {(selectedTopic === "" || showAllTopics
+      ? Object.entries(topicCategories)
+      : [[selectedTopic, topicCategories[selectedTopic as keyof typeof topicCategories] || []]]
+    ).map(([category, topics]) => (
+      <React.Fragment key={String(category)}>
 
+        {(selectedTopic === "" || showAllTopics) && (
+          <h3 className="col-span-full text-xl font-bold text-white mt-6 mb-2">{category}</h3>
+        )}
+        {(Array.isArray(topics) ? topics : []).map((topic: string, index: number) => (
+          <motion.div
+            key={`${category}-${index}`}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.1 }}
+          >
+            <motion.button
+              whileHover={{ scale: 1.05, borderColor: "#FFD700" }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full h-16 px-2 py-1 rounded-lg border border-[#FFD700]/30 bg-white/5 text-white hover:bg-white/10 transition-all duration-300 flex items-center justify-center text-center"
+            >
+              <span className="text-xs">{topic}</span>
+            </motion.button>
+          </motion.div>
+        ))}
+      </React.Fragment>
+    ))}
+  </motion.div>
+)}
           {/* Show All Button */}
           {!showCustomTopicInput && (
             <div className="flex justify-center">
@@ -436,10 +433,7 @@ export default function LandingPage() {
       {/* Content Types Section */}
       <section className="relative py-20 bg-black/50">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#FFD700]/5 via-transparent to-transparent opacity-20"></div>
-        <GeometricDecoration className="top-1/4 left-10" />
-        <GeometricDecoration className="bottom-1/4 right-10" />
-        <GeometricDecoration className="top-3/4 left-1/3" />
-        <GeometricDecoration className="bottom-1/2 right-1/3" />
+
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -487,10 +481,7 @@ export default function LandingPage() {
         />
         <div className="absolute inset-0 bg-[url('/placeholder.svg?height=1080&width=1920')] bg-cover bg-center opacity-5"></div>
         <div className="absolute inset-0 bg-black/30"></div>
-        <GeometricDecoration className="top-10 left-1/4" />
-        <GeometricDecoration className="bottom-10 right-1/4" />
-        <GeometricDecoration className="top-1/2 left-10" />
-        <GeometricDecoration className="bottom-1/2 right-10" />
+
         <div className="relative z-10">
           <div className="max-w-5xl mx-auto px-4">
             <motion.div
@@ -504,9 +495,7 @@ export default function LandingPage() {
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
               >
-                <div className="w-16 h-16 mx-auto mb-8">
-                  <Sparkles className="w-full h-full text-[#FFD700]" />
-                </div>
+                <Sparkles className="w-16 h-16 text-[#FFD700] mx-auto mb-8" />
               </motion.div>
               <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
                 Ready to Ignite Your{" "}
@@ -552,7 +541,7 @@ export default function LandingPage() {
                 </Button>
               </form>
               <p className="text-white/70 text-lg mt-6">
-                By joining, you&apos;ll be first in line for exclusive early access and special offers.
+                By joining, you'll be first in line for exclusive early access and special offers.
               </p>
             </motion.div>
           </div>
