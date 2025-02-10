@@ -89,30 +89,6 @@ const contentTypes = [
   { title: "Deep Dives", icon: BookOpen, description: "Comprehensive learning materials" },
 ]
 
-const topicAreas = [
-  { name: "Marketing", topics: ["Digital Marketing", "Content Strategy", "SEO", "Social Media", "Brand Management"] },
-  {
-    name: "Artificial Intelligence",
-    topics: ["Machine Learning", "Neural Networks", "Computer Vision", "Natural Language Processing", "Robotics"],
-  },
-  {
-    name: "Politics",
-    topics: [
-      "International Relations",
-      "Public Policy",
-      "Political Theory",
-      "Comparative Politics",
-      "Political Economy",
-    ],
-  },
-  { name: "Technology", topics: ["Web Development", "Mobile Apps", "Cybersecurity", "Cloud Computing", "Blockchain"] },
-  { name: "Science", topics: ["Physics", "Biology", "Chemistry", "Astronomy", "Environmental Science"] },
-  {
-    name: "Arts & Culture",
-    topics: ["Art History", "Music Theory", "Film Studies", "Literature", "Cultural Anthropology"],
-  },
-]
-
 const mainTopics = [
   { name: "Marketing", icon: TrendingUp },
   { name: "Politics", icon: Globe },
@@ -121,8 +97,6 @@ const mainTopics = [
   { name: "Parenting", icon: Users },
   { name: "Health & Wellness", icon: Heart },
 ]
-
-const subTopics = ["Self-Improvement", "Productivity", "Mindfulness", "Goal Setting", "Emotional Intelligence"]
 
 export default function LandingPage() {
   const [email, setEmail] = useState("")
@@ -530,7 +504,9 @@ export default function LandingPage() {
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
               >
-                <Sparkles className="w-16 h-16 text-[#FFD700] mx-auto mb-8" />
+                <div className="w-16 h-16 mx-auto mb-8">
+                  <Sparkles className="w-full h-full text-[#FFD700]" />
+                </div>
               </motion.div>
               <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
                 Ready to Ignite Your{" "}
@@ -576,7 +552,7 @@ export default function LandingPage() {
                 </Button>
               </form>
               <p className="text-white/70 text-lg mt-6">
-                By joining, you'll be first in line for exclusive early access and special offers.
+                By joining, you&apos;ll be first in line for exclusive early access and special offers.
               </p>
             </motion.div>
           </div>
