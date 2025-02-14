@@ -189,7 +189,7 @@ body {
   --c-shadow-inset-bottom: rgba(255, 250, 215, 0.8);
   --c-radial-inner: #ffd215;
   --c-radial-outer: #fff172;
-  --c-color: #fff;
+  --c-color: #000000;
   -webkit-tap-highlight-color: transparent;
   -webkit-appearance: none;
   outline: none;
