@@ -34,7 +34,7 @@ import React from "react"
 const GeometricDecoration = ({ className = "" }: { className?: string }) => {
   const size = Math.floor(Math.random() * 40) + 20 // Random size between 20 and 60
   const rotation = Math.floor(Math.random() * 360) // Random rotation
-  const isSquare = Math.random() > 0.5 // Randomly choose between square and circle
+  
 
   return (
     <div
