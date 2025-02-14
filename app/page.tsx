@@ -18,7 +18,7 @@ import {
   Cpu,
   Users,
   Heart,
-  Plus,
+  
   Sparkles,
   BarChart2,
   Layers,
@@ -31,21 +31,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import React from "react"
 import AnimatedBackground from "@/components/AnimatedBackground"
 
-const GeometricDecoration = ({ className = "" }: { className?: string }) => {
-  const size = Math.floor(Math.random() * 40) + 20 // Random size between 20 and 60
-  const rotation = Math.floor(Math.random() * 360) // Random rotation
 
-  return (
-    <div
-      className={`absolute ${className}`}
-      style={{
-        width: `${size}px`,
-        height: `${size}px`,
-        transform: `rotate(${rotation}deg)`,
-      }}
-    ></div>
-  )
-}
 
 const topicCategories = {
   Marketing: ["Digital Marketing", "Content Strategy", "Social Media", "Brand Building", "Marketing Analytics"],
@@ -117,7 +103,7 @@ export default function LandingPage() {
   const [selectedTopic, setSelectedTopic] = useState<string>("Marketing")
   const [customTopic, setCustomTopic] = useState("")
   const [showCustomTopicInput, setShowCustomTopicInput] = useState(false)
-  const [showAllTopics, setShowAllTopics] = useState(false)
+  
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -244,8 +230,9 @@ export default function LandingPage() {
                 quieras.
               </p>
               <p className="text-sm md:text-base text-gray-500 mb-8 italic">
-                "Haz de momentos muertos, buenos momentos"
-              </p>
+  &quot;Haz de momentos muertos, buenos momentos&quot;
+</p>
+
               <motion.form
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
