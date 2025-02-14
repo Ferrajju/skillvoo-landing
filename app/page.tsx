@@ -682,7 +682,8 @@ export default function LandingPage() {
 
                 <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                   Join our waitlist today and be among the first to experience personalized learning that adapts to your
-                  unique interests and goals. Unlock a world of knowledge tailored just for you.
+                  unique interests and goals. Unlock a world of knowledge tailored just for you. unique interests and
+                  goals. Unlock a world of knowledge tailored just for you.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-6 mt-12">
@@ -713,7 +714,7 @@ export default function LandingPage() {
                 </form>
 
                 <p className="text-gray-600 text-lg mt-6">
-                  By joining, you'll be first in line for exclusive early access and special offers.
+                  By joining, you&apos;ll be first in line for exclusive early access and special offers.
                 </p>
               </motion.div>
             </div>
