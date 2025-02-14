@@ -62,7 +62,7 @@ const features = [
     title: "Vast Topic Selection",
     description: "Choose from hundreds of topics or suggest your own. From tech to arts, we've got you covered.",
     icon: BookOpen,
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/placeholder.svg?height=400&width=601",
     color: "from-[#FFD700]/20 to-transparent",
   },
   {
