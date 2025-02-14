@@ -18,7 +18,6 @@ import {
   Cpu,
   Users,
   Heart,
-  
   Sparkles,
   BarChart2,
   Layers,
@@ -30,8 +29,6 @@ import { Input } from "@/components/ui/input"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import React from "react"
 import AnimatedBackground from "@/components/AnimatedBackground"
-
-
 
 const topicCategories = {
   Marketing: ["Digital Marketing", "Content Strategy", "Social Media", "Brand Building", "Marketing Analytics"],
@@ -103,7 +100,6 @@ export default function LandingPage() {
   const [selectedTopic, setSelectedTopic] = useState<string>("Marketing")
   const [customTopic, setCustomTopic] = useState("")
   const [showCustomTopicInput, setShowCustomTopicInput] = useState(false)
-  
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -230,8 +226,8 @@ export default function LandingPage() {
                 quieras.
               </p>
               <p className="text-sm md:text-base text-gray-500 mb-8 italic">
-  &quot;Haz de momentos muertos, buenos momentos&quot;
-</p>
+                &quot;Haz de momentos muertos, buenos momentos&quot;
+              </p>
 
               <motion.form
                 initial={{ opacity: 0, y: 20 }}
@@ -380,138 +376,160 @@ export default function LandingPage() {
 
         {/* Variety of Topics Section */}
         <section id="features" className="relative py-20 bg-white bg-opacity-80">
-  <div className="max-w-7xl mx-auto px-4 relative z-10">
-    {features.map((feature, index) => (
-      <motion.div
-        key={feature.title}
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: index * 0.2 }}
-        className={`grid md:grid-cols-2 gap-8 md:gap-20 items-center mb-24 ${
-          index % 2 === 0 ? "md:grid-flow-dense" : ""
-        }`}
-      >
-        <div className={`relative ${index % 2 === 0 ? "md:order-last md:-mr-8" : "md:-ml-8"}`}>
-          <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
-            <Image
-              src={feature.image || "/placeholder.svg"}
-              alt={feature.title}
-              fill
-              className="object-cover"
-            />
+          <div className="max-w-7xl mx-auto px-4 relative z-10">
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                className={`grid md:grid-cols-2 gap-8 md:gap-20 items-center mb-24 ${
+                  index % 2 === 0 ? "md:grid-flow-dense" : ""
+                }`}
+              >
+                <div className={`relative ${index % 2 === 0 ? "md:order-last md:-mr-8" : "md:-ml-8"}`}>
+                  <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                    <Image
+                      src={feature.image || "/placeholder.svg"}
+                      alt={feature.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+
+                <div className={`flex ${index % 2 === 0 ? "justify-start" : "justify-end"}`}>
+                  <div className={`space-y-6 ${index % 2 === 0 ? "md:pr-0 lg:pr-8" : "md:pl-0 lg:pl-8"} max-w-lg`}>
+                    <div className="flex items-center space-x-4">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center shadow-lg">
+                        {React.createElement(feature.icon, { className: "w-6 h-6 text-white" })}
+                      </div>
+                    </div>
+
+                    <h2 className="text-3xl font-bold text-gray-900 relative inline-block group">
+                      {feature.title}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-300 group-hover:w-full"></span>
+                    </h2>
+
+                    <p className="text-lg text-gray-700">{feature.description}</p>
+
+                    <ul className="list-disc list-inside space-y-2 text-gray-600">
+                      {feature.benefits.map((benefit, i) => (
+                        <li key={i} className="flex items-start">
+                          <span className="mr-2">•</span>
+                          <span>{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-4">
+                      <Button className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white hover:from-indigo-600 hover:to-purple-600 transition-all duration-300">
+                        Explora {feature.cta}
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </div>
+        </section>
 
-        <div className={`flex ${index % 2 === 0 ? "justify-start" : "justify-end"}`}>
-          <div className={`space-y-6 ${index % 2 === 0 ? "md:pr-0 lg:pr-8" : "md:pl-0 lg:pl-8"} max-w-lg`}>
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center shadow-lg">
-                {React.createElement(feature.icon, { className: "w-6 h-6 text-white" })}
-              </div>
-            </div>
+        {/* Variety of Topics Section */}
+        <section className="relative py-20 bg-white bg-opacity-80">
+          <div className="max-w-7xl mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Explore Your Interests</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Choose from a variety of engaging topics or suggest your own. Tailor your daily learning to what truly
+                matters to you.
+              </p>
+            </motion.div>
 
-            <h2 className="text-3xl font-bold text-gray-900 relative inline-block group">
-              {feature.title}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-300 group-hover:w-full"></span>
-            </h2>
-
-            <p className="text-lg text-gray-700">{feature.description}</p>
-
-            <ul className="list-disc list-inside space-y-2 text-gray-600">
-              {feature.benefits.map((benefit, i) => (
-                <li key={i} className="flex items-start">
-                  <span className="mr-2">•</span>
-                  <span>{benefit}</span>
-                </li>
+            {/* Main Topics */}
+            <div className="flex flex-wrap justify-center gap-4 mb-8">
+              {mainTopics.map((topic) => (
+                <motion.button
+                  key={topic.name}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    setSelectedTopic(topic.name)
+                    setShowCustomTopicInput(false)
+                  }}
+                  className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-300 border ${
+                    topic.name === selectedTopic
+                      ? "border-indigo-600 text-indigo-600 bg-indigo-50 shadow-md"
+                      : "border-gray-300 text-gray-600 hover:border-indigo-600 hover:text-indigo-600 hover:bg-indigo-50 hover:shadow-md"
+                  }`}
+                >
+                  {React.createElement(topic.icon, { className: "w-5 h-5" })}
+                  <span className="font-medium">{topic.name}</span>
+                </motion.button>
               ))}
-            </ul>
-
-            <div className="mt-4">
-              <Button className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white hover:from-indigo-600 hover:to-purple-600 transition-all duration-300">
-                Explora {feature.cta}
-              </Button>
             </div>
-          </div>
-        </div>
-      </motion.div>
-    ))}
-  </div>
-</section>
 
-{/* Variety of Topics Section */}
-<section className="relative py-20 bg-white bg-opacity-80">
-  <div className="max-w-7xl mx-auto px-4">
-    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Explore Your Interests</h2>
-      <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-        Choose from a variety of engaging topics or suggest your own. Tailor your daily learning to what truly matters to you.
-      </p>
-    </motion.div>
-
-    {/* Main Topics */}
-    <div className="flex flex-wrap justify-center gap-4 mb-8">
-      {mainTopics.map((topic) => (
-        <motion.button
-          key={topic.name}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => {
-            setSelectedTopic(topic.name);
-            setShowCustomTopicInput(false);
-          }}
-          className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-300 border ${
-            topic.name === selectedTopic
-              ? "border-indigo-600 text-indigo-600 bg-indigo-50 shadow-md"
-              : "border-gray-300 text-gray-600 hover:border-indigo-600 hover:text-indigo-600 hover:bg-indigo-50 hover:shadow-md"
-          }`}
-        >
-          {React.createElement(topic.icon, { className: "w-5 h-5" })}
-          <span className="font-medium">{topic.name}</span>
-        </motion.button>
-      ))}
-    </div>
-
-    {/* Topic Categories or Custom Topic Input */}
-    {showCustomTopicInput ? (
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-md mx-auto mb-12">
-        <form onSubmit={handleCustomTopicSubmit} className="flex flex-col items-center gap-4">
-          <Input
-            type="text"
-            value={customTopic}
-            onChange={(e) => setCustomTopic(e.target.value)}
-            placeholder="Enter your custom topic"
-            className="w-full px-6 py-3 rounded-lg bg-white border border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-indigo-600 transition-all shadow-lg"
-            required
-          />
-          <Button type="submit" className="px-8 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-medium rounded-full hover:from-indigo-600 hover:to-purple-600 transition-all duration-300 shadow-lg">
-            Suggest Topic
-          </Button>
-        </form>
-      </motion.div>
-    ) : (
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
-        {Object.entries(topicCategories).map(([category, topics]) => (
-          <React.Fragment key={category}>
-            <h3 className="col-span-full text-xl font-bold text-gray-900 mt-6 mb-2">{category}</h3>
-            {Array.isArray(topics) &&
-              topics.map((topic, index) => (
-                <motion.div key={`${category}-${topic}`} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.1 }}>
-                  <motion.button
-                    whileHover={{ scale: 1.05, boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)" }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full h-16 px-2 py-1 rounded-lg border border-gray-300 bg-white text-gray-800 hover:bg-indigo-50 hover:border-indigo-300 transition-all duration-300 flex items-center justify-center text-center shadow-sm"
+            {/* Topic Categories or Custom Topic Input */}
+            {showCustomTopicInput ? (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="max-w-md mx-auto mb-12"
+              >
+                <form onSubmit={handleCustomTopicSubmit} className="flex flex-col items-center gap-4">
+                  <Input
+                    type="text"
+                    value={customTopic}
+                    onChange={(e) => setCustomTopic(e.target.value)}
+                    placeholder="Enter your custom topic"
+                    className="w-full px-6 py-3 rounded-lg bg-white border border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-indigo-600 transition-all shadow-lg"
+                    required
+                  />
+                  <Button
+                    type="submit"
+                    className="px-8 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-medium rounded-full hover:from-indigo-600 hover:to-purple-600 transition-all duration-300 shadow-lg"
                   >
-                    <span className="text-sm">{topic}</span>
-                  </motion.button>
-                </motion.div>
-              ))}
-          </React.Fragment>
-        ))}
-      </motion.div>
-    )}
-  </div>
-</section>
+                    Suggest Topic
+                  </Button>
+                </form>
+              </motion.div>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12"
+              >
+                {Object.entries(topicCategories).map(([category, topics]) => (
+                  <React.Fragment key={category}>
+                    <h3 className="col-span-full text-xl font-bold text-gray-900 mt-6 mb-2">{category}</h3>
+                    {Array.isArray(topics) &&
+                      topics.map((topic, index) => (
+                        <motion.div
+                          key={`${category}-${topic}`}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.1 }}
+                        >
+                          <motion.button
+                            whileHover={{ scale: 1.05, boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)" }}
+                            whileTap={{ scale: 0.98 }}
+                            className="w-full h-16 px-2 py-1 rounded-lg border border-gray-300 bg-white text-gray-800 hover:bg-indigo-50 hover:border-indigo-300 transition-all duration-300 flex items-center justify-center text-center shadow-sm"
+                          >
+                            <span className="text-sm">{topic}</span>
+                          </motion.button>
+                        </motion.div>
+                      ))}
+                  </React.Fragment>
+                ))}
+              </motion.div>
+            )}
+          </div>
+        </section>
 
         {/* Content Types Section */}
         <section className="relative py-20 bg-white bg-opacity-80">
@@ -630,78 +648,77 @@ export default function LandingPage() {
 
         {/* CTA Section */}
         <section className="relative py-32 bg-gray-50">
-  <div className="relative z-10">
-    <div className="max-w-5xl mx-auto px-4">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="space-y-10 text-center"
-      >
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ type: "spring", stiffness: 260, damping: 20 }}
-        >
-          <div className="w-16 h-16 mx-auto mb-8">
-            <Sparkles className="w-full h-full text-blue-600" />
+          <div className="relative z-10">
+            <div className="max-w-5xl mx-auto px-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="space-y-10 text-center"
+              >
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                >
+                  <div className="w-16 h-16 mx-auto mb-8">
+                    <Sparkles className="w-full h-full text-blue-600" />
+                  </div>
+                </motion.div>
+
+                <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                  Ready to Ignite Your{" "}
+                  <span className="text-blue-600 relative">
+                    Learning Journey?
+                    <motion.span
+                      className="absolute -bottom-2 left-0 w-full h-1 bg-blue-600"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "100%" }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.5 }}
+                    />
+                  </span>
+                </h2>
+
+                <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                  Join our waitlist today and be among the first to experience personalized learning that adapts to your
+                  unique interests and goals. Unlock a world of knowledge tailored just for you.
+                </p>
+
+                <form onSubmit={handleSubmit} className="space-y-6 mt-12">
+                  <div className="flex flex-col md:flex-row gap-4 justify-center">
+                    <Input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Your Name"
+                      className="w-full md:w-auto px-6 py-4 rounded-full bg-white border border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-blue-600 transition-all text-lg"
+                      required
+                    />
+                    <Input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Your Email"
+                      className="w-full md:w-auto px-6 py-4 rounded-full bg-white border border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-blue-600 transition-all text-lg"
+                      required
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    className="w-full md:w-auto px-10 py-4 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-all duration-300 text-xl"
+                  >
+                    Join the Waitlist
+                  </Button>
+                </form>
+
+                <p className="text-gray-600 text-lg mt-6">
+                  By joining, you'll be first in line for exclusive early access and special offers.
+                </p>
+              </motion.div>
+            </div>
           </div>
-        </motion.div>
-
-        <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-          Ready to Ignite Your{" "}
-          <span className="text-blue-600 relative">
-            Learning Journey?
-            <motion.span
-              className="absolute -bottom-2 left-0 w-full h-1 bg-blue-600"
-              initial={{ width: 0 }}
-              whileInView={{ width: "100%" }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            />
-          </span>
-        </h2>
-
-        <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          Join our waitlist today and be among the first to experience personalized learning that adapts to your
-          unique interests and goals. Unlock a world of knowledge tailored just for you.
-        </p>
-
-        <form onSubmit={handleSubmit} className="space-y-6 mt-12">
-          <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <Input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Your Name"
-              className="w-full md:w-auto px-6 py-4 rounded-full bg-white border border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-blue-600 transition-all text-lg"
-              required
-            />
-            <Input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your Email"
-              className="w-full md:w-auto px-6 py-4 rounded-full bg-white border border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-blue-600 transition-all text-lg"
-              required
-            />
-          </div>
-          <Button
-            type="submit"
-            className="w-full md:w-auto px-10 py-4 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-all duration-300 text-xl"
-          >
-            Join the Waitlist
-          </Button>
-        </form>
-
-        <p className="text-gray-600 text-lg mt-6">
-          By joining, you'll be first in line for exclusive early access and special offers.
-        </p>
-      </motion.div>
-    </div>
-  </div>
-</section>
-
+        </section>
 
         {/* Footer */}
         <footer className="py-8 px-4 border-t border-gray-200 bg-white">
