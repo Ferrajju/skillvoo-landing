@@ -720,7 +720,6 @@ export default function LandingPage() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.8, delay: 0.5 }}
                       
-                      
                     />
                   </span>
                 </h2>
