@@ -1,28 +1,24 @@
-"use client";
+import "./globals.css"
+import { Inter } from "next/font/google"
+import type { ReactNode } from "react"
 
-import "./globals.css";
-import { Inter, Poppins } from "next/font/google";
-import GoogleTranslateWidget from "@/components/GoogleTranslateWidget";
+const inter = Inter({ subsets: ["latin"] })
 
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const poppins = Poppins({
-  weight: ["400", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-poppins",
-});
+export const metadata = {
+  title: "SkillsLetter - Craft Your Skills Story",
+  description:
+    "Transform your experiences into a compelling narrative that showcases your unique talents and abilities.",
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
-      <body>
-        <GoogleTranslateWidget />
-        {children}
-      </body>
+    <html lang="en">
+      <body className={inter.className}>{children}</body>
     </html>
-  );
+  )
 }
+
