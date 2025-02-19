@@ -286,7 +286,7 @@ export default function LandingPage() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 1.3, duration: 0.5 }}
                 >
-                  <BookOpen className="w-6 h-6 text-indigo-500" />
+                  <BookOpen className="w-6 h-6 text-indigo-500 rounded-full" />
                 </motion.div>
                 <motion.div
                   className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md"
@@ -294,7 +294,7 @@ export default function LandingPage() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 1.5, duration: 0.5 }}
                 >
-                  <Zap className="w-6 h-6 text-purple-500" />
+                  <Zap className="w-6 h-6 text-purple-500 rounded-full" />
                 </motion.div>
                 <motion.div
                   className="absolute bottom-4 left-4 bg-white rounded-full p-2 shadow-md"
@@ -302,7 +302,7 @@ export default function LandingPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.7, duration: 0.5 }}
                 >
-                  <Target className="w-6 h-6 text-pink-500" />
+                  <Target className="w-6 h-6 text-pink-500 rounded-full" />
                 </motion.div>
                 <motion.div
                   className="absolute bottom-4 right-4 bg-white rounded-full p-2 shadow-md"
@@ -310,7 +310,7 @@ export default function LandingPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.9, duration: 0.5 }}
                 >
-                  <Layers className="w-6 h-6 text-indigo-400" />
+                  <Layers className="w-6 h-6 text-indigo-400 rounded-full" />
                 </motion.div>
               </div>
             </motion.div>
@@ -354,10 +354,10 @@ export default function LandingPage() {
                   <div className={`space-y-6 ${index % 2 === 0 ? "md:pr-0 lg:pr-8" : "md:pl-0 lg:pl-8"} max-w-lg`}>
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center shadow-lg">
                       {index === features.length - 1 ? (
-                        <Mail className="w-6 h-6 text-white" />
+                        <Mail className="w-6 h-6 text-white rounded-full" />
                       ) : (
                         React.createElement(feature.icon, {
-                          className: "w-6 h-6 text-white",
+                          className: "w-6 h-6 text-white rounded-full",
                         })
                       )}
                     </div>
@@ -407,14 +407,14 @@ export default function LandingPage() {
                       }`}
                     >
                       <BookOpen
-                        className={`w-5 h-5 mr-2 ${activeTab === "library" ? "text-white" : "text-indigo-600"}`}
+                        className={`w-5 h-5 mr-2 rounded-full ${activeTab === "library" ? "text-white" : "text-indigo-600"}`}
                       />
                       Content Library
                     </Button>
                     <Button
                       variant={activeTab === "email" ? "default" : "outline"}
                       onClick={() => setActiveTab("email")}
-                      className={`w-full sm:w-auto px-8 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg ${
+                      className={`w-full sm:w-auto px-8 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg rounded-full ${ 
                         activeTab === "email"
                           ? "bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white"
                           : "bg-white text-gray-700 hover:bg-gray-100"
@@ -428,14 +428,14 @@ export default function LandingPage() {
                     <Button
                       variant={activeTab === "analytics" ? "default" : "outline"}
                       onClick={() => setActiveTab("analytics")}
-                      className={`w-full sm:w-auto px-8 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg ${
+                      className={`w-full sm:w-auto px-8 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg rounded-full ${
                         activeTab === "analytics"
                           ? "bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white"
                           : "bg-white text-gray-700 hover:bg-gray-100"
                       }`}
                     >
                       <BarChart2
-                        className={`w-5 h-5 mr-2 ${activeTab === "analytics" ? "text-white" : "text-indigo-600"}`}
+                        className={`w-5 h-5 mr-2 rounded-full ${activeTab === "analytics" ? "text-white" : "text-indigo-600"}`}
                       />
                       Learning Analytics
                     </Button>
