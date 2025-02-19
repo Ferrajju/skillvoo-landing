@@ -250,7 +250,7 @@ export default function LandingPage() {
                 />
                 <Button
                   type="submit"
-                  className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white hover:from-indigo-600 hover:to-purple-600 transform hover:scale-105 transition-all duration-300 animate-pulse-subtle rounded-full px-8 py-3 text-lg font-semibold shadow-lg"
+                  className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white hover:from-indigo-600 hover:to-purple-600 transform hover:scale-105 transition-all duration-300 animate-pulse-subtle rounded-full px-8 py-3 text-lg font-semibold shadow-lg rounded-full"
                 >
                   Start Learning Now
                 </Button>
