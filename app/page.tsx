@@ -222,7 +222,7 @@ export default function LandingPage() {
                     animate={{ y: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                   >
-                    We daily send you
+                    We daily Mail you
                   </motion.span>
                 </span>
               </h1>
