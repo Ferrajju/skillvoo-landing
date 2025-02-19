@@ -168,7 +168,7 @@ export default function LandingPage() {
               </Link>
             </div>
             <div className="flex-1 flex justify-end">
-              <Button className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white hover:from-indigo-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105">
+              <Button className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white hover:from-indigo-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 border-radius:30px;">
                 Join Waitlist
               </Button>
               <DropdownMenu>
