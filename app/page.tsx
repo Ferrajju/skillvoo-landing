@@ -400,7 +400,7 @@ export default function LandingPage() {
                     <Button
                       variant={activeTab === "library" ? "default" : "outline"}
                       onClick={() => setActiveTab("library")}
-                      className={`w-full sm:w-auto px-8 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg ${
+                      className={`w-full sm:w-auto px-8 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg rounded-full ${
                         activeTab === "library"
                           ? "bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white"
                           : "bg-white text-gray-700 hover:bg-gray-100"
@@ -635,7 +635,7 @@ export default function LandingPage() {
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 rounded-full">
               {[
                 {
                   icon: Brain,
